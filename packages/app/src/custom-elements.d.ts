@@ -8,4 +8,4 @@ declare module "solid-js" {
   }
 }
 
-export {}i/src/custom-elements.d.ts
+export {}
