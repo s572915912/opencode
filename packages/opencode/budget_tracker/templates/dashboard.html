@@ -1,0 +1,238 @@
+{% extends "base.html" %} {% block title %}Dashboard - Budget Tracker{% endblock %} {% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2>Welcome, {{ username }}!</h2>
+    <p class="text-muted">Here's your financial overview</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Total Income</h5>
+        <h3 class="card-text positive">${{ "%.2f"|format(total_income) }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Total Expenses</h5>
+        <h3 class="card-text negative">${{ "%.2f"|format(total_expenses) }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Balance</h5>
+        <h3 class="card-text {% if balance >= 0 %}positive{% else %}negative{% endif %}">
+          ${{ "%.2f"|format(balance) }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Quick Actions</h5>
+      </div>
+      <div class="card-body">
+        <div class="d-grid gap-2">
+          <a href="/expenses" class="btn btn-primary">View All Transactions</a>
+          <a href="/analytics" class="btn btn-outline-primary">View Analytics</a>
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTransactionModal">
+            Add New Transaction
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Recent Transactions</h5>
+      </div>
+      <div class="card-body">
+        {% if recent %}
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for t in recent %}
+              <tr>
+                <td>{{ t.date.strftime('%Y-%m-%d') }}</td>
+                <td>
+                  <span class="badge bg-{% if t.type == 'income' %}success{% else %}danger{% endif %}">
+                    {{ t.type }}
+                  </span>
+                </td>
+                <td>{{ t.category }}</td>
+                <td class="{% if t.type == 'income' %}positive{% else %}negative{% endif %}">
+                  ${{ "%.2f"|format(t.amount) }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <p class="text-muted">No transactions yet. Add your first transaction!</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Quick Charts</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Spending by Category</h6>
+            <div id="categoryChart"></div>
+          </div>
+          <div class="col-md-6">
+            <h6>Monthly Spending</h6>
+            <div id="monthlyChart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Transaction Modal -->
+<div class="modal fade" id="addTransactionModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Transaction</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addTransactionForm">
+          <div class="mb-3">
+            <label class="form-label">Type</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="typeIncome" value="income" checked />
+                <label class="form-check-label" for="typeIncome">Income</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="typeExpense" value="expense" />
+                <label class="form-check-label" for="typeExpense">Expense</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0.01" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" name="category" required />
+            <div class="form-text">e.g., Food, Rent, Salary, etc.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description (Optional)</label>
+            <input type="text" class="form-control" id="description" name="description" />
+          </div>
+
+          <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{ now().strftime('%Y-%m-%d') }}" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="addTransaction()">Add Transaction</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block scripts %}
+<script>
+  // Load charts
+  async function loadCharts() {
+    try {
+      // Category chart
+      const catRes = await fetch("/chart/categories")
+      if (catRes.ok) {
+        const catData = await catRes.json()
+        const img = document.createElement("img")
+        img.src = catData.image
+        img.style.maxWidth = "100%"
+        document.getElementById("categoryChart").appendChild(img)
+      }
+
+      // Monthly chart
+      const monthRes = await fetch("/chart/monthly")
+      if (monthRes.ok) {
+        const monthData = await monthRes.json()
+        const img = document.createElement("img")
+        img.src = monthData.image
+        img.style.maxWidth = "100%"
+        document.getElementById("monthlyChart").appendChild(img)
+      }
+    } catch (err) {
+      console.log("Charts not available yet")
+    }
+  }
+
+  // Add transaction
+  async function addTransaction() {
+    const form = document.getElementById("addTransactionForm")
+    const data = {
+      amount: parseFloat(form.amount.value),
+      category: form.category.value,
+      description: form.description.value,
+      type: form.querySelector('input[name="type"]:checked').value,
+      date: form.date.value,
+    }
+
+    const response = await fetch("/expenses", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+
+    if (response.ok) {
+      alert("Transaction added successfully!")
+      window.location.reload()
+    } else {
+      const error = await response.json()
+      alert("Error: " + (error.error || "Failed to add transaction"))
+    }
+  }
+
+  // Set today's date as default
+  document.getElementById("date").value = new Date().toISOString().split("T")[0]
+
+  // Load charts on page load
+  loadCharts()
+</script>
+{% endblock %} {% endblock %}

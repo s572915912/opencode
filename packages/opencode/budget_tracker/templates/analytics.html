@@ -1,0 +1,204 @@
+{% extends "base.html" %} {% block title %}Analytics - Budget Tracker{% endblock %} {% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2>Financial Analytics</h2>
+    <p class="text-muted">Visual insights into your spending habits</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Total Income</h5>
+        <h3 class="card-text positive">${{ "%.2f"|format(total_income) }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Total Expenses</h5>
+        <h3 class="card-text negative">${{ "%.2f"|format(total_expenses) }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Net Balance</h5>
+        <h3 class="card-text {% if total_income >= total_expenses %}positive{% else %}negative{% endif %}">
+          ${{ "%.2f"|format(total_income - total_expenses) }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Spending by Category</h5>
+      </div>
+      <div class="card-body">
+        <div id="categoryChart"></div>
+        {% if category_totals %}
+        <div class="mt-3">
+          <h6>Category Breakdown:</h6>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for category, amount in category_totals.items() %}
+                <tr>
+                  <td>{{ category }}</td>
+                  <td class="negative">${{ "%.2f"|format(amount) }}</td>
+                  <td>{{ "%.1f"|format(amount / total_expenses * 100 if total_expenses > 0 else 0) }}%</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% else %}
+        <p class="text-muted text-center py-4">No expense data yet. Add some expenses to see analytics.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Monthly Spending Trend</h5>
+      </div>
+      <div class="card-body">
+        <div id="monthlyChart"></div>
+        {% if monthly_data %}
+        <div class="mt-3">
+          <h6>Monthly Summary:</h6>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Total Expenses</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for month, amount in monthly_data.items()|sort %}
+                <tr>
+                  <td>{{ month }}</td>
+                  <td class="negative">${{ "%.2f"|format(amount) }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% else %}
+        <p class="text-muted text-center py-4">No monthly data yet. Add expenses to see trends.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Spending Insights</h5>
+      </div>
+      <div class="card-body">
+        {% if category_totals %}
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Top Spending Categories:</h6>
+            <ol>
+              {% for category, amount in category_totals.items()|sort(attribute='1', reverse=True)|slice(3) %}
+              <li>{{ category }}: ${{ "%.2f"|format(amount) }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+          <div class="col-md-6">
+            <h6>Recommendations:</h6>
+            <ul>
+              {% if total_expenses > total_income %}
+              <li class="text-danger">⚠️ You're spending more than you earn. Consider reducing expenses.</li>
+              {% else %}
+              <li class="text-success">✅ Good job! You're living within your means.</li>
+              {% endif %} {% set top_category = category_totals.items()|sort(attribute='1', reverse=True)|first %} {% if
+              top_category %}
+              <li>
+                💰 Your largest expense category is <strong>{{ top_category[0] }}</strong> (${{
+                "%.2f"|format(top_category[1]) }})
+              </li>
+              {% endif %} {% if total_expenses > 0 %}
+              <li>
+                📊 You've tracked ${{ "%.2f"|format(total_expenses) }} in expenses across {{ category_totals|length }}
+                categories
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        {% else %}
+        <p class="text-muted text-center py-4">Add some expenses to get personalized insights.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block scripts %}
+<script>
+  // Load charts
+  async function loadCharts() {
+    try {
+      // Category chart
+      const catRes = await fetch("/chart/categories")
+      if (catRes.ok) {
+        const catData = await catRes.json()
+        const img = document.createElement("img")
+        img.src = catData.image
+        img.style.maxWidth = "100%"
+        document.getElementById("categoryChart").appendChild(img)
+      } else {
+        document.getElementById("categoryChart").innerHTML = '<p class="text-muted">No category data available</p>'
+      }
+
+      // Monthly chart
+      const monthRes = await fetch("/chart/monthly")
+      if (monthRes.ok) {
+        const monthData = await monthRes.json()
+        const img = document.createElement("img")
+        img.src = monthData.image
+        img.style.maxWidth = "100%"
+        document.getElementById("monthlyChart").appendChild(img)
+      } else {
+        document.getElementById("monthlyChart").innerHTML = '<p class="text-muted">No monthly data available</p>'
+      }
+    } catch (err) {
+      console.log("Error loading charts:", err)
+      document.getElementById("categoryChart").innerHTML = '<p class="text-muted">Charts not available</p>'
+      document.getElementById("monthlyChart").innerHTML = '<p class="text-muted">Charts not available</p>'
+    }
+  }
+
+  // Load charts on page load
+  loadCharts()
+
+  // Refresh charts every 30 seconds
+  setInterval(loadCharts, 30000)
+</script>
+{% endblock %} {% endblock %}

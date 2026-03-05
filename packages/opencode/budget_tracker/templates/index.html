@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}Home - Budget Tracker{% endblock %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 text-center">
+    <h1 class="mb-4">💰 Personal Budget Tracker</h1>
+    <p class="lead mb-4">Track your expenses, manage your income, and visualize your spending habits.</p>
+
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">📊 Track Expenses</h5>
+            <p class="card-text">Record your daily expenses by category and see where your money goes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">💰 Manage Income</h5>
+            <p class="card-text">Keep track of your income sources and maintain a clear financial picture.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">📈 Visual Analytics</h5>
+            <p class="card-text">Get insights with charts and graphs showing your spending patterns.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <a href="/register" class="btn btn-primary btn-lg me-3">Get Started</a>
+      <a href="/login" class="btn btn-outline-primary btn-lg">Login</a>
+    </div>
+
+    <div class="mt-5">
+      <h4>Features:</h4>
+      <ul class="list-unstyled">
+        <li>✅ User authentication with secure password hashing</li>
+        <li>✅ Expense and income tracking</li>
+        <li>✅ Category-based organization</li>
+        <li>✅ Monthly spending analysis</li>
+        <li>✅ Interactive charts and visualizations</li>
+        <li>✅ Responsive design for mobile devices</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

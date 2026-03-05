@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% block title %}Register - Budget Tracker{% endblock %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="mb-0">Create Account</h4>
+      </div>
+      <div class="card-body">
+        <form id="registerForm">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required />
+            <div class="form-text">Choose a unique username</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required />
+            <div class="form-text">At least 6 characters</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required />
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="/login" class="btn btn-outline-secondary">Already have an account? Login</a>
+          </div>
+        </form>
+
+        <div id="message" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("registerForm").addEventListener("submit", async (e) => {
+    e.preventDefault()
+
+    const username = document.getElementById("username").value
+    const password = document.getElementById("password").value
+    const confirm = document.getElementById("confirm_password").value
+
+    if (password !== confirm) {
+      showMessage("Passwords do not match", "danger")
+      return
+    }
+
+    if (password.length < 6) {
+      showMessage("Password must be at least 6 characters", "danger")
+      return
+    }
+
+    const response = await fetch("/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    })
+
+    const data = await response.json()
+
+    if (response.ok) {
+      showMessage("Account created successfully! Redirecting to login...", "success")
+      setTimeout(() => (window.location.href = "/login"), 2000)
+    } else {
+      showMessage(data.error || "Registration failed", "danger")
+    }
+  })
+
+  function showMessage(text, type) {
+    const div = document.getElementById("message")
+    div.innerHTML = `<div class="alert alert-${type}">${text}</div>`
+  }
+</script>
+{% endblock %}
