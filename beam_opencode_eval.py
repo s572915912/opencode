@@ -18,6 +18,7 @@ import json
 import time
 import sys
 import uuid
+import os
 import requests
 
 # ─── Config ───
@@ -219,26 +220,125 @@ def get_messages(session_id):
     resp.raise_for_status()
     return resp.json()
 
-# ─── Scoring (reuse from beam_memory_eval.py) ───
-def score_answer(model_answer, expected_answer):
-    """Keyword-overlap scoring."""
+# ─── Scoring System ───
+
+def _tokenize(text):
+    """Tokenize text into lowercase words."""
     import re
+    return re.findall(r'\b\w+\b', text.lower())
+
+STOPWORDS = {'the', 'a', 'an', 'is', 'was', 'are', 'were', 'be', 'been',
+             'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would',
+             'could', 'should', 'may', 'might', 'shall', 'can', 'to', 'of',
+             'in', 'for', 'on', 'with', 'at', 'by', 'from', 'as', 'into',
+             'and', 'or', 'but', 'not', 'no', 'that', 'this', 'it', 'i',
+             'my', 'you', 'your', 'we', 'our', 'they', 'their', 'me', 'he',
+             'she', 'his', 'her', 'its', 'us', 'them', 'so', 'if', 'then'}
+
+def score_keyword(model_answer, expected_answer):
+    """Original keyword-overlap scoring (recall only)."""
     if not model_answer or not expected_answer:
         return 0.0
     model_lower = model_answer.lower()
-    expected_lower = expected_answer.lower()
-    expected_tokens = set(re.findall(r'\b\w+\b', expected_lower))
-    stopwords = {'the', 'a', 'an', 'is', 'was', 'are', 'were', 'be', 'been',
-                 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would',
-                 'could', 'should', 'may', 'might', 'shall', 'can', 'to', 'of',
-                 'in', 'for', 'on', 'with', 'at', 'by', 'from', 'as', 'into',
-                 'and', 'or', 'but', 'not', 'no', 'that', 'this', 'it', 'i',
-                 'my', 'you', 'your', 'we', 'our', 'they', 'their', 'me'}
-    key_tokens = expected_tokens - stopwords
+    key_tokens = set(_tokenize(expected_answer)) - STOPWORDS
     if not key_tokens:
-        return 1.0 if expected_lower in model_lower else 0.0
-    matches = sum(1 for token in key_tokens if token in model_lower)
+        return 1.0 if expected_answer.lower() in model_lower else 0.0
+    matches = sum(1 for t in key_tokens if t in model_lower)
     return matches / len(key_tokens)
+
+def score_token_f1(model_answer, expected_answer):
+    """Token-level F1 score (SQuAD-style)."""
+    if not model_answer or not expected_answer:
+        return 0.0
+    pred_tokens = set(_tokenize(model_answer)) - STOPWORDS
+    gold_tokens = set(_tokenize(expected_answer)) - STOPWORDS
+    if not gold_tokens:
+        return 1.0 if not pred_tokens else 0.0
+    if not pred_tokens:
+        return 0.0
+    common = pred_tokens & gold_tokens
+    if not common:
+        return 0.0
+    precision = len(common) / len(pred_tokens)
+    recall = len(common) / len(gold_tokens)
+    f1 = 2 * precision * recall / (precision + recall)
+    return f1
+
+def score_llm_judge(question, model_answer, expected_answer):
+    """Use DeepSeek as a judge to evaluate semantic correctness.
+    Returns a score 0.0~1.0."""
+    import openai
+    if not model_answer or model_answer.startswith("["):
+        return 0.0
+    
+    prompt = f"""You are an expert evaluator. Rate how correctly the Model Answer addresses the Question compared to the Expected Answer.
+
+Question: {question}
+Expected Answer: {expected_answer}
+Model Answer: {model_answer[:500]}
+
+Scoring rules:
+- 1.0 = Completely correct, covers all key facts
+- 0.7-0.9 = Mostly correct, minor details missing or extra info
+- 0.4-0.6 = Partially correct, some key facts right but others wrong/missing  
+- 0.1-0.3 = Mostly wrong, only trivially related
+- 0.0 = Completely wrong or irrelevant
+
+IMPORTANT: Focus on factual correctness, not wording. "4 weeks" and "28 days" are equivalent. "March 29" and "March 29th, 2024" are equivalent.
+
+Reply with ONLY a JSON object: {{"score": <float>, "reason": "<brief reason>"}}"""
+
+    try:
+        judge_api_key = os.environ.get("DEEPSEEK_API_KEY", "")
+        if not judge_api_key:
+            print("    ⚠️ LLM Judge skipped: DEEPSEEK_API_KEY not set")
+            return -1.0
+        client = openai.OpenAI(
+            api_key=judge_api_key,
+            base_url="https://api.deepseek.com",
+        )
+        resp = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.0,
+            max_tokens=150,
+        )
+        text = resp.choices[0].message.content.strip()
+        # Parse JSON response
+        import re
+        match = re.search(r'"score"\s*:\s*([0-9.]+)', text)
+        if match:
+            return min(1.0, max(0.0, float(match.group(1))))
+        return 0.0
+    except Exception as e:
+        print(f"    ⚠️ LLM Judge error: {e}")
+        return -1.0  # Signal that judge failed
+
+def score_answer(question, model_answer, expected_answer):
+    """Combined scoring: Token F1 + LLM Judge + Keyword overlap.
+    Returns dict with all scores and a combined score."""
+    kw = score_keyword(model_answer, expected_answer)
+    f1 = score_token_f1(model_answer, expected_answer)
+    judge = score_llm_judge(question, model_answer, expected_answer)
+    
+    # Combined: trust LLM Judge when confident
+    if judge >= 0:  # judge succeeded
+        if judge >= 0.8:
+            # High confidence from judge → trust it directly
+            combined = judge
+        else:
+            # Lower confidence → blend all signals
+            combined = 0.6 * judge + 0.25 * f1 + 0.15 * kw
+    else:  # judge failed, fallback
+        combined = 0.5 * f1 + 0.5 * kw
+        judge = None
+    
+    return {
+        "keyword": round(kw, 3),
+        "token_f1": round(f1, 3),
+        "llm_judge": round(judge, 3) if judge is not None else None,
+        "combined": round(combined, 3),
+    }
 
 # ─── Load BEAM Data ───
 def load_beam():
@@ -325,18 +425,20 @@ def run_experiment():
         print(f"\n  [{i+1}/{len(questions)}] ({q['type']}) {q['question'][:80]}...")
         
         answer = send_message(session_id, q["question"], cache_bust=True)
-        score = score_answer(answer, q["expected_answer"])
+        scores = score_answer(q["question"], answer, q["expected_answer"])
         
         results_before.append({
             "type": q["type"],
             "question": q["question"],
             "expected": q["expected_answer"][:150],
-            "model_answer": answer[:200] if answer else "",
-            "score": score,
+            "model_answer": answer[:300] if answer else "",
+            "scores": scores,
         })
         
-        emoji = "✅" if score >= 0.5 else "⚠️" if score >= 0.3 else "❌"
-        print(f"  {emoji} Score: {score:.2f}")
+        c = scores["combined"]
+        emoji = "✅" if c >= 0.5 else "⚠️" if c >= 0.3 else "❌"
+        judge_str = f" Judge={scores['llm_judge']:.2f}" if scores['llm_judge'] is not None else ""
+        print(f"  {emoji} Combined={c:.2f}  (F1={scores['token_f1']:.2f}  KW={scores['keyword']:.2f}{judge_str})")
         print(f"     Expected: {q['expected_answer'][:100]}")
         print(f"     Got:      {answer[:100] if answer else '[empty]'}")
         
@@ -364,18 +466,20 @@ def run_experiment():
         print(f"\n  [{i+1}/{len(questions)}] ({q['type']}) {q['question'][:80]}...")
         
         answer = send_message(session_id, q["question"], cache_bust=True)
-        score = score_answer(answer, q["expected_answer"])
+        scores = score_answer(q["question"], answer, q["expected_answer"])
         
         results_after.append({
             "type": q["type"],
             "question": q["question"],
             "expected": q["expected_answer"][:150],
-            "model_answer": answer[:200] if answer else "",
-            "score": score,
+            "model_answer": answer[:300] if answer else "",
+            "scores": scores,
         })
         
-        emoji = "✅" if score >= 0.5 else "⚠️" if score >= 0.3 else "❌"
-        print(f"  {emoji} Score: {score:.2f}")
+        c = scores["combined"]
+        emoji = "✅" if c >= 0.5 else "⚠️" if c >= 0.3 else "❌"
+        judge_str = f" Judge={scores['llm_judge']:.2f}" if scores['llm_judge'] is not None else ""
+        print(f"  {emoji} Combined={c:.2f}  (F1={scores['token_f1']:.2f}  KW={scores['keyword']:.2f}{judge_str})")
         print(f"     Expected: {q['expected_answer'][:100]}")
         print(f"     Got:      {answer[:100] if answer else '[empty]'}")
         
@@ -384,43 +488,49 @@ def run_experiment():
     # ─── Results ───
     print(f"\n{'='*60}")
     print("📊 RESULTS — OpenCode REAL Compaction Test")
+    print(f"    Scoring: 50% LLM Judge + 30% Token F1 + 20% Keyword")
     print(f"{'='*60}")
     
-    avg_before = sum(r["score"] for r in results_before) / len(results_before) if results_before else 0
-    avg_after = sum(r["score"] for r in results_after) / len(results_after) if results_after else 0
+    def avg_score(results, metric="combined"):
+        vals = [r["scores"][metric] for r in results if r["scores"].get(metric) is not None]
+        return sum(vals) / len(vals) if vals else 0
     
-    print(f"\n{'Metric':<35} {'Before Compact':>15} {'After Compact':>15} {'Delta':>8}")
-    print("-" * 76)
-    print(f"{'Overall Memory Score':<35} {avg_before:>14.1%} {avg_after:>14.1%} {avg_after-avg_before:>+7.1%}")
-    
-    types = sorted(set(r["type"] for r in results_before))
-    for qtype in types:
-        before_scores = [r["score"] for r in results_before if r["type"] == qtype]
-        after_scores = [r["score"] for r in results_after if r["type"] == qtype]
-        avg_b = sum(before_scores) / len(before_scores) if before_scores else 0
-        avg_a = sum(after_scores) / len(after_scores) if after_scores else 0
-        print(f"  {qtype:<33} {avg_b:>14.1%} {avg_a:>14.1%} {avg_a-avg_b:>+7.1%}")
+    for metric_name, metric_key in [("Combined Score", "combined"), ("Token F1", "token_f1"), ("LLM Judge", "llm_judge"), ("Keyword Overlap", "keyword")]:
+        avg_b = avg_score(results_before, metric_key)
+        avg_a = avg_score(results_after, metric_key) 
+        print(f"\n{'Metric: ' + metric_name:<35} {'Before':<15} {'After':<15} {'Delta':<8}")
+        print("-" * 76)
+        print(f"{'  Overall':<35} {avg_b:>14.1%} {avg_a:>14.1%} {avg_a-avg_b:>+7.1%}")
+        
+        types = sorted(set(r["type"] for r in results_before))
+        for qtype in types:
+            b_vals = [r["scores"][metric_key] for r in results_before if r["type"] == qtype and r["scores"].get(metric_key) is not None]
+            a_vals = [r["scores"][metric_key] for r in results_after if r["type"] == qtype and r["scores"].get(metric_key) is not None]
+            ab = sum(b_vals) / len(b_vals) if b_vals else 0
+            aa = sum(a_vals) / len(a_vals) if a_vals else 0
+            print(f"    {qtype:<31} {ab:>14.1%} {aa:>14.1%} {aa-ab:>+7.1%}")
     
     # Save results
     results = {
-        "test_type": "OpenCode Real Compaction",
+        "test_type": "OpenCode Real Compaction (v2 - multi-score)",
+        "scoring_method": "50% LLM Judge + 30% Token F1 + 20% Keyword Overlap",
         "session_id": session_id,
         "model": f"{PROVIDER_ID}/{MODEL_ID}",
         "beam_case": "Case 0 - Flask Budget Tracker",
         "messages_fed": max_msgs,
-        "before_compaction": {"avg_score": avg_before, "results": results_before},
-        "after_compaction": {"avg_score": avg_after, "results": results_after},
+        "before_compaction": {"avg_combined": avg_score(results_before), "results": results_before},
+        "after_compaction": {"avg_combined": avg_score(results_after), "results": results_after},
     }
     
-    output_path = "/tmp/beam_opencode_results.json"
+    output_path = "/tmp/beam_opencode_results_v2.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     
     print(f"\n📁 Results saved to: {output_path}")
     print(f"""
 {'='*60}
-🎯 这次测试经过了 OpenCode 的真实 compaction 流程！
-   对比之前的模拟实验结果来评估差异。
+🎯 三重评分系统：Token F1 + LLM Judge + Keyword
+   经过 OpenCode 的真实 compaction 流程
 {'='*60}
 """)
 
