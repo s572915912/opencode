@@ -14,6 +14,7 @@ import { Agent } from "@/agent/agent"
 import { Plugin } from "@/plugin"
 import { Config } from "@/config/config"
 import { ProviderTransform } from "@/provider/transform"
+import path from "path"
 
 export namespace SessionCompaction {
   const log = Log.create({ service: "session.compaction" })
@@ -30,6 +31,52 @@ export namespace SessionCompaction {
   const COMPACTION_BUFFER = 20_000
 
   const PK_MARKER = "## Persistent Knowledge"
+
+  function pkPath(): string {
+    return path.join(Instance.worktree, ".opencode", "memory.md")
+  }
+
+  async function readPK(): Promise<string | null> {
+    try {
+      const file = Bun.file(pkPath())
+      if (!(await file.exists())) return null
+      const text = await file.text()
+      return text.trim() || null
+    } catch {
+      return null
+    }
+  }
+
+  function sections(text: string): number {
+    return (text.match(/^###/gm) || []).length
+  }
+
+  async function writePK(pk: string): Promise<void> {
+    if (!pk.trim()) return
+    try {
+      const existing = await readPK()
+      if (existing && sections(pk) < sections(existing)) {
+        // Truncation detected — append new entries after existing
+        log.info("PK truncation guard: appending", { old: existing.length, new: pk.length })
+        await Bun.write(pkPath(), existing + "\n\n" + pk + "\n")
+        return
+      }
+      await Bun.write(pkPath(), pk + "\n")
+      log.info("wrote PK to file", { length: pk.length })
+    } catch (err) {
+      log.error("failed to write PK", { error: err })
+    }
+  }
+
+  async function extractPKFromSummary(summary: string): Promise<void> {
+    const idx = summary.indexOf(PK_MARKER)
+    if (idx >= 0) {
+      await writePK(summary.slice(idx).trim())
+      return
+    }
+    // No PK section in output — existing memory.md is preserved
+    log.info("no PK marker in compaction output, keeping existing file")
+  }
 
   function extractPK(msgs: MessageV2.WithParts[]): string | null {
     for (let i = msgs.length - 1; i >= 0; i--) {
@@ -232,7 +279,7 @@ When constructing the summary, try to stick to this template:
 
 ## Persistent Knowledge (CRITICAL — accumulates across rounds, never discard)
 
-Below is a structured knowledge store. Extract ALL of the following from the conversation and MERGE with any existing persistent knowledge provided.
+Below is a structured knowledge store. Extract ALL of the following from the conversation and MERGE with any existing persistent knowledge provided. Do NOT include user biographical info (name, location, occupation).
 
 ### Timeline
 - [exact date/deadline/sprint] Event description
@@ -254,11 +301,13 @@ RULES:
 4. Total persistent knowledge section should stay under 4000 tokens — prioritize precision over volume
 ---`
 
-    const pk = extractPK(messages)
+    // Inject existing PK as context — model should update and include in output
+    const filePK = await readPK()
+    const pk = filePK ?? extractPK(messages)
     const pkContext = pk
-      ? `\n\n---\nExisting Persistent Knowledge from previous compaction (PRESERVE and UPDATE — do NOT discard):\n\n${pk}`
+      ? `\n\n---\nExisting Persistent Knowledge from previous compaction (PRESERVE, UPDATE, and include in your ## Persistent Knowledge output):\n\n${pk}`
       : ""
-    log.info("persistent knowledge", { found: !!pk, length: pk?.length ?? 0 })
+    log.info("persistent knowledge", { source: filePK ? "file" : pk ? "message" : "none", length: pk?.length ?? 0 })
     const promptText = compacting.prompt ?? [defaultPrompt + pkContext, ...compacting.context].join("\n\n")
     const result = await processor.process({
       user: userMessage,
@@ -281,6 +330,19 @@ RULES:
       ],
       model,
     })
+
+    // Extract PK from compaction output and write to file
+    if (result === "continue") {
+      const msgs = await Session.messages({ sessionID: input.sessionID, limit: 5 })
+      const compacted = msgs.find(m => m.info.id === processor.message.id)
+      if (compacted) {
+        const text = compacted.parts
+          .filter((p): p is MessageV2.TextPart => p.type === "text")
+          .map(p => p.text)
+          .join("")
+        await extractPKFromSummary(text)
+      }
+    }
 
     if (result === "compact") {
       processor.message.error = new MessageV2.ContextOverflowError({

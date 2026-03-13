@@ -1,0 +1,161 @@
+## Persistent Knowledge (CRITICAL — accumulates across rounds, never discard)
+
+### Timeline
+- **March 1, 2024** Current planning checkpoint referenced by user for staying on schedule
+- **March 10, 2024** Updated YOLOv5s weights downloaded, size **14.2MB**
+- **March 15, 2024** Milestone: basic detection pipeline ready
+- **March 20, 2024** Deadline to get pytest unit tests done
+- **April 1, 2024** Next milestone: implement object counting and multi-class tracking
+- **April 15, 2024** Planned extension: REST API accepts POST requests for remote control commands
+- **April 20, 2024** Planned feature flag system for experimental TensorRT acceleration
+- **May 5, 2024** Planned multi-object tracking using the SORT algorithm
+- **May 20, 2024** Planned UI frontend development for visualization of tracked objects
+- **June 5, 2024** Planned user acceptance testing with **5 paramedic volunteers**
+- **June 25, 2024** User plans to deploy the app on AWS EC2 **t3.medium**
+- **July 10, 2024** Scheduled security audit and penetration testing
+- **July 15, 2024** Backend dependencies locked with pip-tools and `requirements.txt` frozen
+- **July 20, 2024** Release candidate build scheduled
+- **July 21, 2024** Example CloudTrail `eventTime` for `CreateDeploymentGroup`
+- **July 20, 2024** to **July 25, 2024** Example deployment timeline for `development`, `staging`, `production`
+- **August 1, 2024** Post-launch maintenance window scheduled for feature updates and security patches
+
+### Technical Specifications
+- [opencv] **4.7.0**
+- [python] **3.10**, **3.10.6**
+- [torch] **1.13.1**
+- [pytest] **7.2.0**
+- [pytest-cov] **4.0.0**
+- [coverage.py] **7.2.7**
+- [numpy] **1.23.4**, **1.24.2**
+- [numba] **0.57.0**
+- [react] **18.2**
+- [jest] **29.5**
+- [cypress] **12.17**
+- [flask] **2.2.2**, **2.3.2**, **2.3.3**
+- [flask-socketio] **5.3.2**
+- [tensorrt] **8.5.2**
+- [trtexec] **v8.5.2**
+- [cuda] **11.7**
+- [nvidia driver] **525.60.11**
+- [gpu] **NVIDIA RTX 2060**
+- [camera] `cv2.VideoCapture(0)` with fallbacks to **1** and enumeration **0..9**
+- [resolution] **640x480**
+- [frontend mapping] backend **640x480** to frontend **1280x720**
+- [input sizes] **416x416**, **640x640**, **640x480**
+- [performance target] **30 FPS**
+- [latency target] under **250ms per frame**
+- [measured latency] **250ms**, **210ms**, **200ms**, **190ms**, **180ms**, **160ms**, desired **150ms**, TensorRT path **90ms**, TensorRT inference **60ms**, RTX 2060 inference **45ms**, total **115ms on the GPU**, **235ms on the CPU**
+- [api latency] stable **50ms** under **10 concurrent requests**; **180ms** under **50 concurrent users**; later **120ms** under **50 concurrent users**; **150ms** under **100 concurrent users**; later referenced as **110ms** under **100 concurrent users**
+- [frontend rendering latency] **50ms per frame**
+- [frontend update rate] **20 FPS**
+- [hardware] **Intel i5-8250U CPU**
+- [memory target] under **1GB**
+- [memory observed] **850MB** during **10-minute** run; **900MB** during **30-minute** run with counting enabled
+- [gpu memory] TensorRT engine stabilized at **3.2GB**
+- [tracker memory] **120MB** stable during a **1-hour** continuous run; later **90MB** during a **1-hour** continuous run
+- [frontend memory] **150MB** during a **1-hour** continuous streaming session; later **100MB** during a **1-hour** continuous streaming session
+- [api] **localhost:5000**
+- [websocket] **port 6000**
+- [redis] **6379**
+- [API endpoints] `GET /status`, `POST /command`, `POST /control`, `GET /api/response`, `/tracker`, `/config`, `/health`, `/metrics`, `/docs`, `/webhook/alerts`, `/auth/refresh`, `/revoke-token`
+- [ZeroMQ] **tcp://localhost:5555**, **3 attempts**, `RCVTIMEO=5000`
+- [gpu monitoring] `nvidia-smi` polling every **5 seconds**
+- [socket timeout] **60 seconds**
+- [logging] `RotatingFileHandler('app.log', maxBytes=5*1024*1024, backupCount=1)` at **INFO**
+- [thresholds] confidence **0.25**, **0.4**, **0.5**, reset confidence **0.2**; NMS/IoU **0.4**, **0.45**, **0.5**; IoU example **0.8**
+- [SORT params] `max_age=30`, `min_hits=3`, `iou_threshold=0.3`
+- [frontend confidence slider] **0.1** to **0.9**
+- [docker image] `cv-app:v0.1`
+- [docker gpu image] `cv-app:gpu-v0.2`
+- [frontend image] `my-frontend:latest`
+- [docker base images] `python:3.10-slim`, `python:3.10-alpine`, `python:3.9-slim`, `alpine:latest`, `nvidia/cuda:11.7-base`
+- [system dependency] `libgl1-mesa-glx`
+- [system library error] `ImportError: libcudart.so.11.0 not found`
+- [dependency pins] `numpy==1.23.4`, `opencv-python==4.7.0`, `torch==1.13.1`
+- [frontend bundle] reduced from **1.2MB** to **650KB**
+- [websocket schema version] **1.1**
+- [terraform] **1.4.6**
+- [locust] **2.15**
+- [selenium] **4.9.0**
+- [dompurify] **2.3.4**
+- [sqlite] **3.39.4**
+- [flake8] **6.0.0**
+- [black] **23.1.0**
+- [aiofiles] **23.1.0**
+- [snyk cli] **2.15.0**
+- [openapi] **3.0**
+- [aws ec2] **t3.medium**, **Ubuntu 22.04 LTS**, Docker **23.0.1**
+- [ecs task cpu] **512** then **1024**
+- [ecs task memory] **2048**
+- [ecs memoryReservation] **1800**
+- [alb] port **80/443**
+- [backend service] port **5000**
+- [websocket ingress issue] port **6000**
+- [api gateway caching ttl] **60 seconds**
+- [api gateway throttling] **1000 requests per second**, burst **200**
+- [cloudwatch logs retention] **14 days**
+- [alerts] CPU **>80%**, memory **>75%**, API error rate **>1%**, memory alert at **90%**
+- [load testing] **100 RPS**, **95% of requests under 300ms latency**
+- [container memory] limit **2GB** resolved **OOMKilled**; soft limit **1.8GB**
+- [throughput optimization] batch size **3**, throughput improved by **20%**
+- [availability] **99.9% uptime over a **7-day** monitoring period
+- [uat] **5 paramedic volunteers**, **100% positive feedback**
+- [container image size] reduced from **1.1GB** to **350MB**, later to **250MB**
+- [gzip] frontend asset size reduced by **40%**
+- [docker startup] example improvement from **25s** to **10s**
+- [release] version **1.0.0**
+- [roadmap] **DeepSORT** and **SSD MobileNet v3**
+- [tools mentioned for troubleshooting] **Wireshark**, **tcpdump**, **matplotlib**
+
+### Contradictions & Updates
+- YOLO loading approach was inconsistent across conversation:
+  - OpenCV DNN used with `.pt` paths like `yolov5s.pt` / `yolov5x.pt`
+  - later also used `.onnx`
+  - separate examples used `torch.hub.load(...)` and `from ultralytics import YOLO`
+  - later TensorRT engine / ONNX / `trtexec` path was explored
+  - later user also showed `cv2.dnn.readNetFromDarknet('yolov5s.cfg', 'yolov5s.weights')`
+- Performance improved over time:
+  - latency changed from **250ms** to **190ms**
+  - later improved to **160ms**
+  - TensorRT-integrated path later improved from **210ms** to **90ms**
+  - AWS-side API response time improved from **180ms** to **120ms** under **50 concurrent users**
+  - API latency under **100 concurrent users** was later referenced as **110ms**, compared with earlier **150ms**
+- Weights size updated:
+  - from about **14MB** to **14.2MB** on **March 10, 2024**
+- User considered TensorRT/NVIDIA GPU briefly, but later stated preference for **CPU-only deployment due to hardware constraints**
+- Later conversation introduced a parallel preference:
+  - user prefers **GPU acceleration with TensorRT for production**, but also wants **CPU fallback for portability**
+- Tracker memory changed from **120MB** to **90MB**
+- Frontend memory changed from **150MB** to **100MB**
+- Frontend bundle size changed from **1.2MB** to **650KB**
+- Backend container image size changed from **1.1GB** to **350MB**, later to **250MB**
+- ECS task CPU reservation changed from **512** to **1024** units to fix `"503 Service Unavailable"`
+
+### Causal Decisions
+- Because user wants real-time CPU performance → chose **YOLOv5s** over heavier models like **YOLOv5x**
+- Because hardware constraints favor CPU-only deployment → user prefers **CPU-only deployment despite slower inference times**
+- Because production experiments targeted **NVIDIA RTX 2060** with TensorRT → user also wants **GPU acceleration with TensorRT for production** plus CPU fallback
+- Because detection stabilizing is priority → object counting planned **after** stabilizing detection
+- Because modularity and scaling matter → user wants detection and API layers separated
+- Because webcam/OpenCV failures occurred (`ret == False`, assertion failures, busy port) → fallback camera index handling and `VideoCapture` reset were discussed
+- Because memory usage was high and unstable risk exists → avoid constructing `Detector("model.pth")` inside the frame loop
+- Because API JSON serialization was a bottleneck → considered switching from `json.dumps` to **orjson** for **40%** latency reduction; later also explored **ujson 5.8.0**
+- Because counting logic produced `KeyError: 17` → switched to `defaultdict`
+- Because post-processing produced `IndexError: list index out of range` when no detections returned → added `if len(indices) > 0:` guard
+- Because TensorRT engine load errors occurred (`"Engine deserialization failed"`) → ONNX opset was matched to **12**, but version/runtime compatibility still needs validation
+- Because TensorRT transfer overhead was around **10ms** → pinned memory and reusable buffers were explored
+- Because user wants inference performance reporting → always include **GPU memory usage statistics**
+- Because SORT is simple and real-time friendly → user prefers **SORT** for now
+- Because SORT suffers ID switches during occlusion → future upgrade path to **DeepSORT**
+- Because tracker update is CPU-bound → user explored **numba 0.57.0**, vectorized NumPy, and possible **Cython**
+- Because frontend re-renders and bundle size matter → explored `React.memo`, Redux optimization, code splitting, and tree shaking
+- Because WebSocket disconnects occurred (`"ConnectionResetError: [Errno 104] Connection reset by peer"`) → keep-alive pings and timeout tuning were discussed
+- Because sticky sessions on **ALB** did not fully resolve disconnects → further log inspection and handshake-level troubleshooting are needed
+- Because high-resolution frame processing caused `"MemoryError: Unable to allocate 1.2GB array"` → downscaled processing to **480p** / **640x480**
+- Because **OOMKilled** occurred in Docker → limiting container memory to **2GB** resolved it
+- Because user prefers **AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead** → AWS guidance should favor Fargate-compatible patterns
+- Because user prefers **using lightweight Alpine-based containers for faster deployment and smaller footprint** → Alpine was explored, but compatibility caveats remain for OpenCV / PyTorch
+- Because user has **never actually deployed an application to AWS or used ECS Fargate before** → explanations should remain beginner-friendly
+- Because ECS task CPU reservation at **512** caused `"503 Service Unavailable"` → increased to **1024** units
+- Because security and compliance became a release concern → deployment answers should include a **security checklist**, AWS security answers should include **IAM policy details**, and code quality answers should include a **code review checklist**
+- Because user explicitly requested it → always include a **deployment timeline** when discussing production launch schedules

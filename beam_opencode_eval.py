@@ -225,7 +225,7 @@ def trigger_compaction(session_id):
         resp = requests.post(
             f"{OPENCODE_URL}/session/{session_id}/summarize",
             json=payload,
-            timeout=300,
+            timeout=600,
         )
         resp.raise_for_status()
         
@@ -525,6 +525,12 @@ def run_single_case(case_id, chat_sessions, questions, compaction_interval=0, co
     elif compaction_interval > 0:
         print(f"   📐 Progressive mode: compact every {compaction_interval} messages")
     print(f"{'='*60}")
+    
+    # Clean up memory.md from previous case to ensure fresh PK accumulation
+    mem = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".opencode", "memory.md")
+    if os.path.exists(mem):
+        os.remove(mem)
+        print(f"  🧹 Cleaned up {mem}")
     
     # Flatten ALL messages (user + assistant) from BEAM conversations
     all_messages = []
