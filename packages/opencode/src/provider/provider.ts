@@ -1124,10 +1124,42 @@ export namespace Provider {
           }
         }
 
-        return fetchFn(input, {
+        const resp = await fetchFn(input, {
           ...opts,
           // @ts-ignore see here: https://github.com/oven-sh/bun/issues/16682
           timeout: false,
+        })
+
+        // Filter SSE streams: strip `: ping` comment lines that break ai-sdk JSON parsing.
+        // Some proxies inject SSE comments (`: ping`) as keepalives that get concatenated
+        // with JSON data chunks, producing malformed JSON (Unterminated string errors).
+        const ct = resp.headers.get("content-type") ?? ""
+        if (!ct.includes("text/event-stream") || !resp.body) return resp
+
+        const decoder = new TextDecoder()
+        const encoder = new TextEncoder()
+        let buf = ""
+        const filter = new TransformStream<Uint8Array, Uint8Array>({
+          transform(chunk, ctrl) {
+            buf += decoder.decode(chunk, { stream: true })
+            const lines = buf.split("\n")
+            buf = lines.pop()!
+            const kept: string[] = []
+            for (const line of lines) {
+              if (line.trimEnd() === ": ping") continue
+              kept.push(line)
+            }
+            if (kept.length > 0) ctrl.enqueue(encoder.encode(kept.join("\n") + "\n"))
+          },
+          flush(ctrl) {
+            if (buf && buf.trimEnd() !== ": ping") ctrl.enqueue(encoder.encode(buf))
+          },
+        })
+
+        return new Response(resp.body.pipeThrough(filter), {
+          status: resp.status,
+          statusText: resp.statusText,
+          headers: resp.headers,
         })
       }
 
