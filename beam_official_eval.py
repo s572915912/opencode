@@ -142,6 +142,7 @@ def call_judge_api(prompt: str, max_retries: int = 3) -> dict:
                     "temperature": 0,
                     "max_tokens": 300,
                     "stream": True,
+                    "reasoningEffort": "low",
                 },
                 timeout=60,
             )

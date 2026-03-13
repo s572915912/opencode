@@ -203,7 +203,7 @@ def trigger_compaction(session_id):
         resp = requests.post(
             f"{OPENCODE_URL}/session/{session_id}/summarize",
             json=payload,
-            timeout=180,
+            timeout=300,
         )
         resp.raise_for_status()
         

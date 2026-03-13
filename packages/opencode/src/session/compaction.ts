@@ -174,6 +174,15 @@ export namespace SessionCompaction {
 Focus on information that would be helpful for continuing the conversation, including what we did, what we're doing, which files we're working on, and what we're going to do next.
 The summary that you construct will be used so that another agent can read it and continue the work.
 
+CRITICAL PRESERVATION RULES:
+- Preserve ALL numbers, metrics, and measurements EXACTLY (e.g., "45ms", "128KB", "port 3000")
+- Preserve ALL dates, deadlines, and time durations EXACTLY (e.g., "March 15, 2024", "14 days", "sprint 3")
+- Preserve ALL version numbers and configurations EXACTLY (e.g., "v4.7.0", "SDK 3.1.0", "Python 3.12")
+- Preserve ALL identifiers EXACTLY: file paths, UUIDs, API endpoints, error codes, package names
+- Preserve ALL user-stated preferences and constraints VERBATIM (e.g., "prefers functional style", "must use PostgreSQL")
+- When information was UPDATED during the conversation, record BOTH old and new values (e.g., "deadline changed from March 20 to April 5")
+- NEVER paraphrase numbers, approximate dates, or reword technical identifiers
+
 When constructing the summary, try to stick to this template:
 ---
 ## Goal
@@ -184,6 +193,13 @@ When constructing the summary, try to stick to this template:
 
 - [What important instructions did the user give you that are relevant]
 - [If there is a plan or spec, include information about it so next agent can continue using it]
+
+## Key Facts & Values
+
+- [List ALL specific numbers, dates, configurations, and metrics mentioned in the conversation]
+- [List ALL version numbers and technical specifications]
+- [List any values that were UPDATED, showing: "X changed from OLD to NEW"]
+- [List user preferences and constraints verbatim]
 
 ## Discoveries
 
