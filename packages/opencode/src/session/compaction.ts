@@ -29,6 +29,23 @@ export namespace SessionCompaction {
 
   const COMPACTION_BUFFER = 20_000
 
+  const PK_MARKER = "## Persistent Knowledge"
+
+  function extractPK(msgs: MessageV2.WithParts[]): string | null {
+    for (let i = msgs.length - 1; i >= 0; i--) {
+      const msg = msgs[i]
+      if (msg.info.role !== "assistant") continue
+      if (!(msg.info as MessageV2.Assistant).summary) continue
+      const text = msg.parts
+        .filter((p): p is MessageV2.TextPart => p.type === "text")
+        .map((p) => p.text)
+        .join("")
+      const idx = text.indexOf(PK_MARKER)
+      if (idx >= 0) return text.slice(idx)
+    }
+    return null
+  }
+
   export async function isOverflow(input: { tokens: MessageV2.Assistant["tokens"]; model: Provider.Model }) {
     const config = await Config.get()
     if (config.compaction?.auto === false) return false
@@ -212,9 +229,37 @@ When constructing the summary, try to stick to this template:
 ## Relevant files / directories
 
 [Construct a structured list of relevant files that have been read, edited, or created that pertain to the task at hand. If all the files in a directory are relevant, include the path to the directory.]
+
+## Persistent Knowledge (CRITICAL — accumulates across rounds, never discard)
+
+Below is a structured knowledge store. Extract ALL of the following from the conversation and MERGE with any existing persistent knowledge provided.
+
+### Timeline
+- [exact date/deadline/sprint] Event description
+
+### Technical Specifications
+- [identifier/category] exact value (versions, ports, endpoints, configs, error codes, batch sizes)
+
+### Contradictions & Updates
+- "X" was changed to "Y" on [date/context]
+- User said "A" but later clarified "B"
+
+### Causal Decisions
+- Because [cause] → chose [action] (outcome: [result if known])
+
+RULES:
+1. NEVER remove existing persistent knowledge items unless explicitly superseded by newer information
+2. MERGE duplicates — keep the most specific version with the latest context
+3. If existing persistent knowledge is provided below, UPDATE it — do not start from scratch
+4. Total persistent knowledge section should stay under 4000 tokens — prioritize precision over volume
 ---`
 
-    const promptText = compacting.prompt ?? [defaultPrompt, ...compacting.context].join("\n\n")
+    const pk = extractPK(messages)
+    const pkContext = pk
+      ? `\n\n---\nExisting Persistent Knowledge from previous compaction (PRESERVE and UPDATE — do NOT discard):\n\n${pk}`
+      : ""
+    log.info("persistent knowledge", { found: !!pk, length: pk?.length ?? 0 })
+    const promptText = compacting.prompt ?? [defaultPrompt + pkContext, ...compacting.context].join("\n\n")
     const result = await processor.process({
       user: userMessage,
       agent,

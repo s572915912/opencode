@@ -30,7 +30,7 @@ MODEL_ID = "gpt-5.4"           # 模型 ID
 # BEAM 对话每次发送多少条消息（避免一次性发太多）
 BATCH_SIZE = 5
 # 每条消息间的延迟（秒）
-DELAY = 2
+DELAY = 5
 
 # ─── Helper Functions ───
 
@@ -102,6 +102,15 @@ def send_message(session_id, text, wait=True, cache_bust=False):
     if cache_bust:
         unique_id = str(uuid.uuid4())[:8]
         actual_text = f"[req-{unique_id}] {text}"
+
+    # Snapshot message count BEFORE sending so we can detect the new response
+    try:
+        pre = requests.get(f"{OPENCODE_URL}/session/{session_id}/message", timeout=10)
+        pre.raise_for_status()
+        pre_count = len(pre.json())
+    except Exception:
+        pre_count = -1
+
     payload = {
         "model": {
             "providerID": PROVIDER_ID,
@@ -126,14 +135,14 @@ def send_message(session_id, text, wait=True, cache_bust=False):
         )
         resp.raise_for_status()
         content = resp.text
-        
+
         # The response may be the JSON of the last assistant message
         try:
             data = json.loads(content)
         except json.JSONDecodeError:
             # Not JSON, return raw
             return content[:1000] if content else "[empty response]"
-        
+
         # Extract text from parts
         texts = []
         parts = data.get("parts", [])
@@ -143,38 +152,51 @@ def send_message(session_id, text, wait=True, cache_bust=False):
                 t = p.get("text", "")
                 if t.strip():
                     texts.append(t)
-        
+
         if texts:
             return "\n".join(texts)
-        
-        # Fallback: check all messages via GET
-        time.sleep(1)
-        msgs_resp = requests.get(
-            f"{OPENCODE_URL}/session/{session_id}/message",
-            timeout=10,
-        )
-        msgs_resp.raise_for_status()
-        messages = msgs_resp.json()
-        
-        # Collect all text from last batch of assistant messages
-        texts = []
-        seen_last_user = False
-        for msg in reversed(messages):
-            info = msg.get("info", {})
-            role = info.get("role", "")
-            if role == "user":
-                if seen_last_user:
-                    break
-                seen_last_user = True
-                continue
-            if role == "assistant" and not info.get("summary"):
-                for part in msg.get("parts", []):
-                    if part.get("type") == "text":
-                        t = part.get("text", "")
-                        if t.strip():
-                            texts.append(t)
-        
-        return "\n".join(reversed(texts)) if texts else "[no text in response]"
+
+        # Fallback: poll GET for new assistant messages with retries
+        for attempt in range(5):
+            time.sleep(2 * (attempt + 1))
+            msgs_resp = requests.get(
+                f"{OPENCODE_URL}/session/{session_id}/message",
+                timeout=10,
+            )
+            msgs_resp.raise_for_status()
+            messages = msgs_resp.json()
+
+            # If we got a pre_count, only look at NEW messages
+            if pre_count >= 0 and len(messages) > pre_count:
+                new = messages[pre_count:]
+                texts = []
+                for msg in new:
+                    info = msg.get("info", {})
+                    if info.get("role") == "assistant" and info.get("summary") is not True:
+                        for part in msg.get("parts", []):
+                            if part.get("type") == "text":
+                                t = part.get("text", "")
+                                if t.strip():
+                                    texts.append(t)
+                if texts:
+                    return "\n".join(texts)
+                continue  # retry — new messages appeared but no text yet
+
+            # Fallback: scan from end for the last non-summary assistant message
+            for msg in reversed(messages):
+                info = msg.get("info", {})
+                if info.get("role") == "assistant" and not info.get("summary"):
+                    texts = []
+                    for part in msg.get("parts", []):
+                        if part.get("type") == "text":
+                            t = part.get("text", "")
+                            if t.strip():
+                                texts.append(t)
+                    if texts:
+                        return "\n".join(texts)
+                    break  # found latest assistant but no text — retry
+
+        return "[no text in response]"
     except requests.exceptions.Timeout:
         return "[TIMEOUT]"
     except Exception as e:
@@ -223,6 +245,27 @@ def get_messages(session_id):
     resp = requests.get(f"{OPENCODE_URL}/session/{session_id}/message")
     resp.raise_for_status()
     return resp.json()
+
+def get_session_tokens(session_id):
+    """Query OpenCode API for actual token usage across all assistant messages."""
+    try:
+        msgs = get_messages(session_id)
+        total = {"input": 0, "output": 0, "cache_read": 0, "cache_write": 0}
+        for msg in msgs:
+            info = msg.get("info", {})
+            if info.get("role") != "assistant":
+                continue
+            tokens = info.get("tokens", {})
+            total["input"] += tokens.get("input", 0)
+            total["output"] += tokens.get("output", 0)
+            cache = tokens.get("cache", {})
+            total["cache_read"] += cache.get("read", 0)
+            total["cache_write"] += cache.get("write", 0)
+        total["api_total"] = total["input"] + total["output"]
+        return total
+    except Exception as e:
+        print(f"  ⚠️ Token tracking error: {e}")
+        return {"input": 0, "output": 0, "cache_read": 0, "cache_write": 0, "api_total": 0}
 
 # ─── Scoring System ───
 
@@ -680,10 +723,15 @@ def run_single_case(case_id, chat_sessions, questions, compaction_interval=0, co
         vals = [r["scores"][metric] for r in results if r["scores"].get(metric) is not None]
         return sum(vals) / len(vals) if vals else 0
     
+    # ─── Token usage tracking ───
+    token_usage = get_session_tokens(session_id)
+    print(f"  💰 Tokens: input={token_usage['input']:,}  output={token_usage['output']:,}  cache_read={token_usage['cache_read']:,}  total_api={token_usage['api_total']:,}")
+
     result = {
         "case_id": case_id,
         "session_id": session_id,
         "messages_fed": max_msgs,
+        "token_usage": token_usage,
         "before_compaction": {"avg_combined": avg_score(results_before), "results": results_before},
         "after_compaction": {"avg_combined": avg_score(results_after), "results": results_after},
     }
@@ -728,6 +776,24 @@ def print_results_table(all_results):
             ab = sum(b_vals) / len(b_vals) if b_vals else 0
             aa = sum(a_vals) / len(a_vals) if a_vals else 0
             print(f"    {qtype:<31} {ab:>14.1%} {aa:>14.1%} {aa-ab:>+7.1%}")
+    
+    # Token consumption summary
+    total_input = sum(r.get("token_usage", {}).get("input", 0) for r in all_results)
+    total_output = sum(r.get("token_usage", {}).get("output", 0) for r in all_results)
+    total_cache = sum(r.get("token_usage", {}).get("cache_read", 0) for r in all_results)
+    total_api = sum(r.get("token_usage", {}).get("api_total", 0) for r in all_results)
+    
+    print(f"\n{'='*60}")
+    print(f"💰 Token Consumption Summary")
+    print(f"{'='*60}")
+    print(f"  {'Case':<12} {'Input':>12} {'Output':>12} {'Cache Read':>12} {'API Total':>12}")
+    print(f"  {'-'*60}")
+    for r in all_results:
+        tu = r.get("token_usage", {})
+        cid = r.get("case_id", "?")
+        print(f"  Case {cid:<6} {tu.get('input',0):>12,} {tu.get('output',0):>12,} {tu.get('cache_read',0):>12,} {tu.get('api_total',0):>12,}")
+    print(f"  {'-'*60}")
+    print(f"  {'TOTAL':<12} {total_input:>12,} {total_output:>12,} {total_cache:>12,} {total_api:>12,}")
 
 
 def main():
