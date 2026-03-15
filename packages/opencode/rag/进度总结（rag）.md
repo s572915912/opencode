@@ -253,6 +253,7 @@ Step 2 只读取 checkpoint 和 JSON 中的模型回答，调用 Judge API 逐�
 2. 构建 ChromaDB + BM25 混合向量库
 3. 检索时序切片，将【宏观摘要】与【时序切片】融合注入 LLM
 4. 使用快速混合评分公式出分
+
 | 测试维度 (Question Type) | OpenCode 原生 | RAG 方案4 (时序重排) | Fusion 架构 Demo |
 | :--- | :--- | :--- | :--- |
 | **综合总分 (Overall)** | 49.7% | 50.3% | **55.5%** |
