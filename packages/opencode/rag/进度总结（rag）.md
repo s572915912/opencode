@@ -16,7 +16,7 @@
 
 ---
 
-## 二、 100K 级别：4 套 RAG 架构消融实验与数据对比
+## 二、 100K 级别：4 套 RAG 架构消融实验与数据对比（V1）
 
 为探寻最优检索范式，我在 BEAM 100K 规格（Case 0）下设计了 4 套层层递进的 RAG 架构，并与 OpenCode 原生机制进行了横向对比：
 
@@ -55,7 +55,7 @@
 
 ---
 
-## 三、 500K / 1M “深水区”极限压测与方案对比
+## 三、 500K / 1M “深水区”极限压测与方案对比(V2)
 
 100K 仅为热身。为探明超长上下文下 RAG 的真实抗压能力，筛选出 100K 中表现最优的 **方案 2 (Scheme 2)** 和 **方案 4 (Scheme 4)**，针对 5 个极长编程 Cases（2×500K + 3×1M）进行了全量压测。
 此阶段评分已**全面对齐官方 v11 标准**（Official Nugget + Kendall tau-b + 15 线程并发）。
@@ -246,3 +246,24 @@ Step 1 支持后台挂机与自动化批处理，所有原始生成数据和断�
 Step 2 只读取 checkpoint 和 JSON 中的模型回答，调用 Judge API 逐条评分，不会重新让模型回答，极大节省 Token 开销。
 
 官方评分脚本运行结束后，不仅会在终端打印结果，还会自动输出 final_4_tables_official_report.txt 文件，内含完整的方案对比及 Question Type 拆解数据。
+
+## 八、100k下的双轨融合架构 Demo(Macro-Compaction + Micro-Temporal-RAG)(V3)
+### 逻辑：
+1. 连通 OpenCode 触发真实 compaction（这里使用的是原生compaction.ts文件），抓取宏观摘要
+2. 构建 ChromaDB + BM25 混合向量库
+3. 检索时序切片，将【宏观摘要】与【时序切片】融合注入 LLM
+4. 使用快速混合评分公式出分
+| 测试维度 (Question Type) | OpenCode 原生 | RAG 方案4 (时序重排) | Fusion 架构 Demo |
+| :--- | :--- | :--- | :--- |
+| **综合总分 (Overall)** | 49.7% | 50.3% | **55.5%** |
+| **信息提取 (Info Extraction)**| 38.7% | 34.8% | **55.8%** |
+| **知识更新 (Knowledge Update)** | 95.0% | **100.0%** | 52.0% |
+| **时间推理 (Temporal Reasoning)** | 44.5% | 51.6% | **62.5%** |
+| **全文总结 (Summarization)** | 36.9% | **39.5%** | 33.2% |
+| **多会话推理 (Multi-session)** | 50.6% | 2.2% | **68.0%** |
+| **拒答 (Abstention)** | 24.6% | 55.4% | **56.3%** |
+| **矛盾消除 (Contradiction Res.)** | **38.4%** | 26.9% | 16.6% |
+| **事件排序 (Event Ordering)** | 23.6% | 22.4% | **25.0%** |
+| **指令遵循 (Instruction Following)**| 64.3% | **100.0%** | 96.0% |
+| **偏好遵循 (Preference Following)**| 80.0% | 70.0% | **89.5%** |
+
