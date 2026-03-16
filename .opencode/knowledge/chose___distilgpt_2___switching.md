@@ -18,3 +18,5 @@
 - [DECISION] chose `DistilGPT-2 v2.0` because switching from GPT-2 small reduced epoch time from `45m` to `28m`
 - [DECISION] chose `DistilGPT-2 v2.0` because switching from GPT-2 small reduced epoch time from `45m` to `28m`
 - [DECISION] chose `DistilGPT-2 v2.0` because switching from GPT-2 small reduced epoch time from `45m` to `28m`
+- [DECISION] chose `DistilGPT-2 v2.0` because switching from `GPT-2 small` reduced epoch time from `45m` to `28m`
+- [DECISION] chose `DistilGPT-2 v2.0` because switching from `GPT-2 small` reduced epoch time from `45m` to `28m`

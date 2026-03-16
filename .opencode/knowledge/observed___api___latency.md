@@ -19,3 +19,4 @@
 - [UPDATE] `observed_latency: 210ms (was: around 320ms on an RTX 3090)` | supersedes:latency_baseline
 - [UPDATE] `observed_api_latency_new: 210ms (was: around 320ms on an RTX 3090)` | supersedes:latency_baseline
 - [UPDATE] `observed_api_latency_new: 210ms (was: around 320ms on an RTX 3090)` | supersedes:latency_baseline
+- [UPDATE] `observed_api_latency_new: 210ms (was: around 320ms on an RTX 3090)` | supersedes:latency_baseline

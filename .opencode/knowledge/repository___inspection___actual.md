@@ -32,3 +32,8 @@
 - [FACT] No actual repository files were inspected or modified in this conversation branch either; all code remained inline only.
 - [FACT] No actual repository inspection or file modification occurred; all code examples were inline only
 - [DECISION] Because no repo files were actually inspected or edited → next continuation must avoid claiming changes to `backtest.py`, `strategy.py`, `ml_model.py`, `fetcher.py`, or `docker-compose.yml` unless the user provides actual repository content.
+- [FACT] no repository files were actually inspected or modified in this conversation; all code remained inline only
+- [FACT] no repository files were actually inspected or modified in this conversation; all code remained inline only
+- [FACT] No actual repository files were read, edited, or created in this conversation; all code remained inline only.
+- [FACT] No actual repository files were read, edited, or created in this conversation; all code remained inline only.
+- [FACT] No actual repository files were read, edited, or created in this latest segment; all code remained inline only.

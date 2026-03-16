@@ -22,3 +22,4 @@
 - [DECISION] increased Redis pool size from `10` to `30` because of Redis connection pool exhaustion in the scheduler
 - [UPDATE] `leeway_new: 180 seconds (was: 120 seconds)` | supersedes:chatapp/auth/leeway_old
 - [DECISION] increased Redis scheduler pool size from `10` to `30` because of Redis connection pool exhaustion | supersedes:previous_ref
+- [UPDATE] `redis_ttl_extended: 7200 seconds (was: 3600 seconds)` | supersedes:cache_ttl_default

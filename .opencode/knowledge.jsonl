@@ -1285,3 +1285,47 @@
 {"type":"fact","content":"Latest exact unresolved DB modeling branch: user discussed `alerts_log` schema and REST API design for `/api/alerts/{id}/acknowledge`, but no canonical normalized schema/API spec was selected.","ts":"2026-03-16"}
 {"type":"decision","content":"Because the latest interaction was summary-only and multiple branches remain open → next agent should ask the user which branch to continue, or offer a short choice list:","ts":"2026-03-16"}
 {"type":"decision","content":"Because the user explicitly requires exact endpoints, versions, errors, TTLs, and security measures → future responses must preserve those literals exactly and include them proactively.","ts":"2026-03-16"}
+{"type":"decision","content":"chose `DistilGPT-2 v2.0` because switching from `GPT-2 small` reduced epoch time from `45m` to `28m`","ts":"2026-03-16"}
+{"type":"decision","content":"chose `batch size of 16` because `batch size of 32` triggered CUDA OOM","ts":"2026-03-16"}
+{"type":"decision","content":"enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage","ts":"2026-03-16"}
+{"type":"update","content":"`feature_extraction_deadline: April 20 (was: April 15)`","ts":"2026-03-16","supersedes":"original_timeline"}
+{"type":"update","content":"`transformer_training_deadline: June 10 (was: May 30)`","ts":"2026-03-16","supersedes":"original_timeline"}
+{"type":"update","content":"`deployment_deadline: August 10 (was: July 10)`","ts":"2026-03-16","supersedes":"original_timeline"}
+{"type":"fact","content":"latest unresolved implementation request: correct Hugging Face `Trainer` example for a DistilGPT-2-style model on a custom dataset","ts":"2026-03-16"}
+{"type":"fact","content":"latest unresolved correctness issue: replace invalid APIs such as `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`, `StableDiffusionPipeline.get_embeddings`, and `from base64 import Base64`","ts":"2026-03-16"}
+{"type":"fact","content":"latest unresolved architecture issue: introduce a validated adapter/projection from diffusion / ViT image features into a caption generator instead of feeding raw tensors directly into `generate()`","ts":"2026-03-16"}
+{"type":"fact","content":"no repository files were actually inspected or modified in this conversation; all code remained inline only","ts":"2026-03-16"}
+{"type":"conflict","content":"user later stated a `batch size of 12` sweet spot, while earlier OOM mitigation used `16` — current intended training batch size is still unresolved","ts":"2026-03-16"}
+{"type":"conflict","content":"evaluation snapshots include `32.5 / 27.1 / 98.3`, later `38.7 / 31.4 / 112.5`, and later `39.2`; these should be treated as separate evaluation checkpoints unless user clarifies the canonical final run","ts":"2026-03-16"}
+{"type":"update","content":"`batch_size_reduced: 16 (was: 32)`","ts":"2026-03-16","supersedes":"training_batch_size_default_problematic"}
+{"type":"update","content":"`epoch_time_new: 28m (was: 45m)`","ts":"2026-03-16","supersedes":"epoch_time_old"}
+{"type":"update","content":"`observed_api_latency_new: 210ms (was: around 320ms on an RTX 3090)`","ts":"2026-03-16","supersedes":"latency_baseline"}
+{"type":"update","content":"`redis_ttl_extended: 7200 seconds (was: 3600 seconds)`","ts":"2026-03-16","supersedes":"cache_ttl_default"}
+{"type":"decision","content":"chose `DistilGPT-2 v2.0` because switching from `GPT-2 small` reduced epoch time from `45m` to `28m`","ts":"2026-03-16"}
+{"type":"decision","content":"chose `batch size of 16` because `batch size of 32` triggered CUDA OOM","ts":"2026-03-16"}
+{"type":"decision","content":"enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage","ts":"2026-03-16"}
+{"type":"fact","content":"latest unresolved implementation request: correct Hugging Face `Trainer` example for a DistilGPT-2-style model on a custom dataset","ts":"2026-03-16"}
+{"type":"fact","content":"latest unresolved correctness issue: replace invalid APIs such as `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`, `StableDiffusionPipeline.get_embeddings`, and `from base64 import Base64`","ts":"2026-03-16"}
+{"type":"fact","content":"latest unresolved architecture issue: introduce a validated adapter/projection from diffusion / ViT image features into a caption generator instead of feeding raw tensors directly into `generate()`","ts":"2026-03-16"}
+{"type":"fact","content":"latest unresolved cloud decision: compare `AWS EKS` vs `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.`","ts":"2026-03-16"}
+{"type":"fact","content":"no repository files were actually inspected or modified in this conversation; all code remained inline only","ts":"2026-03-16"}
+{"type":"conflict","content":"user later stated a `batch size of 12` sweet spot, while earlier OOM mitigation used `16` — current intended training batch size is still unresolved","ts":"2026-03-16"}
+{"type":"conflict","content":"evaluation snapshots include `32.5 / 27.1 / 98.3`, later `38.7 / 31.4 / 112.5`, and later `39.2`; these should be treated as separate evaluation checkpoints unless user clarifies the canonical final run","ts":"2026-03-16"}
+{"type":"conflict","content":"many immediately preceding assistant snippets in this captioning thread used invalid or mismatched APIs and should not be treated as final implementation artifacts","ts":"2026-03-16"}
+{"type":"fact","content":"No actual repository files were read, edited, or created in this conversation; all code remained inline only.","ts":"2026-03-16"}
+{"type":"fact","content":"Latest exact unresolved tail code from the final technical thread used:","ts":"2026-03-16"}
+{"type":"decision","content":"Because the very last active technical branch before recap was broken Lightning gradient accumulation code → the next agent should likely resume by correcting automatic vs manual optimization in PyTorch Lightning `v2.0.1`.","ts":"2026-03-16"}
+{"type":"fact","content":"Latest exact user question before recap in that branch: they were unsure how to use `accumulate_grad_batches` correctly and wanted the code made more robust.","ts":"2026-03-16"}
+{"type":"conflict","content":"The latest branch used `AMPPlugin`, but later conversation also acknowledged `PyTorch Lightning v2.0.1` and mixed AMP guidance that may be invalid; next agent should use validated current Lightning patterns.","ts":"2026-03-16"}
+{"type":"fact","content":"No actual repository files were read, edited, or created in this conversation; all code remained inline only.","ts":"2026-03-16"}
+{"type":"fact","content":"Latest exact unresolved tail code from the final technical thread used:","ts":"2026-03-16"}
+{"type":"decision","content":"Because the very last active technical branch before recap was broken Lightning gradient accumulation code → the next agent should likely resume by correcting automatic vs manual optimization in PyTorch Lightning `v2.0.1`.","ts":"2026-03-16"}
+{"type":"fact","content":"Latest exact user question before recap in that branch: they were unsure how to use `accumulate_grad_batches` correctly and wanted the code made more robust.","ts":"2026-03-16"}
+{"type":"conflict","content":"The latest branch used `AMPPlugin`, but later conversation also acknowledged `PyTorch Lightning v2.0.1` and mixed AMP guidance that may be invalid; next agent should use validated current Lightning patterns.","ts":"2026-03-16"}
+{"type":"fact","content":"No actual repository files were read, edited, or created in this latest segment; all code remained inline only.","ts":"2026-03-16"}
+{"type":"fact","content":"Latest interaction selected no single implementation branch; it was recap + continuation prompt only.","ts":"2026-03-16"}
+{"type":"fact","content":"If the next agent resumes model-performance work, they must include final evaluation metrics automatically, not only BLEU-4.","ts":"2026-03-16"}
+{"type":"fact","content":"If the next agent resumes accessibility work, the preserved exact screen readers are `JAWS`, `NVDA`, `VoiceOver`, `Narrator`.","ts":"2026-03-16"}
+{"type":"fact","content":"If the next agent resumes roadmap planning, the preserved exact date is `July 27, 2024`.","ts":"2026-03-16"}
+{"type":"fact","content":"If the next agent resumes UI/UX branch, the preserved exact public-beta adoption metric is `1,200 registered users in the first week`.","ts":"2026-03-16"}
+{"type":"decision","content":"Because the latest conversation covered many unrelated branches and ended with recap only → next agent should first ask which branch to continue, or present a short menu of options rather than assuming one.","ts":"2026-03-16"}

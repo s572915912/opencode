@@ -685,3 +685,26 @@
 - [FACT] Latest exact unresolved DB modeling branch: user discussed `alerts_log` schema and REST API design for `/api/alerts/{id}/acknowledge`, but no canonical normalized schema/API spec was selected.
 - [DECISION] Because the latest interaction was summary-only and multiple branches remain open → next agent should ask the user which branch to continue, or offer a short choice list:
 - [DECISION] Because the user explicitly requires exact endpoints, versions, errors, TTLs, and security measures → future responses must preserve those literals exactly and include them proactively.
+- [FACT] latest unresolved implementation request: correct Hugging Face `Trainer` example for a DistilGPT-2-style model on a custom dataset
+- [FACT] latest unresolved correctness issue: replace invalid APIs such as `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`, `StableDiffusionPipeline.get_embeddings`, and `from base64 import Base64`
+- [FACT] latest unresolved architecture issue: introduce a validated adapter/projection from diffusion / ViT image features into a caption generator instead of feeding raw tensors directly into `generate()`
+- [CONFLICT] evaluation snapshots include `32.5 / 27.1 / 98.3`, later `38.7 / 31.4 / 112.5`, and later `39.2`; these should be treated as separate evaluation checkpoints unless user clarifies the canonical final run
+- [FACT] latest unresolved implementation request: correct Hugging Face `Trainer` example for a DistilGPT-2-style model on a custom dataset
+- [FACT] latest unresolved correctness issue: replace invalid APIs such as `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`, `StableDiffusionPipeline.get_embeddings`, and `from base64 import Base64`
+- [FACT] latest unresolved architecture issue: introduce a validated adapter/projection from diffusion / ViT image features into a caption generator instead of feeding raw tensors directly into `generate()`
+- [FACT] latest unresolved cloud decision: compare `AWS EKS` vs `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.`
+- [CONFLICT] evaluation snapshots include `32.5 / 27.1 / 98.3`, later `38.7 / 31.4 / 112.5`, and later `39.2`; these should be treated as separate evaluation checkpoints unless user clarifies the canonical final run
+- [FACT] Latest exact unresolved tail code from the final technical thread used:
+- [DECISION] Because the very last active technical branch before recap was broken Lightning gradient accumulation code → the next agent should likely resume by correcting automatic vs manual optimization in PyTorch Lightning `v2.0.1`.
+- [FACT] Latest exact user question before recap in that branch: they were unsure how to use `accumulate_grad_batches` correctly and wanted the code made more robust.
+- [CONFLICT] The latest branch used `AMPPlugin`, but later conversation also acknowledged `PyTorch Lightning v2.0.1` and mixed AMP guidance that may be invalid; next agent should use validated current Lightning patterns.
+- [FACT] Latest exact unresolved tail code from the final technical thread used:
+- [DECISION] Because the very last active technical branch before recap was broken Lightning gradient accumulation code → the next agent should likely resume by correcting automatic vs manual optimization in PyTorch Lightning `v2.0.1`.
+- [FACT] Latest exact user question before recap in that branch: they were unsure how to use `accumulate_grad_batches` correctly and wanted the code made more robust.
+- [CONFLICT] The latest branch used `AMPPlugin`, but later conversation also acknowledged `PyTorch Lightning v2.0.1` and mixed AMP guidance that may be invalid; next agent should use validated current Lightning patterns.
+- [FACT] Latest interaction selected no single implementation branch; it was recap + continuation prompt only.
+- [FACT] If the next agent resumes model-performance work, they must include final evaluation metrics automatically, not only BLEU-4.
+- [FACT] If the next agent resumes accessibility work, the preserved exact screen readers are `JAWS`, `NVDA`, `VoiceOver`, `Narrator`.
+- [FACT] If the next agent resumes roadmap planning, the preserved exact date is `July 27, 2024`.
+- [FACT] If the next agent resumes UI/UX branch, the preserved exact public-beta adoption metric is `1,200 registered users in the first week`.
+- [DECISION] Because the latest conversation covered many unrelated branches and ended with recap only → next agent should first ask which branch to continue, or present a short menu of options rather than assuming one.

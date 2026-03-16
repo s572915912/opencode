@@ -28,3 +28,5 @@
 - [FACT] latest user preference updates after prior summary:
 - [DECISION] model-performance guidance should always include final evaluation metrics because the user explicitly requested it
 - [DECISION] model-performance guidance should always include final evaluation metrics because the user explicitly requested it
+- [CONFLICT] user later stated a `batch size of 12` sweet spot, while earlier OOM mitigation used `16` — current intended training batch size is still unresolved
+- [CONFLICT] user later stated a `batch size of 12` sweet spot, while earlier OOM mitigation used `16` — current intended training batch size is still unresolved

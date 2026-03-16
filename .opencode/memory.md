@@ -174,7 +174,7 @@
 - [pillow] version: `9.4.0`
 - [redis] version: `7.0.11`
 - [redis] ttl_default: `3600 seconds`
-- [redis] ttl_extended: `7200 seconds` (was: `3600 seconds`)
+- [redis] ttl_extended: `7200 seconds (was: 3600 seconds)`
 - [redis] max_memory_example: `2GB`
 - [redis] eviction_policy: `allkeys-lru`
 - [training] batch_size_sweet_spot_user_reported: `12`
@@ -1910,43 +1910,91 @@
 - [realtime] heartbeat_interval_old: `30s`
 - [realtime] heartbeat_interval_new: `10s`
 - [frontend/errors] map_undefined: `TypeError: Cannot read property 'map' of undefined`
+- [captioning] latest_unresolved_trainer_request: `Hugging Face Trainer class to fine-tune a DistilGPT-2 model on a custom dataset`
+- [captioning] latest_unresolved_model_classes_problem: `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`
+- [captioning] latest_unresolved_diffusion_api_problem: `StableDiffusionPipeline.preprocess_image`, `StableDiffusionPipeline.get_embeddings`, `pipe.get_embeddings`
+- [captioning] latest_unresolved_base64_api_problem: `from base64 import Base64`
+- `latest_user_request: Provide a detailed prompt for continuing our conversation above.`
+- `latest_recap_request: What did we do so far?`
+- `latest_active_tail_topic: accumulate_grad_batches=4`
+- `latest_problematic_lightning_pattern: self.manual_backward(loss)`
+- `latest_problematic_lightning_plugin_reference: AMPPlugin`
+- `latest_unresolved_captioning_request: correct Hugging Face Trainer example for a DistilGPT-2-style model on a custom dataset`
+- `latest_unresolved_captioning_api_request: production-correct POST /caption implementation for base64 image input and multipart upload`
+- `latest_unresolved_captioning_architecture_request: validated bridge from diffusion/ViT image features into a caption generator`
+- `latest_unresolved_captioning_correctness_issue_1: DistilGPT2ForCausalLM`
+- `latest_unresolved_captioning_correctness_issue_2: DistilGPT2Tokenizer`
+- `latest_unresolved_captioning_correctness_issue_3: DistilGPT2ForSequenceClassification`
+- `latest_unresolved_captioning_correctness_issue_4: StableDiffusionPipeline.get_embeddings`
+- `latest_unresolved_captioning_correctness_issue_5: from base64 import Base64`
+- `latest_unresolved_cloud_decision: AWS EKS`
+- `preferred_cloud_target: AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.`
+- `feature_extraction_deadline: April 20 (was: April 15)`
+- `transformer_training_deadline: June 10 (was: May 30)`
+- `deployment_deadline: August 10 (was: July 10)`
+- `epoch_time_new: 28m (was: 45m)`
+- `training_batch_size_reduced: 16 (was: 32)`
+- `batch_size_sweet_spot_user_reported: 12`
+- `observed_api_latency_new: 210ms (was: around 320ms on an RTX 3090)`
+- `redis_ttl_extended: 7200 seconds (was: 3600 seconds)`
+- `frontend_caption_render_new: 180ms (was: 450ms)`
+- `api_gateway_timeout_new: 60s (was: 30s)`
+- `bleu4_last_minute_tuning: 39.2`
+- `pytorch_version_production_stability: 1.13.1`
+- `error_cuda_oom_exact_recent: RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`
+- `accessibility_guideline_primary: WCAG 2.1 AA`
+- `accessibility_guideline_secondary: Section 508`
+- `accessibility_screen_reader_1: JAWS`
+- `accessibility_screen_reader_2: NVDA`
+- `accessibility_screen_reader_3: VoiceOver`
+- `accessibility_screen_reader_4: Narrator`
+- `accessibility_tool_1: Wave`
+- `accessibility_tool_2: Axe`
+- `accessibility_tool_3: Accessibility Insights`
+- `project_completion_date_recent_branch: July 27, 2024`
+- `public_beta_registered_users_first_week: 1,200`
+- `evaluation_bleu4_last_minute_tuning: 39.2`
+- `preference_final_eval_metrics: Always include final evaluation metrics when I ask about model performance.`
+- `metric_name_1: BLEU-4`
+- `metric_name_2: METEOR`
+- `metric_name_3: CIDEr`
 
 ### Chronological Event Log
-1. User worked across ML trading microservices: Flask APIs, Redis caching, Alpha Vantage, Alpaca, TensorFlow/LSTM, JWT, Docker, database design, backtesting, paper trading, and live trading.
-2. User established strong preferences for exact values, API endpoint URLs, model metrics, Python code, caching details, and security details.
-3. User focused on `backtest.py`, `paper_trade.py`, risk controls, Redis caching, Alpaca integration, and webhook/Celery reliability.
-4. User reduced backtesting runtime from `12 minutes` to `4 minutes`.
-5. User achieved `92% coverage with pytest 7.3.1 tests by April 12, 2024`.
-6. User improved paper/live trading latency from `350ms` to `120ms` and `400ms` to `180ms`.
-7. User shifted heavily into React dashboard + live trading API performance topics.
-8. User discussed `React 18.2` + `Chart.js 4.3.0`, lazy loading, WebSocket reconnect logic, `/api/alerts`, `/api/trades`, and dashboard API latency of `120ms`.
-9. User explored OAuth 2.0 with Alpaca, token refresh, `HTTP 429 Too Many Requests`, missing `Retry-After`, and exponential backoff defaults.
-10. User discussed real-time trade monitoring, Redux Toolkit normalization, WebSocket cleanup, memory leaks, and reconnect issues.
-11. User explored accessibility, ARIA, dark mode, keyboard shortcuts, and Sentry error boundaries.
-12. User moved into alert escalation / notification architecture with Twilio, SMTP, Prometheus/Grafana, circuit breakers, and webhook reliability.
-13. User debugged Twilio installation/env issues and SMTP authentication issues.
-14. User added unit tests for `alert_manager.py`, dynamic alert levels, and database-query reduction concerns.
-15. User discussed Prometheus panels, Wireshark packet drops, buffer issues, Celery retry settings, and different task retry policies.
-16. User moved into Auth0/Auth0 RBAC, sprint planning, Sentry integration, and alert escalation/notification estimation.
-17. User discussed Slack webhooks, TypeScript strictness, linter/formatter setup, localStorage alert caching, WebSocket heartbeat handling, and dashboard refactors.
-18. User asked repeatedly about WebSocket reconnect logic, memory leaks, render bottlenecks, and frontend load-time optimization.
-19. User discussed DB indexing for alerts, OpenAPI docs, React component organization, and query optimization.
-20. User returned to WebSocket schemas, AWS S3/CloudFront deployment, HTTPS/HSTS, and monitoring dashboard performance.
-21. User asked about alert notification system estimates and accessibility for a Tkinter GUI.
-22. User asked about WebSocket multiplexing and scaling concurrent WebSocket connections.
-23. User returned to sprint planning for alert notification system milestones and dashboard load time optimization.
-24. User explicitly added preference: `Always include frontend framework versions when I ask about implementation details.`
-25. User asked about implementing alert escalation logic in `alert_manager.py` with Twilio and encountered `ModuleNotFoundError: No module named 'twilio'`.
-26. User discovered `twilio` was installed in the global environment instead of the virtual environment.
-27. User asked about improving `pytest 7.3.1` unit tests for `alert_manager.py` and handling dynamic alert levels.
-28. User asked about reducing database queries in `alert_manager.py`.
-29. User debugged SMTP auth errors and Twilio SMS validation errors.
-30. User asked about reducing alert-processing latency from `500ms` to `150ms`.
-31. User asked about SMTPAuthenticationError troubleshooting.
-32. User asked for Twilio API integration help using `https://api.twilio.com/2010-04-01/Accounts`.
-33. User returned to React dashboard performance issues, specifically reducing load time from `3.5 seconds` to under `1.2 seconds`.
-34. User asked about Python WebSocket reconnect logic with `5-second` interval.
-35. User asked about WebSocket memory leaks due to unclosed connections.
+1. User asked about accessibility testing for a dashboard with screen readers and high contrast mode.
+2. User asked whether specific NVDA settings are needed for testing.
+3. User asked for help debugging PyTorch `1.13.1`.
+4. User provided exact CUDA OOM error: `RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`
+5. User said they would try gradient accumulation and related mitigations.
+6. User asked for a Transformers text-generation example.
+7. User asked how to let users select different language models for caption generation.
+8. User asked about caching and optimization techniques to reduce caption-generation latency.
+9. User asked how to add Brotli encoding to a FastAPI response.
+10. User asked about Swagger/OpenAPI documentation best practices.
+11. User asked whether Swagger UI docs can be embedded into a React frontend.
+12. User asked how to identify the remaining `2%` when stuck at `98%` coverage.
+13. User asked how to decide when some code is not worth testing.
+14. User asked how to debug a FastAPI route with `pdb`.
+15. User asked how to implement Redis caching for DB queries.
+16. User asked how to implement memoization with a decorator.
+17. User asked about microservice boundaries and service communication.
+18. User asked for review of automated rollback with GitHub Actions and AWS Lambda.
+19. User asked about feedback embeddings in a transformer model.
+20. User asked how to debug GitHub Actions `permission denied`.
+21. User asked about adding language embedding tokens to transformer input.
+22. User asked how to improve a Python circuit breaker.
+23. User asked about standardized FastAPI exception handling.
+24. User asked for a roadmap to hit `July 27, 2024`.
+25. User said public beta had `1,200 registered users in the first week` and asked for UI/UX improvements.
+26. User asked how to add zoom and pan in Tkinter.
+27. User asked how to make zoom/pan per-image.
+28. User asked how to return a custom `404` page in FastAPI.
+29. User asked again about best-practice FastAPI exception handling.
+30. User asked whether zoom/pan can also be added to the React frontend.
+31. User asked how to improve model BLEU-4 after reaching `39.2`.
+32. User explicitly added preference: `Always include final evaluation metrics when I ask about model performance.`
+33. User asked how to automatically append `BLEU-4`, `METEOR`, and `CIDEr` to model performance queries.
+34. User asked `What did we do so far?`
+35. User requested this detailed continuation prompt.
 36. User asked about AWS Lambda cold starts, SQS triggers, and invocation optimization.
 37. User asked for milestone planning by `June 10, 2024`.
 38. User asked about CloudWatch logging/debugging.
@@ -2414,6 +2462,39 @@
 - rate limit requirement changed from `200 requests per 15 minutes` to `250 requests per 15 minutes`
 - memory reduction reported as `30MB`
 - many prior assistant examples in OAuth/WebSocket/AWS/SAM/Twilio/SMTP/DLQ areas may be technically weak and should be revalidated
+- `feature extraction deadline` was originally `April 15` → later changed to `April 20`
+- `transformer training deadline` was originally `May 30` → later changed to `June 10`
+- `deployment deadline` was originally `July 10` → later changed to `August 10`
+- `epoch time` was originally `45m` → later changed to `28m`
+- `batch size` was originally `32` → later changed to `16`
+- user later also stated a `batch size of 12` sweet spot
+- `observed latency` was originally `around 320ms on an RTX 3090` → later changed to `210ms`
+- `Redis TTL` was originally `3600 seconds` → later changed to `7200 seconds`
+- Many earlier snippets used invalid APIs and should be treated as non-authoritative.
+- evaluation snapshots conflict:
+  - `32.5 / 27.1 / 98.3`
+  - later `38.7 / 31.4 / 112.5`
+  - later `39.2`
+- user prefers `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.` but later also asked about `AWS EKS`
+- many earlier assistant snippets used invalid APIs and should be treated as non-authoritative
+- `feature_extraction_deadline` was originally `April 15` → later changed to `April 20`
+- `transformer_training_deadline` was originally `May 30` → later changed to `June 10`
+- `deployment_deadline` was originally `July 10` → later changed to `August 10`
+- `epoch_time` was originally `45m` → later changed to `28m`
+- `batch_size` was originally `32` → later changed to `16`
+- user later also reported `12` as a sweet spot batch size
+- `observed_latency` was originally `around 320ms on an RTX 3090` → later changed to `210ms`
+- `redis_ttl` was originally `3600 seconds` → later changed to `7200 seconds`
+- evaluation snapshots differ:
+- Assistant examples used invalid/mismatched APIs in several places and should not be treated as authoritative implementation artifacts
+- many assistant examples used invalid/mismatched APIs and should not be treated as authoritative implementation artifacts
+- `BLEU-4` was previously discussed as `38.7` → later discussed as `39.2` (context: last-minute hyperparameter tuning; treat as a later snapshot, not a universal replacement).
+- Evaluation snapshots remain inconsistent:
+  - `38.7 / 31.4 / 112.5`
+  - `39.2`
+- Training batch size remains unresolved:
+  - OOM mitigation used `16`
+  - later user reported sweet spot `12`
 
 ### Technical Specifications
 - [resume_analyzer/storage] database_engine: `SQLite 3.39.4`
@@ -2664,6 +2745,73 @@
 - [observability] `Prometheus 2.44`
 - [observability] `Grafana 9.5`
 - [reverse_proxy] `Nginx 1.24.0`
+- [captioning/environment] `Python 3.10`
+- [captioning/framework] `PyTorch 1.13`, `PyTorch 1.13.1`
+- [captioning/framework] `Transformers v4.29`, `Transformers 4.29.2`
+- [captioning/framework] `FastAPI 0.95`
+- [captioning/framework] `React 18.2`
+- [captioning/framework] `torchvision 0.14.1`
+- [captioning/framework] `PostgreSQL 14.3`
+- [captioning/framework] `Docker 20.10`
+- [captioning/framework] `pytest 7.2.0`
+- [captioning/framework] `pylint 2.15.4`
+- [captioning/framework] `Pillow 9.4.0`
+- [captioning/framework] `CUDA 11.7`
+- [captioning/dataset] `COCO 2017`
+- [captioning/dataset] `123,287` images
+- [captioning/dataset] `5` captions each
+- [captioning/model] `ViT-B/16`
+- [captioning/model] `GPT-2 small (124M params)`
+- [captioning/model] `DistilGPT-2 v2.0`
+- [captioning/model] `stabilityai/stable-diffusion-2-1-base`
+- [captioning/model] `t5-base`
+- [captioning/api] `POST /caption`
+- [captioning/api] `port 8000`
+- [captioning/microservices] `8001`, `8002`
+- [captioning/frontend] `port 3000`
+- [captioning/framework] `Redis 7.0.11`
+- [captioning/framework] `tokenizers 0.13.3`
+- [captioning/api] `GET /captions/{image_id}`
+- [captioning/deployment] `nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`
+- [captioning/cache] `TTL 7200 seconds`, `2GB`, `allkeys-lru`
+- `PyTorch Lightning v2.0`
+- `PyTorch Lightning v2.0.1`
+- `PyTorch 1.13`
+- `PyTorch 1.13.1`
+- `Transformers v4.29`
+- `Transformers 4.29.2`
+- `Redis 7.0.11`
+- `FastAPI 0.95`
+- `React 18.2`
+- `PostgreSQL 14.3`
+- `Docker 20.10`
+- `CUDA 11.7`
+- `Prometheus 2.44`
+- `Grafana 9.5`
+- `PgBouncer v1.17`
+- `ArgoCD v2.7`
+- `Sentry 21.9`
+- `Webpack 5.75`
+- `accumulate_grad_batches=4`
+- `/v1/caption`
+- `/v2/caption`
+- `POST /caption`
+- `/revoke-token`
+- `/auth/refresh`
+- `invalid_token`
+- `TimeoutError: Redis connection timed out after 5s`
+- `RedisError: Connection reset by peer`
+- `AttributeError: 'NoneType' object has no attribute 'decode'`
+- `RuntimeError: CUDA error: device-side assert triggered`
+- `Storybook v7.0`
+- `React Testing Library v14.0.0`
+- `ESLint v8.39`
+- `ONNX Runtime Web v1.14`
+- `GET /captions/{image_id}`
+- `port 8000`
+- `port 3000`
+- `WCAG 2.1 AA`
+- `Section 508`
 
 ### Causal Decisions
 - Because user explicitly prefers modularity → chose separation of detection and API
@@ -2786,7 +2934,25 @@
 - Because the user explicitly requires endpoint URLs in API discussions → all future API integration answers must include exact endpoint URLs.
 - Because the user explicitly requires exact errors/metrics/TTL/security details → future answers must preserve literals verbatim and avoid generic descriptions.
 - Because many earlier assistant examples may be weak → future continuation should replace them with validated production patterns rather than extending them.
-- Because the latest interaction was recap/meta-summary only → the next agent should not assume a single branch is selected.
+- Because the latest interaction was recap/meta-summary only → next agent should not assume a single technical branch is selected.
+- Because moving feature extraction to `April 20` reduced the schedule buffer too much → chose `June 10` and `August 10` so things “still fit and isn't too rushed”.
+- Because switching from `GPT-2 small` to `DistilGPT-2 v2.0` reduced epoch time from `45m` to `28m` → user adopted the smaller model.
+- Because `batch size of 32` caused CUDA OOM → reduced batch size to `16`.
+- Because reducing memory usage was necessary → enabled NVIDIA Apex AMP, yielding `40%` lower memory usage.
+- Because API latency and cache hit rate were recurring optimization priorities → chose Redis caching with `allkeys-lru`, `2GB`, and tuned TTLs
+- Because many snippets used invalid or mismatched APIs → next continuation should replace them with validated implementations rather than extend them.
+- Because moving feature extraction to `April 20` reduced schedule buffer too much → chose `June 10` and `August 10` so things “still fit and isn't too rushed”.
+- Because the user explicitly prefers `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.` → future AWS guidance should compare `EKS` vs `ECS Fargate` directly.
+- Because moving initial feature extraction to `April 20` reduced the buffer too much → chose `June 10` and `August 10` so things “still fit and isn't too rushed”
+- Because switching from `GPT-2 small (124M params)` to `DistilGPT-2 v2.0` reduced epoch time from `45m` to `28m` → adopted the smaller model
+- Because `batch size of 32` triggered CUDA OOM → reduced to `16`
+- Because reducing memory usage was necessary → enabled AMP, yielding `40%` lower memory usage
+- Because the user prefers robust security with OAuth2 and JWT despite added complexity → security-heavy auth patterns should remain the default
+- Because the user explicitly requested deployment strategies for production updates → deployment strategy discussion must be included whenever that topic comes up
+- Because the user explicitly requested frontend performance metrics for UI improvements → frontend performance metrics must always be included
+- Because the user explicitly requested serverless scaling strategies for backend deployment → backend deployment answers must always include serverless scaling strategies
+- Because the user explicitly added `Always include final evaluation metrics when I ask about model performance.` → future model-performance responses must include final evaluation metrics.
+- Because many recent topics were broad inline examples only → future continuation should avoid claiming repo/file changes.
 
 ### User Preferences & Constraints
 - `Always display object ID color codes when I ask about tracking visualization`
@@ -3040,6 +3206,48 @@
 - [FACT] Latest exact unresolved DB modeling branch: user discussed `alerts_log` schema and REST API design for `/api/alerts/{id}/acknowledge`, but no canonical normalized schema/API spec was selected.
 - [DECISION] Because the latest interaction was summary-only and multiple branches remain open → next agent should ask the user which branch to continue, or offer a short choice list:
 - [DECISION] Because the user explicitly requires exact endpoints, versions, errors, TTLs, and security measures → future responses must preserve those literals exactly and include them proactively.
+- `Always provide detailed version numbers when I ask about software dependencies.`
+- `Always specify container image versions when I ask about deployment details.`
+- [DECISION] chose `DistilGPT-2 v2.0` because switching from `GPT-2 small` reduced epoch time from `45m` to `28m`
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `transformer_training_deadline: June 10 (was: May 30)` | supersedes:original_timeline
+- [UPDATE] `deployment_deadline: August 10 (was: July 10)` | supersedes:original_timeline
+- [FACT] latest unresolved implementation request: correct Hugging Face `Trainer` example for a DistilGPT-2-style model on a custom dataset
+- [FACT] latest unresolved correctness issue: replace invalid APIs such as `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`, `StableDiffusionPipeline.get_embeddings`, and `from base64 import Base64`
+- [FACT] latest unresolved architecture issue: introduce a validated adapter/projection from diffusion / ViT image features into a caption generator instead of feeding raw tensors directly into `generate()`
+- [FACT] no repository files were actually inspected or modified in this conversation; all code remained inline only
+- [CONFLICT] user later stated a `batch size of 12` sweet spot, while earlier OOM mitigation used `16` — current intended training batch size is still unresolved
+- [CONFLICT] evaluation snapshots include `32.5 / 27.1 / 98.3`, later `38.7 / 31.4 / 112.5`, and later `39.2`; these should be treated as separate evaluation checkpoints unless user clarifies the canonical final run
+- [UPDATE] `batch_size_reduced: 16 (was: 32)` | supersedes:training_batch_size_default_problematic
+- [UPDATE] `epoch_time_new: 28m (was: 45m)` | supersedes:epoch_time_old
+- [UPDATE] `observed_api_latency_new: 210ms (was: around 320ms on an RTX 3090)` | supersedes:latency_baseline
+- [UPDATE] `redis_ttl_extended: 7200 seconds (was: 3600 seconds)` | supersedes:cache_ttl_default
+- [FACT] latest unresolved cloud decision: compare `AWS EKS` vs `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.`
+- [CONFLICT] many immediately preceding assistant snippets in this captioning thread used invalid or mismatched APIs and should not be treated as final implementation artifacts
+- `Always include security measures when I ask about API authentication.`
+- `Always specify language options when I ask about multi-language support.`
+- `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.`
+- [FACT] No actual repository files were read, edited, or created in this latest segment; all code remained inline only.
+- [FACT] Latest exact unresolved tail code from the final technical thread used:
+  - `import pytorch_lightning as pl`
+  - `class TransformerModel(pl.LightningModule):`
+  - `self.transformer = pl.transforms.Transformer()`
+  - `self.manual_backward(loss)`
+  - `if batch_idx % 4 == 0:`
+  - `self.optimizer.step()`
+  - `self.optimizer.zero_grad()`
+  - `trainer = pl.Trainer(accumulate_grad_batches=4)`
+- [DECISION] Because the very last active technical branch before recap was broken Lightning gradient accumulation code → the next agent should likely resume by correcting automatic vs manual optimization in PyTorch Lightning `v2.0.1`.
+- [FACT] Latest exact user question before recap in that branch: they were unsure how to use `accumulate_grad_batches` correctly and wanted the code made more robust.
+- [CONFLICT] The latest branch used `AMPPlugin`, but later conversation also acknowledged `PyTorch Lightning v2.0.1` and mixed AMP guidance that may be invalid; next agent should use validated current Lightning patterns.
+- [FACT] Latest interaction selected no single implementation branch; it was recap + continuation prompt only.
+- [FACT] If the next agent resumes model-performance work, they must include final evaluation metrics automatically, not only BLEU-4.
+- [FACT] If the next agent resumes accessibility work, the preserved exact screen readers are `JAWS`, `NVDA`, `VoiceOver`, `Narrator`.
+- [FACT] If the next agent resumes roadmap planning, the preserved exact date is `July 27, 2024`.
+- [FACT] If the next agent resumes UI/UX branch, the preserved exact public-beta adoption metric is `1,200 registered users in the first week`.
+- [DECISION] Because the latest conversation covered many unrelated branches and ended with recap only → next agent should first ask which branch to continue, or present a short menu of options rather than assuming one.
 
 ### Chronological Event Log (preserve temporal order)
 57. User asked what other technical indicators to add.

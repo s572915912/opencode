@@ -17,3 +17,4 @@
 - [UPDATE] `transformer_training_deadline: June 10 (was: May 30)` | supersedes:original_timeline
 - [UPDATE] `transformer_training_deadline: June 10 (was: May 30)` | supersedes:original_timeline
 - [UPDATE] `transformer_training_deadline: June 10 (was: May 30)` | supersedes:original_timeline
+- [UPDATE] `transformer_training_deadline: June 10 (was: May 30)` | supersedes:original_timeline
