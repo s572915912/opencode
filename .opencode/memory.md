@@ -1645,118 +1645,387 @@
 - [project] retrospective_meeting: `June 30, 2024`
 - [project] release_tag_goal: `v1.0.0`
 - [project] release_improvement_tag: `v0.6.0`
+- [ml_trading] python_version: `Python 3.10`
+- [ml_trading] flask_version_example_1: `Flask 2.3.2`
+- [ml_trading] flask_version_example_2: `Flask 2.3.3`
+- [ml_trading] tensorflow_version: `TensorFlow 2.11`
+- [ml_trading] pytest_version: `pytest 7.3.1`
+- [ml_trading] pylint_version: `pylint 2.15.0`
+- [ml_trading] docker_compose_version: `Docker Compose v2.12.0`
+- [ml_trading] docker_base_image: `python:3.10-slim`
+- [ml_trading] docker_base_image_exact: `python:3.10.12-slim`
+- [ml_trading] docker_fetcher_image_size: `120MB`
+- [ml_trading] ml_api_port: `8501`
+- [ml_trading] webhook_port_example: `8080`
+- [ml_trading] flask_port_example: `5000`
+- [ml_trading] redis_port: `6379`
+- [ml_trading] redis_version_example: `Redis 7.0`
+- [ml_trading] redis_hit_rate_prices: `92%`
+- [ml_trading] redis_ttl_predictions_example: `30 seconds`
+- [ml_trading] redis_ttl_short_example: `60 seconds`
+- [ml_trading] redis_ttl_price_example: `5 minutes`
+- [ml_trading] alpha_vantage_endpoint: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=1min&apikey={api_key}`
+- [ml_trading] alpaca_positions_endpoint_paper: `https://paper-api.alpaca.markets/v2/positions`
+- [ml_trading] alpaca_orders_endpoint_paper: `https://paper-api.alpaca.markets/v2/orders`
+- [ml_trading] alpaca_account_endpoint_paper: `https://paper-api.alpaca.markets/v2/account`
+- [ml_trading] alpaca_oauth_token_endpoint_paper: `https://paper-api.alpaca.markets/v2/oauth2/token`
+- [ml_trading] alpaca_positions_endpoint_live_example: `https://api.alpaca.markets/v2/positions`
+- [ml_trading] webhook_route: `/webhook`
+- [ml_trading] lstm_training_points: `30,000 data points`
+- [ml_trading] lstm_epochs_1: `50`
+- [ml_trading] lstm_batch_size_1: `64`
+- [ml_trading] lstm_validation_loss_1: `0.032`
+- [ml_trading] lstm_epochs_2: `60`
+- [ml_trading] lstm_validation_loss_2: `0.028`
+- [ml_trading] lstm_validation_date_context: `March 30, 2024`
+- [ml_trading] gpu_model: `NVIDIA RTX 3060`
+- [ml_trading] batch_size_old: `128`
+- [ml_trading] batch_size_mid: `64`
+- [ml_trading] batch_size_new: `32`
+- [ml_trading] exact_error_lstm_ndim: `ValueError: Input 0 of layer lstm is incompatible with the layer: expected ndim=3, found ndim=2`
+- [ml_trading] exact_error_lstm_incompatible: `ValueError: Input 0 of layer lstm_1 is incompatible`
+- [ml_trading] exact_error_resource_exhausted: `ResourceExhaustedError`
+- [ml_trading] model_save_h5: `lstm_model.h5`
+- [ml_trading] tensorflow_tensorboard_version_context: `TensorBoard 2.11`
+- [ml_trading] tensorboard_logdir_1: `./logs`
+- [ml_trading] tensorboard_logdir_2: `logs/fit`
+- [ml_trading] overfitting_epoch_concern: `epoch 40`
+- [ml_trading] code_coverage_high: `95%`
+- [ml_trading] integration_success_rate: `97% success rate as of March 17, 2024`
+- [ml_trading] fetcher_coverage: `88% coverage on fetcher.py`
+- [ml_trading] preprocessing_coverage: `90% coverage`
+- [ml_trading] backtesting_coverage: `92% coverage with pytest 7.3.1 tests by April 12, 2024`
+- [ml_trading] peer_review_submit_date: `March 16, 2024`
+- [ml_trading] peer_review_feedback_due: `March 18`
+- [ml_trading] ml_model_review_feedback_due: `April 1, 2024`
+- [ml_trading] sprint_start: `March 30`
+- [ml_trading] sprint_end: `April 12`
+- [ml_trading] backtesting_estimate_total: `18 hours`
+- [ml_trading] backtesting_estimate_daily: `3 hours a day`
+- [ml_trading] backtesting_estimate_days: `6 days`
+- [ml_trading] ml_training_eval_estimate: `20 hours by March 29, 2024`
+- [ml_trading] milestone_ml_api_date: `March 30, 2024`
+- [ml_trading] technical_indicators_columns: `symbol, indicator_name, value, timestamp`
+- [ml_trading] predictions_columns: `prediction_id (UUID), symbol, predicted_trend (VARCHAR), confidence (FLOAT), timestamp`
+- [ml_trading] predictions_added_column: `actual_trend`
+- [ml_trading] postgres_version_ml_thread: `PostgreSQL 14`
+- [ml_trading] access_token_expiry_short: `15 minutes`
+- [ml_trading] refresh_token_expiry_example_short: `1 hour`
+- [ml_trading] refresh_token_expiry_example_long: `7 days`
+- [ml_trading] letsencrypt_expiry_reference: `August 1, 2024`
+- [ml_trading] celery_version: `Celery 5.3.0`
+- [ml_trading] celery_broker_example: `amqp://guest@localhost//`
+- [ml_trading] github_actions_checkout_version: `actions/checkout@v2`
+- [ml_trading] github_actions_docker_login_version: `docker/login-action@v1`
+- [ml_trading] http_session_improvement_1: `400ms to 220ms`
+- [ml_trading] http_session_improvement_2: `400ms to 180ms`
+- [ml_trading] api_endpoint_preference: `Always include API endpoint URLs when I ask about API integration details.`
+- [ml_trading] model_metrics_preference: `Always include model performance metrics when I ask about machine learning model training.`
+- [ml_trading] jwt_preference_statement: `I'm trying to implement JWT authentication for my ML API, and I've chosen to use it over basic auth due to its statelessness and scalability`
+- [ml_trading] redis_preference_statement: `I prefer Redis caching over in-memory Python dicts for scalability and persistence across service restarts`
+- [ml_trading] flask_version_example_3: `Flask 2.3.4`
+- [ml_trading] pandas_version_backtesting_branch: `pandas 1.5.3`
+- [ml_trading] docker_backtesting_image_size_example: `130MB`
+- [ml_trading] backtesting_service_port: `5001`
+- [ml_trading] redis_ttl_trade_status_example: `10 seconds`
+- [ml_trading] redis_ttl_backtest_results_example: `1 hour`
+- [ml_trading] backtest_cache_reduction: `70%`
+- [ml_trading] backtest_api_route: `/api/backtest`
+- [ml_trading] papertrade_start_route: `POST /api/papertrade/start`
+- [ml_trading] papertrade_stop_route: `POST /api/papertrade/stop`
+- [ml_trading] historical_points_target: `50,000 historical data points`
+- [ml_trading] historical_points_target_newer: `60,000 historical data points as of April 14, 2024`
+- [ml_trading] backtesting_runtime_old: `12 minutes`
+- [ml_trading] backtesting_runtime_new: `4 minutes`
+- [ml_trading] integration_success_target_branch: `95% success rate`
+- [ml_trading] paper_trade_latency_old: `350ms`
+- [ml_trading] paper_trade_latency_new: `120ms`
+- [ml_trading] milestone_3_deadline: `April 15, 2024`
+- [ml_trading] sprint_paper_trade_window: `April 13-26`
+- [ml_trading] paper_trade_integration_estimate: `15 hours`
+- [ml_trading] rabbitmq_version: `RabbitMQ 3.9.13`
+- [ml_trading] ta_lib_version: `TA-Lib 0.4.24`
+- [ml_trading] sphinx_version: `Sphinx 5.3.0`
+- [ml_trading] numpy_version_backtesting_branch: `NumPy 1.24.3`
+- [ml_trading] webhook_latency_target_1: `under 100ms`
+- [ml_trading] webhook_latency_target_2: `under 80ms`
+- [ml_trading] max_risk_per_trade: `2%`
+- [ml_trading] stop_loss_distance: `1.5% below the entry price`
+- [ml_trading] max_drawdown_daily: `10% per day`
+- [ml_trading] trailing_stop_distance: `1%`
+- [frontend/dashboard] react_version: `React 18.2`
+- [frontend/dashboard] chartjs_version: `Chart.js 4.3.0`
+- [frontend/dashboard] cypress_version: `12.8.0`
+- [frontend/dashboard] cypress_version_later_context: `12.17`
+- [frontend/dashboard] lazy_load_time_new: `1.2s (was: 3.5s)`
+- [frontend/dashboard] dashboard_api_avg_response_time: `120ms`
+- [frontend/dashboard] api_endpoint_alerts: `/api/alerts`
+- [frontend/dashboard] api_endpoint_trades: `/api/trades`
+- [frontend/dashboard] api_endpoint_alerts_ack_post: `POST /api/alerts/acknowledge`
+- [frontend/dashboard] api_endpoint_alerts_ack_restful: `/api/alerts/<int:alert_id>/acknowledge`
+- [frontend/dashboard] api_endpoint_alerts_resolve: `/api/alerts/<int:alert_id>/resolve`
+- [frontend/dashboard] api_endpoint_alerts_reactivate: `/api/alerts/<int:alert_id>/reactivate`
+- [frontend/dashboard] websocket_trade_example_wrong_url: `wss://api.alpaca.markets/v2/orders`
+- [frontend/dashboard] websocket_market_data_example_url: `wss://stream.data.alpaca.markets/v2/iex`
+- [frontend/dashboard] reconnect_interval_example: `5000`
+- [frontend/dashboard] react_error_map_undefined: `TypeError: Cannot read property 'map' of undefined`
+- [frontend/dashboard] alerts_api_response_target_context: `120ms`
+- [rate_limit] updated_requirement: `250 requests per 15 minutes`
+- [rate_limit] earlier_requirement: `200 requests per 15 minutes`
+- [rate_limit] time_window_seconds: `900`
+- [live_trading] api_latency_old: `400ms`
+- [live_trading] api_latency_new: `180ms`
+- [live_trading] target_latency_live_endpoint: `under 200ms`
+- [auth/alpaca] oauth_authorize_url: `https://app.alpaca.markets/oauth2/auth`
+- [auth/alpaca] oauth_token_url_live_example: `https://api.alpaca.markets/oauth/token`
+- [auth/alpaca] invalid_auth_error: `HTTP 401 Unauthorized`
+- [auth/alpaca] rate_limit_error: `HTTP 429 Too Many Requests`
+- [auth/alpaca] expired_code_error_example: `invalid_grant`
+- [preferences] api_endpoint_preference: `Always include API endpoint URLs when I ask about API integration details.`
+- [preferences] model_metrics_preference: `Always include model performance metrics when I ask about machine learning model training.`
+- [preferences] redis_preference_statement: `I prefer Redis caching over in-memory Python dicts for scalability and persistence across service restarts`
+- [preferences] security_protocols_api_integration: `Always include security protocols when I ask about API integration.`
+- [trading/ml] python_version: `Python 3.10`
+- [trading/ml] flask_versions: `Flask 2.3.2`, `Flask 2.3.3`, `Flask 2.3.4`
+- [trading/ml] pytest_version: `pytest 7.3.1`
+- [trading/ml] tensorflow_version: `TensorFlow 2.11`
+- [trading/ml] pandas_version: `pandas 1.5.3`
+- [trading/ml] numpy_version: `NumPy 1.24.3`
+- [trading/ml] redis_version_example: `Redis 7.0`
+- [trading/ml] celery_version: `Celery 5.3.0`
+- [trading/ml] rabbitmq_version: `RabbitMQ 3.9.13`
+- [trading/ml] ta_lib_version: `TA-Lib 0.4.24`
+- [trading/ml] sphinx_version: `Sphinx 5.3.0`
+- [trading/ml] docker_compose_version: `Docker Compose v2.12.0`
+- [trading/ml] postgres_version: `PostgreSQL 14`
+- [dashboard] react_version: `React 18.2`
+- [dashboard] chartjs_version: `Chart.js 4.3.0`
+- [dashboard] axios_version: `axios 1.4.0`
+- [dashboard] cypress_versions: `12.8.0`, `12.17`
+- [dashboard] redux_toolkit_version: `Redux Toolkit 1.9.5`
+- [frontend] typescript_version: `TypeScript 4.9.5`
+- [frontend] sentry_version: `Sentry 7.27.0`
+- [ops] nginx_version: `Nginx 1.24.0`
+- [ops] prometheus_version: `Prometheus 2.44`
+- [ops] grafana_version: `Grafana 9.5`
+- [auth] auth0_version: `Auth0 2.0`
+- [aws] aws_cli_version: `AWS CLI version 2.7.24`
+- [aws] github_actions_version: `GitHub Actions version 2.294.0`
+- [api/docs] openapi_version: `OpenAPI 3.1`
+- [notifications] twilio_api_version: `Twilio API v8.0`
+- [aws] lambda_runtime_python: `AWS Lambda 3.9 runtime`
+- [ops/debugging] wireshark_version: `Wireshark 4.0`
+- [api/endpoints] alpha_vantage_intraday: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval=1min&apikey={api_key}`
+- [api/endpoints] alpaca_positions_paper: `https://paper-api.alpaca.markets/v2/positions`
+- [api/endpoints] alpaca_orders_paper: `https://paper-api.alpaca.markets/v2/orders`
+- [api/endpoints] alpaca_account_paper: `https://paper-api.alpaca.markets/v2/account`
+- [api/endpoints] alpaca_oauth_token_paper: `https://paper-api.alpaca.markets/v2/oauth2/token`
+- [api/endpoints] alpaca_positions_live: `https://api.alpaca.markets/v2/positions`
+- [api/endpoints] alpaca_orders_live: `https://api.alpaca.markets/v2/orders`
+- [api/endpoints] alpaca_account_live: `https://api.alpaca.markets/v2/account`
+- [api/endpoints] alpaca_oauth_token_live: `https://api.alpaca.markets/oauth/token`
+- [api/endpoints] alpaca_oauth_authorize: `https://app.alpaca.markets/oauth2/auth`
+- [api/endpoints] twilio_accounts_endpoint: `https://api.twilio.com/2010-04-01/Accounts`
+- [api/routes] backtest_route: `/api/backtest`
+- [api/routes] papertrade_start: `POST /api/papertrade/start`
+- [api/routes] papertrade_stop: `POST /api/papertrade/stop`
+- [api/routes] webhook_route: `/webhook`
+- [api/routes] live_trade_execute: `/api/livetrade/execute`
+- [api/routes] alerts_route: `/api/alerts`
+- [api/routes] trades_route: `/api/trades`
+- [api/routes] alerts_ack_post: `POST /api/alerts/acknowledge`
+- [api/routes] alerts_ack_restful: `/api/alerts/<int:alert_id>/acknowledge`
+- [api/routes] alerts_ack_path_alt: `/api/alerts/{id}/acknowledge`
+- [api/routes] alerts_resolve: `/api/alerts/<int:alert_id>/resolve`
+- [api/routes] alerts_reactivate: `/api/alerts/<int:alert_id>/reactivate`
+- [ports] flask_port: `5000`
+- [ports] backtesting_port: `5001`
+- [ports] redis_port: `6379`
+- [ports] webhook_port: `8080`
+- [ports] ml_api_port: `8501`
+- [ports] websocket_server_port: `8765`
+- [backtesting] historical_points_old: `50,000 historical data points`
+- [backtesting] historical_points_new: `60,000 historical data points as of April 14, 2024`
+- [backtesting] runtime_old: `12 minutes`
+- [backtesting] runtime_new: `4 minutes`
+- [backtesting] coverage: `92% coverage with pytest 7.3.1 tests by April 12, 2024`
+- [integration] success_rate: `97% success rate as of March 17, 2024`
+- [integration] success_target: `95% success rate`
+- [latency] paper_trade_old: `350ms`
+- [latency] paper_trade_new: `120ms`
+- [latency] session_improvement_1: `400ms to 220ms`
+- [latency] session_improvement_2: `400ms to 180ms`
+- [dashboard/performance] load_time_old: `3.5s`
+- [dashboard/performance] load_time_new: `1.2s`
+- [dashboard/performance] load_time_latest: `0.9 seconds after optimizations on May 26, 2024`
+- [dashboard/performance] api_avg_response: `120ms`
+- [live_trading] api_latency_target: `under 200ms`
+- [alerts/performance] alert_processing_latency_old: `500ms`
+- [alerts/performance] alert_processing_latency_target: `150ms`
+- [lambda/performance] execution_target: `under 200ms`
+- [memory] reduction_recent: `30MB`
+- [sqs] queue_latency: `50ms`
+- [testing] success_rate_e2e: `98% success rate`
+- [testing] failure_remainder: `2%`
+- [testing] alert_manager_coverage: `95%`
+- [frontend/testing] coverage_old: `70%`
+- [frontend/testing] coverage_new: `90%`
+- [cache] price_cache_hit_rate: `92%`
+- [cache] ttl_30s: `30 seconds`
+- [cache] ttl_60s: `60 seconds`
+- [cache] ttl_5m: `5 minutes`
+- [cache] ttl_10s: `10 seconds`
+- [cache] ttl_1h: `1 hour`
+- [cache] ttl_12h: `12 hours`
+- [cache] repeated_computation_reduction: `70%`
+- [cache/frontend] localstorage_expiry: `5-minute expiry`
+- [auth] token_refresh_interval_context: `30 minutes`
+- [auth] access_token_expiry_15m: `15 minutes`
+- [auth] access_token_expiry_30m: `30 minutes`
+- [auth] access_token_expiry_1h: `1 hour`
+- [auth] refresh_token_expiry_1h: `1 hour`
+- [auth] refresh_token_expiry_7d: `7 days`
+- [auth/errors] http_401: `HTTP 401 Unauthorized`
+- [auth/errors] http_429: `HTTP 429 Too Many Requests`
+- [auth/errors] invalid_token: `invalid_token`
+- [auth/errors] invalid_grant: `invalid_grant`
+- [risk] max_risk_per_trade: `2%`
+- [risk] stop_loss_distance: `1.5% below the entry price`
+- [risk] max_drawdown_daily: `10% per day`
+- [risk] trailing_stop_distance: `1%`
+- [circuit_breaker] failure_threshold: `5 consecutive order failures within 10 minutes`
+- [planning] milestone_6: `Milestone 6`
+- [planning] milestone_7: `Milestone 7`
+- [planning] sprint_window_may25_june7: `May 25 to June 7`
+- [planning] dashboard_review_due: `May 27, 2024`
+- [planning] dashboard_milestone_target: `May 30, 2024`
+- [planning] alert_system_deadline_1: `June 7, 2024`
+- [planning] alert_system_deadline_2: `June 10, 2024`
+- [planning] deployment_monitoring_deadline: `June 21, 2024`
+- [planning] sprint8_window: `April 27, 2024 - May 10, 2024`
+- [planning] alert_system_estimate: `18 hours`
+- [planning] deployment_monitoring_estimate: `16 hours`
+- [realtime] reconnect_interval_ms: `5000`
+- [realtime] reconnect_interval_human: `5 seconds`
+- [realtime] heartbeat_interval_old: `30s`
+- [realtime] heartbeat_interval_new: `10s`
+- [frontend/errors] map_undefined: `TypeError: Cannot read property 'map' of undefined`
 
 ### Chronological Event Log
-1. User discussed Diffie-Hellman / ECDH, WebSocket optimization, Redis caching, and encryption microservice architecture.
-2. User designed an encryption microservice on `port 7500` and frontend encryption UX with `"Secure"` / `"Not Secure"`.
-3. User discussed GitHub Actions, Docker, AWS ECS deployment, and fixed `"Docker build failed: no space left on device"` by increasing runner disk size to `50GB`.
-4. User explored chatbot auth, JWT refresh-token flows, memory store, Redis caching, and clinical GPT-4 routing.
-5. User asked multiple times for recap/continuation prompts preserving exact values.
-6. User explored CI/CD, Docker, AWS Fargate/ECS deployment, and admin panel architecture.
-7. User discussed gRPC internal service performance, buffering, streaming, keep-alive, and service discovery/load balancing.
-8. User discussed centralized logging, correlation IDs, CloudWatch, X-Ray, and analytics dashboards.
-9. User discussed MFA implementation with `boto3`, session handling, React Suspense/loading skeletons, and blue-green deployment.
-10. User asked how to reduce chatbot API latency from `280ms` toward `200ms` while scaled to `5 replicas` on AWS Fargate during `June`.
-11. User asked “What did we do so far?” and then requested this detailed continuation prompt.
-12. User asked about secure key storage strategy and AWS KMS / Vault / environment-variable options.
-13. User asked about WebSocket microservice optimization on `port 7000`, memory reduction, Redis pub/sub, and performance monitoring.
-14. User explicitly added preference: `Always provide latency improvements when I ask about performance profiling.`
-15. User designed integration tests between chatbot API and authentication service.
-16. User worked through TLS configuration review, AES-GCM padding issues, encryption performance, and secure key storage.
-17. User debugged `"Invalid authentication tag"` and nonce reuse concerns.
-18. User integrated encryption microservice with chat and memory store services via REST API on `port 7500`.
-19. User asked about KMS choice, encryption debugging best practices, and encryption microservice performance metrics.
-20. User implemented frontend encryption status indicator / error boundary / chat encryption/decryption UI patterns.
-21. User asked how to test encryption status indicator and mock API responses.
-22. User asked how to securely exchange encryption keys between clients and prevent MITM attacks.
-23. User asked about AES-GCM usage in `Node.js crypto module v20.3`.
-24. User asked about encryption microservice memory monitoring and whether `350MB` under `1000 messages per day` is reasonable.
-25. User asked for AWS ECS secure REST API integration and memory optimization strategies.
-26. User planned CI/CD pipeline by `June 10, 2024`.
-27. User asked about Wireshark MITM analysis and plugins.
-28. User optimized a multi-stage Dockerfile to `90MB`.
-29. User asked about secure Diffie-Hellman for chat E2EE and troubleshooting encryption algorithm errors.
-30. User asked about caching encrypted messages securely and debugging intermittent `socket hang up` errors.
-31. User worked on frontend UX for encryption toggle confirmation and encryption info modals.
-32. User asked about CI/CD with Docker scans, React Suspense for encryption status, and webhook integration for key generation.
-33. User asked about zero-downtime deployment for the encryption microservice with GitHub Actions + Kubernetes.
-34. User asked about centralized logging using `Winston v3.8`.
-35. User asked about stress-test interpretation for `99.9% uptime`.
-36. User asked about semantic versioning scripts, changelog generation, rollback backups, and Docker image review/security.
-37. User explicitly added preference: `Always show encryption status indicators when I ask about frontend security features.`
-38. User asked about React encryption status indicator implementation.
-39. User asked about GitHub Actions deployment to AWS ECS and Docker/ECR issues.
-40. User fixed `"Docker build failed: no space left on device"` by increasing GitHub runner disk size to `50GB`.
-41. User asked about caching build artifacts and restoring them.
-42. User asked about optimizing Docker multi-stage builds for an encryption microservice and reducing Alpine image issues.
-43. User asked `What did we do so far?`
-44. User requested this detailed continuation prompt with strict preservation rules.
-45. User asked about JSONB containment query for conversations.
-46. User asked about GPT-4 fine-tuning on clinical psychology data by `April 20, 2024`.
-47. User asked about pgAdmin slow query/index optimization.
-48. User asked for a roadmap toward `April 20, 2024`.
-49. User asked about `syntax error at or near '::jsonb'` in the context of GPT-4 questions.
-50. User asked about RBAC for memory API with Docker Compose and `flask-principal`.
-51. User asked about integrating RBAC with Docker Compose and whether Compose needed updating.
-52. User asked about Docker Compose startup issues for memory-store service with `180MB` container size.
-53. User asked which logs to inspect and whether to increase health-check retries.
-54. User asked about migrating `messages` table to include `session_id` foreign key.
-55. User asked how to handle `NULL` `session_id`.
-56. User asked about adding caching layer to memory API with `flask-caching`, then Redis-backed caching.
-57. User asked how to automatically clear old Redis entries.
-58. User asked about RBAC integration issues again and about users without roles / multiple roles.
-59. User asked about adding `flask-debugtoolbar` and custom RBAC debug panel.
-60. User asked whether custom panel could show permissions per role.
-61. User reported cache hit rate only `70%` and asked how to improve it.
-62. User asked about ARIA labels / WCAG 2.1 AA review and auto-translation toggle accessibility.
-63. User reported race condition causing stale context data during simultaneous message sends.
-64. User asked about DB query optimization with JSONB and fallback strategies for API services.
-65. User asked about Redis cache hit rate monitoring accuracy and preventing accidental counter resets.
-66. User asked about webhook to update `last_active` timestamp on each user message, secure handling, retries, and high volume.
-67. User asked about preprocessing `10,000 anonymized clinical dialogues` in Node.js/PostgreSQL.
-68. User asked about `react-window` virtualization issues in `ChatMessageList`.
-69. User asked about implementing Redis cache layer for Express backend.
-70. User asked about Hugging Face / Python GPT-4 fine-tuning troubleshooting.
-71. User asked about monitoring training progress and hyperparameter adjustment.
-72. User asked about webhook error handling for updating `last_active`.
-73. User asked about DB retry logic with max `3` attempts and exponential backoff.
-74. User asked about memory store API latency optimization.
-75. User asked about modularized backend architecture for independent scaling.
-76. User asked about Python circuit breaker for GPT-4 API downtime.
-77. User asked about Redis hit rate only `70%`.
-78. User asked about high-concurrency chatbot API architecture.
-79. User asked about TypeScript `v5.0` fine-tuning implementation ideas.
-80. User asked about reviewing release `v0.3.0`.
-81. User asked about optimizing `MemoryStore` TypeScript code.
-82. User asked about project planning toward `April 20, 2024`.
-83. User asked again about version control best practices after `v0.3.0`.
-84. User shared TypeScript `memory-store.ts` and asked for type-safety review.
-85. User asked about PostgreSQL `GIN` partial indexing for JSONB to reduce query time from `120ms` to `30ms`.
-86. User explicitly added preference: `Always include cache hit rate statistics when I ask about caching strategies.`
-87. User asked for Redis cache hit rate calculation and optimization when current hit rate is `70%`.
-88. User asked how to use OpenAI fine-tuning API for GPT-4 with `10,000 anonymized clinical dialogues`.
-89. User asked whether JSONL files must be uploaded manually.
-90. User asked how to optimize fine-tuning results and whether to re-upload datasets after corrections.
-91. User asked how to track current epoch / validation loss from fine-tuning job.
-92. User asked whether API notifies automatically on job completion.
-93. User asked again how to use OpenAI fine-tuning API with custom dataset.
-94. User asked how to debug `Invalid fine-tune dataset format`.
-95. User asked whether entire dataset must be reformatted if new entries are added.
-96. User asked how to reduce fine-tuned GPT-4 inference latency from `280ms`.
-97. User deployed fine-tuned GPT-4 as separate endpoint and got `500` on `http://localhost:5001/api/gpt-4-clinical`.
-98. User asked how to debug fine-tuned model behavior and parameter tuning for response time.
-99. User asked how to implement profiling changes in existing codebase.
-100. User asked whether existing API calls must be modified to use profiling functions.
-101. User asked how to deploy fine-tuned GPT-4 behind Flask endpoint.
-102. User asked how to integrate clinical mode toggle with backend user profile settings using Node.js 18 / Express 4.18.
-103. User asked whether chatbot backend should always check clinical mode before sending requests.
-104. User asked about `503 Service Unavailable` fallback from `gpt-4-clinical` to base GPT-4.
-105. User asked how to route clinical queries to `gpt-4-clinical` based on user profile in `/api/chat`.
-106. User asked for review of error handling in `ClinicalModeToggle`.
-107. User asked whether frontend should reflect clinical mode change immediately.
-108. User asked how to optimize latency of chatbot backend API integration for clinical routing.
-109. User asked: `What did we do so far?`
-110. User requested this detailed continuation prompt with strict preservation rules.
+1. User worked across ML trading microservices: Flask APIs, Redis caching, Alpha Vantage, Alpaca, TensorFlow/LSTM, JWT, Docker, database design, backtesting, paper trading, and live trading.
+2. User established strong preferences for exact values, API endpoint URLs, model metrics, Python code, caching details, and security details.
+3. User focused on `backtest.py`, `paper_trade.py`, risk controls, Redis caching, Alpaca integration, and webhook/Celery reliability.
+4. User reduced backtesting runtime from `12 minutes` to `4 minutes`.
+5. User achieved `92% coverage with pytest 7.3.1 tests by April 12, 2024`.
+6. User improved paper/live trading latency from `350ms` to `120ms` and `400ms` to `180ms`.
+7. User shifted heavily into React dashboard + live trading API performance topics.
+8. User discussed `React 18.2` + `Chart.js 4.3.0`, lazy loading, WebSocket reconnect logic, `/api/alerts`, `/api/trades`, and dashboard API latency of `120ms`.
+9. User explored OAuth 2.0 with Alpaca, token refresh, `HTTP 429 Too Many Requests`, missing `Retry-After`, and exponential backoff defaults.
+10. User discussed real-time trade monitoring, Redux Toolkit normalization, WebSocket cleanup, memory leaks, and reconnect issues.
+11. User explored accessibility, ARIA, dark mode, keyboard shortcuts, and Sentry error boundaries.
+12. User moved into alert escalation / notification architecture with Twilio, SMTP, Prometheus/Grafana, circuit breakers, and webhook reliability.
+13. User debugged Twilio installation/env issues and SMTP authentication issues.
+14. User added unit tests for `alert_manager.py`, dynamic alert levels, and database-query reduction concerns.
+15. User discussed Prometheus panels, Wireshark packet drops, buffer issues, Celery retry settings, and different task retry policies.
+16. User moved into Auth0/Auth0 RBAC, sprint planning, Sentry integration, and alert escalation/notification estimation.
+17. User discussed Slack webhooks, TypeScript strictness, linter/formatter setup, localStorage alert caching, WebSocket heartbeat handling, and dashboard refactors.
+18. User asked repeatedly about WebSocket reconnect logic, memory leaks, render bottlenecks, and frontend load-time optimization.
+19. User discussed DB indexing for alerts, OpenAPI docs, React component organization, and query optimization.
+20. User returned to WebSocket schemas, AWS S3/CloudFront deployment, HTTPS/HSTS, and monitoring dashboard performance.
+21. User asked about alert notification system estimates and accessibility for a Tkinter GUI.
+22. User asked about WebSocket multiplexing and scaling concurrent WebSocket connections.
+23. User returned to sprint planning for alert notification system milestones and dashboard load time optimization.
+24. User explicitly added preference: `Always include frontend framework versions when I ask about implementation details.`
+25. User asked about implementing alert escalation logic in `alert_manager.py` with Twilio and encountered `ModuleNotFoundError: No module named 'twilio'`.
+26. User discovered `twilio` was installed in the global environment instead of the virtual environment.
+27. User asked about improving `pytest 7.3.1` unit tests for `alert_manager.py` and handling dynamic alert levels.
+28. User asked about reducing database queries in `alert_manager.py`.
+29. User debugged SMTP auth errors and Twilio SMS validation errors.
+30. User asked about reducing alert-processing latency from `500ms` to `150ms`.
+31. User asked about SMTPAuthenticationError troubleshooting.
+32. User asked for Twilio API integration help using `https://api.twilio.com/2010-04-01/Accounts`.
+33. User returned to React dashboard performance issues, specifically reducing load time from `3.5 seconds` to under `1.2 seconds`.
+34. User asked about Python WebSocket reconnect logic with `5-second` interval.
+35. User asked about WebSocket memory leaks due to unclosed connections.
+36. User asked about AWS Lambda cold starts, SQS triggers, and invocation optimization.
+37. User asked for milestone planning by `June 10, 2024`.
+38. User asked about CloudWatch logging/debugging.
+39. User again asked about React `18.2` + Chart.js `4.3.0` dashboard optimization from `3.5s` to `1.2s`.
+40. User asked for Twilio SMS API integration with the endpoint `https://api.twilio.com/2010-04-01/Accounts`.
+41. User asked about alert severity thresholds and escalation policies.
+42. User asked about exponential backoff retry with max `5` retries per alert.
+43. User asked about Lambda memory optimization after reducing from `1024MB` to `512MB` while keeping execution under `200ms`.
+44. User asked how to test the alert escalation system in a staging environment.
+45. User asked about SQS dead-letter queues and reducing failed messages.
+46. User asked about GDPR anonymization in logs with Python / Loguru.
+47. User asked for sprint 8 production deployment + final testing plan.
+48. User asked about alternatives to DLQ structures for failed SQS messages.
+49. User asked about webhook error handling when triggering Lambda from alert messages.
+50. User asked about optimizing SQS queue writes and `requests` vs `boto3` / connection pooling.
+51. User asked about SNS publish error handling between microservices.
+52. User asked for sprint estimation help toward `June 21, 2024`.
+53. User asked about improving generic Python error handling patterns.
+54. User asked whether the alert escalation microservice needs specific error handling.
+55. User asked how to use AWS SNS for microservice communication with `boto3.client('sns')`.
+56. User asked `What did we do so far?`
+57. User requested this detailed continuation prompt with strict preservation rules.
+58. User asked for security review of the paper trading API.
+59. User asked for Redis caching improvements in the paper trading API.
+60. User asked whether `15 hours` is enough for paper trading integration and risk management by `April 26, 2024`.
+61. User asked for better error handling/logging in `paper_trade.py`.
+62. User asked about RabbitMQ `3.9.13` configuration for asynchronous communication.
+63. User asked for sprint planning help to meet `April 26, 2024`.
+64. User debugged `IndexError: list index out of range` in simple paper trade logic.
+65. User revisited RabbitMQ performance optimization.
+66. User asked about including API response metrics in backtesting/API integration performance.
+67. User explicitly added the standing preference to always include API response metrics when discussing API integration performance.
+68. User asked for Prometheus and Grafana setup around `request_processing_seconds`.
+69. User asked for an end-to-end SMA crossover example with `60,000 historical data points` and API response metrics.
+70. User debugged Alpaca sandbox errors: `APIError: invalid api version`.
+71. User then debugged `APIError: invalid endpoint` with Alpaca `list_positions`.
+72. User asked about adding pytest tests for `paper_trade.py` and covering `90%` of trade execution logic.
+73. User asked about caching Alpaca API results to reduce API calls in `paper_trade.py`.
+74. User asked about robust error handling for Alpaca API downtime / errors.
+75. User asked for comprehensive test scenarios in `paper_trade.py`.
+76. User asked how to handle different Alpaca API error codes.
+77. User asked how to further optimize Alpaca order placement at `https://paper-api.alpaca.markets/v2/orders` after reducing latency from `350ms` to `120ms`.
+78. User asked about more robust OAuth `2.0` token refresh logging/error handling after fixing `HTTP 401 Unauthorized`.
+79. User asked for review of a `requests`-based Alpaca order placement function.
+80. User asked for debugging/testing strategies for the paper trading module with Alpaca sandbox integration.
+81. User asked how to add more complex strategies like moving averages.
+82. User revisited SMA crossover runtime reduction from `12 minutes` to `4 minutes` on `50,000 historical data points`.
+83. User revisited Redis caching strategy improvements for backtest results.
+84. User asked about ELK/Logstash configuration issues for centralized logging.
+85. User asked about integrating paper trading and risk management in Milestone 4.
+86. User asked about `415 Unsupported Media Type` in Postman for Alpaca orders.
+87. User revisited backtesting performance using Pandas vectorization.
+88. User revisited ELK / Elasticsearch output configuration.
+89. User asked how to properly integrate Alpaca API auth and order placement.
+90. User implemented risk manager with `10%` max drawdown per day and automatic paper trade halt.
+91. User asked about implementing a `1%` trailing stop loss in `paper_trade.py`.
+92. User asked how to optimize logging buffer size during high-frequency paper trades.
+93. User revisited Alpaca OAuth `2.0` token refresh logic.
+94. User revisited SMA crossover strategy implementation in `backtest.py`.
+95. User asked how to reduce memory usage in `PaperTrade` during high-frequency trades.
+96. User asked how to add retry logic with max `3` attempts and timestamped logging for failed order placements.
+97. User asked about HashiCorp Vault `1.13` API-key rotation every `7 days`.
+98. User asked how to log errors with timestamps correctly using Python `logging`.
+99. User asked how to plan a sprint by breaking tasks into chunks and estimating time.
+100. User asked how to use HashiCorp Vault to encrypt API keys.
+101. User asked again about retry logic with max `3` attempts for failed order placements.
+102. User asked how to configure Celery `5.3.0` with Redis broker `7.0` correctly.
+103. User asked how to measure webhook latency and verify `200 OK` under `80ms`.
+104. User asked how to write integration tests for paper trading → logging → alerting and achieve `95% success rate`.
+105. User asked how to set up a webhook to listen for live trade fills.
+106. User asked how to implement retry logic for Celery tasks.
+107. User asked how to optimize Celery task execution with Redis broker.
+108. User asked how to write better integration tests using `pytest.fixture`.
+109. User asked how to cache recent trade statuses in Redis with `10 seconds` TTL and keep cache updated.
+110. User asked how to troubleshoot `ConnectionResetError` during high-frequency order placement.
+111. User submitted `paper_trade.py` and logging config for review and asked for code-review feedback.
+112. User asked how to cache trade data with a Python dict + TTL and whether a separate key strategy is better.
+113. User asked `What did we do so far?`
+114. User requested this detailed continuation prompt with strict preservation rules.
 150. [TOPIC: recap] User asked `What did we do so far?`
 151. [TOPIC: summary_request] User requested a detailed continuation prompt with strict preservation rules and supplied existing persistent knowledge for preservation/update.
 152. [TOPIC: accessibility] User asked about testing dashboard accessibility with screen readers and high contrast mode.
@@ -2062,7 +2331,7 @@
 - `TensorRT GPU latency` referenced as `60ms/frame` and later `45ms/frame`
 - Model-loading approach remained inconsistent across `.pt`, `.onnx`, Darknet cfg/weights, `torch.hub.load(...)`, and `ultralytics`
 - User discussed both CPU-only constraints and GPU/TensorRT acceleration; safest interpretation is **GPU where available + CPU fallback**
-- No repository files were edited; all code remained inline
+- no repository files were edited; all code remained inline
 - `average_api_latency_100_users` was originally `150ms under 100 concurrent users` → later changed to `110ms under 100 concurrent users`
 - `cypress_version` older preserved context `12.8` → later additional context `12.17`
 - OAuth revocation example returned `2_00` instead of valid `200`
@@ -2124,6 +2393,27 @@
 - `chatbot API latency` improved from `350ms` → `280ms`, with new target `200ms`
 - `average API latency under 100 concurrent users` changed from `150ms` → `110ms`
 - `50-user API response time` changed from `180ms` → `120ms`
+- User first worked through many unrelated branches; the **latest active strong branch** is now backtesting/module efficiency, not earlier Docker-only or JWT-only work.
+- Multiple assistant examples across this conversation were technically weak or invalid and should be treated as non-authoritative before reuse.
+- LSTM training context included both regression-style code (`mean_squared_error`) and classification-metric requests (`accuracy`, `precision`, `recall`, `F1`) without a finalized task-type decision.
+- The latest strong implementation branch is still the **backtesting / paper trading / trading API** branch, not older unrelated branches.
+- `Flask 2.3.4` appeared later alongside earlier `Flask 2.3.2` / `Flask 2.3.3`; treat as another referenced version, not a full replacement.
+- `50,000 historical data points` later coexisted with `60,000 historical data points as of April 14, 2024`; treat as separate contexts.
+- Runtime changed from `12 minutes` to `4 minutes` for backtesting after vectorization.
+- Paper trade/order latency changed from `350ms` to `120ms`.
+- Many earlier assistant examples across Alpaca OAuth, Flask async, Celery, webhook timeouts, RabbitMQ, Vault, and some risk-management code were technically weak or incorrect and should be revalidated before reuse.
+- no repository files were actually edited despite many filenames being referenced; all work remained inline
+- backtesting runtime changed from `12 minutes` to `4 minutes`
+- paper trade latency changed from `350ms` to `120ms`
+- HTTP session reuse improved from `400ms to 220ms`, and also `400ms to 180ms`
+- dashboard load time changed from `3.5s` to `1.2s`
+- active conversation focus shifted from `backtest.py` / `paper_trade.py` toward frontend dashboard + live trading API performance, but the older backtesting/paper-trading branch remains unresolved
+- many earlier assistant examples around Alpaca OAuth, Flask async, Celery retries, Redis HA, ELK, WebSockets, and AWS deployment were technically weak or incorrect and should be revalidated before reuse
+- HTTP session reuse improved from `400ms to 220ms` and `400ms to 180ms`
+- dashboard load time changed from `3.5s` to `1.2s`, later to `0.9 seconds after optimizations on May 26, 2024`
+- rate limit requirement changed from `200 requests per 15 minutes` to `250 requests per 15 minutes`
+- memory reduction reported as `30MB`
+- many prior assistant examples in OAuth/WebSocket/AWS/SAM/Twilio/SMTP/DLQ areas may be technically weak and should be revalidated
 
 ### Technical Specifications
 - [resume_analyzer/storage] database_engine: `SQLite 3.39.4`
@@ -2312,6 +2602,68 @@
 - [security] disable `TLS 1.0`
 - [security] disable `TLS 1.1`
 - [cache] `Redis 7.0.11`
+- [ml_trading/api] prediction_route: `/api/predict`
+- [ml_trading/api] train_route: `/train`
+- [ml_trading/api] evaluate_route: `/evaluate`
+- [ml_trading/api] webhook_route: `/webhook`
+- [ml_trading/api] order_route_example: `/order/<order_id>`
+- [ml_trading/db] technical_indicators_index_columns: `symbol`, `timestamp`
+- [ml_trading/db] predictions_new_column: `actual_trend`
+- [ml_trading/framework] backtesting_window_example_short: `20`
+- [ml_trading/framework] backtesting_window_example_long: `50`
+- [ml_trading/framework] historical_points_target: `50,000 historical data points`
+- [ml_trading/api] backtest_route: `/api/backtest`
+- [ml_trading/api] papertrade_start_route: `POST /api/papertrade/start`
+- [ml_trading/api] papertrade_stop_route: `POST /api/papertrade/stop`
+- [ml_trading/framework] historical_points_target_newer: `60,000 historical data points as of April 14, 2024`
+- [ml_trading/auth] alpaca_oauth_token_endpoint_paper: `https://paper-api.alpaca.markets/v2/oauth2/token`
+- [ml_trading/broker] rabbitmq_version: `3.9.13`
+- [ml_trading/cache] recent_trade_status_ttl: `10 seconds`
+- [ml_trading/cache] backtest_results_ttl: `1 hour`
+- [ml_trading/cache] backtest_computation_reduction: `70%`
+- [trading/backend] `backtest.py`
+- [trading/backend] `paper_trade.py`
+- [trading/backend] `live_trade.py`
+- [trading/backend] `fetcher.py`
+- [trading/backend] `strategy.py`
+- [trading/backend] `app.py`
+- [trading/backend] `ml_model.py`
+- [dashboard/frontend] `React 18.2`
+- [dashboard/frontend] `Chart.js 4.3.0`
+- [dashboard/testing] `Cypress 12.8.0`
+- [dashboard/http] `axios 1.4.0`
+- [dashboard/api] `/api/alerts`
+- [dashboard/api] `/api/trades`
+- [dashboard/realtime] `WebSocket`
+- [backend/http] `requests.Session()`
+- [security/auth] OAuth `2.0`
+- [security/auth] JWT
+- [cache] `Redis 7.0`
+- [broker] `Celery 5.3.0`
+- [broker] `RabbitMQ 3.9.13`
+- [backend/trading] `backtest.py`
+- [backend/trading] `paper_trade.py`
+- [backend/trading] `live_trade.py`
+- [backend/trading] `fetcher.py`
+- [backend/trading] `strategy.py`
+- [backend/trading] `app.py`
+- [backend/trading] `ml_model.py`
+- [backend/alerts] `alert_manager.py`
+- [frontend/dashboard] `React 18.2`
+- [frontend/dashboard] `Chart.js 4.3.0`
+- [frontend/dashboard] `Redux Toolkit 1.9.5`
+- [frontend/dashboard] `TypeScript 4.9.5`
+- [frontend/testing] `Cypress 12.8.0`
+- [frontend/testing] `Cypress 12.17`
+- [frontend/http] `axios 1.4.0`
+- [backend/realtime] `websockets`
+- [aws/serverless] `AWS Lambda 3.9 runtime`
+- [aws/messaging] `SNS`, `SQS`, `DLQ`
+- [notifications] `Twilio API v8.0`
+- [notifications] `smtplib`
+- [observability] `Prometheus 2.44`
+- [observability] `Grafana 9.5`
+- [reverse_proxy] `Nginx 1.24.0`
 
 ### Causal Decisions
 - Because user explicitly prefers modularity → chose separation of detection and API
@@ -2416,6 +2768,25 @@
 - Because the user explicitly wants **deployment duration statistics** in CI/CD discussions → all CI/CD guidance must include exact timing metrics.
 - Because the user explicitly wants **user satisfaction metrics** in UI/UX design discussions → all UI/UX guidance must include satisfaction or usability metrics where applicable.
 - Because the latest substantial branch before recap was balancing Fargate scaling and latency reduction → next agent can reasonably resume from ECS/Fargate scaling + latency optimization if user doesn’t choose another branch.
+- Because the user prefers statelessness and scalability → chose JWT over basic auth.
+- Because the user prefers Redis over in-memory dicts for scalability and persistence → Redis remains the preferred cache.
+- Because `requests.Session` reuse already improved latency (`400ms` → `220ms`, and another branch `400ms` → `180ms`) → session reuse remains a favored performance strategy.
+- Because the user wants modular design → backtesting, paper trading, live trading, webhook, API, caching, and monitoring should remain separated.
+- Because the user explicitly requested endpoint URLs in API discussions → future Alpaca/Alpha Vantage guidance must include exact endpoint URLs.
+- Because the user explicitly requested model performance metrics in ML training discussions → future ML answers must include exact metrics, not just training code.
+- Because the user prefers statelessness and scalability → JWT was chosen over basic auth.
+- Because session reuse already improved latency (`400ms to 220ms`, `400ms to 180ms`, `350ms to 120ms`) → persistent HTTP sessions remain a favored optimization.
+- Because the user explicitly requested API response metrics in API integration performance discussions → future answers must include latency / response-time metrics explicitly.
+- Because the latest strong unresolved core thread is still backtesting extensibility/performance → the next agent should prioritize `backtest.py` / `strategy.py` style design unless the user switches context.
+- Because the user explicitly requested security protocols for API integration → future API integration answers must include protocol/security details.
+- Because the most recent concrete user code before recap was the `requests.Session()`-based `LiveTradingAPI` with `400ms` to `180ms` improvement → next agent can reasonably resume from persistent HTTP session optimization unless the user switches back to backtesting or paper trading.
+- Because the user prefers modular design → backtesting, paper trading, live trading, dashboard, alerting, caching, and deployment concerns should stay separated.
+- Because the user prefers Redis over in-memory dicts → Redis remains the preferred caching layer for scalable/persistent cache designs.
+- Because persistent HTTP sessions already improved latency from `400ms` to `180ms` → session reuse remains a favored live-trading optimization.
+- Because the user explicitly requires endpoint URLs in API discussions → all future API integration answers must include exact endpoint URLs.
+- Because the user explicitly requires exact errors/metrics/TTL/security details → future answers must preserve literals verbatim and avoid generic descriptions.
+- Because many earlier assistant examples may be weak → future continuation should replace them with validated production patterns rather than extending them.
+- Because the latest interaction was recap/meta-summary only → the next agent should not assume a single branch is selected.
 
 ### User Preferences & Constraints
 - `Always display object ID color codes when I ask about tracking visualization`
@@ -2457,7 +2828,7 @@
 - `I prefer asynchronous API calls and caching to improve responsiveness without sacrificing accuracy.`
 - `Wants modular design with separate components.`
 - `Wants help with performance without sacrificing too much accuracy.`
-- [FACT] Latest exact user request before this summary: `What did we do so far?` followed by `Provide a detailed prompt for continuing our conversation above.`
+- [FACT] Latest exact user request before this summary: `Provide a detailed prompt for continuing our conversation above.`
 - [FACT] Latest exact unresolved local code branch before recap: object counting overlay toggling and efficiency using:
 - [FACT] Latest exact memory-optimization follow-up branch: user wanted to start with `np.uint8` / `np.float32` selection after fixing `MemoryError: Unable to allocate 1.2GB array` using `cv2.resize(frame, (640, 480))`
 - [DECISION] Because the latest concrete local branch before recap was the counting overlay, but the user explicitly asked to start with dtypes after the memory fix → next continuation should begin with dtype guidance and then return to counting overlay optimization.
@@ -2471,7 +2842,7 @@
 - [FACT] Exact CloudTrail file structure is still unknown: top-level `Records` vs plain list of entries.
 - [FACT] Exact meaning of Cypress “100% coverage” is still unknown: E2E flow coverage vs code coverage via Istanbul/NYC/`@cypress/code-coverage`.
 - [DECISION] Because many recent assistant snippets were technically weak or invalid → future continuation should replace them with validated patterns rather than extend them.
-- [DECISION] Because the latest interaction was recap/meta-summary only → next agent should not assume a single active branch and should either wait for the user’s next concrete direction or propose a small menu of likely branches:
+- [DECISION] Because the latest interaction was recap/meta-summary only → next agent should not assume one branch is selected; if the user says “continue,” likely safest options are:
 - [FACT] Missing exact next likely implementation branch: fix the PostgreSQL ↔ Redis sync job so tuple rows are handled correctly and reconciliation logic is production-safe | session:current | turn:latest_sync
 - [FACT] Missing exact unresolved sync code issue: `cursor.fetchall()` returns tuples unless a dict cursor is used; current examples compare `post['id']` against Redis set members incorrectly | session:current | turn:latest_sync
 - [FACT] Missing exact unresolved scheduler choice: APScheduler is preferred, but cron fallback was explored; production scheduler decision is not finalized | session:current | turn:scheduler
@@ -2485,7 +2856,7 @@
 - [FACT] Latest unresolved topic immediately before the recap/meta flow: **official Twitter API `v2.3.1` metrics endpoint documentation + Python example**
 - [FACT] Exact unresolved compliance topic still in scope: **GDPR consent withdrawal, re-consent, deletion workflow, and audit logging**
 - [DECISION] Because the latest concrete implementation request before the recap was GDPR deletion/access handling, but the most recent unresolved API request is Twitter metrics docs → the next agent should either resume with the Twitter `v2.3.1` metrics endpoint documentation or ask the user which branch to continue
-- [DECISION] Because no repo files were actually inspected or edited → future responses must avoid claiming repository changes and should provide corrected inline examples unless the user supplies actual file contents
+- [DECISION] Because no repo files were actually inspected or edited → next continuation must avoid claiming changes to `backtest.py`, `strategy.py`, `ml_model.py`, `fetcher.py`, or `docker-compose.yml` unless the user provides actual repository content.
 - `Always provide detailed API response time metrics when I ask about performance profiling.`
 - `Always provide exact API version numbers when I ask about integration details.`
 - `I prefer using JWT with refresh tokens over session cookies for stateless scalability and easier mobile client integration.`
@@ -2610,27 +2981,117 @@
   - Redis cache examples for fallback + sessions
   - X-Ray manual tracing formats
   - blue-green deployment load balancer switching
+- `Always include API endpoint URLs when I ask about API integration details.`
+- `Always include model performance metrics when I ask about machine learning model training.`
+- `I prefer Redis caching over in-memory Python dicts for scalability and persistence across service restarts`
+- `I'm trying to implement JWT authentication for my ML API, and I've chosen to use it over basic auth due to its statelessness and scalability`
+- [FACT] Missing exact latest active backtesting code context:
+  - `class BacktestModule`
+  - `def sma_crossover_strategy(self):`
+  - `def complex_strategy(self):`
+  - `short_sma = self.data['Close'].rolling(window=20).mean()`
+  - `long_sma = self.data['Close'].rolling(window=50).mean()`
+  - `rsi = self.data['Close'].pct_change().rolling(window=14).apply(lambda x: x.ewm(com=13-1, adjust=False).std())`
+- [FACT] Missing exact latest user ask wording: `How can I make my backtesting module more efficient? I'm currently using a simple SMA crossover strategy, but I want to add more complex strategies in the future.`
+- [DECISION] Because the latest user-provided code is `BacktestModule` with both `sma_crossover_strategy()` and `complex_strategy()` → the next agent should likely resume with a production-correct, vectorized, extensible strategy architecture rather than older JWT/Docker branches.
+- [FACT] Missing exact latest performance context: user wants the module efficient now **and** designed for more complex strategies later.
+- [FACT] Missing exact latest unresolved adjacent branch before the final prompt: live trading API optimization using:
+  - `import requests`
+  - `session = requests.Session()`
+  - target improvement from `400ms` to `180ms`
+- [FACT] Exact latest user-provided cache code before the final summary request:
+  - `trade_data = {}`
+  - `trade_data[trade_id] = (data, time.time() + 10)`
+  - `def cache_trade_data(trade_id, data):`
+  - `def get_trade_data(trade_id):`
+- [FACT] Exact latest user ask wording before the summary request: they asked how to implement a TTL-based dict cache for trade data and whether a separate cache key per trade data point should be used.
+- [DECISION] Because the user’s final technical question before asking for the summary was about caching trade data with a Python dict + TTL → another valid next continuation is to replace that with a safer, centralized Redis-backed or managed TTL cache design, while honoring the Redis preference.
+- [FACT] Exact latest unresolved testing topic: integration testing for the paper trading module with logging and alerting via `pytest.fixture` remains active and under-specified.
+- [FACT] Exact latest unresolved webhook topic: live trade fill webhook verification with `200 OK` and latency under `80ms` remains active and under-specified.
+- [FACT] Exact latest unresolved Celery topic: performance tuning of Celery workers with Redis broker `redis://localhost:6379/0` remains active and under-specified.
+- [DECISION] Because many later assistant examples around Alpaca OAuth/token refresh, frontend WebSocket URLs, and retry logic may be weak → next agent should replace them with validated production patterns rather than extending them.
+- `Always include security measures when I ask about authentication and authorization.`
+- `Always include security protocols when I ask about API integration.`
+- [FACT] Latest exact recap trigger immediately before that: `What did we do so far?`
+- [FACT] Latest exact unresolved code branch right before recap: Python `requests.Session()` optimization for:
+  - `class LiveTradingAPI`
+  - `def get_data(self):`
+  - `def post_data(self, data):`
+  - improving from `400ms` to `180ms`
+- [FACT] Latest exact unresolved dashboard branch: user wants further optimization of the React `18.2` + Chart.js `4.3.0` dashboard after reaching `0.9 seconds after optimizations on May 26, 2024`.
+  - `/api/alerts`
+  - `/api/trades`
+  - `120ms` average API response time
+- [FACT] Latest exact unresolved realtime/frontend branch:
+  - `React 18.2`
+  - `Chart.js 4.3.0`
+  - WebSocket reconnect handling
+  - `TypeError: Cannot read property 'map' of undefined`
+- [FACT] Latest exact unresolved rate-limiter branch:
+  - updated requirement `250 requests per 15 minutes`
+- `Always include frontend framework versions when I ask about implementation details.`
+- `Always provide a summary table when I ask about test coverage statistics.`
+- `Always include exact software version numbers when I ask about upgrades.`
+- [FACT] Latest exact unresolved SNS microservice branch: user asked how to use `boto3.client('sns')` for microservice communication and later asked for error handling around `sns.publish(...)`.
+- [FACT] Latest exact unresolved alert escalation branch: user wants a robust alert escalation system with thresholds, retries, and notifications, but no finalized implementation structure exists yet.
+- [FACT] Latest exact unresolved Lambda/SQS branch: user asked about retry logic with exponential backoff for failed SQS-triggered alert escalation messages, but no validated production-ready implementation was finalized.
+- [FACT] Latest exact unresolved Lambda performance branch: user reduced Lambda memory from `1024MB` to `512MB` while keeping execution under `200ms`, and wants more optimization guidance.
+- [FACT] Latest exact unresolved SMTP/Twilio branch: user still has unresolved production-hardening questions around SMTP/Twilio adapters despite discussing `SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted.')` and Twilio phone-number validation.
+- [FACT] Latest exact unresolved DB modeling branch: user discussed `alerts_log` schema and REST API design for `/api/alerts/{id}/acknowledge`, but no canonical normalized schema/API spec was selected.
+- [DECISION] Because the latest interaction was summary-only and multiple branches remain open → next agent should ask the user which branch to continue, or offer a short choice list:
+- [DECISION] Because the user explicitly requires exact endpoints, versions, errors, TTLs, and security measures → future responses must preserve those literals exactly and include them proactively.
 
 ### Chronological Event Log (preserve temporal order)
-1. User planned a multi-language chatbot stack around `React 18.2`, `Node.js 18`, `PostgreSQL 14`, and microservices.
-2. User evaluated language detection approaches and later switched from `langdetect v1.0.1` to `franc v6.1.0`.
-3. User discussed language detection API implementation and encountered `TypeError: Cannot read property 'toLowerCase' of undefined`.
-4. User reported achieving `93%` accuracy on the language detection test set and wanted to reach `95%`.
-5. User discussed measuring and optimizing language detection latency from around `100ms`, later `180ms under 100 concurrent requests`, with goals of `under 50ms` and then `under 100ms`.
-6. User tested the language detection service with `500+ sample texts`.
-7. User planned / updated language detection deadlines, including changing from `March 15, 2024` to `March 18, 2024`.
-8. User integrated or planned integration of React frontend with Axios `v1.4` and hit a `404` due to frontend `GET` vs backend `POST /api/language-detect` mismatch.
-9. User worked on language indicator badges and auto-switching language in the React `18.2` chat UI.
-10. User discussed debounce logic for language detection with `300ms`.
-11. User discussed fallback to English when confidence is below `0.6`.
-12. User explored Redis caching for conversation context, last `10 messages`, and DB-query reduction.
-13. User chose `DeepL API v2` over `Google Translate API v3` because of `15% lower latency`.
-14. User planned translation API integration by `March 25, 2024`.
-15. User discussed using Winston logs for intermittent `500 Internal Server Error` in the language detection service.
-16. User asked how to implement JWT-secured language detection with tokens expiring after `1 hour`.
-17. User explicitly asked whether refresh tokens can be used so users do not need to re-authenticate after token expiry.
-18. User asked: `What did we do so far?`
-19. User requested this detailed continuation prompt.
+57. User asked what other technical indicators to add.
+58. User asked how to incorporate those indicators into an LSTM pipeline.
+59. User asked how to reduce RAM usage from `8GB` to `5GB`.
+60. User asked how to backtest an SMA crossover strategy on `5,000 historical data points` with `65% accuracy`.
+61. User asked about memory leaks in a data loader.
+62. User asked how to reduce training time from `3 hours` to `1.5 hours` on `NVIDIA RTX 3060`.
+63. User asked about Alpha Vantage polling for `AAPL` and `MSFT` every minute.
+64. User asked about JWT auth with `15 minutes` expiry and refresh tokens, including simultaneous expiry and offline users.
+65. User asked for sprint planning from `March 30 to April 12` for backtesting and paper trading.
+66. User asked about ML model fallback to last known good prediction.
+67. User asked again about JWT auth/refresh patterns.
+68. User asked about integrating backtesting with paper trading.
+69. User asked again about fallback prediction logic.
+70. User asked about Alpaca trade-execution webhook listener logging `HTTP 200`.
+71. User asked about an integration test for `fetcher -> ML model -> trade decision` targeting `93% success rate`.
+72. User asked about Flask async `RuntimeError` with Python `3.10 async features`.
+73. User asked how to switch to Hypercorn and then how to configure Hypercorn with HTTPS and Let’s Encrypt.
+74. User asked again about logging `HTTP 200` responses for Alpaca webhooks and whether Flask must keep running constantly.
+75. User asked about a `systemd` service for an ML Docker container.
+76. User asked about reducing Flask memory usage.
+77. User asked about Redis caching of ML predictions with `TTL of 30 seconds` and reducing inference calls by `40%`.
+78. User asked about diagnosing `ResourceExhaustedError` on GPU and reducing batch size from `128` to `64`.
+79. User asked for Docker Compose review while waiting for feedback by `April 1, 2024`.
+80. User asked how to reduce training time from `3 hours` to `1.5 hours`.
+81. User asked about exact Redis caching code for predictions.
+82. User stated they chose JWT over basic auth for statelessness and scalability.
+83. User asked about walk-forward validation on a `predictions` table.
+84. User asked about optimizing queries for the `predictions` table.
+85. User asked about `ValueError: Input 0 of layer lstm_1 is incompatible` in a walk-forward validation context.
+86. User asked how to add `actual_trend` and compute prediction accuracy in schema/API.
+87. User asked how to use Redis to cache predictions in an API.
+88. User asked about configuring Celery `5.3.0` for model retraining jobs.
+89. User asked about optimizing GitHub Actions Docker build/push.
+90. User asked about self-signed HTTPS for Flask and later Let’s Encrypt.
+91. User asked how to debug a Celery task failure.
+92. User asked how to speed up GitHub Actions builds.
+93. User asked again about Let’s Encrypt for Flask.
+94. User asked about estimating `18 hours` for backtesting + paper trading by `April 12, 2024`.
+95. User confirmed `18 hours`, `3 hours a day`, `6 days`, and prioritization plan.
+96. User said they improved logging and error messages in `ml_model.py` and wanted more robust error handling.
+97. User asked about switching REST API calls from `HTTP/1.1` to `HTTP/2`.
+98. User asked how to implement a backtesting framework using SMA and RSI.
+99. User asked about HTTP/2 with Flask and an ML model container.
+100. User reported a `requests.get`/`httpx` HTTP/2 snippet.
+101. User asked about adding `accuracy`, `precision`, and `recall` to LSTM evaluation after `60 epochs` and validation loss `0.028`.
+102. User explicitly added preference: always include model performance metrics.
+103. User asked how to integrate TensorBoard into an epoch-by-epoch loop.
+104. User asked whether custom metrics like F1 score can be logged in TensorBoard.
+105. User asked about implementing `backtest.py` to simulate an SMA crossover strategy on `50,000 historical data points` and noted `92% coverage with pytest 7.3.1 tests by April 12, 2024`.
+106. User then asked how to make the backtesting module more efficient while allowing more complex strategies later, showing a `BacktestModule` with `sma_crossover_strategy()` and `complex_strategy()`.
 847. [TOPIC: webpack_bundle_analyzer] User asked how to interpret `webpack-bundle-analyzer` results after reducing React bundle size by `20%` using `webpack 5.88.2`.
 848. [TOPIC: react_dynamic_imports] User asked for an example of using dynamic imports for lazy loading in React components.
 849. [TOPIC: eb_blue_green_pipeline_review] User asked for review of a GitHub Actions pipeline for blue-green deployment on AWS Elastic Beanstalk with environment `prod-v2`.

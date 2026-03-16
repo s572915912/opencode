@@ -25,3 +25,5 @@
 - [CONFLICT] many assistant snippets in this segment were technically weak, especially around RBAC, TLS, Flask-SocketIO, Eventlet, ELB, email, and auth caching; future continuation should validate official patterns before reuse
 - [DECISION] Because many recent assistant snippets were technically weak or invalid → future continuation should replace them with validated patterns rather than extend them.
 - [CONFLICT] Several immediately preceding assistant examples were technically weak or incorrect, especially around:
+- [DECISION] Because many later assistant examples around Alpaca OAuth/token refresh, Flask timeouts, Celery retries, Redis HA, RabbitMQ, Vault rotation, and ELK parsing were weak → future continuation should replace them with validated production patterns rather than extend those examples.
+- [DECISION] Because many later assistant examples around Alpaca OAuth/token refresh, frontend WebSocket URLs, and retry logic may be weak → next agent should replace them with validated production patterns rather than extending them.

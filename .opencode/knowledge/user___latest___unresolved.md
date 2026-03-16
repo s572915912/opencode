@@ -658,3 +658,30 @@
 - [FACT] exact latest CI/CD preference repeated in-thread: `Always provide deployment duration statistics when I ask about CI/CD pipelines.`
 - [FACT] exact latest UI/UX preference repeated in-thread: `Always include user satisfaction metrics when I ask about UI/UX design improvements.`
 - [DECISION] Because the latest interaction was recap/meta-summary only → next agent should not assume a single active branch and should either wait for the user’s next concrete direction or propose a small menu of likely branches:
+- [FACT] Missing exact latest active backtesting code context:
+- [FACT] Missing exact latest user ask wording: `How can I make my backtesting module more efficient? I'm currently using a simple SMA crossover strategy, but I want to add more complex strategies in the future.`
+- [DECISION] Because the latest user-provided code is `BacktestModule` with both `sma_crossover_strategy()` and `complex_strategy()` → the next agent should likely resume with a production-correct, vectorized, extensible strategy architecture rather than older JWT/Docker branches.
+- [FACT] Missing exact latest performance context: user wants the module efficient now **and** designed for more complex strategies later.
+- [FACT] Missing exact latest unresolved adjacent branch before the final prompt: live trading API optimization using:
+- [FACT] Exact latest user-provided cache code before the final summary request:
+- [FACT] Exact latest user ask wording before the summary request: they asked how to implement a TTL-based dict cache for trade data and whether a separate cache key per trade data point should be used.
+- [DECISION] Because the user’s final technical question before asking for the summary was about caching trade data with a Python dict + TTL → another valid next continuation is to replace that with a safer, centralized Redis-backed or managed TTL cache design, while honoring the Redis preference.
+- [FACT] Exact latest unresolved testing topic: integration testing for the paper trading module with logging and alerting via `pytest.fixture` remains active and under-specified.
+- [FACT] Exact latest unresolved webhook topic: live trade fill webhook verification with `200 OK` and latency under `80ms` remains active and under-specified.
+- [FACT] Exact latest unresolved Celery topic: performance tuning of Celery workers with Redis broker `redis://localhost:6379/0` remains active and under-specified.
+- [FACT] Latest exact user request before this summary: `Provide a detailed prompt for continuing our conversation above.`
+- [FACT] Latest exact recap trigger immediately before that: `What did we do so far?`
+- [FACT] Latest exact unresolved code branch right before recap: Python `requests.Session()` optimization for:
+- [FACT] Latest exact unresolved dashboard branch:
+- [FACT] Latest exact unresolved realtime/frontend branch:
+- [FACT] Latest exact unresolved rate-limiter branch:
+- [DECISION] Because the latest interaction was recap/meta-summary only → next agent should not assume one branch is selected; if the user says “continue,” likely safest options are:
+- [FACT] Latest exact unresolved SNS microservice branch: user asked how to use `boto3.client('sns')` for microservice communication and later asked for error handling around `sns.publish(...)`.
+- [FACT] Latest exact unresolved alert escalation branch: user wants a robust alert escalation system with thresholds, retries, and notifications, but no finalized implementation structure exists yet.
+- [FACT] Latest exact unresolved Lambda/SQS branch: user asked about retry logic with exponential backoff for failed SQS-triggered alert escalation messages, but no validated production-ready implementation was finalized.
+- [FACT] Latest exact unresolved Lambda performance branch: user reduced Lambda memory from `1024MB` to `512MB` while keeping execution under `200ms`, and wants more optimization guidance.
+- [FACT] Latest exact unresolved dashboard branch: user wants further optimization of the React `18.2` + Chart.js `4.3.0` dashboard after reaching `0.9 seconds after optimizations on May 26, 2024`.
+- [FACT] Latest exact unresolved SMTP/Twilio branch: user still has unresolved production-hardening questions around SMTP/Twilio adapters despite discussing `SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted.')` and Twilio phone-number validation.
+- [FACT] Latest exact unresolved DB modeling branch: user discussed `alerts_log` schema and REST API design for `/api/alerts/{id}/acknowledge`, but no canonical normalized schema/API spec was selected.
+- [DECISION] Because the latest interaction was summary-only and multiple branches remain open → next agent should ask the user which branch to continue, or offer a short choice list:
+- [DECISION] Because the user explicitly requires exact endpoints, versions, errors, TTLs, and security measures → future responses must preserve those literals exactly and include them proactively.
