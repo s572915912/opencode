@@ -1,0 +1,534 @@
+{
+  "test_type": "OpenCode BEAM Benchmark (500K)",
+  "scoring_method": "50% LLM Judge + 30% Token F1 + 20% Keyword Overlap",
+  "model": "changyouopenai/gpt-5.4",
+  "split": "500K",
+  "compaction_interval": 0,
+  "compaction_token_threshold": 128000,
+  "compaction_mode": "progressive(@128K tokens)",
+  "cases_tested": 2,
+  "results": [
+    {
+      "case_id": 2,
+      "session_id": "ses_317b91b8dffe5qak5kZyC1C9Ci",
+      "messages_fed": 386,
+      "token_usage": {
+        "input": 485804,
+        "output": 34892,
+        "cache_read": 17664,
+        "cache_write": 0,
+        "api_total": 520696
+      },
+      "before_compaction": {
+        "avg_combined": 0,
+        "results": []
+      },
+      "after_compaction": {
+        "avg_combined": 0.4725,
+        "results": [
+          {
+            "type": "abstention",
+            "question": "Can you tell me more about Taylor's paramedic background and any certifications they hold?",
+            "expected": "Based on the provided chat, there is no information related to Taylor's paramedic background or certifications.",
+            "model_answer": "I don't have any stored details about Taylor's paramedic background or certifications in the project context so far.\n\nWhat I do know is:\n- you mentioned planned user acceptance testing with `5 paramedic volunteers`\n- no names, roles, license levels, or certifications were included\n- there is no record here of Taylor specifically\n\nIf you want, I can help in one of these ways:\n1. draft a short professional bio for Taylor once you share their details\n2. make a certification checklist for a paramedic tester or advisor\n3. help you structure a team roster with credentials, scope, and compliance notes",
+            "scores": {
+              "keyword": 0.545,
+              "token_f1": 0.174,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "abstention",
+            "question": "What specific criteria did I use to decide on the 20 COCO classes for real-time detection?",
+            "expected": "Based on the provided chat, there is no information related to the criteria for selecting the 20 COCO classes.",
+            "model_answer": "I don't have a recorded list of the exact decision criteria you used for choosing those 20 COCO classes.\n\nFrom the project context, the most likely criteria were:\n- relevance to the paramedic/emergency-response use case\n- classes that are common in indoor/outdoor scene monitoring\n- objects that matter for counting, tracking, or alerting\n- classes that remain reliable at `640x480` and real-time speed targets\n- limiting class count to protect CPU latency and memory budgets\n\nWhat is not captured so far:\n- the exact 20-class list\n- a written scoring rubric or threshold\n- whether you prioritized scene frequency, safety importance, model accuracy, or annotation quality most\n\nIf you want, I can help reconstruct the selection logic by turning it into a clear rubric, for example:\n1. operational relevance\n2. detection accuracy at your target resolution\n3. tracking stability\n4. alert value\n5. inference cost on CPU/GPU",
+            "scores": {
+              "keyword": 0.364,
+              "token_f1": 0.082,
+              "llm_judge": 0.3,
+              "combined": 0.255
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I ever used Alpine Linux in my deployments to reduce container image sizes?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have never used Alpine Linux or reduced container image sizes, but you also mentioned migrating backend containers to Alpine Linux and reducing image size significantly. Could you clarify which is correct?",
+            "model_answer": "You considered it, but I don't see evidence that you actually used Alpine in a deployment.\n\nWhat the project context shows:\n- active base image: `python:3.10-slim`\n- alternative base image discussed: `python:3.10-alpine`\n- Docker startup and image-size optimization came up several times\n\nSo the safest reading is:\n- yes, Alpine was on the table as an optimization option\n- no confirmed record says you deployed with Alpine in production or finalized it as the base image\n\nIf you want, I can also summarize the tradeoff between `python:3.10-slim` and `python:3.10-alpine` for your OpenCV/Flask stack.",
+            "scores": {
+              "keyword": 0.24,
+              "token_f1": 0.135,
+              "llm_judge": 0.3,
+              "combined": 0.25
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I deployed applications using AWS ECS Fargate before?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have never deployed any application to AWS or used ECS Fargate, but you also mentioned deploying backend and frontend containers on AWS ECS Fargate with specific configurations. Could you clarify which is correct?",
+            "model_answer": "You expressed a preference for `AWS ECS Fargate`, but I don't see a confirmed record that you previously deployed an app with it.\n\nWhat the context does show:\n- you prefer `AWS ECS Fargate` to reduce infrastructure management\n- deployment discussions included AWS, blue-green rollout, ALB, and `AWS CodeDeploy`\n- ECS task sizing was discussed, including increasing CPU from `512` to `1024`\n\nSo the safest answer is:\n- Fargate was clearly part of your intended deployment direction\n- I do not have proof here that you had already used Fargate before this project or completed a past Fargate deployment\n\nIf you want, I can list everything in the notes that points to ECS/Fargate versus EC2.",
+            "scores": {
+              "keyword": 0.24,
+              "token_f1": 0.122,
+              "llm_judge": 0.4,
+              "combined": 0.306
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "Can you list the order in which I brought up different challenges and improvements related to my object detection and tracking projects throughout our conversations, in order (mention 12 items in order)?",
+            "expected": "You mentioned these topics in this order: 1) Initial setup issues integrating the detection model with the webcam feed, 2) Concerns about monitoring and maintaining performance latency, 3) Troubleshooting segmentation faults and error handling in the detection pipeline, 4) Questions about whether the model or video capture was causing issues, 5) Planning a project milestone for completing the detection pipeline, 6) Exploring model optimization by switching to a more efficient variant, 7) Implementing fallback mechanisms for GPU/CPU inference and measuring latency, 8) Debugging data association problems with the Hungarian algorithm in multi-object tracking, 9) Enhancing user interaction features like zooming and panning in the app, 10) Setting up monitoring tools for performance metrics using containerized services, 11) Improving code quality through refactoring, and 12) Benchmarking model performance before and after optimization with specialized tools.",
+            "model_answer": "Yes — based on the stored conversation history, this is the best reconstructed order of the main challenges and improvements you brought up:\n\n1. basic real-time object detection pipeline setup with YOLO/OpenCV\n2. frame latency and memory pressure reduction, including resizing to `480p`\n3. camera reliability issues such as invalid frames and fallback camera handling\n4. counting logic bugs, including fixes like `defaultdict(int)` and safer NMS handling\n5. modular backend/API planning with Flask endpoints for control and observability\n6. multi-object tracking work, starting with SORT and planning for counting integration\n7. frontend visualization planning for tracked objects and UI monitoring\n8. containerization and deployment issues, especially Docker/OpenCV runtime dependencies\n9. inference and serialization optimization, including TensorRT exploration and `orjson`\n10. production architecture expansion into AWS deployment, ALB, blue-green rollout, and CodeDeploy\n11. WebSocket instability investigation, including disconnects, handshake failures, sticky sessions, and timeout tuning\n12. post-release hardening and performance work, including Nginx gzip, Redis caching, Grafana/Slack alerts, CloudTrail parsing, graceful shutdown, Cypress E2E, and architecture bottleneck analysis after `1.0.0`\n\nA couple of notes:\n- this is a reconstructed sequence from the accumulated notes, not a verbatim timestamped transcript\n- some topics overlapped, especially tracking, deployment, and performance tuning\n\nIf you want, I can also turn this into:\n1. a stricter timeline with dates where available\n2. a challenge → solution table\n3. a project evolution summary split into detection, tracking, deployment, and operations",
+            "scores": {
+              "keyword": 0.385,
+              "token_f1": 0.266,
+              "llm_judge": 0.2,
+              "combined": 0.244
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "Can you walk me through the order in which I brought up different aspects of optimizing and integrating my object detection and tracking pipeline throughout our conversations, in order (mention 10 items)?",
+            "expected": "You mentioned these aspects in this order: 1) Loading and running inference with the YOLOv5s model on CPU, 2) Setting up dataset and data loader for CPU evaluation of the YOLO model, 3) Implementing and integrating a Tracker module stub for multi-object tracking with SORT, 4) Converting and optimizing the YOLOv5 model using TensorRT on an NVIDIA GPU, 5) Improving and optimizing the SORT tracking code to reduce overhead, 6) Applying coordinate mapping and Kalman filter fundamentals for tracking visualization, 7) Adding frame timestamp interpolation and planning real-time visualization with a React frontend, 8) Debugging CUDA out of memory errors in a Flask app using PyTorch and OpenCV, 9) Integrating security scanning into a CI/CD pipeline with Snyk CLI, and 10) Optimizing the object detection pipeline using OpenCV DNN with plans for future DeepSORT integration.",
+            "model_answer": "Yes — here’s the best reconstructed order of the pipeline optimization and integration topics you raised:\n\n1. setting up the core real-time detection pipeline with YOLO/OpenCV\n2. reducing frame-processing cost to hit latency goals, including downscaling to `480p`\n3. controlling memory usage after high-resolution processing caused allocation failures\n4. improving capture robustness with frame validation and camera fallback handling\n5. fixing detection post-processing edge cases such as empty NMS results\n6. adding object counting and stabilizing count state with safer data structures\n7. integrating multi-object tracking with SORT for real-time ID persistence\n8. separating detection and API concerns with a modular Flask-based backend design\n9. optimizing inference/runtime paths with TensorRT exploration, OpenCV tuning, and faster JSON serialization\n10. extending the pipeline into production operations: WebSocket streaming reliability, Redis caching, Docker startup optimization, Nginx compression, and end-to-end bottleneck analysis after `1.0.0`\n\nIf you want, I can also rewrite this as:\n1. a detection → tracking → deployment evolution timeline\n2. a problem → fix table\n3. a dated milestone list using the project dates we have",
+            "scores": {
+              "keyword": 0.424,
+              "token_f1": 0.33,
+              "llm_judge": 0.1,
+              "combined": 0.206
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "Which versions of the software and language did I say I was using when I first described my setup?",
+            "expected": "You mentioned using OpenCV version 4.7.0 and Python 3.10 at the start of your setup description.",
+            "model_answer": "From the earliest setup details I have, you said you were using:\n\n- `Python 3.10`\n- `OpenCV 4.7.0`\n\nThere is also a later more specific note that lists:\n- `Python 3.10.6`\n\nSo the safest interpretation is:\n- your initial language/runtime version was `Python 3.10`\n- your initial key library version was `OpenCV 4.7.0`\n- later, the Python version was refined to `3.10.6`",
+            "scores": {
+              "keyword": 0.769,
+              "token_f1": 0.476,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "What hardware did I say I was targeting for the inference time performance?",
+            "expected": "You said you were targeting an Intel i5-8250U CPU for the inference time performance.",
+            "model_answer": "You mentioned two target hardware contexts for inference performance:\n\n- CPU target: `Intel i5-8250U`\n- GPU target: `NVIDIA RTX 2060`\n\nIf you mean the faster inference benchmarks specifically, those were tied to the `NVIDIA RTX 2060`, including notes like `45ms` per frame and later TensorRT-accelerated results.",
+            "scores": {
+              "keyword": 0.667,
+              "token_f1": 0.3,
+              "llm_judge": 0.8,
+              "combined": 0.8
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "Can you show me how my model performed after the latest changes?",
+            "expected": "Response should include a summary table presenting the performance metrics clearly",
+            "model_answer": "Here’s the latest recorded performance snapshot for your model and adjacent pipeline.\n\n| Area | Latest recorded result | Notes |\n|---|---:|---|\n| Frame latency | `90ms` average | after TensorRT acceleration |\n| Inference time | `45ms/frame` | on `NVIDIA RTX 2060` |\n| Benchmark run | `60ms +/- 5ms` over `1000 frames` | separate benchmark record |\n| Earlier optimized latency | `160ms` | improved from `190ms` under same conditions |\n| Alternate optimization result | `210ms` | separate report from an earlier tuning pass |\n| Target latency | `under 250ms/frame` | target still met by latest GPU results |\n| Memory usage | `900MB` | during `30-minute` continuous run with counting enabled |\n| Tracker memory | `90MB` | during `1-hour` continuous run |\n| Frontend memory | `100MB` | during `1-hour` streaming session |\n\nGPU memory usage stats:\n- I do not have a recorded exact VRAM number for the latest inference run.\n- What I do have is that the latest best inference results were on `NVIDIA RTX 2060` with TensorRT, at `90ms` average latency and `45ms/frame` inference time.\n\nWhat changed most recently:\n- latency improved from earlier `250ms -> 190ms -> 160ms`\n- TensorRT later brought average frame latency down further to `90ms`\n- a separate benchmark logged `60ms +/- 5ms`\n- the system stayed within your `under 1GB` RAM goal, with the latest app-wide memory note at `900MB`\n\nOne caveat:\n- your notes contain multiple benchmark contexts, so these numbers likely come from different test setups rather than one single run.\n\nIf you want, I can next turn this into:\n1. a chronological performance timeline\n2. a CPU vs GPU comparison table\n3. a bottleneck breakdown for detection, tracking, serialization, and streaming",
+            "scores": {
+              "keyword": 0.25,
+              "token_f1": 0.03,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "How can I add a feature to enable or disable the object counting overlay while the app is running?",
+            "expected": "Response should include Python code examples illustrating how to implement the toggle feature",
+            "model_answer": "Add a runtime flag in the backend, expose a small API to toggle it, and only draw the overlay when that flag is on.\n\nA simple Flask-side pattern looks like this:\n\n```python\nfrom flask import Flask, jsonify, request\n\napp = Flask(__name__)\n\nstate = {\n    \"counting_overlay\": True,\n}\n\n@app.route(\"/config/counting-overlay\", methods=[\"GET\"])\ndef get_counting_overlay():\n    return jsonify(state)\n\n@app.route(\"/config/counting-overlay\", methods=[\"POST\"])\ndef set_counting_overlay():\n    data = request.get_json(silent=True) or {}\n    enabled = bool(data.get(\"enabled\", True))\n    state[\"counting_overlay\"] = enabled\n    return jsonify(state)\n```\n\nThen in your frame rendering code, gate the overlay drawing:\n\n```python\ndef draw_frame(frame, counts, state):\n    if state[\"counting_overlay\"]:\n        y = 30\n        for label, value in counts.items():\n            text = f\"{label}: {value}\"\n            cv2.putText(\n                frame,\n                text,\n                (10, y),\n                cv2.FONT_HERSHEY_SIMPLEX,\n                0.6,\n                (0, 255, 0),\n                2,\n            )\n            y += 25\n\n    return frame\n```\n\nIf your frontend is React, wire a toggle button to that endpoint:\n\n```python\n# Backend payload expected from frontend:\n# POST /config/counting-overlay\n# {\"enabled\": false}\n```\n\nRecommended behavior:\n- keep detection and counting running even when the overlay is hidden\n- only disable the visual text overlay, not the underlying count logic\n- expose current state through `GET /config/counting-overlay` so the UI stays in sync\n\nIf you want a cleaner architecture, keep this in the API layer and pass the flag into `object_counter.py` or your renderer instead of storing UI state inside detection code.\n\nNatural next steps:\n1. add a keyboard shortcut like `c` for local desktop toggling\n2. add a React switch bound to `/config/counting-overlay`\n3. persist the setting in SQLite or Redis so it survives restarts",
+            "scores": {
+              "keyword": 0.3,
+              "token_f1": 0.046,
+              "llm_judge": 0.6,
+              "combined": 0.417
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "What is the typical inference time per frame when running the TensorRT engine on an RTX 2060 GPU?",
+            "expected": "45ms per frame",
+            "model_answer": "The typical recorded inference time per frame was `45ms` on the `NVIDIA RTX 2060` with the TensorRT engine.\n\nSummary table:\n\n| Metric | Value |\n|---|---:|\n| Inference time per frame | `45ms` |\n| Average frame latency | `90ms` |\n| Benchmark variant | `60ms +/- 5ms` over `1000 frames` |\n| GPU | `NVIDIA RTX 2060` |\n\nGPU memory usage stats:\n- I do not have an exact recorded VRAM usage number for that TensorRT run.\n- The stored notes only confirm the hardware as `NVIDIA RTX 2060` and the performance values above.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.133,
+              "llm_judge": 0.8,
+              "combined": 0.8
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "What is the total frame latency with the counting logic enabled in my object detection app?",
+            "expected": "180ms, which is well under the 250ms target",
+            "model_answer": "The closest recorded total frame latency I have with counting enabled is `90ms` average per frame after TensorRT acceleration.\n\nSummary table:\n\n| Metric | Value |\n|---|---:|\n| Total frame latency | `90ms` average |\n| Inference time | `45ms/frame` |\n| Benchmark variant | `60ms +/- 5ms` over `1000 frames` |\n| Counting-enabled memory note | `900MB` during a `30-minute` run |\n| Latency target | `under 250ms/frame` |\n\nGPU memory usage stats:\n- I do not have an exact recorded VRAM value for the counting-enabled run.\n- The latest GPU-backed results are associated with the `NVIDIA RTX 2060`.\n\nOne caveat:\n- I have a definite note that counting was enabled for the `900MB` memory run, but the latency notes do not explicitly say “counting enabled” on the same benchmark entry. So `90ms` is the best latest total-latency figure I can tie to the current optimized system, but not with a perfectly explicit counting-only benchmark label.",
+            "scores": {
+              "keyword": 0.5,
+              "token_f1": 0.082,
+              "llm_judge": 0.1,
+              "combined": 0.156
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "How does the total estimated time I planned for implementing object counting and multi-class tracking compare to the time I allocated for testing and deploying the TensorRT acceleration feature flag system?",
+            "expected": "The total estimated time for implementing object counting and multi-class tracking is 20 days, which is longer than the combined time allocated for testing and deploying the TensorRT acceleration feature flag system, which spans approximately 14 days including testing, deployment, and final preparations.",
+            "model_answer": "Based on the dates we have, you allocated much more time to object counting and multi-class tracking.\n\nBest reconstruction:\n- object counting and multi-class tracking: from the `March 15, 2024` basic detection milestone to the `April 1, 2024` tracking/counting milestone, about `17 days`\n- TensorRT feature flag system: from the `April 15, 2024` API-extension milestone to the `April 20, 2024` feature flag milestone, about `5 days`\n\nSo the comparison is:\n- counting + multi-class tracking: `~17 days`\n- TensorRT feature flag work: `~5 days`\n- difference: `~12 days more` for counting/tracking\n- ratio: roughly `3.4x` more time for counting/tracking\n\nOne caveat:\n- the notes explicitly mark milestone dates, not detailed start/finish logs, so this is a timeline-based estimate rather than a confirmed timesheet.",
+            "scores": {
+              "keyword": 0.467,
+              "token_f1": 0.329,
+              "llm_judge": 0.5,
+              "combined": 0.452
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "How can I architect a modular object detection and tracking pipeline that efficiently separates model inference, NMS filtering, and multi-object tracking while minimizing memory usage and handling detection confidence parsing errors?",
+            "expected": "You should design a Detector class that separates model inference and NMS filtering into distinct methods, ensuring efficient tensor conversion and confidence thresholding; integrate a Tracker module using SORT with proper confidence parsing and bounding box formatting; manage memory by optimizing data structures and inference backend settings; and architect the tracker update method to incorporate Kalman filter predictions and Hungarian algorithm data association, preparing for future DeepSORT upgrades.",
+            "model_answer": "Split the pipeline into three strict stages with small, typed payloads passed forward:\n\n- inference: model-specific code returns raw tensors only\n- postprocess: parse confidences, decode boxes, run NMS, normalize outputs\n- tracking: consume only final detections and update track IDs\n\nThat keeps each part replaceable and avoids duplicating frame data in memory.\n\n**Recommended Shape**\n\n- `Detector`: owns model loading and inference\n- `Decoder`: converts raw outputs into lightweight detections\n- `Tracker`: consumes detections after NMS\n- `Pipeline`: orchestrates one frame at a time, with no frame buffering unless explicitly needed\n\nUse one compact detection object everywhere after decoding:\n\n```python\nfrom dataclasses import dataclass\n\n@dataclass(slots=True)\nclass Detection:\n    box: tuple[float, float, float, float]\n    score: float\n    cls: int\n```\n\nUsing `slots=True` helps reduce per-object memory overhead.\n\n**Suggested Flow**\n\n```text\nframe -> preprocess -> inference -> decode/confidence parse -> NMS -> tracking -> render/output\n```\n\nKey rule:\n- never let tracking read raw model outputs\n- never let NMS know about tracker state\n- never copy the frame unless you are rendering overlays\n\n**Python Example**\n\n```python\nimport cv2\nimport numpy as np\nfrom dataclasses import dataclass\n\n@dataclass(slots=True)\nclass Detection:\n    box: tuple[float, float, float, float]\n    score: float\n    cls: int\n\n\nclass Detector:\n    def __init__(self, net):\n        self.net = net\n\n    def infer(self, frame):\n        blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (416, 416), swapRB=True, crop=False)\n        self.net.setInput(blob)\n        return self.net.forward()\n\n\nclass Decoder:\n    def __init__(self, conf=0.4, nms=0.4):\n        self.conf = conf\n        self.nms = nms\n\n    def decode(self, out, shape):\n        h, w = shape[:2]\n        dets = []\n\n        for row in out.reshape(-1, out.shape[-1]):\n            det = self._parse(row, w, h)\n            if det is not None:\n                dets",
+            "scores": {
+              "keyword": 0.426,
+              "token_f1": 0.097,
+              "llm_judge": 0.56,
+              "combined": 0.424
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm looking to improve the speed of my object detection app running on my current setup. What steps would you suggest I take to get better performance?",
+            "expected": "Response should focus on optimizations suitable for CPU-only environments and avoid recommending GPU-based solutions or hardware upgrades.",
+            "model_answer": "Yes — on your current setup, the biggest wins are likely to come from reducing per-frame work before changing the model.\n\n| Area | Best next step | Expected impact |\n|---|---|---|\n| Input frames | resize early to `480p` or keep `640x480` fixed | large latency and memory reduction |\n| Inference path | use TensorRT on `NVIDIA RTX 2060`, keep CPU fallback | biggest speedup if GPU is available |\n| Model workload | limit to your selected `20` classes and raise confidence threshold if acceptable | fewer downstream detections to process |\n| Postprocess | make NMS/filtering defensive and lightweight | lower CPU overhead and fewer parsing failures |\n| Tracking | keep `SORT` for now, tune `max_age` and `min_hits` conservatively | cheaper than moving to heavier tracking |\n| Serialization/serving | switch hot JSON paths to `orjson`, gzip frontend assets | lower API/UI latency |\n| Database/cache | add Redis in front of repeated SQLite reads | removes avoidable backend stalls |\n| Containers | optimize `Dockerfile` startup path and dependencies | faster boot, better deploy responsiveness |\n\nWhat I’d do first, in order:\n\n1. resize frames before inference and keep one fixed processing resolution\n2. profile the pipeline separately: capture, preprocess, infer, NMS, tracking, render, API send\n3. if GPU is available, use the TensorRT engine on the `RTX 2060`\n4. if CPU-only, reduce class count, skip every nth frame if needed, and keep overlays cheap\n5. avoid copying frames and discard raw model outputs immediately after decoding\n6. keep tracking lightweight with `SORT`; defer `DeepSORT` until you need better re-ID\n7. optimize container/runtime overhead: slim image, fewer imports at startup, warm model once\n8. keep Nginx gzip and add caching/CDN for frontend assets\n\nSummary table of known recorded performance:\n\n| Metric | Latest recorded value |\n|---|---:|\n| Average frame latency | `90ms` |\n| Inference time | `45ms/frame` |\n| Benchmark variant | `60ms +/- 5ms` over `1000 frames` |\n| API l",
+            "scores": {
+              "keyword": 0.286,
+              "token_f1": 0.033,
+              "llm_judge": 0.3,
+              "combined": 0.231
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm planning to enhance the state management in my frontend app. What approaches would you suggest I explore?",
+            "expected": "Response should recommend or prioritize solutions compatible with React and Redux, reflecting scalability and community support considerations without suggesting alternatives that contradict the stated preference.",
+            "model_answer": "For your React frontend, I’d explore state management in layers instead of putting everything into one global store.\n\n- local UI state: keep component-only things in `useState` or `useReducer`\n- shared app state: use React Context for small cross-cutting state like auth, theme, selected camera, overlay toggles\n- server state: use a query library like `@tanstack/react-query` for API data, polling, caching, retries, and background refresh\n- real-time state: keep WebSocket stream data in a focused store so frequent updates do not rerender the whole app\n- complex global state: if the dashboard is getting busy, consider `Zustand` or `Redux Toolkit`; `Zustand` is usually lighter and simpler\n\nGiven your app, I’d split state like this:\n- detection config: thresholds, tracking enabled, counting overlay\n- session state: auth, user, token refresh status\n- live stream state: connection status, latest frame metadata, alerts\n- server cache: `/status`, `/metrics`, `/config`, `/tracker`\n- UI state: panels, filters, selected objects, chart ranges\n\nA practical path to try:\n1. keep existing local state where possible\n2. add `React Query` for backend/API state\n3. add `Zustand` for high-frequency live detection/tracking state\n4. keep WebSocket payloads normalized so updates are small and predictable\n\nThings to watch for:\n- avoid one giant context; it causes broad rerenders\n- separate fast-changing stream data from slow-changing settings\n- normalize tracked objects by `id` if you render many updates\n- memoize expensive derived values for charts, counts, and overlays\n\nA good starter stack would be:\n- `useState` / `useReducer` for local state\n- `@tanstack/react-query` for API/server state\n- `Zustand` for WebSocket/live dashboard state\n\nIf you want, I can next give you:\n1. a recommended state architecture for your current React app\n2. a side-by-side comparison of Context vs Zustand vs Redux Toolkit\n3. a sample store design for detection, tracking, and alerting state",
+            "scores": {
+              "keyword": 0.167,
+              "token_f1": 0.024,
+              "llm_judge": 0.5,
+              "combined": 0.331
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you summarize what I learned about implementing and improving object detection and tracking in my projects?",
+            "expected": "You worked on refactoring your Detector class to separate model inference and non-maximum suppression into distinct methods for better modularity. You also explored integrating a Tracker module using the SORT algorithm to enable multi-object tracking, including handling detections, drawing tracked objects, and improving tracking efficiency. Additionally, you studied designing a more advanced tracker component that combines Kalman filtering and the Hungarian algorithm for data association, preparing for future upgrades like DeepSORT.",
+            "model_answer": "You learned that getting object detection and tracking working well is mostly about pipeline discipline, not just model choice.\n\n- detection works best when the pipeline is modular: separate inference, postprocess/NMS, tracking, counting, rendering, and API layers\n- real-time performance improved most from practical optimizations: downscaling frames, limiting classes, tuning thresholds, reducing copies, and later using TensorRT on the `NVIDIA RTX 2060`\n- memory stability mattered as much as speed: high-resolution processing caused allocation failures, so fixed lower resolutions and lightweight data flow were important\n- robustness required defensive handling of edge cases: invalid frames, empty NMS outputs, malformed confidence parsing, and counting state bugs\n- lightweight tracking with `SORT` fit your real-time goals better than heavier approaches, while `DeepSORT` stayed a future upgrade for better ID consistency under occlusion\n- counting and overlays should be runtime-configurable, with the visual overlay separated from the underlying counting logic\n- backend integration became a major part of the system: Flask APIs, WebSocket streaming, graceful shutdown, caching, and deployment concerns all affected end-to-end responsiveness\n- production performance is broader than inference: `Nginx` gzip, Redis caching, Docker startup tuning, and API latency reduction all contributed to a faster app\n- deployment and observability turned out to be core engineering work: blue-green rollout, CloudTrail parsing, Grafana/Slack alerts, and WebSocket troubleshooting were all part of making the system usable\n- your architecture direction became clear over time: keep detection and API separated, preserve a CPU fallback, and use GPU/TensorRT where available for production\n\nIn short: you moved from “make detection run” to “build a reliable, modular, production-ready real-time vision system.”\n\nIf you want, I can also turn this into:\n1. a lessons-learned timeline\n2. a challenge -> fix ta",
+            "scores": {
+              "keyword": 0.275,
+              "token_f1": 0.11,
+              "llm_judge": 0.4,
+              "combined": 0.309
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you provide a detailed and comprehensive summary that captures the full scope and progression of the topic, integrating all the key developments, challenges, and solutions discussed across the different sessions?",
+            "expected": "The summary should cohesively integrate the distinct yet interconnected aspects of the topic, reflecting the modular refactoring of the detection pipeline into separate inference and filtering methods, the design and integration of a multi-object tracking module using the SORT algorithm, and the progressive enhancement of tracking capabilities including Kalman filter and Hungarian algorithm-based data association. It should also cover the implementation of robust error handling and logging mechanisms within a related application context. The narrative must illustrate how these components interact within the broader system, highlighting the evolution from initial code stubs to fully functional, efficient, and maintainable modules. Additionally, it should address the handling of edge cases such as confidence parsing errors, the strategic use of OpenCV utilities for visualization, and the forward-looking considerations for future upgrades like DeepSORT. The summary must weave together these technical threads into a coherent story of iterative development, integration, and optimization, demonstrating a deep understanding of the architectural decisions, algorithmic choices, and practical implementation details.",
+            "model_answer": "You evolved the project from a basic real-time vision prototype into a production-minded detection, tracking, and monitoring system with clear separation between computer-vision logic, APIs, frontend behavior, deployment, and operations.\n\n**Overall Arc**\n- the work started around a real-time object detection app using `Python 3.10` and `OpenCV 4.7.0`, targeting `640x480`, `30 FPS`, latency under `250ms/frame`, and RAM under `1GB`\n- over time, the scope expanded from “make inference run” into a complete platform: detection, tracking, counting, overlays, REST APIs, WebSocket streaming, React UI, Docker packaging, AWS deployment, monitoring, alerting, and post-launch maintenance\n- the design direction became more intentional: keep detection and API layers modular, favor `SORT` now for simplicity, plan `DeepSORT` later, and support both GPU acceleration with TensorRT and a CPU fallback for portability\n\n**Early Detection Work**\n- the first major milestone was getting the basic detection pipeline working by `March 15, 2024`\n- model/runtime discussions included OpenCV DNN, PyTorch, ONNX, and TensorRT, but the loading approach never fully standardized; some examples still used `cv2.dnn.readNetFromDarknet('yolov5s.cfg', 'yolov5s.weights')`\n- your initial hardware/performance framing centered on an `Intel i5-8250U` for CPU constraints and an `NVIDIA RTX 2060` for accelerated inference\n- the project adopted practical constraints early: fixed camera indices `0` and fallback `1`, USB enumeration over `0..9`, and lower-resolution processing when necessary\n\n**Performance Tuning**\n- one of the first recurring issues was end-to-end latency, so you focused on shrinking frame-processing cost before pursuing model swaps\n- high-resolution processing caused a `MemoryError: Unable to allocate 1.2GB array`, which pushed you toward downscaling to `480p`\n- reported latency improved in stages: `250ms -> 190ms -> 160ms` under comparable conditions, with another branch reporting `250ms -> 210ms",
+            "scores": {
+              "keyword": 0.486,
+              "token_f1": 0.102,
+              "llm_judge": 0.2,
+              "combined": 0.218
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How many days do I have between when I confirmed the project deadline and when I planned to have the YOLOv5s model integrated and ready?",
+            "expected": "I have 14 days between confirming the project deadline on March 1 and planning to have the YOLOv5s model integrated by March 15.",
+            "model_answer": "Based on the stored timeline, the best estimate is `16 days`.\n\nWhy:\n- confirmed project deadline: `end of the month`, interpreted as `March 31, 2024`\n- YOLOv5s integrated/basic detection pipeline ready: `March 15, 2024`\n\nSo:\n- `March 31, 2024 - March 15, 2024 = 16 days`\n\nOne caveat:\n- the notes say “end of the month” rather than an explicit dated deadline confirmation, so `16 days` is the most reasonable reconstruction from the timeline we have.",
+            "scores": {
+              "keyword": 0.615,
+              "token_f1": 0.286,
+              "llm_judge": null,
+              "combined": 0.451
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How much time passed from when I first committed to daily work on the project until I planned to have the detection model integrated and ready for testing?",
+            "expected": "You began focusing on daily progress and organization at the start of March, and planned to have the detection model integrated by mid-March, so the elapsed time spans roughly two weeks between your initial commitment to steady work and your targeted integration milestone.",
+            "model_answer": "The best estimate is `14 days`.\n\nUsing the timeline we have:\n- first ongoing project commitment reference: `March 1, 2024`\n- detection model integrated/basic pipeline ready for testing: `March 15, 2024`\n\nSo:\n- `March 15, 2024 - March 1, 2024 = 14 days`\n\nCaveat:\n- I only have `March 1, 2024` as the earliest project schedule/commitment marker, not a literal quote saying “I committed to daily work” on that exact day. So `14 days` is the best timeline-based reconstruction.",
+            "scores": {
+              "keyword": 0.308,
+              "token_f1": 0.222,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": 4,
+      "session_id": "ses_317ac6050ffehTSxOA0b6dKOc5",
+      "messages_fed": 442,
+      "token_usage": {
+        "input": 489335,
+        "output": 33721,
+        "cache_read": 19968,
+        "cache_write": 0,
+        "api_total": 523056
+      },
+      "before_compaction": {
+        "avg_combined": 0,
+        "results": []
+      },
+      "after_compaction": {
+        "avg_combined": 0.5092,
+        "results": [
+          {
+            "type": "abstention",
+            "question": "What were the main discussion points or decisions made during the sprint planning meeting on April 3, 2024?",
+            "expected": "Based on the provided chat, there is no information related to the discussion points or decisions from the April 3, 2024 sprint planning meeting.",
+            "model_answer": "The confirmed discussion point was Instagram webhook integration.\n\nFrom what we captured, the main decisions tied to the April 3, 2024 sprint planning meeting were:\n- Instagram webhook integration was explicitly on the agenda.\n- The Instagram automation prototype timeline shifted from `April 1, 2024` to `April 5, 2024`.\n- AWS API Gateway work for future webhook integration was deferred to `sprint 3` because it was not the immediate priority.\n\nI do not have a fuller meeting record beyond those points, so I would treat anything more detailed than that as unconfirmed. If you want, I can also turn this into a short sprint-planning note format.",
+            "scores": {
+              "keyword": 0.6,
+              "token_f1": 0.273,
+              "llm_judge": 0.0,
+              "combined": 0.158
+            }
+          },
+          {
+            "type": "abstention",
+            "question": "What are the specific criteria or factors that led to choosing APScheduler over raw cron jobs initially?",
+            "expected": "Based on the provided chat, there is no information related to the specific criteria or factors behind choosing APScheduler over raw cron jobs.",
+            "model_answer": "The deciding factors were:\n- Better Python integration, so scheduling logic stays in the application instead of split between app code and system cron.\n- Better error handling flexibility, which you explicitly preferred.\n- Easier control of retries, logging, and job state from Python code.\n- Better fit for the broader push toward asynchronous API calls and more robust automation workflows.\n- Easier testing and regression coverage than raw cron-driven behavior.\n\nYour stated preference was: “I prefer using APScheduler over raw cron jobs for better Python integration and error handling flexibility.”",
+            "scores": {
+              "keyword": 0.375,
+              "token_f1": 0.174,
+              "llm_judge": 0.0,
+              "combined": 0.1
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I ever rotated my Twitter API keys or updated the related environment variables for my integration?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have rotated the Twitter API keys and updated the environment variables, but you also mentioned that you have never done so. Could you clarify which is correct?",
+            "model_answer": "Yes.\n\n- On `April 15, 2024`, `TWITTER_API_KEY` and `TWITTER_API_SECRET` were rotated.\n- That means the related environment variables for your Twitter integration were updated at that point.",
+            "scores": {
+              "keyword": 0.3,
+              "token_f1": 0.286,
+              "llm_judge": 0.0,
+              "combined": 0.116
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I developed any hashtag generation tools using spaCy or other NLP libraries?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have developed a hashtag generator using spaCy v3.5.0, but you also mentioned that you have never developed any hashtag generation tools using spaCy or any NLP library. Could you clarify which is correct?",
+            "model_answer": "Yes, at least in discussion/context.\n\n- `hashtag_generator.py` was one of the explicitly mentioned project modules.\n- `spaCy v3.5.0` was part of the tracked stack.\n- We also captured prior work around hashtag validation and Unicode hashtag generation.\n\nWhat is not fully confirmed from the record is how far that tool was implemented versus discussed/refined. So the safest answer is: yes, you had a hashtag-generation component in scope, and `spaCy v3.5.0` was part of the NLP tooling context.",
+            "scores": {
+              "keyword": 0.44,
+              "token_f1": 0.261,
+              "llm_judge": 0.3,
+              "combined": 0.311
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "Can you walk me through the order in which I brought up different challenges and solutions related to my social media API integrations and automation across our conversations, in order (mention 10 items)?",
+            "expected": "You mentioned these topics in this order: 1) Registering for the developer account and setting up API keys with Tweepy to post tweets, 2) Encountering and troubleshooting '403 Forbidden' errors related to media uploads and tweet creation limits, 3) Facing rate limit errors and discussing rate limiting strategies like token bucket algorithms, 4) Debugging 'Invalid media ID' errors during media uploads with Tweepy, 5) Optimizing database batch inserts for engagement data performance, 6) Handling intermittent connection reset errors with retry mechanisms and exponential backoff, 7) Implementing two-factor authentication and managing OAuth token issues, 8) Working on token refresh strategies for Instagram automation to avoid expired token errors, 9) Adjusting HTTP client timeout settings to fix timeout errors and improve performance, 10) Setting up and optimizing PagerDuty alerts for critical failures with response time goals.",
+            "model_answer": "Yes — based on the captured record, the order looked like this:\n\n1. Twitter auth failures — you first raised Twitter OAuth trouble around `March 2, 2024`, including `401 Unauthorized`.\n2. Expired Twitter tokens — then the `\"Invalid or expired token\"` issue was logged on `March 3, 2024`.\n3. Facebook API testing delays — additional Facebook API testing pushed the sprint end from `March 15, 2024` to `March 18, 2024`.\n4. Instagram automation prototype timing — the prototype deadline moved from `April 1, 2024` to `April 5, 2024`.\n5. Instagram webhook planning — on `April 3, 2024`, sprint planning explicitly discussed Instagram webhook integration, while AWS API Gateway webhook work was deferred to `sprint 3`.\n6. Twitter key rotation — on `April 15, 2024`, `TWITTER_API_KEY` and `TWITTER_API_SECRET` were rotated.\n7. Facebook token validation failure — on `May 1, 2024`, you raised `OAuthException: Error validating access token`.\n8. Queueing / lag problems — on `May 3, 2024`, a RabbitMQ consumer crash caused engagement data lag by `2 hours`.\n9. Redis and scheduler performance bottlenecks — by `July 2, 2024`, you were investigating Redis latency spikes and automation slowdowns, including `redis.exceptions.TimeoutError: Timeout reading from socket`.\n10. Hardening and scale work — after that, discussion broadened into fixes and improvements: PKCE for Twitter, retry/backoff for `429 Too Many Requests`, Redis pooling, API Gateway logging/X-Ray, real-time Facebook analytics, Instagram E2E stability, and PostgreSQL/ETL optimization for `12 million` daily engagement records.\n\nIf you want, I can also turn this into a strict date-by-date timeline with only confirmed dates and no grouping.",
+            "scores": {
+              "keyword": 0.352,
+              "token_f1": 0.236,
+              "llm_judge": 0.1,
+              "combined": 0.172
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "Can you list the order in which I brought up different aspects of my scheduling and automation projects throughout our conversations in order (mention 5 items)?",
+            "expected": "You mentioned these aspects in this order: 1) First, you discussed implementing a scheduling algorithm with priority and time windows, 2) Then you asked about adding posts dynamically while the scheduler is running, 3) Next, you brought up automating Instagram posts using the Instagram Graph API and handling rate limits, 4) After that, you talked about optimizing image processing with caching to improve performance, 5) Finally, you mentioned offloading image processing to AWS Lambda to reduce CPU spikes and further optimize scheduling.",
+            "model_answer": "Yes — the scheduling and automation topics appear in this order from the captured record:\n\n1. Scheduler choice — you established the preference for `APScheduler v3.9.1` over raw cron jobs for better Python integration and error handling flexibility.\n2. Scheduler performance under load — you raised job dispatch delays of `500ms` under load, with later improvement to `150ms`.\n3. Scheduler scaling and memory — discussion moved to memory targets in `scheduling.py`, including reducing usage from `70MB` to `45MB` and targeting `50MB` during `100 concurrent scheduled posts`.\n4. Queueing and automation lag — a `May 3, 2024` RabbitMQ consumer crash caused engagement lag by `2 hours`, expanding the focus from scheduling to end-to-end automation reliability.\n5. Large-scale automation throughput — later conversations covered testing with `50 concurrent scheduled items`, then over `1000 scheduled posts`, plus scheduler throughput improvements and Redis-related slowdowns.\n\nIf you want, I can also make this a stricter timeline with dates only where we have explicit confirmation.",
+            "scores": {
+              "keyword": 0.245,
+              "token_f1": 0.148,
+              "llm_judge": 0.1,
+              "combined": 0.134
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "Which authentication method did I use for my integration, and which environment variables did I store securely?",
+            "expected": "I used OAuth 1.0a for authentication and stored the environment variables TWITTER_API_KEY and TWITTER_API_SECRET securely.",
+            "model_answer": "For the Twitter integration, the confirmed authentication details are:\n\n- Initially, OAuth `1.0a` was part of your integration context, because you hit a `401 Unauthorized` issue during that flow on `March 2, 2024`.\n- Later, you explicitly preferred `OAuth 2.0 PKCE` for secure token exchange, but there is a recorded contradiction: it was discussed as implemented/tested in one part of the conversation, and later you clarified you had not actually done it before and needed setup guidance.\n\nThe securely stored environment variables we have confirmed are:\n- `TWITTER_API_KEY`\n- `TWITTER_API_SECRET`\n\nThose were rotated on `April 15, 2024`.",
+            "scores": {
+              "keyword": 0.909,
+              "token_f1": 0.308,
+              "llm_judge": 0.3,
+              "combined": 0.393
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "Which version of the Facebook SDK did I say I was using in my code example?",
+            "expected": "You mentioned using Facebook SDK version 3.1.0 in your code example.",
+            "model_answer": "You mentioned `facebook-sdk v3.2.0` in later context, but there is also earlier tracked context for `Facebook SDK v3.1.0`.\n\nSo the safest answer is:\n- earlier context: `Facebook SDK v3.1.0`\n- later context: `facebook-sdk v3.2.0`\n\nI can help narrow which one was in the specific code example if you want me to reconcile it against the conversation record format you’re using.",
+            "scores": {
+              "keyword": 0.9,
+              "token_f1": 0.4,
+              "llm_judge": 0.6,
+              "combined": 0.595
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "Which version of the Facebook API should I use in my Python code to ensure compatibility?",
+            "expected": "Response should specify the exact API version number relevant to the integration example or explanation.",
+            "model_answer": "Use `Facebook Graph API v13.0` as the safest default for your Python integration, since the later recorded endpoints were:\n- `https://graph.facebook.com/v13.0/me/feed`\n- `https://graph.facebook.com/v13.0/{page_id}/insights`\n\nThere is older context for `Facebook Graph API v12.0` and `Facebook Insights API v12.0`, so the key compatibility rule is: keep the version consistent across the endpoints your code calls.\n\nIf you want one version to standardize on from the conversation record, use `v13.0`.",
+            "scores": {
+              "keyword": 0.3,
+              "token_f1": 0.128,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "Which libraries are included in the technology stack for this project?",
+            "expected": "Response should include the precise versions of each library mentioned in the technology stack.",
+            "model_answer": "The recorded project stack includes these libraries and related tools:\n\n- `Tweepy v4.10.1`\n- `Tweepy v4.12.1`\n- `Facebook SDK v3.1.0`\n- `facebook-sdk v3.2.0`\n- `requests v2.28.1`\n- `requests v2.28.2`\n- `aiohttp v3.8.3`\n- `APScheduler v3.9.1`\n- `asyncpg v0.29.0`\n- `Selenium v4.8.0`\n- `Pillow v9.4.0`\n- `redis-py v4.3.4`\n- `Sentry v1.12.0`\n- `Rich v13.3.2`\n- `psutil v5.9.4`\n- `orjson v3.8.1`\n- `spaCy v3.5.0`\n- `websocket-client v0.57.0`\n\nAlso tracked in the wider toolchain:\n- `pytest v7.2.0`\n- `flake8 v5.0.4`\n- `black v22.3.0`\n- `isort v5.10.1`\n- `Click v8.1.3`\n- `tqdm v4.64.1`\n\nAnd adjacent platform components:\n- `PostgreSQL 14`\n- `Redis v7.0.5`\n- `RabbitMQ v3.9.13`\n- `Gunicorn v20.1.0`\n- `HAProxy v2.6.0`\n- `React 18.2`\n- `React Native v0.71`\n- `Expo 5.4.4`\n\nIf you want, I can separate this into Python libraries vs infrastructure vs frontend.",
+            "scores": {
+              "keyword": 0.222,
+              "token_f1": 0.022,
+              "llm_judge": 0.6,
+              "combined": 0.399
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "What is the deadline for completing the Instagram automation prototype sprint?",
+            "expected": "April 5, 2024",
+            "model_answer": "The updated deadline was `April 5, 2024`.\n\n- The original deadline was `April 1, 2024`.\n- It was later moved to `April 5, 2024`.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.5,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "How many concurrent scheduled items can my scheduler handle to achieve improved throughput?",
+            "expected": "75 concurrent scheduled items with a 50% improvement in throughput",
+            "model_answer": "The recorded throughput figure is `75 items`.\n\n- The scheduler version was noted as supporting up to `75 items` with a `50% improvement in throughput`.\n- Separately, it was also tested with `50 concurrent scheduled items`, and later with over `1000 scheduled posts`, but the specific “improved throughput” capacity mentioned was `75 items`.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.438,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "How many different Twitter API tasks have I mentioned trying to automate or debug across my sessions?",
+            "expected": "Four tasks: posting a tweet, uploading media before tweeting, handling rate limits, and fixing an invalid media ID error.",
+            "model_answer": "From the captured record, you mentioned `9` distinct Twitter API tasks to automate or debug:\n\n- `1` OAuth `1.0a` auth failures, including `401 Unauthorized`\n- `2` expired/invalid token handling, including `\"Invalid or expired token\"`\n- `3` tweet posting with special characters and `\"Invalid JSON payload\"`\n- `4` rate-limit handling for `429 Too Many Requests` / `\"Rate limit exceeded\"`\n- `5` OAuth `2.0 PKCE` setup and token exchange flow\n- `6` tweet/media upload issues, including `\"Invalid media ID\"` and `KeyError: 'media_id'`\n- `7` latency tuning for Twitter posting performance\n- `8` IP whitelisting for the Twitter developer setup\n- `9` tweet metrics / engagement tracking via Twitter API `v2`\n\nIf you want, I can also separate those into “debugging issues” vs “automation features.”",
+            "scores": {
+              "keyword": 0.6,
+              "token_f1": 0.184,
+              "llm_judge": 0.2,
+              "combined": 0.256
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "How many different social media platforms am I trying to integrate or post to across my projects?",
+            "expected": "Two platforms: Twitter and Facebook.",
+            "model_answer": "You’re working across `3` social media platforms:\n\n- Twitter\n- Facebook\n- Instagram\n\nThose are the three consistently referenced integrations in the project record.",
+            "scores": {
+              "keyword": 0.75,
+              "token_f1": 0.286,
+              "llm_judge": 0.4,
+              "combined": 0.424
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm working on making multiple API requests to gather tweet metrics efficiently. How would you suggest structuring the code to handle these calls?",
+            "expected": "Response should recommend approaches or libraries that enable concurrent or asynchronous API calls rather than synchronous or blocking methods, aligning with the user's preference for async Python solutions.",
+            "model_answer": "I’d structure it as an async, batched client with clear separation between request building, rate-limit handling, and metric aggregation.\n\n- Use `aiohttp v3.8.3` for concurrent requests if you want high throughput with controlled connection reuse.\n- Group tweet IDs into batches, then call Twitter API `v2` endpoints with a bounded concurrency limit so you stay under `300 per 15 minutes`.\n- Put all HTTP logic in one client layer: auth headers, retries for `429 Too Many Requests`, backoff with jitter, timeout handling, and response parsing.\n- Keep aggregation separate: one function fetches raw metrics, another normalizes them into your app’s schema.\n- Use a semaphore or worker pool so concurrency is capped instead of firing everything at once.\n- Cache recently fetched metrics briefly if dashboards poll often, to reduce repeated calls.\n\nA clean shape would be:\n\n```python\nimport asyncio\nimport aiohttp\n\nclass TwitterClient:\n    def __init__(self, token: str, limit: int = 5):\n        self.token = token\n        self.sem = asyncio.Semaphore(limit)\n\n    async def fetch_metrics(self, sess: aiohttp.ClientSession, ids: list[str]):\n        async with self.sem:\n            params = {\n                \"ids\": \",\".join(ids),\n                \"tweet.fields\": \"public_metrics,created_at\"\n            }\n            headers = {\"Authorization\": f\"Bearer {self.token}\"}\n            async with sess.get(\"https://api.twitter.com/2/tweets\", params=params, headers=headers) as res:\n                if res.status == 429:\n                    await asyncio.sleep(2)\n                    return await self.fetch_metrics(sess, ids)\n                res.raise_for_status()\n                return await res.json()\n\nasync def collect(token: str, groups: list[list[str]]):\n    async with aiohttp.ClientSession() as sess:\n        cli = TwitterClient(token, limit=5)\n        jobs = [cli.fetch_metrics(sess, ids) for ids in groups]\n        return await asyncio.gather(*jobs)\n```\n\nFor your project, I’d specifically recommend",
+            "scores": {
+              "keyword": 0.381,
+              "token_f1": 0.091,
+              "llm_judge": 0.95,
+              "combined": 0.95
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm building an app that needs to securely authenticate users without a backend server. How should I handle the token exchange process to keep it safe?",
+            "expected": "Response should recommend using OAuth 2.0 PKCE or an equivalent secure method designed for public clients to handle token exchange, emphasizing security best practices for such scenarios.",
+            "model_answer": "Use OAuth `2.0 PKCE`.\n\n- PKCE is the right choice for a public client with no backend server because it avoids storing a client secret in the app.\n- Generate a random `code_verifier`, derive a `code_challenge`, and send the user to `https://twitter.com/i/oauth2/authorize`.\n- Also generate a random `state` value and verify it on return to prevent CSRF.\n- After redirect, exchange the authorization `code` at `https://twitter.com/i/oauth2/token` using the original `code_verifier`.\n- Store tokens in secure platform storage only, not in plain files, localStorage, or source code.\n- Keep access tokens short-lived; if refresh tokens are used, protect them with OS-level secure storage.\n\nTypical flow:\n1. Create `state`\n2. Create `code_verifier`\n3. Hash it into `code_challenge`\n4. Redirect user to auth URL\n5. Receive redirect callback\n6. Verify `state`\n7. POST auth `code` + `code_verifier` to token endpoint\n8. Store returned tokens securely\n\nImportant safety rules:\n- Never embed a client secret in the app\n- Never log tokens, auth codes, or `code_verifier`\n- Use HTTPS only\n- Clear temporary auth values after exchange\n- If possible, use exact redirect URIs and strict token expiration handling\n\nFor your recorded preference and prior discussions, `OAuth 2.0 PKCE` is the recommended method. If you want, I can give you a Python 3.10 example for the full PKCE flow.",
+            "scores": {
+              "keyword": 0.5,
+              "token_f1": 0.153,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you give me a comprehensive summary of how I developed and improved my social media automation project throughout our conversations?",
+            "expected": "Your social media automation project began with a basic Python script to schedule posts at optimal times using the schedule library. You sought improvements to include timing mechanisms and content strategies relevant to your role as a paramedic in Davistown, Palau, which led to enhanced code incorporating input validation and API integrations for Twitter and Facebook. Later, you explored more advanced scheduling options by switching to APScheduler, learning how to schedule posts at intervals and specific times, and how to handle errors and keep the scheduler running reliably. You also addressed authentication challenges with Twitter's API, moving from OAuth 1.0a to OAuth 2.0 bearer tokens, and discussed secure handling of credentials and token refresh strategies. Finally, you integrated posting functionalities into a unified, object-oriented interface for multiple platforms, adding robust error handling and logging to ensure reliable and maintainable automation. Throughout these stages, your project evolved from simple scheduling to a sophisticated, secure, and flexible social media automation system.",
+            "model_answer": "You developed it in stages from a basic multi-platform automation idea into a production-oriented system covering posting, scheduling, analytics, reliability, security, and maintenance.\n\n- You started on `March 1, 2024` with a Python `3.10` social media automation platform focused on `Twitter`, `Facebook`, and `Instagram`, then quickly moved into real API integration work and debugging.\n- Early work centered on Twitter auth and posting issues: `401 Unauthorized` on `March 2, 2024`, `\"Invalid or expired token\"` on `March 3, 2024`, later special-character payload problems, `\"Invalid JSON payload\"`, media upload failures like `\"Invalid media ID\"` and `KeyError: 'media_id'`, plus rate-limit handling for `429 Too Many Requests`.\n- In parallel, Facebook work grew from posting support into analytics and permissions handling, including `facebook.GraphAPIError: (#200) Permissions error`, `OAuthException: Error validating access token` on `May 1, 2024`, and later dashboard and Insights API work using `Facebook Graph API v13.0`.\n- Instagram work evolved from prototype planning to a more hardened automation flow: the prototype deadline moved from `April 1, 2024` to `April 5, 2024`, the `April 3, 2024` sprint planning meeting covered webhook integration, and later you added stronger error handling, token security, and E2E validation with `1000+ posts` over `7 days` and no failures reported.\n- For scheduling, you made a clear architectural choice: `APScheduler v3.9.1` over raw cron jobs because you preferred better Python integration and more flexible error handling. That led into performance work on dispatch latency, memory usage, and concurrency in `scheduling.py` and `scheduler.py`.\n- You then improved throughput and runtime efficiency: job dispatch latency dropped from `500ms` to `150ms`, memory in `scheduling.py` dropped from `70MB` to `45MB`, scheduler CPU spikes were reduced by `35%`, and one scheduler version was noted as supporting up to `75 items` with a `50% improvemen",
+            "scores": {
+              "keyword": 0.434,
+              "token_f1": 0.186,
+              "llm_judge": 0.3,
+              "combined": 0.292
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you provide a detailed summary of the entire process I went through, from the initial setup to the final implementation, covering all the challenges I faced, the solutions you suggested, and how the different components and tools were integrated and optimized throughout?",
+            "expected": "The summary should comprehensively cover the user's journey starting with scheduling social media posts using APScheduler and integrating it with the Facebook SDK, including improvements like switching to BackgroundScheduler, adding error handling, and logging. It should then address troubleshooting Twitter API integration issues such as the '403 Forbidden' error by verifying authentication, permissions, rate limits, and correct endpoint usage, along with example code for media uploads and tweet creation. The narrative should include managing Facebook Graph API rate limits by implementing batching and scheduling API calls with APScheduler to respect the 200 calls per hour limit, incorporating error handling and graceful shutdown. It should also cover renewing Facebook access tokens using the fb_exchange_token flow to resolve permissions errors, verifying token validity and permissions, and posting content with images. The summary must integrate the design of polymorphic classes to unify Twitter and Facebook posting interfaces, enabling platform-specific payload handling within a unified scheduler. Additionally, it should explain implementing OAuth 1.0a authentication for Twitter with secure token storage using Fernet encryption, paralleling the Facebook OAuth 2.0 flow. The narrative should include refining hashtag extraction with regex to comply with Twitter's rules, excluding special characters. Finally, it should describe refactoring synchronous Twitter posting code to asynchronous functions using asyncio, aiohttp, and asyncpg for database operations, integrating async scheduling with APScheduler, implementing retry mechanisms for failed posts, and handling failures with robust error logging and notification strategies. Throughout, the summary should weave these threads into a coherent story of progressive problem-solving, technical integration, optimization, and error management across multiple platforms and tools.",
+            "model_answer": "You took the project from an initial Python `3.10` automation setup into a production-ready multi-platform system spanning `Twitter`, `Facebook`, and `Instagram`, with scheduling, analytics, security, testing, deployment, and monitoring all gradually tightened over time.\n\n**Lifecycle**\n- The project started on `March 1, 2024` as a social media automation platform intended to handle posting, scheduling, engagement tracking, and later analytics and operational tooling.\n- Early implementation focused on getting the core platform integrations working, then moved into debugging auth, handling API edge cases, improving performance, and finally hardening the system for rollout and maintenance.\n- By `July 19, 2024`, after the `July 18, 2024` zero-downtime production rollout and `99.95% uptime` in the first `48 hours`, the project had effectively entered a maintenance phase.\n\n**Initial Setup**\n- The main runtime and backend stack centered on `Python 3.10`, with libraries including `Tweepy v4.10.1` / `v4.12.1`, `facebook-sdk v3.2.0`, `requests v2.28.1` / `v2.28.2`, `aiohttp v3.8.3`, `APScheduler v3.9.1`, `asyncpg v0.29.0`, `redis-py v4.3.4`, `Selenium v4.8.0`, `Pillow v9.4.0`, `spaCy v3.5.0`, `orjson v3.8.1`, and `psutil v5.9.4`.\n- Supporting infrastructure included `PostgreSQL 14`, `Redis v7.0.5`, `RabbitMQ v3.9.13`, `Gunicorn v20.1.0`, `HAProxy v2.6.0`, Nginx on port `8080`, Gunicorn on `0.0.0.0:8000`, and an AWS environment using `t3.medium` instances with a planned move to `t3.large`.\n- The frontend side later expanded to `React 18.2`, `React Native v0.71`, and `Expo 5.4.4`.\n\n**Twitter Integration**\n- The first major challenge was authentication. On `March 2, 2024`, you hit `401 Unauthorized` issues in a Twitter OAuth `1.0a` context, followed by `\"Invalid or expired token\"` on `March 3, 2024`.\n- Later, you rotated `TWITTER_API_KEY` and `TWITTER_API_SECRET` on `April 15, 2024`, which confirmed secure env-based key storage and ongoing credential hygiene.\n- Tweet posting cre",
+            "scores": {
+              "keyword": 0.575,
+              "token_f1": 0.153,
+              "llm_judge": 0.1,
+              "combined": 0.184
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "If my sprint was originally set to end on a specific date but I extended it by three days, how many total days will my sprint last now?",
+            "expected": "The original sprint was planned for 14 days ending on the specific date, so extending it by three days makes the total sprint duration 17 days.",
+            "model_answer": "`17 days`\n\n- The sprint was originally `14 days`.\n- Extending it by `3 days` makes the total `17 days`.",
+            "scores": {
+              "keyword": 0.643,
+              "token_f1": 0.609,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How many days after I first encountered the 401 Unauthorized error did I see the Invalid or expired token error?",
+            "expected": "1 day elapsed between encountering the 401 Unauthorized error on March 2, 2024, and seeing the Invalid or expired token error on March 3, 2024.",
+            "model_answer": "`1 day`\n\n- `401 Unauthorized` was on `March 2, 2024`.\n- `\"Invalid or expired token\"` was on `March 3, 2024`.",
+            "scores": {
+              "keyword": 0.688,
+              "token_f1": 0.815,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

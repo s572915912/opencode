@@ -1,0 +1,23 @@
+# Feature / Extraction / Deadline
+
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `instagram_prototype_deadline: April 5, 2024 (was: April 1, 2024)` | supersedes:instagram_prototype_deadline_original
+- [UPDATE] `[timeline] feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_captioning_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [UPDATE] `feature_extraction_deadline: April 20 (was: April 15)` | supersedes:original_timeline
+- [DECISION] chose to move the Instagram automation prototype deadline to `April 5, 2024` because the user needed more time than `April 1, 2024`
+- [DECISION] chose to move the Instagram automation prototype deadline to `April 5, 2024` because the user needed more time than `April 1, 2024`
+- [UPDATE] `April 5, 2024 (was: April 1, 2024)` — Instagram automation prototype deadline | supersedes:previous_ref

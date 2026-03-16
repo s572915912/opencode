@@ -1,0 +1,273 @@
+{
+  "test_type": "OpenCode BEAM Benchmark (1M)",
+  "scoring_method": "50% LLM Judge + 30% Token F1 + 20% Keyword Overlap",
+  "model": "changyouopenai/gpt-5.4",
+  "split": "1M",
+  "compaction_interval": 0,
+  "compaction_token_threshold": 128000,
+  "compaction_mode": "progressive(@128K tokens)",
+  "cases_tested": 1,
+  "results": [
+    {
+      "case_id": 2,
+      "session_id": "ses_310507416ffepRSdZw5c9R5AMV",
+      "messages_fed": 778,
+      "token_usage": {
+        "input": 1468252,
+        "output": 77139,
+        "cache_read": 26240,
+        "cache_write": 0,
+        "api_total": 1545391
+      },
+      "before_compaction": {
+        "avg_combined": 0,
+        "results": []
+      },
+      "after_compaction": {
+        "avg_combined": 0.5222,
+        "results": [
+          {
+            "type": "abstention",
+            "question": "What feedback or comments were received during the peer review of the initial fetcher.py module scheduled by March 12, 2024?",
+            "expected": "Based on the provided chat, there is no information related to the feedback or comments from the peer review of fetcher.py.",
+            "model_answer": "I don’t see any explicit recorded peer review comments for the initial `fetcher.py` module from the March 12, 2024 review in the conversation history.\n\nWhat is documented around that phase:\n- `fetcher.py` work focused on Alpha Vantage API v2.1 ingestion for `AAPL` and `MSFT` on `Python 3.10`\n- main issues discussed were `KeyError: 'Time Series (1min)'`, rate limiting at `5 calls per minute`, and keeping memory under `150MB`\n- improvement areas repeatedly covered were response validation, better logging, retry logic with exponential backoff, Redis `7.0` caching, invalid API key notifications, and stronger `pytest 7.3.1` coverage\n- later review-oriented discussion also mentioned robustness for JSON parsing, unit tests, and performance optimization\n\nSo the best supported answer is:\n- no concrete reviewer notes or line-by-line peer review feedback for the March 12 review were preserved\n- the likely review themes, based on what we did immediately after, were error handling, API response validation, rate-limit resilience, logging clarity, and test coverage in `fetcher.py`\n\nIf you want, I can reconstruct a probable peer review summary for `fetcher.py` from that March 2024 phase based on the issues and fixes we discussed.",
+            "scores": {
+              "keyword": 0.583,
+              "token_f1": 0.114,
+              "llm_judge": 0.4,
+              "combined": 0.356
+            }
+          },
+          {
+            "type": "abstention",
+            "question": "What specific security protocols are enforced for the live trading API beyond IP whitelisting?",
+            "expected": "Based on the provided chat, there is no information related to security protocols for the live trading API beyond IP whitelisting.",
+            "model_answer": "Beyond IP whitelisting at `195.12.45.67`, the live trading API security measures we discussed were:\n\n- `TLS 1.3` over HTTPS, typically behind an ALB on port `443` with SSL termination, plus SSL Labs-style verification for certificate and protocol posture\n- `HSTS` enforcement via `Nginx 1.24.0` so clients stay on HTTPS\n- token-based auth, primarily `OAuth 2.0` for broker/API integrations, with discussion of refresh handling every `30 minutes` and authorization code lifespan of `10 minutes`\n- `JWT`-style short-lived access control in adjacent API work, with access-token expiry of `15 minutes` (`900` seconds) and refresh-token patterns\n- secret protection through `HashiCorp Vault 1.13` for API keys/tokens instead of storing credentials directly in code or config\n- least-privilege IAM for AWS-connected services, especially where Lambda/SNS/SQS integrations touch trading-adjacent workflows\n- webhook/auth callback hardening with signature/auth validation and HTTPS-only endpoints such as `https://example.com/webhook`\n- secure streaming endpoints using `wss://...` rather than `ws://...` when real-time trading updates are involved, for example `wss://stream.data.alpaca.markets/v2/iex`\n\nRelevant API URLs discussed in this area:\n- `https://api.alpaca.markets/v2/orders`\n- `https://paper-api.alpaca.markets/v2/orders`\n- `https://api.alpaca.markets/v2/account`\n- `https://api.alpaca.markets/oauth/token`\n- `https://api.alpaca.markets/oauth2/token`\n- `https://app.alpaca.markets/oauth2/auth`\n\nOne caution:\n- the `OAuth 2.0` Alpaca auth flow details we discussed were flagged earlier as needing re-validation before production use, so the safest confirmed controls are `HTTPS/TLS 1.3`, `HSTS`, token-based auth, secure secret storage, and least-privilege IAM.\n\nIf you want, I can turn this into a production checklist for the live trading API on `Python 3.10`/`Flask 2.3.2`.",
+            "scores": {
+              "keyword": 0.571,
+              "token_f1": 0.096,
+              "llm_judge": 0.0,
+              "combined": 0.11
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I written any unit tests for the functions in fetcher.py, and if so, what kind of coverage have I achieved?",
+            "expected": "I noticed you've mentioned contradictory information about this. You said you have never written any unit tests for fetcher.py functions, but you also mentioned having pytest tests with 88% coverage on fetcher.py. Could you clarify which is correct?",
+            "model_answer": "There’s evidence you planned and discussed unit tests for `fetcher.py`, but I don’t see a confirmed record that you completed them or hit a measured coverage number for that module.\n\nWhat we do have:\n- you asked for unit tests around `fetcher.py` behavior on `Python 3.10`\n- test topics included:\n  - Alpha Vantage API v2.1 response parsing\n  - handling `KeyError: 'Time Series (1min)'`\n  - invalid API key notifications\n  - retry logic / exponential backoff\n  - Redis `7.0` caching behavior\n  - Flask endpoint behavior and error handling\n- you also asked about `pytest 7.3.1` guidance for `fetcher.py`\n\nCoverage status:\n- no confirmed achieved coverage percentage for `fetcher.py` is recorded\n- an `85%` overall coverage target existed earlier\n- a later `88%` coverage goal was specifically discussed for `fetcher.py`\n- but I don’t see evidence that `88%` was actually reached\n\nSo the safest answer is:\n- yes, unit testing for `fetcher.py` was actively planned/discussed\n- no, the conversation history does not confirm completed tests or a final achieved coverage number for `fetcher.py`\n- the clearest recorded target for that module was `88%` coverage with `pytest 7.3.1`\n\nIf you want, I can reconstruct the likely `fetcher.py` test matrix from our earlier discussions.",
+            "scores": {
+              "keyword": 0.435,
+              "token_f1": 0.159,
+              "llm_judge": 0.3,
+              "combined": 0.285
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I ever set up the OAuth 2.0 sandbox environment with the Alpaca brokerage API using the client ID and secret stored in a .env file?",
+            "expected": "I notice you've mentioned contradictory information about this. In one instance, you said you have never implemented the OAuth 2.0 sandbox setup with Alpaca, but in another, you mentioned beginning the setup with the client ID and secret stored in a .env file. Could you clarify which is correct?",
+            "model_answer": "I don’t see a confirmed point where you actually completed that setup.\n\nWhat the history does show:\n- you discussed Alpaca `OAuth 2.0` integration and sandbox redirect URI registration\n- you worked with credentials in environment variables in other areas, so using a `.env` file would fit your pattern\n- you also discussed these Alpaca URLs:\n  - `https://app.alpaca.markets/oauth2/auth`\n  - `https://api.alpaca.markets/oauth2/token`\n  - `https://api.alpaca.markets/oauth/token`\n  - `https://paper-api.alpaca.markets/v2/orders`\n- security protocols/themes discussed included `HTTPS`, `TLS 1.3`, short-lived tokens, refresh handling, and secret storage practices\n\nBut the safest conclusion is:\n- no explicit evidence shows you finished setting up the Alpaca OAuth 2.0 sandbox environment with client ID and secret from a `.env` file\n- it was discussed conceptually, not recorded as completed\n- we also flagged some Alpaca `OAuth 2.0` flow details as needing re-validation before production use\n\nIf you want, I can reconstruct the exact likely setup steps for a `.env`-based Alpaca sandbox OAuth configuration in `Python 3.10`/`Flask 2.3.2`.",
+            "scores": {
+              "keyword": 0.429,
+              "token_f1": 0.182,
+              "llm_judge": 0.5,
+              "combined": 0.41
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "Can you reconstruct the timeline of when I first mentioned each aspect of my stock trading system development in order? Mention ONLY and ONLY ten items.",
+            "expected": "You mentioned aspects of your stock trading system development in this sequence: 1) Handling API rate limiting and improving efficiency with Alpha Vantage API calls, 2) Designing a microservices architecture with module integration and message queues, 3) Achieving high data availability and uptime strategies, 4) Creating REST API endpoints for backtesting and exposing trade data, 5) Optimizing Alpaca API integration including order placement and debugging paper trading modules, 6) Implementing OAuth 2.0 token refresh and handling authentication issues, 7) Developing ML prediction endpoints and managing input data shape challenges, 8) Integrating alert notifications via external APIs like Twilio, 9) Enhancing error handling and exception management in trading bot code, 10) Configuring secure API access with SSL termination and load balancers.",
+            "model_answer": "1. Initial `Flask 2.3.2` + `PostgreSQL 14` database/table creation issues and Alembic migration concerns  \n2. Learning/resource exploration for ML/NLP, React-Flask CORS, and bot design ideas  \n3. Query optimization, PostgreSQL indexing, deadlines, and microservices architecture planning  \n4. Flask app errors, ML model comparisons, and early model integration/error handling  \n5. Schema design for `users`, `trades`, and `market_data`, plus RabbitMQ integration  \n6. Flask API security, `OAuth 2.0`, sandbox redirect URI registration, and CORS/Talisman setup  \n7. Alpha Vantage API v2.1 ingestion, rate limiting, and `KeyError: 'Time Series (1min)'` debugging  \n8. Retry logic with exponential backoff, Redis `7.0` caching, and Pandas time-series handling  \n9. Milestone 1 delivery for `AAPL` and `MSFT` `1min` ingestion with `TA-Lib 0.4.24` and memory targets  \n10. `fetcher.py` reliability work: invalid API key alerts, JSON parsing robustness, unit-test planning with `pytest 7.3.1`, and API rate-limit optimization",
+            "scores": {
+              "keyword": 0.33,
+              "token_f1": 0.272,
+              "llm_judge": 0.1,
+              "combined": 0.177
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "How did my discussions about microservices communication evolve throughout our conversations in order? Mention ONLY and ONLY ten items.",
+            "expected": "Your discussions about microservices communication evolved in this sequence: 1) You started by addressing REST API calls and error handling between services, 2) Then you moved on to data serialization and deserialization techniques, 3) Next, you explored upgrading communication protocols from HTTP/1.1 to HTTP/2 and related implementation challenges, 4) After that, you introduced message queueing with RabbitMQ for asynchronous communication, 5) You then shifted focus to low-latency communication using gRPC and concerns about thread safety and performance optimization, 6) Following this, you discussed migrating from HTTP/2 to gRPC with TLS encryption and sought feedback on service definitions, 7) Later, you brought up WebSocket multiplexing for handling concurrent connections and scaling issues, 8) Subsequently, you explored pub/sub messaging with AWS SNS including error handling and service communication, 9) You then inquired about implementing a service mesh with Istio for secure and observable communication, including error handling within that context, and finally 10) You addressed Kafka topics for asynchronous communication and API performance optimization for trade logging.",
+            "model_answer": "1. Early architectural preference shifted toward microservices instead of a more monolithic Flask setup  \n2. Initial communication discussion centered on REST calls between services and basic API boundaries  \n3. RabbitMQ was introduced for asynchronous service-to-service messaging  \n4. Redis `7.0` entered the design as a shared cache to reduce cross-service load and latency  \n5. Celery `5.3.0` with Redis broker was discussed for background jobs and async task execution  \n6. HTTP session reuse and later `httpx` with HTTP/2 were explored to speed synchronous inter-service API calls  \n7. Paper trading workflows expanded communication patterns across trading, logging, and alerting services  \n8. AWS SNS/SQS and Lambda were discussed for event-driven notification and alert microservice integration  \n9. Real-time dashboard updates added WebSocket-based communication for trade, alert, and system-status events  \n10. The architecture later evolved toward Kafka `3.4.0` as the main event-streaming backbone for scalable, fault-tolerant trade logging and downstream Elasticsearch `8.5.1` ingestion",
+            "scores": {
+              "keyword": 0.394,
+              "token_f1": 0.352,
+              "llm_judge": 0.2,
+              "combined": 0.267
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "What is the URL I set as the API endpoint for fetching stock prices?",
+            "expected": "https://www.alphavantage.co/query",
+            "model_answer": "The recorded endpoint was `/api/prices`.\n\nI don’t see a full absolute URL like `http://localhost:5000/api/prices` explicitly confirmed in the history, only the route path `/api/prices`.",
+            "scores": {
+              "keyword": 0.2,
+              "token_f1": 0.0,
+              "llm_judge": 0.0,
+              "combined": 0.03
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "What data type did I choose for the price column in my trades table?",
+            "expected": "You chose NUMERIC(10,2) for the price column.",
+            "model_answer": "You chose `NUMERIC` for the `price` column in the `trades` table.",
+            "scores": {
+              "keyword": 0.667,
+              "token_f1": 0.667,
+              "llm_judge": 0.8,
+              "combined": 0.8
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "What information should I look at to understand how well my API calls are performing?",
+            "expected": "Response should include API response metrics details when discussing API integration performance.",
+            "model_answer": "Look at these signals first:\n\n- response time: average, p95, and p99 latency; your discussed targets included `under 250ms`, `/api/prices` `under 150ms`, and `/api/tradelogs` averaging `150ms`\n- error rate: count `4xx` and `5xx` responses, especially intermittent `500 Internal Server Error`\n- throughput: requests per second/minute and burst behavior during peak usage\n- retry and rate-limit events: `429` responses, backoff frequency, and external API limits like Alpha Vantage API v2.1 at `5 calls per minute`\n- cache effectiveness: Redis `7.0` hit rate, since caching was a major reason latency improved from `400ms to 220ms`\n- downstream dependency timing: database query time, broker/API time, and external call latency, such as query improvement from `1.2 seconds to 0.3 seconds`\n\nUseful places to inspect:\n- app logs with detailed timing/error messages\n- Prometheus `2.44` / Grafana `9.5` dashboards\n- endpoint-specific measurements for `/api/prices`, `/api/trades`, `/api/alerts`, and `/api/tradelogs`\n\nIf you want, I can turn this into a concrete API performance checklist for your `Flask 2.3.2` services.",
+            "scores": {
+              "keyword": 0.444,
+              "token_f1": 0.053,
+              "llm_judge": 0.95,
+              "combined": 0.95
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "What technologies are used in my current setup?",
+            "expected": "Response should include the names of the technologies along with their specific version numbers.",
+            "model_answer": "Your current setup uses these main technologies:\n\n- backend: `Python 3.10`, `Flask 2.3.2` and in some later async discussion `Flask 2.3.3`\n- database/cache: `PostgreSQL 14`, `Redis 7.0`\n- frontend: `React 18.2`, `TypeScript 4.9.5`, `Redux Toolkit 1.9.5`, `Chart.js 4.3.0`\n- messaging/streaming: `Kafka 3.4.0` with upgrade planning toward `Kafka 3.5.0`, plus earlier `RabbitMQ 3.9.13` and `Celery 5.3.0` / `Celery 5.3.1`\n- search/logging/observability: `Elasticsearch 8.5.1`, `Logstash 8.5`, `Kibana 8.5`, `Prometheus 2.44`, `Grafana 9.5`, `Sentry 7.27.0`\n- infra/deployment: Docker with `Docker Compose v2.12.0`, `Terraform 1.4.6`, `CloudFormation 2.70`, `AWS CodeDeploy 1.0.0`, `AWS CLI version 2.7.24`, `AWS SAM CLI version 1.62.0`, `Nginx 1.24.0`, `Istio 1.17`\n- testing/security/docs: `pytest 7.3.1`, `coverage.py 6.5.0`, `OWASP ZAP 2.12.0`, `HashiCorp Vault 1.13`, `Sphinx 5.3.0`\n- ML/trading-specific tools also discussed: `TensorFlow 2.11`, `TA-Lib 0.4.24`\n\nArchitecture-wise, the current direction is a Dockerized microservices setup centered on Kafka-based trade logging with the `/api/tradelogs` API.",
+            "scores": {
+              "keyword": 0.375,
+              "token_f1": 0.051,
+              "llm_judge": 0.8,
+              "combined": 0.8
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "What is the success rate of the integration tests for the fetcher and database interaction?",
+            "expected": "97% success rate",
+            "model_answer": "The recorded integration test success rate for that earlier fetcher/database phase was `97%`.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.462,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "How many epochs does my LSTM model training pipeline complete, and what is the final validation loss?",
+            "expected": "The training pipeline completes 60 epochs with a final validation loss of 0.028.",
+            "model_answer": "Your latest recorded LSTM training run completed `60 epochs` with a final validation loss of `0.028`.\n\nEarlier in the project, an earlier run was discussed at `50 epochs` with validation loss `0.032`, but the later updated result was `60 epochs` and `0.028`.",
+            "scores": {
+              "keyword": 0.8,
+              "token_f1": 0.516,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "How many different stock symbols have I mentioned wanting to fetch prices for across my sessions?",
+            "expected": "Five symbols: AAPL, GOOG, MSFT, and two additional mentions of AAPL and MSFT.",
+            "model_answer": "`2` stock symbols: `AAPL` and `MSFT`.",
+            "scores": {
+              "keyword": 0.375,
+              "token_f1": 0.462,
+              "llm_judge": 0.4,
+              "combined": 0.412
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "Considering my goals for testing coverage, API response time, and debugging the stock price fetcher, how should I prioritize my efforts to improve reliability and performance?",
+            "expected": "You should first focus on writing comprehensive unit tests to ensure reliability and achieve your coverage goal, then address debugging the API response to fix errors, and finally optimize API response time to improve performance.",
+            "model_answer": "Focus first on reliability in `fetcher.py`, then performance, then coverage.\n\n- Start with input/response validation in `fetcher.py` for Alpha Vantage API v2.1 before any parsing; this is the highest-value fix for failures like `KeyError: 'Time Series (1min)'`\n- Add detailed structured error messages for every failure path: HTTP status, symbol, URL `https://www.alphavantage.co/query`, missing JSON keys, rate-limit payloads, timeout/retry count, and whether fallback cache data was used\n- Harden retries and rate-limit handling next: respect `5 calls per minute`, keep the `12 seconds` spacing, and use bounded exponential backoff so transient failures do not become bad data or `500` errors downstream\n- Measure and optimize your API path after reliability is stable; for `/api/prices`, prioritize Redis `7.0` cache hit rate, external API latency, and DB/query timing to stay under `150ms`\n- Push test coverage after the core error paths are stable; target the previously discussed `88%` for `fetcher.py` with `pytest 7.3.1`, especially around malformed JSON, missing `\"Time Series (1min)\"`, invalid API key responses, timeout/retry behavior, and cache-hit/cache-miss branches\n\nSuggested order:\n1. Response validation + detailed error messages\n2. Retry/backoff + rate-limit protection\n3. Caching/performance tuning for `/api/prices`\n4. Coverage expansion for edge cases and failure modes\n\nWhat “good” looks like for this phase:\n- reliability: no unhandled parsing exceptions in `fetcher.py`\n- performance: `/api/prices` stays under `150ms`\n- coverage: `fetcher.py` moves toward `88%`\n- debugging: logs clearly explain whether failure came from network, rate limit, malformed payload, cache, or database write\n\nExample debugging details worth logging:\n```text\nAlpha Vantage request failed for symbol=AAPL url=https://www.alphavantage.co/query status=200 retry=2 error=\"Missing key 'Time Series (1min)'\" note=\"Likely rate-limited or malformed response\"\n```\n\nSecurity-wise for the API path, keep `HTTPS`/`TLS` enforced on exposed endpoints, even if the main bottleneck is currently fetch reliability.\n\nNatural next steps:\n1. I can turn this into a concrete `fetcher.py` test plan for `pytest 7.3.1`\n2. I can draft a logging/error-message format for the fetcher and `/api/prices`\n3. I can outline the highest-impact performance metrics to track for `/api/prices`",
+            "scores": {
+              "keyword": 0.545,
+              "token_f1": 0.118,
+              "llm_judge": 0.3,
+              "combined": 0.291
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm working on caching price data for a service that needs to handle restarts without losing cached information. How would you suggest setting this up?",
+            "expected": "Response should recommend a caching solution that supports persistence across service restarts and scalability, such as Redis, rather than volatile in-memory options.",
+            "model_answer": "Use `Redis 7.0` with persistence, not in-memory-only cache.\n\n- Best fit: keep hot price data in `Redis 7.0`, enable `AOF` persistence (`appendonly yes`) so cache survives service restarts with minimal data loss\n- Add periodic `RDB` snapshots too for faster recovery and backup protection; a common setup is `AOF + RDB`\n- Use stable keys like `prices:AAPL` and store JSON with the value plus fetch timestamp/source\n- Keep TTLs on the keys, for example your earlier `60 seconds`, so stale prices expire automatically after restart as well\n- On cache miss or expired data, refill from the source API, then write back to Redis\n- If you need stronger durability than cache persistence alone, also store canonical price history in `PostgreSQL 14` and let Redis rebuild from there after longer outages\n\nA solid pattern:\n1. Read from `Redis 7.0`\n2. If hit and fresh, return cached price\n3. If miss/stale, fetch fresh data\n4. Write to `Redis 7.0` with TTL\n5. Optionally persist historical record to `PostgreSQL 14`\n\nOperational details:\n- mount Redis data to a Docker volume so restart/container replacement does not wipe persistence files\n- set memory limits and an eviction policy like `volatile-ttl` or `allkeys-lru` depending on whether every key has TTL\n- monitor cache hit rate, recovery time after restart, and stale-read frequency\n\nIf you want the simplest recommendation for your setup: `Redis 7.0` with `appendonly yes`, a Docker volume, `TTL 60 seconds`, and `PostgreSQL 14` as the durable source of truth.",
+            "scores": {
+              "keyword": 0.471,
+              "token_f1": 0.099,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "How would you suggest structuring my workflow to handle both testing and actual deployment of my trading strategies?",
+            "expected": "Response should recommend separating the backtesting environment from the live trading environment, highlighting distinct workflows or systems for each to maintain stability and performance.",
+            "model_answer": "Split it into four stages so strategy testing and real deployment stay isolated but connected.\n\n- Research and validate first: use `Python 3.10` strategy code with backtesting on historical data, then paper trading against Alpaca paper endpoints like `https://paper-api.alpaca.markets/v2/orders` before any live rollout\n- Keep environments separate: one config for backtesting, one for paper trading, one for live trading; separate API keys, databases, and feature flags so live execution cannot be triggered accidentally\n- Promote by gates, not manually: require backtest metrics, paper-trading stability, and risk checks before moving a strategy forward; your prior targets like `65% or higher` strategy accuracy, `max 2% capital risk per trade`, `1.5%` stop loss, and `10% per day` drawdown limit are good examples\n- Automate the pipeline: strategy code change -> `pytest 7.3.1` tests -> backtest run -> paper-trading soak test -> approval -> production deploy via Docker and your AWS workflow\n- Observe everything in production: log executions to Kafka `3.4.0`, expose APIs like `/api/tradelogs`, and watch health in `Prometheus 2.44` and `Grafana 9.5` with alerts for latency, failures, drawdown, and circuit-breaker triggers\n\nA practical workflow:\n1. Develop strategy logic locally\n2. Run unit tests and integration tests\n3. Backtest on historical data\n4. Paper trade in sandbox for several sessions\n5. Review metrics, logs, and risk behavior\n6. Deploy to production in a limited rollout\n7. Monitor and auto-disable on failure thresholds\n\nFor deployment safety:\n- use circuit breakers, like your `5 consecutive order failures within 10 minutes`\n- keep secrets in `HashiCorp Vault 1.13` or environment management, never hardcoded\n- enforce `HTTPS/TLS` on exposed APIs and least-privilege IAM for AWS-connected services\n- keep live trading and paper trading on separate credentials and endpoints\n\nSuggested stack by phase:\n- testing: `Python 3.10`, `pytest 7.3.1`, `PostgreSQL 14`, `Redis 7.0`\n- paper/live execution: `Flask 2.3.2`, Docker, Alpaca APIs, Kafka `3.4.0`\n- monitoring: `Prometheus 2.44`, `Grafana 9.5`, `Elasticsearch 8.5.1`\n\nNatural next steps:\n1. I can turn this into a concrete CI/CD workflow for your repo\n2. I can draft a promotion checklist from backtest -> paper -> live\n3. I can outline the exact metrics to require before a strategy reaches production",
+            "scores": {
+              "keyword": 0.4,
+              "token_f1": 0.051,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you give me a comprehensive summary of how my stock trading bot project has progressed, including the key challenges I faced and the solutions we discussed along the way?",
+            "expected": "Your stock trading bot project evolved through several important stages. Initially, you encountered issues with the Alpha Vantage API's rate limiting, which you addressed by implementing asynchronous requests using asyncio and aiohttp to efficiently manage API calls without exceeding limits. Next, you expanded the system architecture by designing a microservices setup with Flask and message queues like RabbitMQ to enable seamless communication between data fetching, ML prediction, and trade execution modules. To ensure high availability and robustness, you incorporated retry logic with exponential backoff to handle HTTP 429 errors gracefully, improving the reliability of your stock price fetcher. You further optimized performance by introducing Redis caching to reduce redundant API calls and dynamically managing delays between requests. Finally, you sought to enhance your testing coverage and model evaluation by adding comprehensive pytest tests and integrating classification metrics such as precision and recall into your LSTM model training pipeline. Throughout these phases, you progressively refined your system to be more efficient, scalable, and resilient.",
+            "model_answer": "Your project evolved from a small `Flask 2.3.2` + `PostgreSQL 14` trading backend into a broader Dockerized microservices platform on `Python 3.10`, with market data ingestion, ML, backtesting, paper/live trading, alerting, dashboards, and later Kafka-based trade logging.\n\n**Progress**\n- You started with core backend issues: schema creation, Alembic migrations, and data models for `users`, `trades`, and `market_data` on `PostgreSQL 14`\n- You then built market-data ingestion around Alpha Vantage API v2.1, mainly for `AAPL` and `MSFT`, plus caching with `Redis 7.0` and REST routes like `/api/prices`\n- After that, you expanded into indicators and ML using `TA-Lib 0.4.24` and `TensorFlow 2.11`, including LSTM training, `/api/predict`, and model-serving concerns\n- The project then broadened into backtesting, paper trading, live trading safeguards, alerting, and a `React 18.2` dashboard with `TypeScript 4.9.5`, `Redux Toolkit 1.9.5`, and `Chart.js 4.3.0`\n- In the latest phase, the architecture shifted toward scalable event streaming with `Kafka 3.4.0`, `Elasticsearch 8.5.1`, `/api/tradelogs`, and monitoring via `Prometheus 2.44` and `Grafana 9.5`\n\n**Key challenges and solutions**\n- **Market data failures:** you repeatedly hit `KeyError: 'Time Series (1min)'` from Alpha Vantage; the solution was stricter response validation, better logging, invalid-key detection, retry logic, and respecting the `5 calls per minute` limit with `12 seconds` spacing\n- **Performance:** API response time and query latency were recurring issues; solutions included Redis caching with `TTL 60 seconds`, HTTP session reuse, indexing by `symbol` and `timestamp`, and query optimization that improved some paths from `1.2 seconds to 0.3 seconds` and API calls from `400ms to 220ms`\n- **Memory pressure:** you worked through memory leaks in DB access and long-running processes; cursor cleanup and streaming/chunking reduced usage from `180MB to 140MB`, and later from `3GB to 1.2GB` in backtesting-related flows\n- **Testing and reliability:** you repeatedly targeted stronger `pytest 7.3.1` coverage, discussed `85%` overall and `88%` for `fetcher.py`, and focused on testing malformed API responses, retries, caching, and alert logic\n- **ML pipeline issues:** LSTM work involved input-shape bugs, model loading, batch-size tuning, GPU use on `NVIDIA RTX 3060`, and tracking model metrics; the later recorded run reached `60 epochs` with validation loss `0.028`\n- **Trading execution robustness:** for paper/live trading, you optimized order latency from `350ms to 120ms`, added retries, webhook validation, risk limits, and a circuit breaker for `5 consecutive order failures within 10 minutes`\n- **Frontend scale/perf:** the dashboard needed render and load-time improvements; lazy loading, memoization, reduced polling, and WebSocket cleanup improved load time from `3.5s to 1.2s`, then to `0.9 seconds`\n- **Alerting/ops:** `alert_manager.py`, Twilio/SMTP issues, Lambda/SQS/SNS flows, and escalation rules led to better retry handling, least-privilege IAM, DLQ patterns, and alert-processing optimization toward `150ms`\n- **Deployment/security:** you discussed Docker, `Docker Compose v2.12.0`, `Terraform 1.4.6`, `CloudFormation 2.70`, `AWS CodeDeploy 1.0.0`, ALB on port `443`, RDS Multi-AZ, `Nginx 1.24.0`, `HashiCorp Vault 1.13`, `HTTPS/TLS 1.3`, HSTS, JWT/OAuth 2.0 patterns, and IP whitelisting at `195.12.45.67`\n- **Kafka trade logging:** the newest challenge was building a fault-tolerant pipeline; solutions discussed included batching (`batch_size=1000`, `linger_ms=10`), compression, `acks='all'`, retries, mTLS with `security.protocol=SSL` and `ssl.client.auth=required`, composite cursor pagination `(timestamp, id)` for `/api/tradelogs`, and careful Terraform/MSK validation\n\n**Where the project stands now**\n- Core scope is now a production-oriented trading platform with ingestion, ML, paper/live execution, monitoring, alerting, and a real-time dashboard\n- The latest active emphasis is scalable trade logging with `Kafka 3.4.0` and `Elasticsearch 8.5.1`, targeting `/api/tradelogs` response time around `150ms`\n- Production-readiness work has centered on reliability, observability, security hardening, and deployment planning through `July 10, 2024`\n\n**Big picture**\n- Early project: get data in reliably\n- Middle project: make decisions with ML/backtesting and execute safely\n- Later project: make the whole system observable, scalable, secure, and production-ready\n\nIf you want, I can also turn this into:\n1. a milestone-by-milestone timeline\n2. a subsystem summary by `fetcher` / ML / trading / dashboard / Kafka\n3. a “lessons learned” document for project review",
+            "scores": {
+              "keyword": 0.389,
+              "token_f1": 0.171,
+              "llm_judge": 0.2,
+              "combined": 0.221
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you give me a comprehensive summary of how my development roadmap and related implementation efforts have progressed so far?",
+            "expected": "Your development roadmap outlines a series of milestones aimed at building and deploying various components of your project. Initially, you focused on Agile sprint planning to meet early deadlines, prioritizing API integration, data ingestion, and testing within a two-week sprint. Subsequently, you worked on creating a secure and efficient RESTful API using Flask, enhancing it with error handling, input validation, and security features. Parallel to this, you optimized your Docker setup for the ML model service to reduce image size while maintaining necessary dependencies. Progressing further, you developed and deployed ML model training and prediction APIs, incorporating best practices for model architecture, training monitoring with TensorBoard, and dynamic learning rate adjustments to improve convergence. Most recently, your focus shifted to completing Milestone 3, which involves implementing backtesting and paper trading modules, integrating technical indicators, calculating performance metrics, and preparing for deployment on a dedicated port. Throughout these phases, you have refined your approach, addressed challenges in risk management, and ensured your roadmap remains aligned with upcoming deadlines, demonstrating steady advancement across multiple interconnected development areas.",
+            "model_answer": "Your roadmap progressed from foundational backend work into a production-focused, microservices-based trading platform, with each phase adding a new layer of capability and operational maturity.\n\n**Roadmap progression**\n- You began with core backend setup on `Python 3.10`, `Flask 2.3.2`, and `PostgreSQL 14`: schema design, migrations, table creation issues, and basic API structure\n- The next phase focused on market-data ingestion using Alpha Vantage API v2.1 for `AAPL` and `MSFT`, with reliability work around rate limiting, parsing failures, and caching via `Redis 7.0`\n- From there, the roadmap expanded into analytics and ML: `TA-Lib 0.4.24`, `TensorFlow 2.11`, LSTM training, prediction serving, and performance tuning for inference and retraining\n- You then moved into strategy evaluation and execution workflows: backtesting, paper trading, live trading safeguards, and risk controls\n- After that, the roadmap broadened to operational tooling: alert escalation, notification systems, dashboards, WebSockets, monitoring, deployment automation, and documentation\n- The latest phase centers on scalable event streaming and trade observability with `Kafka 3.4.0`, `Elasticsearch 8.5.1`, and the `/api/tradelogs` API, plus production hardening through `July 10, 2024`\n\n**Implementation efforts by phase**\n- **Foundations:** discussed Alembic migrations, PostgreSQL schema choices, REST endpoint structure, and microservices/service separation\n- **Fetcher/data ingestion:** tackled `KeyError: 'Time Series (1min)'`, Alpha Vantage rate limiting at `5 calls per minute`, retries, validation, invalid-key handling, and `Redis 7.0` caching with `TTL 60 seconds`\n- **Performance:** improved API and query behavior through indexing, caching, session reuse, and profiling; notable improvements included `400ms to 220ms` API latency and `1.2 seconds to 0.3 seconds` query time\n- **ML:** worked through model-shape bugs, training config, caching predictions, GPU usage on `NVIDIA RTX 3060`, and tracking metrics; later recorded result was `60 epochs` with validation loss `0.028`\n- **Backtesting/paper trading:** evolved from simple strategy logic toward reusable backtesting modules, paper-trading integration, webhook handling, and order-latency optimization from `350ms to 120ms`\n- **Risk and controls:** defined `max 2% capital risk per trade`, `1.5%` stop loss, `10% per day` drawdown halt, and a circuit breaker for `5 consecutive order failures within 10 minutes`\n- **Dashboard/frontend:** built out `React 18.2` monitoring flows with `TypeScript 4.9.5`, `Redux Toolkit 1.9.5`, and `Chart.js 4.3.0`, then improved load time from `3.5s to 1.2s`, later `0.9 seconds`\n- **Alerting/notifications:** developed alert APIs, `alert_manager.py`, Twilio/SMTP handling, Lambda/SQS/SNS flows, and escalation patterns with better retry and DLQ handling\n- **Deployment/ops:** discussed Docker, `Docker Compose v2.12.0`, `Terraform 1.4.6`, `CloudFormation 2.70`, `AWS CodeDeploy 1.0.0`, ALB on port `443`, RDS Multi-AZ, `Nginx 1.24.0`, and monitoring with `Prometheus 2.44` and `Grafana 9.5`\n- **Trade logging platform:** shifted toward Kafka-first architecture for scalability and fault tolerance, including batching, compression, retries, mTLS, Terraform/MSK provisioning, pagination for `/api/tradelogs`, and rollout planning toward `Kafka 3.5.0`\n\n**Milestones and planning**\n- Early milestones focused on ingestion stability and API performance by March 2024\n- Mid-phase planning covered ML, backtesting, and paper trading through April 2024\n- Dashboard, alerting, and monitoring milestones ran through May and June 2024\n- Sprint planning later targeted final deployment, monitoring, and documentation from `June 22, 2024` to `July 5, 2024`, then final production trade logging work by `July 10, 2024`\n- You also approved code for production release on `July 7, 2024`\n\n**Recurring challenges**\n- malformed or rate-limited market-data responses\n- latency and memory bottlenecks\n- incomplete or evolving test coverage goals\n- webhook and async reliability\n- deployment/security hardening\n- correctness of Kafka, Elasticsearch, and Terraform configuration details\n\n**How the roadmap matured**\n- early focus: make the backend work\n- middle focus: make strategies testable and safe to execute\n- later focus: make the system observable, scalable, secure, and production-ready\n\n**Current state**\n- The roadmap is now primarily in the production-readiness stage for a Dockerized microservices platform\n- The most active implementation track is Kafka-based trade logging with `Kafka 3.4.0`, `Elasticsearch 8.5.1`, `/api/tradelogs`, monitoring, security hardening, and final docs/runbooks by `July 10, 2024`\n\nNatural next steps:\n1. I can condense this into a milestone-only timeline\n2. I can break it down by subsystem (`fetcher`, ML, trading, dashboard, Kafka)\n3. I can turn it into a project status report with completed, in-progress, and pending items",
+            "scores": {
+              "keyword": 0.417,
+              "token_f1": 0.202,
+              "llm_judge": 0.4,
+              "combined": 0.353
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How many days do I have between the start of my first sprint and its deadline to complete all my tasks?",
+            "expected": "There are 14 days between the sprint start on March 1, 2024, and the sprint deadline on March 15, 2024, giving you two weeks to complete all your tasks.",
+            "model_answer": "I don’t see an explicit recorded start date for your first sprint, only the deadline: `March 15, 2024`.\n\nSo I can’t calculate the exact number of days between the sprint start and its deadline from the preserved history alone.",
+            "scores": {
+              "keyword": 0.529,
+              "token_f1": 0.41,
+              "llm_judge": 0.0,
+              "combined": 0.182
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How many days do I have between submitting my modules for peer review and the deadline to provide feedback?",
+            "expected": "There are 2 days between when I submitted fetcher.py and strategy.py for peer review on March 16, 2024, and the feedback deadline on March 18, 2024.",
+            "model_answer": "`2 days` — from `March 16, 2024` to `March 18`.",
+            "scores": {
+              "keyword": 0.353,
+              "token_f1": 0.522,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

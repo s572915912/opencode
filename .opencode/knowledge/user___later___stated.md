@@ -1,0 +1,30 @@
+# User / Later / Stated
+
+- [FACT] user later stated “Always include error messages verbatim when I ask about debugging issues.”
+- [FACT] user later stated “Always include cache configuration details when I ask about performance optimizations.”
+- [FACT] user later stated preference: “I prefer asynchronous API calls and caching to improve responsiveness without sacrificing accuracy.”
+- [FACT] user later stated “Always include error messages verbatim when I ask about debugging issues.”
+- [FACT] user later stated “Always include cache configuration details when I ask about performance optimizations.”
+- [FACT] user later stated preference: “I prefer asynchronous API calls and caching to improve responsiveness without sacrificing accuracy.”
+- [FACT] user later stated preference: “Always specify container image versions when I ask about deployment details.”
+- [FACT] user later stated preference: “I prefer robust security with OAuth2 and JWT despite added complexity to protect user data and API usage.”
+- [DECISION] model-performance guidance should always include final evaluation metrics because the user explicitly requested it
+- [FACT] missing from prior PK: user preference “Always use bold font for class names when I ask about detected object labels”
+- [FACT] missing from prior PK: user preference “Always include a summary table when I ask about performance metrics”
+- [FACT] missing from prior PK: user preference “Always provide code snippets in Python when I ask about implementation details”
+- [FACT] New frontend-specific persistent preference added: **“Always provide a screenshot example when I ask about frontend UI features”**
+- [FACT] user explicitly stated: **“Always include user satisfaction metrics when I ask about UI/UX design improvements.”**
+- [FACT] user preference added in this conversation: `Always include exact API version numbers when I ask about integration details.`
+- [FACT] user preference added in this conversation: `Always provide exact error message text when I ask about debugging issues.`
+- [FACT] user preference added in this conversation: `Always provide exact API rate limits when I ask about platform constraints.`
+- [FACT] user later stated `Always include error messages verbatim when I ask about debugging issues.`
+- [FACT] user later stated `Always include cache configuration details when I ask about performance optimizations.`
+- [FACT] user later stated `I prefer asynchronous API calls and caching to improve responsiveness without sacrificing accuracy.`
+- [FACT] user later stated `Always specify container image versions when I ask about deployment details.`
+- [FACT] user later stated `I prefer robust security with OAuth2 and JWT despite added complexity to protect user data and API usage.`
+- [FACT] user later stated `Always include error messages verbatim when I ask about debugging issues.`
+- [FACT] user later stated `Always include cache configuration details when I ask about performance optimizations.`
+- [FACT] user later stated preference: `I prefer asynchronous API calls and caching to improve responsiveness without sacrificing accuracy.`
+- [FACT] latest user preference updates after prior summary:
+- [DECISION] model-performance guidance should always include final evaluation metrics because the user explicitly requested it
+- [DECISION] model-performance guidance should always include final evaluation metrics because the user explicitly requested it

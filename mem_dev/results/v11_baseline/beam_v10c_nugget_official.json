@@ -1,0 +1,4612 @@
+[
+  {
+    "case_id": 2,
+    "split": "500K",
+    "avgs": {
+      "all": 0.4513,
+      "all_strict": 0.4185,
+      "vital": 0.4237,
+      "vital_strict": 0.3992,
+      "weighted": 0.4395,
+      "weighted_strict": 0.4096
+    },
+    "old_combined": 0.4725,
+    "questions": [
+      {
+        "question": "Can you tell me more about Taylor's paramedic background and any certifications they hold?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Correctly states that information about Taylor's paramedic background or certifications is not available in the provided chat.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "What specific criteria did I use to decide on the 20 COCO classes for real-time detection?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Correctly states that the provided chat does not contain information about the criteria used to choose the 20 COCO classes for real-time detection.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.255
+      },
+      {
+        "question": "Have I ever used Alpine Linux in my deployments to reduce container image sizes?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "Identifies that the prior information about Alpine Linux usage is contradictory or inconsistent",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that one prior claim says Alpine Linux has never been used in deployments",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "States that one prior claim says container image sizes were never reduced",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that another prior claim says backend containers were migrated to Alpine Linux",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that another prior claim says the migration significantly reduced container image size",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Asks for clarification about which of the conflicting claims is correct",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.1667,
+          "all_strict": 0.1667,
+          "vital": 0.1667,
+          "vital_strict": 0.1667,
+          "weighted": 0.1667,
+          "weighted_strict": 0.1667,
+          "n_vital": 6,
+          "n_okay": 0
+        },
+        "old_combined": 0.25
+      },
+      {
+        "question": "Have I deployed applications using AWS ECS Fargate before?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "Identifies that the prior information about AWS ECS Fargate experience is contradictory or inconsistent.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that one prior claim says the person has never deployed any application to AWS.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that one prior claim says the person has never used ECS Fargate.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "States that another prior claim says the person deployed backend and frontend containers on AWS ECS Fargate.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Asks the person to clarify which of the conflicting statements is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Notes that the ECS Fargate deployment claim included specific configurations or details.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0833,
+          "all_strict": 0.0,
+          "vital": 0.1,
+          "vital_strict": 0.0,
+          "weighted": 0.0909,
+          "weighted_strict": 0.0,
+          "n_vital": 5,
+          "n_okay": 1
+        },
+        "old_combined": 0.306
+      },
+      {
+        "question": "Can you list the order in which I brought up different challenges and improvements related to my object detection and tracking projects throughout our conversations, in order (mention 12 items in order)?",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "States that the first topic mentioned was initial setup issues integrating the detection model with the webcam feed.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "States that the second topic mentioned was concerns about monitoring and maintaining performance latency.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "States that the third topic mentioned was troubleshooting segmentation faults and error handling in the detection pipeline.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the fourth topic mentioned was questions about whether the model or video capture was causing issues.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the fifth topic mentioned was planning a project milestone for completing the detection pipeline.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the sixth topic mentioned was exploring model optimization by switching to a more efficient variant.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "States that the seventh topic mentioned was implementing fallback mechanisms for GPU/CPU inference and measuring latency.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the eighth topic mentioned was debugging data association problems with the Hungarian algorithm in multi-object tracking.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the ninth topic mentioned was enhancing user interaction features like zooming and panning in the app.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the tenth topic mentioned was setting up monitoring tools for performance metrics using containerized services.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "States that the eleventh topic mentioned was improving code quality through refactoring.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the twelfth topic mentioned was benchmarking model performance before and after optimization with specialized tools.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.2083,
+          "all_strict": 0.0833,
+          "vital": 0.2083,
+          "vital_strict": 0.0833,
+          "weighted": 0.2083,
+          "weighted_strict": 0.0833,
+          "n_vital": 12,
+          "n_okay": 0
+        },
+        "old_combined": 0.244
+      },
+      {
+        "question": "Can you walk me through the order in which I brought up different aspects of optimizing and integrating my object detection and tracking pipeline throughout our conversations, in order (mention 10 items)?",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The answer states the aspects were mentioned in a specific chronological order.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Item 1 is loading and running inference with the YOLOv5s model on CPU.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Item 2 is setting up dataset and data loader for CPU evaluation of the YOLO model.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Item 3 is implementing and integrating a Tracker module stub for multi-object tracking with SORT.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Item 4 is converting and optimizing the YOLOv5 model using TensorRT on an NVIDIA GPU.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Item 5 is improving and optimizing the SORT tracking code to reduce overhead.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Item 6 is applying coordinate mapping and Kalman filter fundamentals for tracking visualization.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Item 7 is adding frame timestamp interpolation and planning real-time visualization with a React frontend.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Item 8 is debugging CUDA out of memory errors in a Flask app using PyTorch and OpenCV.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Item 9 is integrating security scanning into a CI/CD pipeline with Snyk CLI.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Item 10 is optimizing the object detection pipeline using OpenCV DNN with plans for future DeepSORT integration.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.2727,
+          "all_strict": 0.0909,
+          "vital": 0.2727,
+          "vital_strict": 0.0909,
+          "weighted": 0.2727,
+          "weighted_strict": 0.0909,
+          "n_vital": 11,
+          "n_okay": 0
+        },
+        "old_combined": 0.206
+      },
+      {
+        "question": "Which versions of the software and language did I say I was using when I first described my setup?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "The setup description mentioned OpenCV version 4.7.0.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The setup description mentioned Python 3.10.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "These versions were stated at the start of the setup description.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 2,
+          "n_okay": 1
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "What hardware did I say I was targeting for the inference time performance?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "You said you were targeting an Intel i5-8250U CPU for the inference time performance.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.8
+      },
+      {
+        "question": "Can you show me how my model performed after the latest changes?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Includes a summary table of the model's performance after the latest changes",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The table presents performance metrics clearly",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The performance summary is framed as being after the latest changes",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 2,
+          "n_okay": 1
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "How can I add a feature to enable or disable the object counting overlay while the app is running?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Provides Python code that adds a runtime toggle for the object counting overlay.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Shows a boolean state variable in Python to track whether the object counting overlay is enabled or disabled.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Demonstrates changing the toggle state while the app is running, such as in response to a key press, button click, or similar event.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Includes Python logic that conditionally draws or skips the object counting overlay based on the toggle state.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The code example makes clear that disabling the toggle hides only the overlay and does not require stopping the app.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Shows where in the main update/render loop the overlay toggle check should be placed.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Uses a concrete Python example relevant to an object counting app, rather than only giving a high-level description.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.9286,
+          "all_strict": 0.8571,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 0.9545,
+          "weighted_strict": 0.9091,
+          "n_vital": 4,
+          "n_okay": 3
+        },
+        "old_combined": 0.417
+      },
+      {
+        "question": "What is the typical inference time per frame when running the TensorRT engine on an RTX 2060 GPU?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "45ms per frame",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.8
+      },
+      {
+        "question": "What is the total frame latency with the counting logic enabled in my object detection app?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "The total frame latency with the counting logic enabled is 180ms.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The 180ms latency is below the 250ms target.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The latency is well under the 250ms target.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.3333,
+          "all_strict": 0.3333,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.2,
+          "weighted_strict": 0.2,
+          "n_vital": 2,
+          "n_okay": 1
+        },
+        "old_combined": 0.156
+      },
+      {
+        "question": "How does the total estimated time I planned for implementing object counting and multi-class tracking compare to the time I allocated for testing and deploying the TensorRT acceleration feature flag system?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The total estimated time for implementing object counting and multi-class tracking is 20 days, which is longer than the combined time allocated for testing and deploying the TensorRT acceleration feat",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.452
+      },
+      {
+        "question": "How can I architect a modular object detection and tracking pipeline that efficiently separates model inference, NMS filtering, and multi-object tracking while minimizing memory usage and handling detection confidence parsing errors?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "Recommends a modular architecture that separates detection/model inference from NMS filtering and from multi-object tracking.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests implementing a Detector class with distinct methods for running model inference and applying NMS/postprocessing.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that NMS/filtering should apply confidence thresholding to detections before passing results to the tracker.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Says tracker integration should use a SORT-style multi-object tracker.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Mentions that detection confidence values must be parsed robustly to avoid confidence parsing errors.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Specifies that detections should be converted into the bounding-box format expected by the tracker.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Includes memory-usage minimization as an explicit design goal of the pipeline.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Recommends efficient tensor/data conversion to reduce unnecessary copies and improve performance.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests optimizing data structures and/or inference backend settings to reduce memory consumption.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Describes the tracker update step as incorporating Kalman filter prediction.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Describes the tracker update step as using Hungarian algorithm data association.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Notes that the architecture should prepare for a future upgrade path to DeepSORT.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Implies clear module boundaries/interfaces so detector outputs can be consumed cleanly by the tracker.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Indicates that postprocessing should occur after inference rather than being entangled inside the tracking logic.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests keeping the tracking component replaceable/swappable to support future tracker improvements.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.2,
+          "all_strict": 0.2,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.1111,
+          "weighted_strict": 0.1111,
+          "n_vital": 12,
+          "n_okay": 3
+        },
+        "old_combined": 0.424
+      },
+      {
+        "question": "I'm looking to improve the speed of my object detection app running on my current setup. What steps would you suggest I take to get better performance?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends optimizing for a CPU-only environment rather than suggesting GPU acceleration.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Avoids recommending hardware upgrades such as buying a GPU or replacing the machine.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests using a smaller or faster object detection model to reduce CPU inference time.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests lowering input image resolution or resizing frames before inference to improve speed.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests reducing how often detection runs, such as skipping frames or lowering FPS.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests using model optimization techniques such as quantization or a CPU-optimized runtime.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggests tuning CPU threading or parallelism settings to improve throughput.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests batching or pipelining preprocessing, inference, and postprocessing where appropriate.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggests optimizing preprocessing and postprocessing code to remove CPU bottlenecks.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests using efficient libraries or inference backends designed for CPU execution.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggests pruning unnecessary classes, regions of interest, or stages of computation to cut workload.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggests profiling the application to identify the actual slowest CPU-side components before optimizing.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.5833,
+          "all_strict": 0.4167,
+          "vital": 0.5833,
+          "vital_strict": 0.5,
+          "weighted": 0.5833,
+          "weighted_strict": 0.4444,
+          "n_vital": 6,
+          "n_okay": 6
+        },
+        "old_combined": 0.231
+      },
+      {
+        "question": "I'm planning to enhance the state management in my frontend app. What approaches would you suggest I explore?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends exploring state management approaches that are compatible with React and Redux.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Prioritizes Redux-based options rather than suggesting non-Redux replacements that conflict with the stated preference.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Mentions scalability as a key criterion when recommending state management solutions.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Mentions community support or ecosystem maturity as a key criterion when recommending solutions.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests Redux Toolkit as a strong option for improving Redux state management in React apps.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests middleware or side-effect tools in the Redux ecosystem, such as Redux Thunk or Redux Saga.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests patterns or libraries for normalized or scalable Redux state handling, such as entity adapters or selector patterns.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests React-Redux integration best practices, such as using hooks or modern Redux patterns.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Avoids recommending contradictory alternatives such as abandoning Redux for unrelated state libraries as the main answer.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 4,
+          "n_okay": 5
+        },
+        "old_combined": 0.331
+      },
+      {
+        "question": "Can you summarize what I learned about implementing and improving object detection and tracking in my projects?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "You refactored the Detector class to separate model inference and non-maximum suppression into distinct methods.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The refactor was done to improve modularity of the detection pipeline.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "You explored integrating a Tracker module using the SORT algorithm.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The SORT-based Tracker was intended to enable multi-object tracking.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Your tracking work included handling detections as input to the tracker.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Your tracking work included drawing or visualizing tracked objects.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "You worked on improving tracking efficiency.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "You studied designing a more advanced tracker component for future improvements.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The advanced tracker design combines Kalman filtering with the Hungarian algorithm for data association.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "This advanced tracker study was preparation for future upgrades such as DeepSORT.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 5,
+          "n_okay": 5
+        },
+        "old_combined": 0.309
+      },
+      {
+        "question": "Can you provide a detailed and comprehensive summary that captures the full scope and progression of the topic, integrating all the key developments, challenges, and solutions discussed across the different sessions?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The summary explains that the detection pipeline was refactored into separate inference and filtering components or methods.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary states that a multi-object tracking module was designed and integrated into the system.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary identifies SORT as the tracking algorithm used for the multi-object tracking module.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary describes that tracking capabilities were progressively improved over time rather than introduced all at once.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary mentions use of a Kalman filter as part of the tracking implementation.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary mentions Hungarian algorithm-based data association for matching detections to tracks.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary covers implementation of robust error handling mechanisms in a related application context.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary covers implementation of logging mechanisms in a related application context.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary explains how detection, filtering, tracking, and application-level support features interact within the broader system.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary presents the work as an iterative evolution from initial code stubs to fully functional modules.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary emphasizes that the resulting modules are efficient and maintainable.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary addresses edge cases involving confidence parsing errors.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary notes strategic use of OpenCV utilities for visualization.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary includes forward-looking consideration of future upgrades such as DeepSORT.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "The summary ties together key developments, challenges, and solutions across multiple sessions into one coherent narrative.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The summary demonstrates understanding of architectural decisions behind modularization and integration choices.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "The summary demonstrates understanding of the practical implementation details involved in making the modules work together.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The summary frames the overall work as iterative development, integration, and optimization.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.25,
+          "all_strict": 0.2222,
+          "vital": 0.1429,
+          "vital_strict": 0.1429,
+          "weighted": 0.2031,
+          "weighted_strict": 0.1875,
+          "n_vital": 14,
+          "n_okay": 4
+        },
+        "old_combined": 0.218
+      },
+      {
+        "question": "How many days do I have between when I confirmed the project deadline and when I planned to have the YOLOv5s model integrated and ready?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The time between the two dates is 14 days.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The project deadline was confirmed on March 1.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The YOLOv5s model was planned to be integrated and ready by March 15.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The 14-day count is specifically between March 1 and March 15.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 3,
+          "n_okay": 1
+        },
+        "old_combined": 0.451
+      },
+      {
+        "question": "How much time passed from when I first committed to daily work on the project until I planned to have the detection model integrated and ready for testing?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The elapsed time was roughly two weeks.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The initial commitment to daily work began at the start of March.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The planned detection model integration milestone was by mid-March.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The two-week span is calculated from early March to mid-March.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The start-of-March commitment involved focusing on daily progress and organization.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The mid-March milestone was to have the detection model integrated and ready for testing.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 3,
+          "n_okay": 3
+        },
+        "old_combined": 0.9
+      }
+    ]
+  },
+  {
+    "case_id": 4,
+    "split": "500K",
+    "avgs": {
+      "all": 0.3398,
+      "all_strict": 0.275,
+      "vital": 0.3436,
+      "vital_strict": 0.28,
+      "weighted": 0.3416,
+      "weighted_strict": 0.2773
+    },
+    "old_combined": 0.5092,
+    "questions": [
+      {
+        "question": "What were the main discussion points or decisions made during the sprint planning meeting on April 3, 2024?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Correctly states that information about the April 3, 2024 sprint planning meeting discussion points or decisions is not available in the provided chat.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.158
+      },
+      {
+        "question": "What are the specific criteria or factors that led to choosing APScheduler over raw cron jobs initially?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Correctly states that the provided chat does not contain information about the specific criteria or factors for choosing APScheduler over raw cron jobs initially.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.1
+      },
+      {
+        "question": "Have I ever rotated my Twitter API keys or updated the related environment variables for my integration?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "States that the prior information is contradictory or inconsistent.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Identifies one claim that the Twitter API keys were rotated and the related environment variables were updated.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Identifies the opposing claim that this has never been done.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Asks the user to clarify which of the conflicting statements is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.25,
+          "all_strict": 0.25,
+          "vital": 0.25,
+          "vital_strict": 0.25,
+          "weighted": 0.25,
+          "weighted_strict": 0.25,
+          "n_vital": 4,
+          "n_okay": 0
+        },
+        "old_combined": 0.116
+      },
+      {
+        "question": "Have I developed any hashtag generation tools using spaCy or other NLP libraries?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "States that there is contradictory information about whether hashtag generation tools were developed using spaCy or other NLP libraries.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Mentions the claim that a hashtag generator was developed using spaCy v3.5.0.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions the opposing claim that no hashtag generation tools have ever been developed using spaCy or any NLP library.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Asks for clarification about which of the two conflicting statements is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.25,
+          "all_strict": 0.25,
+          "vital": 0.25,
+          "vital_strict": 0.25,
+          "weighted": 0.25,
+          "weighted_strict": 0.25,
+          "n_vital": 4,
+          "n_okay": 0
+        },
+        "old_combined": 0.311
+      },
+      {
+        "question": "Can you walk me through the order in which I brought up different challenges and solutions related to my social media API integrations and automation across our conversations, in order (mention 10 items)?",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The answer states that the topics were mentioned in a specific chronological order across conversations.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "First: registering for a developer account and setting up API keys with Tweepy to post tweets.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Second: encountering and troubleshooting 403 Forbidden errors related to media uploads and tweet creation limits.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Third: facing rate limit errors and discussing mitigation strategies such as token bucket algorithms.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Fourth: debugging Invalid media ID errors during media uploads with Tweepy.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Fifth: optimizing database batch inserts to improve engagement data performance.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Sixth: handling intermittent connection reset errors using retry mechanisms and exponential backoff.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Seventh: implementing two-factor authentication and managing OAuth token issues.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Eighth: working on token refresh strategies for Instagram automation to avoid expired token errors.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Ninth: adjusting HTTP client timeout settings to fix timeout errors and improve performance.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Tenth: setting up and optimizing PagerDuty alerts for critical failures with response time goals.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 11,
+          "n_okay": 0
+        },
+        "old_combined": 0.172
+      },
+      {
+        "question": "Can you list the order in which I brought up different aspects of my scheduling and automation projects throughout our conversations in order (mention 5 items)?",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "You mentioned these aspects in this order: 1) First, you discussed implementing a scheduling algorithm with priority and time windows, 2) Then you asked about adding posts dynamically while the schedu",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.134
+      },
+      {
+        "question": "Which authentication method did I use for my integration, and which environment variables did I store securely?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "The integration used OAuth 1.0a for authentication.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The environment variable TWITTER_API_KEY was stored securely.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The environment variable TWITTER_API_SECRET was stored securely.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 3,
+          "n_okay": 0
+        },
+        "old_combined": 0.393
+      },
+      {
+        "question": "Which version of the Facebook SDK did I say I was using in my code example?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "You mentioned using Facebook SDK version 3.1.0 in your code example.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.5,
+          "all_strict": 0.0,
+          "vital": 0.5,
+          "vital_strict": 0.0,
+          "weighted": 0.5,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.595
+      },
+      {
+        "question": "Which version of the Facebook API should I use in my Python code to ensure compatibility?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Specifies the exact Facebook API version number to use for compatibility in the Python code.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "Which libraries are included in the technology stack for this project?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Correctly lists each library included in the project's technology stack.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Provides the precise version number for every library mentioned in the technology stack.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.5,
+          "all_strict": 0.0,
+          "vital": 0.5,
+          "vital_strict": 0.0,
+          "weighted": 0.5,
+          "weighted_strict": 0.0,
+          "n_vital": 2,
+          "n_okay": 0
+        },
+        "old_combined": 0.399
+      },
+      {
+        "question": "What is the deadline for completing the Instagram automation prototype sprint?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "The deadline for completing the Instagram automation prototype sprint is April 5, 2024.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "How many concurrent scheduled items can my scheduler handle to achieve improved throughput?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "75 concurrent scheduled items with a 50% improvement in throughput",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "How many different Twitter API tasks have I mentioned trying to automate or debug across my sessions?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The total number of Twitter API tasks mentioned is four.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "One mentioned task is posting a tweet.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "One mentioned task is uploading media before tweeting.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "One mentioned task is handling rate limits.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "One mentioned task is fixing an invalid media ID error.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.6,
+          "all_strict": 0.4,
+          "vital": 0.6,
+          "vital_strict": 0.4,
+          "weighted": 0.6,
+          "weighted_strict": 0.4,
+          "n_vital": 5,
+          "n_okay": 0
+        },
+        "old_combined": 0.256
+      },
+      {
+        "question": "How many different social media platforms am I trying to integrate or post to across my projects?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The number of different social media platforms is two.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Twitter is one of the platforms.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Facebook is one of the platforms.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 3,
+          "n_okay": 0
+        },
+        "old_combined": 0.424
+      },
+      {
+        "question": "I'm working on making multiple API requests to gather tweet metrics efficiently. How would you suggest structuring the code to handle these calls?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends using concurrent or asynchronous API requests instead of making the tweet-metric calls sequentially or with blocking code.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests an async Python approach or library such as asyncio with an async HTTP client (for example aiohttp or httpx).",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Frames the code structure around launching multiple requests and awaiting them together, such as with asyncio.gather or a similar pattern.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Avoids recommending purely synchronous request libraries or blocking loops as the primary solution.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 2,
+          "n_okay": 2
+        },
+        "old_combined": 0.95
+      },
+      {
+        "question": "I'm building an app that needs to securely authenticate users without a backend server. How should I handle the token exchange process to keep it safe?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Response should recommend using OAuth 2.0 PKCE or an equivalent secure method designed for public clients to handle token exchange, emphasizing security best practices for such scenarios.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "Can you give me a comprehensive summary of how I developed and improved my social media automation project throughout our conversations?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The project started as a basic Python script for scheduling social media posts at optimal times using the schedule library.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The project was later improved to include timing mechanisms and content strategies tailored to the user's role as a paramedic in Davistown, Palau.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The code was enhanced with input validation.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The project added API integrations for Twitter and Facebook.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The user then explored more advanced scheduling by switching from schedule to APScheduler.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The APScheduler work included scheduling posts at intervals and at specific times.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The scheduling improvements included learning to handle errors and keep the scheduler running reliably.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The project addressed Twitter authentication challenges.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The Twitter authentication discussion included moving from OAuth 1.0a to OAuth 2.0 bearer tokens.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The user discussed secure handling of credentials.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The user discussed token refresh strategies.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Posting functionality was eventually integrated into a unified object-oriented interface covering multiple platforms.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The final system added robust error handling and logging.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The overall evolution was from simple scheduling to a sophisticated, secure, flexible, and maintainable social media automation system.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.5714,
+          "all_strict": 0.5,
+          "vital": 0.625,
+          "vital_strict": 0.5833,
+          "weighted": 0.5962,
+          "weighted_strict": 0.5385,
+          "n_vital": 12,
+          "n_okay": 2
+        },
+        "old_combined": 0.292
+      },
+      {
+        "question": "Can you provide a detailed summary of the entire process I went through, from the initial setup to the final implementation, covering all the challenges I faced, the solutions you suggested, and how the different components and tools were integrated and optimized throughout?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The summary describes the workflow as an end-to-end journey from initial scheduling setup through final multi-platform implementation and optimization.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "It includes the initial use of APScheduler to schedule social media posts.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "It states that Facebook posting was integrated using the Facebook SDK.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "It mentions improvements to the scheduling setup such as switching to BackgroundScheduler.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It includes adding error handling and logging to the scheduling/posting pipeline.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It covers troubleshooting Twitter API integration problems, specifically the '403 Forbidden' error.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It explains that resolving the Twitter 403 issue involved checking authentication, permissions, rate limits, and correct endpoint usage.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It includes example logic or code flow for Twitter media upload and tweet creation.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It explains handling Facebook Graph API rate limits by batching and scheduling API calls.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It states that the Facebook rate-limit strategy respected the 200-calls-per-hour limit.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It includes graceful shutdown behavior as part of the APScheduler/Facebook rate-limit handling design.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It describes renewing Facebook access tokens using the fb_exchange_token flow to fix permissions-related errors.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It mentions verifying Facebook token validity and granted permissions before posting, including posts with images.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It explains designing polymorphic classes to unify Twitter and Facebook posting behind a common interface.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It notes that the unified interface still allowed platform-specific payload handling within the scheduler.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It describes implementing Twitter OAuth 1.0a authentication with secure token storage using Fernet encryption.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It explicitly relates the Twitter OAuth 1.0a approach to the Facebook OAuth 2.0 flow as parallel authentication strategies.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It includes refining hashtag extraction with regex so Twitter hashtags exclude invalid special characters and comply with Twitter rules.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It describes refactoring synchronous Twitter posting into asynchronous functions using asyncio, aiohttp, and asyncpg, and integrating async scheduling with APScheduler.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It includes retry mechanisms, robust error logging, and notification strategies for failed asynchronous posts.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.125,
+          "all_strict": 0.1,
+          "vital": 0.1471,
+          "vital_strict": 0.1176,
+          "weighted": 0.1351,
+          "weighted_strict": 0.1081,
+          "n_vital": 17,
+          "n_okay": 3
+        },
+        "old_combined": 0.184
+      },
+      {
+        "question": "If my sprint was originally set to end on a specific date but I extended it by three days, how many total days will my sprint last now?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The original sprint was planned for 14 days ending on the specific date, so extending it by three days makes the total sprint duration 17 days.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "How many days after I first encountered the 401 Unauthorized error did I see the Invalid or expired token error?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The elapsed time between the two errors was 1 day.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The 401 Unauthorized error was first encountered on March 2, 2024.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The Invalid or expired token error was seen on March 3, 2024.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 3,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      }
+    ]
+  },
+  {
+    "case_id": 0,
+    "split": "1M",
+    "avgs": {
+      "all": 0.2442,
+      "all_strict": 0.1974,
+      "vital": 0.2318,
+      "vital_strict": 0.1866,
+      "weighted": 0.2401,
+      "weighted_strict": 0.1937
+    },
+    "old_combined": 0.4466,
+    "questions": [
+      {
+        "question": "Can you tell me more about my background in psychology, like where I studied or my specialization?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Based on the provided chat, there is no information related to your educational background or specialization in psychology.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "What was the feedback or user reaction to the multi-language assistant's dynamic language switching feature in the chat UI?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Based on the provided chat, there is no information related to user feedback or reactions to the dynamic language switching feature.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.127
+      },
+      {
+        "question": "Have I implemented the language detection microservice using franc v6.1.0 before?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "I notice you've mentioned contradictory information about this. You said you have implemented the language detection microservice using franc v6.1.0 with 93% accuracy, but you also mentioned that you ",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.19
+      },
+      {
+        "question": "Have I completed the translation microservice that supports 12 languages with 98% accuracy using the DeepL API v2?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "Identifies that there is contradictory information about whether the translation microservice was completed.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that one claim says the translation microservice was completed.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that another claim says such a translation microservice was never completed.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Asks the user to clarify which statement is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "References the specific microservice as a translation microservice.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions the claimed support for 12 languages.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions the claimed 98% accuracy.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions the claimed use of the DeepL API v2.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.5,
+          "all_strict": 0.5,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.3333,
+          "weighted_strict": 0.3333,
+          "n_vital": 4,
+          "n_okay": 4
+        },
+        "old_combined": 0.419
+      },
+      {
+        "question": "How did my discussions about integrating and optimizing language and translation services progress in order? Mention ONLY and ONLY ten items.",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The progression begins with initial integration of a translation API, including error handling and logging setup.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The next step covers implementation details and authentication for the translation API.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The discussions then address rate limiting and request queue issues.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "After that, they move to performance optimization, including caching and database query improvements.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The next topic is fine-tuning and debugging of language models.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The discussions then cover authentication management and role-based access control for language services.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Next come deployment and scaling considerations for microservices supporting the language and translation services.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The progression then includes security enhancements such as TLS enforcement.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The next stage involves advanced use of Transformer-based LLM APIs for streaming and latency improvements.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The final step is further performance tuning of streaming implementations, including chunk size adjustments.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 10,
+          "n_okay": 0
+        },
+        "old_combined": 0.09
+      },
+      {
+        "question": "How did my discussions about system performance and optimization progress in order? Mention ONLY and ONLY nine items.",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The progression began with evaluating language detection libraries and their integration challenges.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The next discussion was reviewing and optimizing database schema to reduce API latency.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "This was followed by addressing request queue issues and rate limiting strategies.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The next step was debugging translation service latency using caching and database query improvements.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "After that, the discussions covered designing and debugging JSONB-based contextual memory storage in PostgreSQL.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The next topic was exploring fine-tuning processes and dataset handling for model training.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "This was followed by implementing and securing authentication mechanisms with token management.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The subsequent discussion involved developing and optimizing a WebSocket microservice, including memory usage and scalability.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The progression concluded with troubleshooting cryptographic key generation and shared secret derivation errors.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0556,
+          "all_strict": 0.0,
+          "vital": 0.0556,
+          "vital_strict": 0.0,
+          "weighted": 0.0556,
+          "weighted_strict": 0.0,
+          "n_vital": 9,
+          "n_okay": 0
+        },
+        "old_combined": 0.16
+      },
+      {
+        "question": "What versions of the frontend framework, backend runtime, and database did I say I was starting the project with?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "The frontend framework version was React 18.2.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The backend runtime version was Node.js 18.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The database version was PostgreSQL 14.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 3,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "Which port did I say my memory store was running on when I mentioned the connection error?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "States that the memory store was running on port 4000.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.12
+      },
+      {
+        "question": "What are some ways I can manage problems that come up when my API calls fail?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Use fallback strategies when API services fail, such as switching to a secondary provider or backup endpoint.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Serve cached or previously retrieved data as a fallback when a live API call cannot succeed.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Provide degraded functionality or default responses so the application can keep working during API outages.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Queue, defer, or retry non-urgent requests later when the API is temporarily unavailable.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Use circuit breakers or failover logic to stop repeated calls to an unhealthy API and route to fallback behavior.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Gracefully inform users that limited functionality is available while the service is down.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Persist requests locally or in a message queue so they can be replayed once the API recovers.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.7857,
+          "all_strict": 0.7143,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 0.85,
+          "weighted_strict": 0.8,
+          "n_vital": 3,
+          "n_okay": 4
+        },
+        "old_combined": 0.8
+      },
+      {
+        "question": "What are the common methods used for verifying user identity in web applications?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Response should mention the specific versions of protocols associated with each authentication method discussed.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.5,
+          "all_strict": 0.0,
+          "vital": 0.5,
+          "vital_strict": 0.0,
+          "weighted": 0.5,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.215
+      },
+      {
+        "question": "What is the deadline for completing my language detection module?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "March 18, 2024",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "What is the TTL value set for caching recent translations in my Redis implementation?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "20 minutes",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.113
+      },
+      {
+        "question": "Considering my use of franc v6.1.0 in a Node.js backend with PostgreSQL, Redis caching, and a translation queue to handle rate limits, how can I optimize my system to reduce API latency below current levels while maintaining high cache hit rates and avoiding rate limit errors?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "Recommend checking Redis cache before querying PostgreSQL or calling the translation API to minimize latency and preserve a high cache hit rate.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommend using a queue for translation requests to control DeepL API throughput and avoid rate limit errors.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommend implementing exponential backoff in the translation queue when the API rate limit is approached or hit.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommend using franc v6.1.0 for lightweight, fast language detection in the Node.js backend for real-time processing.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Recommend optimizing PostgreSQL schema with indexes to speed up database queries.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommend adding or maintaining foreign keys in PostgreSQL schema as part of query and data access optimization.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "State that maximizing Redis effectiveness should maintain or improve the existing high cache hit rate (around 85%).",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "State that combining fast franc detection, optimized PostgreSQL, Redis-first caching, and robust queueing reduces latency below current averages.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "State that the proposed approach prevents or reduces HTTP 429 rate limit errors.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "State that the combined optimizations sustain high cache efficiency while lowering API latency.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.85,
+          "all_strict": 0.8,
+          "vital": 0.9375,
+          "vital_strict": 0.875,
+          "weighted": 0.8889,
+          "weighted_strict": 0.8333,
+          "n_vital": 8,
+          "n_okay": 2
+        },
+        "old_combined": 0.579
+      },
+      {
+        "question": "How many different Redis caching use cases have I described across my messages?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "Four different Redis caching use cases: caching recent conversation context, caching last 10 messages per user session, caching messages to reduce database queries, and caching conversation history.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.248
+      },
+      {
+        "question": "I'm planning to set up a translation feature in my app that needs to respond quickly. Can you help me with the best way to implement the API calls to translate text efficiently?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends using DeepL API v2 for the translation feature.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "States that the chosen translation API approach should prioritize low latency or fast response times.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Suggests implementation patterns that minimize latency in translation API calls.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Aligns the recommendation with the user's need for quick translation responses in an app.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 2,
+          "n_okay": 2
+        },
+        "old_combined": 0.395
+      },
+      {
+        "question": "I'm planning to scale up my language detection API to handle more simultaneous requests. What approaches would you suggest to maintain responsiveness as the load increases?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends horizontal scaling of the API service, such as running multiple instances behind a load balancer, to increase concurrent request capacity while continuing to use franc v6.1.0 for detection.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests using asynchronous or non-blocking request handling so the API remains responsive under many simultaneous calls.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Mentions introducing a queue, worker pool, or controlled concurrency model to prevent overload and smooth bursts of incoming requests.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Recommends caching repeated language-detection results for identical or normalized input texts to reduce repeated franc v6.1.0 computations.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests rate limiting, backpressure, or admission control to protect responsiveness when request volume exceeds processing capacity.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommends monitoring, benchmarking, and load testing the API to identify bottlenecks and tune scaling decisions.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Stays compatible with franc v6.1.0 and does not suggest replacing it with a different language-detection library or model.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests optimizing input handling, such as limiting maximum text size or prevalidating requests, so franc v6.1.0 spends less time on expensive inputs.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions using separate worker threads or processes for CPU-bound detection tasks if the runtime environment would otherwise block request handling.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests autoscaling infrastructure based on CPU, latency, or queue depth to maintain responsiveness as load rises.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommends batching only where appropriate or keeping requests small and independent if batching would hurt latency.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions minimizing per-request overhead, such as reusing initialized resources and avoiding unnecessary preprocessing, while keeping franc v6.1.0 in place.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.9167,
+          "all_strict": 0.8333,
+          "vital": 0.8571,
+          "vital_strict": 0.7143,
+          "weighted": 0.8947,
+          "weighted_strict": 0.7895,
+          "n_vital": 7,
+          "n_okay": 5
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "Can you provide a detailed and comprehensive summary of the entire process involved in developing and optimizing the language translation and detection services, covering all key technical decisions, integration challenges, performance improvements, error handling strategies, and deployment considerations?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The work included a comparative evaluation of Google Translate API v3 and DeepL API v2 across accuracy, cost, language coverage, and integration complexity.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "DeepL was preferred for higher-quality European language translation, while Google Translate was favored for broader language support and better cost efficiency.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Integration examples were provided for both translation APIs in a React 18.2 frontend and Node.js 18 backend stack.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The summary includes troubleshooting of common translation API failures such as authentication errors, rate limiting, invalid input, and quota exhaustion.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Error handling was strengthened with retry logic for recoverable translation API failures.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Language detection used the franc library version 6.1.0.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "A key language detection challenge was handling cases where franc returned undefined or unreliable results.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Language detection accuracy was improved through preprocessing such as stripping HTML tags and normalizing whitespace.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Performance optimization included Redis-based caching with TTL policies to reduce repeated translation or detection work.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Latency was further reduced through asynchronous processing and parallel request handling.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The translation microservice was integrated with chatbot backends through RESTful APIs.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The chatbot integration included fallback behavior that returned the original text if translation APIs failed.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The system added comprehensive error logging and rate-limit management around translation service calls.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Advanced caching enhancements included Redis hashes and cache-manager-based strategies.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Performance tuning also included database query optimization using indexing.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "External API calls were made asynchronous to minimize end-to-end response times.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Production hardening added structured logging, security middleware, rate limiting, and monitoring.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "API endpoints for contextual memory storage and GPT-4 chatbot core logic were implemented.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Those endpoints were built with rigorous input validation, strong error handling, and performance tuning for scalability and resilience.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Overall, the effort combined technical architecture, operational safeguards, and optimization work to deliver a robust multilingual translation and detection platform.",
+            "importance": "okay",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.175,
+          "all_strict": 0.05,
+          "vital": 0.1786,
+          "vital_strict": 0.0714,
+          "weighted": 0.1765,
+          "weighted_strict": 0.0588,
+          "n_vital": 14,
+          "n_okay": 6
+        },
+        "old_combined": 0.19
+      },
+      {
+        "question": "Can you provide a thorough summary of the entire process involved in developing, deploying, and optimizing my chatbot system, covering all the key challenges, technical solutions, and improvements implemented across different components and stages?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The chatbot system development and deployment process spanned multiple interconnected phases across backend, frontend, deployment, scaling, and machine learning components.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Early backend debugging identified connection issues between the chatbot API and the PostgreSQL memory store caused by misconfigured database ports.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "PostgreSQL performance was improved through query optimizations such as indexing, prepared statements, and connection pooling.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "A scaling strategy was implemented to support increased user load using Docker containerization and Kubernetes orchestration with autoscaling.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The database scaling plan included techniques such as read replicas and partitioning.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Redis caching was introduced as part of the performance and scalability improvements.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Asynchronous processing was added using job queues and message brokers.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Monitoring and observability were strengthened using Prometheus and Grafana.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Kubernetes cluster setup included deployment manifests, service configurations, and horizontal pod autoscaling for efficient horizontal scaling.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Fine-tuning GPT-4 for clinical psychology dialogue required formatting the dataset into prompt-completion JSONL files.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The fine-tuning workflow included manually splitting datasets, uploading files to OpenAI, and monitoring fine-tuning jobs.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Model quality was improved iteratively through hyperparameter tuning, dataset management to avoid redundant uploads, and debugging validation loss issues.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The fine-tuned model was integrated as a separate endpoint via a Flask service.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The Flask integration included error handling and fallback to the base GPT-4 model.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Caching strategies were added around model access to reduce latency and rate limit errors.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The React frontend was enhanced by using the Context API to manage user authentication state.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Frontend performance was improved with memoization to reduce unnecessary re-renders.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Backend authentication microservices were updated in coordination with the frontend and deployed via Docker Compose.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Docker and Docker Compose configurations were refined to improve image sizes, resource limits, and service health checks.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Additional optimization and reliability work included improving Redis session-token cache miss handling atomically and using debugging/profiling tools to address latency and memory bottlenecks in model inference.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.1,
+          "all_strict": 0.05,
+          "vital": 0.1071,
+          "vital_strict": 0.0714,
+          "weighted": 0.1029,
+          "weighted_strict": 0.0588,
+          "n_vital": 14,
+          "n_okay": 6
+        },
+        "old_combined": 0.161
+      },
+      {
+        "question": "How many days are there between when I need to integrate the translation API and my sprint review to discuss the project status?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The time between the translation API integration deadline and the sprint review is 7 days.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The translation API integration deadline is March 25, 2024.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The sprint review is scheduled for April 1, 2024.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 3,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "How many days do I have between when I planned to finish implementing the contextual memory store and the deadline for completing the GPT-4 fine-tuning?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "There are 10 days between the planned implementation of the contextual memory store on April 10, 2024, and the GPT-4 fine-tuning deadline on April 20, 2024.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.324
+      }
+    ]
+  },
+  {
+    "case_id": 2,
+    "split": "1M",
+    "avgs": {
+      "all": 0.6034,
+      "all_strict": 0.5509,
+      "vital": 0.6576,
+      "vital_strict": 0.6125,
+      "weighted": 0.6234,
+      "weighted_strict": 0.573
+    },
+    "old_combined": 0.6003,
+    "questions": [
+      {
+        "question": "What feedback or comments were received during the peer review of the initial fetcher.py module scheduled by March 12, 2024?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "correctly states information is not available",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.518
+      },
+      {
+        "question": "What specific security protocols are enforced for the live trading API beyond IP whitelisting?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Correctly states that no information is available in the provided chat about security protocols for the live trading API beyond IP whitelisting.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.122
+      },
+      {
+        "question": "Have I written any unit tests for the functions in fetcher.py, and if so, what kind of coverage have I achieved?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "The answer points out that there is contradictory information about unit tests for fetcher.py.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "It states one claim was that no unit tests have ever been written for functions in fetcher.py.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "It states the conflicting claim was that there are pytest tests for fetcher.py with 88% coverage.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The answer does not choose one claim as true and instead asks for clarification about which statement is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.375,
+          "all_strict": 0.25,
+          "vital": 0.375,
+          "vital_strict": 0.25,
+          "weighted": 0.375,
+          "weighted_strict": 0.25,
+          "n_vital": 4,
+          "n_okay": 0
+        },
+        "old_combined": 0.204
+      },
+      {
+        "question": "Have I ever set up the OAuth 2.0 sandbox environment with the Alpaca brokerage API using the client ID and secret stored in a .env file?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "States that the prior information is contradictory about whether the OAuth 2.0 sandbox setup with Alpaca was done.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Says one prior statement claimed the setup had never been implemented.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Says another prior statement claimed the setup had been started with the client ID and secret stored in a .env file.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Asks for clarification about which of the conflicting statements is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 4,
+          "n_okay": 0
+        },
+        "old_combined": 0.422
+      },
+      {
+        "question": "Can you reconstruct the timeline of when I first mentioned each aspect of my stock trading system development in order? Mention ONLY and ONLY ten items.",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The answer reconstructs the aspects in the order they were first mentioned.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "First item: handling API rate limiting and improving efficiency with Alpha Vantage API calls.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Second item: designing a microservices architecture with module integration and message queues.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Third item: achieving high data availability and uptime strategies.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Fourth item: creating REST API endpoints for backtesting and exposing trade data.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Fifth item: optimizing Alpaca API integration including order placement and debugging paper trading modules.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Sixth item: implementing OAuth 2.0 token refresh and handling authentication issues.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Seventh item: developing ML prediction endpoints and managing input data shape challenges.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Eighth item: integrating alert notifications via external APIs like Twilio.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Ninth item: enhancing error handling and exception management in trading bot code.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Tenth item: configuring secure API access with SSL termination and load balancers.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 11,
+          "n_okay": 0
+        },
+        "old_combined": 0.113
+      },
+      {
+        "question": "How did my discussions about microservices communication evolve throughout our conversations in order? Mention ONLY and ONLY ten items.",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The answer identifies REST API calls and error handling between services as the first microservices communication topic discussed.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer states that data serialization and deserialization techniques were discussed second.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer says the discussion next covered upgrading communication protocols from HTTP/1.1 to HTTP/2 and implementation challenges.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer identifies introducing RabbitMQ message queueing for asynchronous communication as the fourth stage.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer states that gRPC for low-latency communication, including thread safety and performance optimization concerns, came fifth.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer says the sixth stage was migrating from HTTP/2 to gRPC with TLS encryption and requesting feedback on service definitions.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer identifies WebSocket multiplexing for concurrent connections and scaling issues as the seventh topic.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer states that pub/sub messaging with AWS SNS, including error handling and service communication, was discussed eighth.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer says the ninth topic was implementing a service mesh with Istio for secure and observable communication, including error handling.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer identifies Kafka topics for asynchronous communication and API performance optimization for trade logging as the final tenth item.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.25,
+          "all_strict": 0.0,
+          "vital": 0.25,
+          "vital_strict": 0.0,
+          "weighted": 0.25,
+          "weighted_strict": 0.0,
+          "n_vital": 10,
+          "n_okay": 0
+        },
+        "old_combined": 0.201
+      },
+      {
+        "question": "What is the URL I set as the API endpoint for fetching stock prices?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "The API endpoint URL for fetching stock prices is https://www.alphavantage.co/query.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "What data type did I choose for the price column in my trades table?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "The data type chosen for the price column was NUMERIC(10,2).",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The specified type applies to the price column in the trades table.",
+            "importance": "okay",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.75,
+          "all_strict": 0.5,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 0.8333,
+          "weighted_strict": 0.6667,
+          "n_vital": 1,
+          "n_okay": 1
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "What information should I look at to understand how well my API calls are performing?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Mentions API response metrics as the key information to review for understanding API call performance.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Refers to response time or latency as an API response metric to evaluate performance.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Refers to status codes or error rates as API response metrics relevant to performance.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Refers to throughput or request/response volume as a useful API performance metric.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 3
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "What technologies are used in my current setup?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Correctly identifies the technologies used in the current setup.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Provides the specific version number for each identified technology.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 2,
+          "n_okay": 0
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "What is the success rate of the integration tests for the fetcher and database interaction?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "The success rate of the integration tests for the fetcher and database interaction is 97%.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "How many epochs does my LSTM model training pipeline complete, and what is the final validation loss?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "The LSTM model training pipeline completes 60 epochs.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The final validation loss is 0.028.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 2,
+          "n_okay": 0
+        },
+        "old_combined": 1.0
+      },
+      {
+        "question": "How many different stock symbols have I mentioned wanting to fetch prices for across my sessions?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The total number of stock-symbol mentions across sessions is five.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "AAPL is one of the mentioned stock symbols.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "GOOG is one of the mentioned stock symbols.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "MSFT is one of the mentioned stock symbols.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "AAPL was mentioned more than once across sessions.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "MSFT was mentioned more than once across sessions.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.3333,
+          "all_strict": 0.3333,
+          "vital": 0.5,
+          "vital_strict": 0.5,
+          "weighted": 0.4,
+          "weighted_strict": 0.4,
+          "n_vital": 4,
+          "n_okay": 2
+        },
+        "old_combined": 0.368
+      },
+      {
+        "question": "Considering my goals for testing coverage, API response time, and debugging the stock price fetcher, how should I prioritize my efforts to improve reliability and performance?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "Prioritize writing comprehensive unit tests first.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Unit tests are the first priority because they improve reliability.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Unit tests are also needed to achieve the testing coverage goal.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "After testing, prioritize debugging the stock price fetcher or API response errors.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Fixing API response errors is the second priority.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Optimizing API response time should come after tests and debugging.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "API response time optimization is intended to improve performance.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "The recommended order of effort is tests, then debugging, then performance optimization.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.25,
+          "all_strict": 0.125,
+          "vital": 0.1429,
+          "vital_strict": 0.0,
+          "weighted": 0.2,
+          "weighted_strict": 0.0667,
+          "n_vital": 7,
+          "n_okay": 1
+        },
+        "old_combined": 0.421
+      },
+      {
+        "question": "I'm working on caching price data for a service that needs to handle restarts without losing cached information. How would you suggest setting this up?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends using a persistent external cache such as Redis for price data caching.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "States that the cache should survive service restarts rather than relying on process memory alone.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Advises against using only volatile in-memory caching because cached data would be lost on restart.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions scalability or suitability for distributed/service-scale deployments as a reason to prefer Redis-like solutions.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Notes that the chosen cache should support persistence features such as disk-backed snapshots or append-only logging.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 3,
+          "n_okay": 2
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "How would you suggest structuring my workflow to handle both testing and actual deployment of my trading strategies?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends separating the backtesting/testing environment from the live trading/deployment environment.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "States that testing and live trading should use distinct workflows or systems rather than a single combined setup.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Explains that keeping backtesting separate helps preserve stability in the live trading environment.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Explains that separating the environments helps maintain live trading performance.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggests using the backtesting environment for strategy development, experimentation, and validation before deployment.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests using the live environment only for executing approved strategies in production.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.8333,
+          "all_strict": 0.6667,
+          "vital": 0.75,
+          "vital_strict": 0.5,
+          "weighted": 0.8,
+          "weighted_strict": 0.6,
+          "n_vital": 4,
+          "n_okay": 2
+        },
+        "old_combined": 0.95
+      },
+      {
+        "question": "Can you give me a comprehensive summary of how my stock trading bot project has progressed, including the key challenges I faced and the solutions we discussed along the way?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The project progressed through multiple stages of refinement over time.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "An early challenge was Alpha Vantage API rate limiting.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The rate-limiting issue was addressed by implementing asynchronous requests.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The asynchronous implementation used asyncio and aiohttp.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The architecture was expanded into a microservices design.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Flask was used as part of the microservices setup.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Message queues such as RabbitMQ were introduced for communication between services.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The microservices communicated across data fetching, ML prediction, and trade execution modules.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "High availability and robustness were improved by adding retry logic with exponential backoff.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The retry strategy was specifically used to handle HTTP 429 errors gracefully.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "These retry improvements increased the reliability of the stock price fetcher.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Performance was optimized by adding Redis caching.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Redis caching was used to reduce redundant API calls.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The system also dynamically managed delays between requests.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Testing coverage was improved by adding comprehensive pytest tests.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Model evaluation was enhanced by integrating classification metrics.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The added classification metrics included precision and recall.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The classification metrics were integrated into the LSTM model training pipeline.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Overall, the system became more efficient, scalable, and resilient.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.4211,
+          "all_strict": 0.3158,
+          "vital": 0.5833,
+          "vital_strict": 0.5,
+          "weighted": 0.4839,
+          "weighted_strict": 0.3871,
+          "n_vital": 12,
+          "n_okay": 7
+        },
+        "old_combined": 0.17
+      },
+      {
+        "question": "Can you give me a comprehensive summary of how my development roadmap and related implementation efforts have progressed so far?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The roadmap shows staged progress across multiple milestones for building and deploying project components.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The initial phase focused on Agile sprint planning to meet early deadlines.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The early two-week sprint prioritized API integration, data ingestion, and testing.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Work included creating a RESTful API using Flask.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The Flask API was improved with error handling, input validation, and security features.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The Docker setup for the ML model service was optimized to reduce image size while preserving required dependencies.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "ML model training and prediction APIs were developed and deployed.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Best practices for model architecture were incorporated into the ML work.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Training monitoring with TensorBoard was added.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Dynamic learning rate adjustments were used to improve convergence.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The most recent focus is completing Milestone 3.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Milestone 3 includes implementing backtesting and paper trading modules.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Milestone 3 includes integrating technical indicators.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Milestone 3 includes calculating performance metrics.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Milestone 3 includes preparing deployment on a dedicated port.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Across phases, the approach was refined and challenges in risk management were addressed.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The roadmap has been kept aligned with upcoming deadlines.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Overall progress reflects steady advancement across interconnected development areas.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.3056,
+          "all_strict": 0.2778,
+          "vital": 0.55,
+          "vital_strict": 0.5,
+          "weighted": 0.3929,
+          "weighted_strict": 0.3571,
+          "n_vital": 10,
+          "n_okay": 8
+        },
+        "old_combined": 0.225
+      },
+      {
+        "question": "How many days do I have between the start of my first sprint and its deadline to complete all my tasks?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "There are 14 days between the sprint start and the sprint deadline.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The first sprint starts on March 1, 2024.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The sprint deadline is March 15, 2024.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "A 14-day span is equivalent to two weeks.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "This is the time available to complete all tasks in the sprint.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.8,
+          "all_strict": 0.8,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 0.875,
+          "weighted_strict": 0.875,
+          "n_vital": 3,
+          "n_okay": 2
+        },
+        "old_combined": 0.492
+      },
+      {
+        "question": "How many days do I have between submitting my modules for peer review and the deadline to provide feedback?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The time between the submission date and the feedback deadline is 2 days.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The modules were submitted for peer review on March 16, 2024.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The feedback deadline is March 18, 2024.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The submitted modules are fetcher.py and strategy.py.",
+            "importance": "okay",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.75,
+          "all_strict": 0.75,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 0.8571,
+          "weighted_strict": 0.8571,
+          "n_vital": 3,
+          "n_okay": 1
+        },
+        "old_combined": 1.0
+      }
+    ]
+  },
+  {
+    "case_id": 3,
+    "split": "1M",
+    "avgs": {
+      "all": 0.6498,
+      "all_strict": 0.5192,
+      "vital": 0.6611,
+      "vital_strict": 0.5365,
+      "weighted": 0.6532,
+      "weighted_strict": 0.5237
+    },
+    "old_combined": 0.5077,
+    "questions": [
+      {
+        "question": "Can you share the detailed methodology or participant demographics for the human evaluation study rating caption descriptiveness?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Correctly states that the detailed methodology or participant demographics for the human evaluation study are not available in the provided chat.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.8
+      },
+      {
+        "question": "What specific reasons led to the decision to use a ViT-B/16 backbone combined with GPT-2 small for sequence modeling?",
+        "type": "abstention",
+        "nuggets": [
+          {
+            "nugget": "Correctly states that the provided chat does not contain information about the specific reasons for choosing a ViT-B/16 backbone with GPT-2 small for sequence modeling.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.0,
+          "all_strict": 0.0,
+          "vital": 0.0,
+          "vital_strict": 0.0,
+          "weighted": 0.0,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.114
+      },
+      {
+        "question": "Have I planned any milestones or deadlines for my project?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "The answer identifies that the user's statements about project milestones or deadlines are contradictory.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The answer states that the user said they have never planned any milestones or deadlines for the project.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer states that the user also provided specific milestone dates.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The specific milestone dates mentioned were for feature extraction, training, and deployment.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "The answer asks the user to clarify which of the conflicting statements is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.6,
+          "all_strict": 0.6,
+          "vital": 0.5,
+          "vital_strict": 0.5,
+          "weighted": 0.5556,
+          "weighted_strict": 0.5556,
+          "n_vital": 4,
+          "n_okay": 1
+        },
+        "old_combined": 0.193
+      },
+      {
+        "question": "Have I ever encountered CUDA out of memory errors during my model training?",
+        "type": "contradiction_resolution",
+        "nuggets": [
+          {
+            "nugget": "The answer identifies that the prior information about CUDA out of memory errors is contradictory or inconsistent.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "It states that one prior claim was that no CUDA out of memory errors were ever encountered during model training.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "It states that another prior claim described encountering a CUDA out of memory error with batch size 32.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "It asks the user to clarify which of the conflicting statements is correct.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.625,
+          "all_strict": 0.5,
+          "vital": 0.625,
+          "vital_strict": 0.5,
+          "weighted": 0.625,
+          "weighted_strict": 0.5,
+          "n_vital": 4,
+          "n_okay": 0
+        },
+        "old_combined": 0.474
+      },
+      {
+        "question": "How did my discussions about model development and deployment progress in order? Mention ONLY and ONLY ten items.",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The progression begins with initial attempts to enhance image features using a diffusion-based pipeline.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The next step is integrating caption generation with the enhanced image features.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The discussions then involve debugging memory errors related to the image captioning model.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The progression includes efforts to deploy the model via a REST API.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The REST API deployment work includes both feature extraction and caption generation.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "The discussions then transition to optimizing transformer models using smaller architectures.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The progression includes exploration of tokenizer performance improvements.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The discussions include challenges upgrading core libraries such as PyTorch and torchvision.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The progression includes attempts to implement distributed training with acceleration libraries.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The discussions include securing API endpoints with authentication mechanisms.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The progression ends with debugging and version-locking issues involving PyTorch and Transformers integration.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.4091,
+          "all_strict": 0.2727,
+          "vital": 0.35,
+          "vital_strict": 0.2,
+          "weighted": 0.381,
+          "weighted_strict": 0.2381,
+          "n_vital": 10,
+          "n_okay": 1
+        },
+        "old_combined": 0.236
+      },
+      {
+        "question": "How did my discussions about managing and optimizing database and data handling evolve in order? Mention ONLY and ONLY nine items.",
+        "type": "event_ordering",
+        "nuggets": [
+          {
+            "nugget": "The answer states that the first database/data-handling discussion was the initial setup and retrieval of image-caption data from a PostgreSQL database for model training.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer states that the second discussion was troubleshooting foreign key constraints and JSONB data insertion errors in PostgreSQL tables.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer states that the third discussion was enhancing the database schema with confidence scores and optimizing query performance, including indexing strategies.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer states that the fourth discussion was implementing and refreshing materialized views with performance considerations.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer states that the fifth discussion was creating and managing user-generated caption tables with error handling for table existence and insertion issues.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer states that the sixth discussion was scheduling ETL jobs and handling connection issues with Redshift and Redis cache update problems.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer states that the seventh discussion was extending user caption tables with JSONB edit history and updating it programmatically.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The answer states that the eighth discussion was addressing AWS Lambda function timeout and chaining issues.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The answer states that the ninth and final discussion was migrating user feedback data to DynamoDB using AWS SAM templates with deployment and optimization suggestions.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.2778,
+          "all_strict": 0.0,
+          "vital": 0.2778,
+          "vital_strict": 0.0,
+          "weighted": 0.2778,
+          "weighted_strict": 0.0,
+          "n_vital": 9,
+          "n_okay": 0
+        },
+        "old_combined": 0.177
+      },
+      {
+        "question": "How many images and captions per image did I say my dataset contains?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "The dataset contains 123,287 images.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Each image has 5 captions.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 2,
+          "n_okay": 0
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "How did you recommend organizing and accessing the large collection of images and their associated descriptions to ensure efficient training and evaluation of the model?",
+        "type": "information_extraction",
+        "nuggets": [
+          {
+            "nugget": "Recommended using the dataset's existing structured annotation splits to divide data into training, validation, and test sets.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggested loading annotations from JSON files.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Mapped image IDs to their corresponding filenames.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Mapped images or image IDs to their associated captions/descriptions.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommended creating dataset classes to load paired images and captions based on the annotations.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggested using data loaders to handle the dataset efficiently during training and evaluation.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentioned choosing appropriate batch sizes for the data loaders.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Mentioned applying image transformations/preprocessing in the data pipeline.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "The organization and access strategy was motivated by making training and evaluation efficient.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.7778,
+          "all_strict": 0.6667,
+          "vital": 0.75,
+          "vital_strict": 0.6667,
+          "weighted": 0.7667,
+          "weighted_strict": 0.6667,
+          "n_vital": 6,
+          "n_okay": 3
+        },
+        "old_combined": 0.398
+      },
+      {
+        "question": "What are some ways I can improve the speed of my application?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Suggests reviewing and optimizing cache configuration to improve application performance.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommends using caching effectively to reduce repeated expensive computations or database queries.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests profiling or monitoring the application to identify performance bottlenecks.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions optimizing database access, such as improving queries or indexing.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommends reducing unnecessary work in the application code or algorithms.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggests using asynchronous processing or concurrency where appropriate to improve responsiveness.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions optimizing network or asset delivery, such as compression or minimizing payload size.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests scaling resources or infrastructure appropriately if the application is resource constrained.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.9375,
+          "all_strict": 0.875,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 0.9444,
+          "weighted_strict": 0.8889,
+          "n_vital": 1,
+          "n_okay": 7
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "What images are used in the current deployment setup?",
+        "type": "instruction_following",
+        "nuggets": [
+          {
+            "nugget": "Provides the exact version tags of the images used in the current deployment setup.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Does not answer with only image names lacking version information.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 2,
+          "n_okay": 0
+        },
+        "old_combined": 0.8
+      },
+      {
+        "question": "What batch size do I use to balance memory constraints and throughput during my model training?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "The recommended batch size is 12.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.5,
+          "all_strict": 0.0,
+          "vital": 0.5,
+          "vital_strict": 0.0,
+          "weighted": 0.5,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.291
+      },
+      {
+        "question": "What is the time-to-live (TTL) setting for caching diffusion features in Redis to optimize API response times?",
+        "type": "knowledge_update",
+        "nuggets": [
+          {
+            "nugget": "The TTL setting for caching diffusion features in Redis is 7200 seconds.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.5,
+          "all_strict": 0.0,
+          "vital": 0.5,
+          "vital_strict": 0.0,
+          "weighted": 0.5,
+          "weighted_strict": 0.0,
+          "n_vital": 1,
+          "n_okay": 0
+        },
+        "old_combined": 0.239
+      },
+      {
+        "question": "Between my model optimization, debugging CUDA memory errors, and API latency reduction efforts, how many different GPU-related issues have I mentioned across my sessions?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The total number of GPU-related issues mentioned is three.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "One issue mentioned is targeting inference latency on an RTX 3090.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "One issue mentioned is CUDA out of memory errors during training.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "One issue mentioned is API response time optimization on an RTX 3090.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.625,
+          "all_strict": 0.5,
+          "vital": 0.625,
+          "vital_strict": 0.5,
+          "weighted": 0.625,
+          "weighted_strict": 0.5,
+          "n_vital": 4,
+          "n_okay": 0
+        },
+        "old_combined": 0.35
+      },
+      {
+        "question": "Considering my modular pipeline design, training setup, Docker deployment, and gRPC integration efforts, how do the main components and communication methods I used evolve across these sessions to improve scalability and performance?",
+        "type": "multi_session_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The initial system used a modular pipeline design.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The modular pipeline combined diffusion-based feature extraction with transformer-based caption generation.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The training setup was later improved.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Training improvements included better tokenization.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Training improvements included optimization changes.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Deployment evolved to running components as separate Docker containers.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The Dockerized components communicated over internal container networking.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "gRPC was integrated for communication between services.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Using gRPC made inter-service communication more efficient.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The progression across sessions improved scalability.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The progression across sessions reduced communication overhead and improved performance.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.7273,
+          "all_strict": 0.6364,
+          "vital": 0.8,
+          "vital_strict": 0.7,
+          "weighted": 0.7619,
+          "weighted_strict": 0.6667,
+          "n_vital": 10,
+          "n_okay": 1
+        },
+        "old_combined": 0.504
+      },
+      {
+        "question": "I'm planning to build a text generation pipeline. Which transformer model would you suggest I start with?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends starting with a lightweight transformer model for text generation.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests choosing models suited to quick experimentation or prototyping.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Avoids recommending heavier, more complex transformer models as the starting point.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "May name small or distilled transformer variants as appropriate examples.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 3,
+          "n_okay": 1
+        },
+        "old_combined": 0.9
+      },
+      {
+        "question": "I'm working on a Python app that needs to handle multiple API requests efficiently. How would you suggest structuring the data fetching and storage to manage repeated requests?",
+        "type": "preference_following",
+        "nuggets": [
+          {
+            "nugget": "Recommends using asynchronous API calls to handle multiple requests efficiently or concurrently.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Recommends using a caching mechanism to avoid repeated API requests for the same data.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Connects caching to maintaining data accuracy, such as by refreshing or expiring stale cached data.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Suggests structuring fetching and storage so cached responses are checked before making a new API call.",
+            "importance": "okay",
+            "label": "support"
+          },
+          {
+            "nugget": "Mentions Python async tools such as asyncio or aiohttp as a way to implement asynchronous requests.",
+            "importance": "okay",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Suggests using a persistent or in-memory store for cached results, such as Redis, a dictionary, or a database.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.9167,
+          "all_strict": 0.8333,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 0.9444,
+          "weighted_strict": 0.8889,
+          "n_vital": 3,
+          "n_okay": 3
+        },
+        "old_combined": 0.95
+      },
+      {
+        "question": "Can you give me a comprehensive summary of how my image captioning system design and deployment evolved throughout our discussions?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The design evolved progressively over multiple discussions from initial concept toward deployment and optimization.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "An early focus was integrating a diffusion-based feature extractor with a transformer-based caption generator into one image captioning pipeline.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The system was structured modularly, with the major components defined and implemented separately.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Independent testing of the separate components was emphasized in the initial design guidance.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The architecture later shifted to deploying the components as decoupled microservices.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "These microservices were designed to communicate through REST APIs.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The move to decoupled microservices was motivated by scalability benefits.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The move to decoupled microservices was also motivated by maintainability benefits.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Practical deployment concerns were discussed, including Docker Compose network configuration.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Docker Compose networking was specifically used to enable communication between services.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Performance optimization later became a focus of the design evolution.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "One optimization strategy introduced was caching embeddings.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Another optimization strategy introduced was leveraging GPU acceleration.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Profiling API response times was discussed as a way to meet latency goals.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Database optimization was also explored as part of the later stages.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The database work included creating and managing materialized views.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Appropriate indexing for materialized views was part of the optimization discussion.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Refresh strategies for materialized views were part of the optimization discussion.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The purpose of the materialized-view work was to support efficient data retrieval.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Overall, the discussions showed an iterative progression from conceptual system design to practical deployment and scalability-oriented optimization.",
+            "importance": "vital",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 0.35,
+          "all_strict": 0.3,
+          "vital": 0.5,
+          "vital_strict": 0.4286,
+          "weighted": 0.4118,
+          "weighted_strict": 0.3529,
+          "n_vital": 14,
+          "n_okay": 6
+        },
+        "old_combined": 0.384
+      },
+      {
+        "question": "Can you provide a detailed summary of the entire process involved in developing and deploying the image captioning API, covering all major technical challenges, design decisions, optimization strategies, error handling approaches, and deployment considerations discussed across the different stages?",
+        "type": "summarization",
+        "nuggets": [
+          {
+            "nugget": "The image captioning API was built in multiple stages covering implementation, reliability, optimization, debugging, and deployment.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "The API used FastAPI as the web framework.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The service used a transformer-based image caption generation model.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "A Pydantic request model was used to validate incoming image inputs.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "The API accepted image inputs as either base64-encoded data or image URLs.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Implementation included loading a pre-trained model and tokenizer/processor for caption generation.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Caption generation involved preprocessing/tokenizing inputs, running generation, and decoding the output text.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Robust error handling was added for invalid image inputs and malformed requests.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Network-related failures such as timeouts were explicitly handled to improve API reliability.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "General exception management was introduced to prevent crashes and return reliable API responses.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Performance optimization included caching, such as LRU caching, to avoid repeated expensive work.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Asynchronous processing was discussed as a way to improve throughput and responsiveness.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Resource efficiency strategies included mixed precision to reduce memory usage.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Gradient accumulation was used to lower effective memory requirements during training/debugging.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "CUDA out-of-memory issues were debugged by reducing batch size, enabling mixed precision, and using gradient accumulation.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Proper optimizer initialization was identified as important when implementing gradient accumulation.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Deployment planning included containerizing the application with Docker.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Cloud deployment targets discussed included AWS ECS and Google Cloud GKE.",
+            "importance": "okay",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Production operations included monitoring and logging with cloud-native tooling.",
+            "importance": "vital",
+            "label": "not_support"
+          },
+          {
+            "nugget": "Redis cache concurrency problems were addressed with atomic WATCH/MULTI/EXEC transactions plus retries to avoid stale captions under concurrent requests.",
+            "importance": "vital",
+            "label": "not_support"
+          }
+        ],
+        "scores": {
+          "all": 0.25,
+          "all_strict": 0.2,
+          "vital": 0.2941,
+          "vital_strict": 0.2353,
+          "weighted": 0.2703,
+          "weighted_strict": 0.2162,
+          "n_vital": 17,
+          "n_okay": 3
+        },
+        "old_combined": 0.229
+      },
+      {
+        "question": "How many days do I have between finishing the initial feature extraction and completing the transformer training?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "The time between the two milestones is 45 days.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Initial feature extraction finished on April 15.",
+            "importance": "vital",
+            "label": "partial_support"
+          },
+          {
+            "nugget": "Transformer training was completed by May 30.",
+            "importance": "vital",
+            "label": "partial_support"
+          }
+        ],
+        "scores": {
+          "all": 0.5,
+          "all_strict": 0.0,
+          "vital": 0.5,
+          "vital_strict": 0.0,
+          "weighted": 0.5,
+          "weighted_strict": 0.0,
+          "n_vital": 3,
+          "n_okay": 0
+        },
+        "old_combined": 0.415
+      },
+      {
+        "question": "How many days are there between the start of Sprint 9 and my project's scheduled completion date?",
+        "type": "temporal_reasoning",
+        "nuggets": [
+          {
+            "nugget": "There are 26 days between the two dates.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "Sprint 9 starts on July 1.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The project's scheduled completion date is July 27.",
+            "importance": "vital",
+            "label": "support"
+          },
+          {
+            "nugget": "The 26-day interval is measured from the start of Sprint 9 to the project's scheduled completion date.",
+            "importance": "okay",
+            "label": "support"
+          }
+        ],
+        "scores": {
+          "all": 1.0,
+          "all_strict": 1.0,
+          "vital": 1.0,
+          "vital_strict": 1.0,
+          "weighted": 1.0,
+          "weighted_strict": 1.0,
+          "n_vital": 3,
+          "n_okay": 1
+        },
+        "old_combined": 0.9
+      }
+    ]
+  }
+]

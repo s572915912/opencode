@@ -1,0 +1,273 @@
+{
+  "test_type": "OpenCode BEAM Benchmark (1M)",
+  "scoring_method": "50% LLM Judge + 30% Token F1 + 20% Keyword Overlap",
+  "model": "changyouopenai/gpt-5.4",
+  "split": "1M",
+  "compaction_interval": 0,
+  "compaction_token_threshold": 128000,
+  "compaction_mode": "progressive(@128K tokens)",
+  "cases_tested": 1,
+  "results": [
+    {
+      "case_id": 3,
+      "session_id": "ses_30ff25e12ffeClJ97aE97X97YV",
+      "messages_fed": 800,
+      "token_usage": {
+        "input": 1408681,
+        "output": 79540,
+        "cache_read": 76672,
+        "cache_write": 0,
+        "api_total": 1488221
+      },
+      "before_compaction": {
+        "avg_combined": 0,
+        "results": []
+      },
+      "after_compaction": {
+        "avg_combined": 0.53725,
+        "results": [
+          {
+            "type": "abstention",
+            "question": "Can you share the detailed methodology or participant demographics for the human evaluation study rating caption descriptiveness?",
+            "expected": "Based on the provided chat, there is no information related to the detailed methodology or participant demographics of the human evaluation study.",
+            "model_answer": "We only pinned down three facts about that human evaluation so far:\n\n- `20 participants`\n- a `5-point Likert scale`\n- an average descriptiveness score of `4.2`\n\nWe did not previously define:\n- participant demographics\n- recruitment source\n- age range, language background, or domain expertise\n- caption rating rubric beyond “descriptiveness”\n- inter-rater agreement\n- number of images/captions rated per participant\n- whether evaluators saw model names, references, or randomized outputs\n\nSo the honest answer is: the detailed methodology and participant demographics were not specified in the work so far.\n\nIf you want, I can help you lock this down next in one of two ways:\n1. Draft a production-ready human evaluation methodology consistent with the current project\n2. Reconstruct a minimal “reported study details” section using only the facts we already established (`n=20`, `5-point Likert`, mean `4.2`) without inventing unsupported demographics",
+            "scores": {
+              "keyword": 0.538,
+              "token_f1": 0.141,
+              "llm_judge": 0.2,
+              "combined": 0.236
+            }
+          },
+          {
+            "type": "abstention",
+            "question": "What specific reasons led to the decision to use a ViT-B/16 backbone combined with GPT-2 small for sequence modeling?",
+            "expected": "Based on the provided chat, there is no information related to the specific reasons behind choosing ViT-B/16 and GPT-2 small for the model architecture.",
+            "model_answer": "We chose `ViT-B/16` plus `GPT-2 small` mainly because it was the best initial balance of feature quality, integration simplicity, and training cost for the custom captioning stack.\n\n- `ViT-B/16` fit the visual side because we wanted strong image representations without jumping to a heavier backbone too early; it also aligned well with the target `768-dim` embedding size discussed for bridging diffusion/image features into the language model.\n- `GPT-2 small` fit the text side because it was large enough to model caption sequences well, but still manageable to fine-tune on `COCO 2017` (`123,287 images`, `5` captions per image) with our hardware constraints.\n- The combination matched the deployment target better than larger alternatives because inference needed to move toward `under 250ms per image on an NVIDIA RTX 3090 GPU`, and training had already run into memory pressure.\n- It was a practical starting point for custom fusion work: the project was not using an off-the-shelf caption model end to end, so a familiar autoregressive decoder made experimentation easier for mapping visual embeddings into token generation.\n- `GPT-2 small` was also a safer baseline before scaling up, since larger decoder choices would have made the CUDA memory problems worse; we later saw this pressure directly when `batch size 32` caused `RuntimeError: CUDA out of memory at line 112 in train.py`.\n- After that baseline decision, we later moved toward `DistilGPT-2 v2.0` because `GPT-2 small` was still expensive enough that epoch time dropped from `45m` to `28m` after the switch.\n\nSo the short version is: `ViT-B/16` gave a solid, appropriately sized visual encoder, and `GPT-2 small` gave a flexible caption decoder that was easier to train and deploy within the project’s latency and memory limits.",
+            "scores": {
+              "keyword": 0.389,
+              "token_f1": 0.08,
+              "llm_judge": 0.0,
+              "combined": 0.078
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I planned any milestones or deadlines for my project?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have never planned any milestones or deadlines for the project, but you also provided specific milestone dates for feature extraction, training, and deployment. Which statement is correct?",
+            "model_answer": "Yes — you set and later updated several milestones.\n\n- Feature extraction deadline moved from `April 15` to `April 20`\n- Transformer training deadline moved from `May 30` to `June 10`\n- Deployment deadline moved from `July 10` to `August 10`\n\nYou also outlined sprint windows:\n\n- Sprint 1: `March 1` to `April 15`\n- Additional sprint: `April 16` to `May 15`\n- Sprint 5: `May 1-31`\n- Sprint 6 focused on `autoscaling, distributed training, API versioning, and monitoring enhancements`\n- Sprint 9 focused on `multi-language support`, `security hardening`, and `final performance tuning`\n\nAnd a later roadmap target was mentioned:\n\n- Project completion date example: `July 27, 2024`\n\nFor Sprint 9, you also had Gantt-style task dates:\n\n- Multi-language support: `2024-07-01` to `2024-07-15`\n- Security hardening: `2024-07-10` to `2024-07-20`\n- Final performance tuning: `2024-07-15` to `2024-07-25`\n\nThe main schedule change we captured was that the timeline was intentionally relaxed so it would still fit and not feel rushed.",
+            "scores": {
+              "keyword": 0.44,
+              "token_f1": 0.18,
+              "llm_judge": 0.4,
+              "combined": 0.351
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I ever encountered CUDA out of memory errors during my model training?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have never encountered any CUDA out of memory errors during model training, but you also described encountering a CUDA OOM error with a batch size of 32. Could you clarify which is correct?",
+            "model_answer": "Yes.\n\nYou explicitly reported:\n- `RuntimeError: CUDA out of memory at line 112 in train.py`\n- `RuntimeError: CUDA out of memory`\n- later the detailed form: `RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`\n\nRelated context we already captured:\n- the error happened with `batch size 32`\n- you reduced it to `16`\n- later the sweet spot discussed was `12`\n- you enabled AMP/Apex and reported about `40%` memory reduction\n- gradient accumulation over `4 steps` was discussed to simulate effective batch size `64`\n\nSo yes — CUDA OOM was a recurring training issue in the project.",
+            "scores": {
+              "keyword": 0.393,
+              "token_f1": 0.208,
+              "llm_judge": 0.4,
+              "combined": 0.351
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "How did my discussions about model development and deployment progress in order? Mention ONLY and ONLY ten items.",
+            "expected": "Your discussions about model development and deployment progressed as follows: 1) Initial attempts to enhance image features using a diffusion-based pipeline, 2) Integration of caption generation with the enhanced features, 3) Debugging memory errors related to the image captioning model, 4) Efforts to deploy the model via a REST API with feature extraction and caption generation, 5) Transition to optimizing transformer models with smaller architectures, 6) Exploration of tokenizer performance improvements, 7) Challenges upgrading core libraries like PyTorch and torchvision, 8) Attempts to implement distributed training with acceleration libraries, 9) Securing API endpoints with authentication mechanisms, and 10) Debugging and version locking issues with PyTorch and Transformers integration.",
+            "model_answer": "1. You started by planning a custom image captioning model with `PyTorch 1.13`, `Transformers v4.29`, and `Python 3.10`.\n2. You worked through early setup issues, including `ModuleNotFoundError: No module named 'transformers'`.\n3. You moved into preprocessing, batching, gradient accumulation, and training stability.\n4. You explored diffusion-based visual features and then a modular diffusion feature extractor plus transformer caption generator design.\n5. You settled on `Stable Diffusion 2.1` features, `ViT-B/16`, and `GPT-2 small` as the early modeling direction.\n6. You connected the model plan to `COCO 2017`, PostgreSQL-backed data handling, and DataLoader integration.\n7. You focused on training and evaluation details such as `AdamW`, learning rate tuning, BLEU-4, METEOR, and CIDEr.\n8. You debugged repeated training/runtime issues, especially CUDA memory pressure, mixed precision, and batch-size mismatches.\n9. You shifted toward inference optimization and serving, targeting low-latency API deployment on an `NVIDIA RTX 3090`.\n10. You then expanded into full deployment architecture with `FastAPI`, React, Redis, PostgreSQL, Docker, Kubernetes, monitoring, auth, and later serverless/AWS topics.",
+            "scores": {
+              "keyword": 0.394,
+              "token_f1": 0.283,
+              "llm_judge": 0.3,
+              "combined": 0.31
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "How did my discussions about managing and optimizing database and data handling evolve in order? Mention ONLY and ONLY nine items.",
+            "expected": "Your discussions about managing and optimizing database and data handling evolved in this sequence: 1) Initial setup and retrieval of image-caption data from a PostgreSQL database for model training, 2) Troubleshooting foreign key constraints and JSONB data insertion errors in PostgreSQL tables, 3) Enhancing database schema with confidence scores and optimizing query performance including indexing strategies, 4) Implementing and refreshing materialized views with performance considerations, 5) Creating and managing user-generated caption tables with error handling for table existence and insertion issues, 6) Scheduling ETL jobs and handling connection issues with Redshift and Redis cache update problems, 7) Extending user caption tables with JSONB edit history and updating it programmatically, 8) Addressing AWS Lambda function timeout and chaining issues, and finally 9) Migrating user feedback data to DynamoDB using AWS SAM templates with deployment and optimization suggestions.",
+            "model_answer": "1. You first tied the project to `COCO 2017` data and wanted PostgreSQL-backed dataset storage with DataLoader integration.\n2. You then asked how to correctly load a `COCO 2017` subset for captioning with `torchvision`.\n3. You discussed image preprocessing details like resizing to `256x256`, ImageNet normalization, and BPE vocab size `30,000`.\n4. You moved into PostgreSQL `14.3` schema design for `images` and `captions`, including foreign keys and JSONB feature storage.\n5. You asked how to query nested JSON data directly in SQL.\n6. You worked on `data_utils.py` testing and DataLoader performance, including `num_workers`, GPU idle time (`60%`), and reducing fetch time from `150ms` to `50ms`.\n7. You introduced Redis caching with SHA256 cache keys, TTL `3600 seconds` later extended to `7200 seconds`, and cache-hit-driven DB load reduction goals.\n8. You expanded database optimization into indexing and query tuning, including confidence scoring, `pg_trgm`, GIN indexes, materialized views, and dashboard-query performance.\n9. You later addressed operational data issues such as Redis stale-cache races, separate image/caption caches, `user_captions` table errors, caption versioning, and DynamoDB/Redshift ETL and GSI discussions.",
+            "scores": {
+              "keyword": 0.435,
+              "token_f1": 0.332,
+              "llm_judge": 0.2,
+              "combined": 0.268
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "How many images and captions per image did I say my dataset contains?",
+            "expected": "Your dataset contains 123,287 images with 5 captions each.",
+            "model_answer": "You said the dataset was `COCO 2017` with `123,287 images` and `5 captions per image`.",
+            "scores": {
+              "keyword": 0.75,
+              "token_f1": 0.632,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "How did you recommend organizing and accessing the large collection of images and their associated descriptions to ensure efficient training and evaluation of the model?",
+            "expected": "I recommended leveraging the existing structured splits provided by the dataset's annotation files to separate the data into training, validation, and testing sets. This involved loading the annotations from JSON files, mapping image IDs to filenames and captions, and creating dataset classes that load images and captions accordingly. I also suggested using data loaders with appropriate batch sizes and transformations to efficiently handle the data during training and evaluation.",
+            "model_answer": "I recommended organizing it as a metadata-driven dataset pipeline backed by PostgreSQL plus file/object storage for the actual images.\n\n- Store raw images in filesystem or object storage, and keep paths/IDs in PostgreSQL rather than blobs in the main training table.\n- Use normalized tables like `images` and `captions`, with one image row and multiple caption rows (`5` captions per image for `COCO 2017`).\n- Keep derived artifacts such as embeddings or structured feature payloads in separate fields/tables, with JSONB only where flexible metadata is actually useful.\n- Build the training loader from image ID + caption joins so DataLoader workers can fetch image paths and associated captions efficiently.\n- Index the access patterns used most during training/evaluation, especially image IDs, caption lookup keys, and later confidence/query fields.\n- Cache hot data in Redis with SHA256-based keys, TTL first at `3600 seconds` and later `7200 seconds`, plus explicit cache config like `2GB` max memory and `allkeys-lru`.\n- For evaluation, keep a clean mapping from each image to all reference captions so BLEU-4, METEOR, CIDEr, and later `ROUGE-L` can be computed correctly.\n- Use materialized views or precomputed query paths for dashboard/reporting workloads so analytics do not slow training/inference paths.\n\nThe overall idea was: PostgreSQL for structured metadata and caption relationships, storage for image files, DataLoader for batched access, and Redis for hot-cache acceleration.",
+            "scores": {
+              "keyword": 0.452,
+              "token_f1": 0.181,
+              "llm_judge": 0.2,
+              "combined": 0.233
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "What are some ways I can improve the speed of my application?",
+            "expected": "Response should include information about cache configuration as part of the performance improvement suggestions.",
+            "model_answer": "For your stack, the biggest wins are usually in four places: model inference, caching, data access, and frontend delivery.\n\n- Cut inference cost first: keep mixed precision enabled, batch where safe, prefer the lighter decoder path (`DistilGPT-2 v2.0` over heavier options), and profile toward your `RTX 3090` targets from `210ms` toward `140ms`.\n- Tighten caching: cache image embeddings and final captions separately in Redis `7.0.11`, use SHA256-based keys, TTL `7200 seconds` (`3600` was the earlier default), `maxmemory 2GB`, eviction `allkeys-lru` with `volatile-lru` as the fallback policy, pool size `20`, and warm popular embeddings on startup.\n- Reduce database work: add/verify indexes for hot caption lookup paths, use materialized views for dashboard queries, avoid repeated JSONB-heavy queries in request paths, and measure whether PostgreSQL `14.3` is the bottleneck before tuning model code.\n- Improve data loading: raise `num_workers`, prefetch/preprocess images efficiently, and keep GPU idle time down; your earlier goal of moving fetch time from `150ms` to `50ms` is a good target.\n- Optimize the API layer: use async FastAPI `v0.95` routes where I/O dominates, add timeouts/retries carefully, reuse connections, and avoid blocking long-running caption work on the request thread.\n- Shrink frontend latency: code-split the React `18.2` app, lazy-load heavy views, compress responses, cache static assets via CDN, and keep an eye on the gains you already discussed like caption render time `450ms -> 180ms` and bundle reduction target `20%` / reported `25%`.\n\nIf you want, I can turn this into a prioritized optimization checklist for your exact stack: `model`, `FastAPI/Redis`, `PostgreSQL`, or `React`.",
+            "scores": {
+              "keyword": 0.2,
+              "token_f1": 0.011,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "What images are used in the current deployment setup?",
+            "expected": "Response should include the exact versions of the images used in the deployment rather than just the image names.",
+            "model_answer": "The deployment setup we discussed explicitly used these container images:\n\n- `nvidia/cuda:11.7-base-ubuntu20.04`\n- `nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`\n\nRelated deployment image context we also captured:\n\n- current Docker image size issue: `1.2GB`\n- target optimized image size: `650MB`\n\nWe did not lock down any other exact image names for Redis, PostgreSQL, Nginx, Prometheus, or Grafana in the prior discussion.",
+            "scores": {
+              "keyword": 0.5,
+              "token_f1": 0.214,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "What batch size do I use to balance memory constraints and throughput during my model training?",
+            "expected": "A batch size of 12.",
+            "model_answer": "The balance point we captured was `batch size 12`.\n\nRelated history:\n- `32` caused `RuntimeError: CUDA out of memory`\n- you reduced to `16`\n- later `12` was the sweet spot for balancing memory and throughput\n- `4` gradient accumulation steps were discussed to simulate effective batch size `64`",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.188,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "What is the time-to-live (TTL) setting for caching diffusion features in Redis to optimize API response times?",
+            "expected": "7200 seconds",
+            "model_answer": "The Redis TTL discussed for caching diffusion features was `3600 seconds` initially, later extended to `7200 seconds`.\n\nFor the optimized setup, the later value to use is `7200 seconds`.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.222,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "Between my model optimization, debugging CUDA memory errors, and API latency reduction efforts, how many different GPU-related issues have I mentioned across my sessions?",
+            "expected": "You mentioned three different GPU-related issues: targeting inference latency on RTX 3090, CUDA out of memory errors during training, and API response time optimization on RTX 3090.",
+            "model_answer": "You mentioned `6` different GPU-related issue themes:\n\n- `CUDA out of memory` during training\n- mixed-precision dtype mismatch: `RuntimeError: expected scalar type Half but found Float`\n- CUDA index/assert failures: `RuntimeError: CUDA error: device-side assert triggered`\n- custom CUDA kernel launch problems: `CUDA kernel launch failed: invalid configuration argument`\n- GPU underutilization during input loading: GPU idle around `60%`\n- GPU inference latency/performance tuning on the `NVIDIA RTX 3090` (`around 320ms` -> `210ms`, targeting `under 250ms` and later `140ms`)",
+            "scores": {
+              "keyword": 0.714,
+              "token_f1": 0.354,
+              "llm_judge": 0.2,
+              "combined": 0.316
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "Considering my modular pipeline design, training setup, Docker deployment, and gRPC integration efforts, how do the main components and communication methods I used evolve across these sessions to improve scalability and performance?",
+            "expected": "You started with a modular pipeline combining diffusion-based feature extraction and transformer caption generation, then improved training with better tokenization and optimization, deployed components as separate Docker containers with internal networking, and finally integrated gRPC for efficient inter-service communication, enhancing scalability and reducing overhead.",
+            "model_answer": "Your architecture evolved from a single-model training mindset into a more explicitly separated, service-oriented pipeline so each heavy part could be optimized independently.\n\n- You started with a modular ML pipeline: diffusion-based feature extraction first, then transformer-based caption generation, instead of one monolithic caption model.\n- On the model side, you paired visual embeddings (`768-dim`, `ViT-B/16`-aligned) with an autoregressive decoder (`GPT-2 small`, later `DistilGPT-2 v2.0`) so training and inference could be tuned separately for memory and throughput.\n- In training, you improved performance mostly with local GPU techniques: reduced batch size (`32` -> `16`, sweet spot `12`), AMP, and gradient accumulation over `4` steps to preserve effective throughput under memory limits.\n- For serving, the system split into dedicated services on separate ports: API on `8000`, feature extraction on `8001`, and caption generation on `8002`, which made scaling bottlenecks independently more practical.\n- Redis `7.0.11` was added as the fast communication/acceleration layer for reused results, especially cached embeddings and captions, with TTL `3600 seconds` later `7200 seconds`, `2GB` max memory, and `allkeys-lru`.\n- Dockerized deployment then formalized those boundaries using GPU-capable images like `nvidia/cuda:11.7-base-ubuntu20.04` and `nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`, pushing the design toward reproducible, scalable multi-container deployment.\n- Nginx, Docker Compose `v2.15`, and later Kubernetes `v1.26` discussions extended this from local/container orchestration into horizontally scalable production deployment.\n- Communication also evolved: REST/FastAPI handled external client traffic, while gRPC was discussed for internal microservice communication where lower overhead and stricter contracts would help service-to-service performance.\n- Monitoring layers like Prometheus `2.44`, Grafana `9.4`, Redis exporter, and Jaeger were added so the communication paths themselves could be measured and tuned, not just the model.\n- Overall, the progression was: single training workflow -> modular inference pipeline -> containerized microservices -> REST for client access + gRPC for internal calls + Redis for fast shared state, all aimed at better scalability, lower latency, and cleaner independent scaling of the expensive components.",
+            "scores": {
+              "keyword": 0.676,
+              "token_f1": 0.19,
+              "llm_judge": 0.5,
+              "combined": 0.449
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm planning to build a text generation pipeline. Which transformer model would you suggest I start with?",
+            "expected": "Response should recommend lightweight transformer models suitable for quick experimentation rather than heavier, more complex models.",
+            "model_answer": "Start with `GPT-2 small`.\n\n- It was your original sequence-model baseline in this project, paired with `ViT-B/16`.\n- It is a practical starting point because it is easier to fine-tune and integrate than larger decoder models.\n- It fits your earlier hardware and latency constraints better than heavier options.\n- In your project history, it was the safe baseline before later optimization work moved toward `DistilGPT-2 v2.0` for faster training.\n\nIf your priority is:\n1. `best baseline compatibility`: use `GPT-2 small`\n2. `faster training/inference`: use `DistilGPT-2 v2.0`\n3. `higher capacity`: consider `GPT-2 medium` (`355M parameters`), but it will increase memory and latency costs",
+            "scores": {
+              "keyword": 0.231,
+              "token_f1": 0.08,
+              "llm_judge": 0.8,
+              "combined": 0.8
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm working on a Python app that needs to handle multiple API requests efficiently. How would you suggest structuring the data fetching and storage to manage repeated requests?",
+            "expected": "Response should include or recommend using asynchronous API calls combined with caching mechanisms to handle repeated requests efficiently while maintaining data accuracy.",
+            "model_answer": "Use a layered approach: async fetching, normalized storage, and a cache in front of the expensive/repeated calls.\n\n- Fetch with an async client so concurrent I/O does not block the app; keep one shared client/session and set clear timeouts/retry rules.\n- Normalize stored data by resource ID, request params, and freshness metadata instead of saving duplicate full responses everywhere.\n- Put a cache in front of repeated reads; for your stack, Redis is the right default. Use stable keys based on request identity, like a hash of endpoint + params.\n- Store hot derived results separately from raw responses so you can invalidate them independently.\n- Add TTLs for repeated requests; in your prior setup, `3600 seconds` was the initial default and `7200 seconds` was the later optimized value.\n- Track cache config explicitly if performance matters: `Redis 7.0.11`, `maxmemory 2GB`, eviction `allkeys-lru` (`volatile-lru` as an alternative), connection pool size `20`.\n- Prevent stampedes by locking or single-flight deduping when many callers request the same missing key at once.\n- Persist only what needs longer retention in your database; keep the DB as the source of truth and Redis as the speed layer.\n- Measure hit rate, latency, timeout rate, and DB load so you know whether caching is actually reducing repeated work.\n\nA good practical shape is:\n1. async request comes in\n2. check Redis by hashed key\n3. return cached value if present\n4. otherwise fetch upstream once\n5. persist canonical data if needed\n6. cache the response/derived result with TTL\n7. return result\n\nIf you want, I can sketch this as a concrete Python pattern using `FastAPI` + async HTTP client + `Redis`.",
+            "scores": {
+              "keyword": 0.444,
+              "token_f1": 0.078,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you give me a comprehensive summary of how my image captioning system design and deployment evolved throughout our discussions?",
+            "expected": "Throughout our conversations, you progressively developed a modular image captioning system by first exploring how to integrate a diffusion-based feature extractor with a transformer-based caption generator into a cohesive pipeline. Initial guidance focused on defining and implementing these components separately, emphasizing modularity and independent testing. Later, you expanded the design to deploy these components as decoupled microservices communicating via REST APIs, enhancing scalability and maintainability. You then addressed practical deployment concerns, such as configuring Docker Compose networks to enable inter-service communication. Subsequently, performance optimization strategies were introduced, including caching embeddings, leveraging GPU acceleration, and profiling API response times to meet latency goals. Finally, you explored database optimizations by creating and managing materialized views with appropriate indexing and refresh strategies to support efficient data retrieval. This journey reflects a clear progression from conceptual design to practical deployment and optimization, highlighting iterative improvements and system scalability considerations.",
+            "model_answer": "Your image captioning system evolved from a straightforward custom training idea into a modular, production-oriented platform with separate concerns for modeling, serving, caching, scaling, and user experience.\n\n- You began with a custom image captioning goal built on `Python 3.10`, `PyTorch 1.13`, and `Transformers v4.29`, aiming to combine a diffusion-based visual pipeline with a transformer decoder rather than relying on a single off-the-shelf captioning model.\n- The model design then became more explicit: use a diffusion-derived visual representation, target a `768-dim` embedding space, align around a `ViT-B/16`-style backbone, and feed those features into a sequence model starting with `GPT-2 small` (`124M`) and later exploring `DistilGPT-2 v2.0` for better efficiency.\n- Training discussions matured around real constraints from `COCO 2017` (`123,287 images`, `5` captions per image): preprocessing with `torchvision 0.14.1`, BPE vocab size `30,000`, `AdamW`, learning rates like `3e-5` and `5e-5`, max caption length `40`, beam width `5`, `top-p=0.9`, and label smoothing `0.1`.\n- The system hit real GPU limits, especially `RuntimeError: CUDA out of memory at line 112 in train.py`, so the training plan evolved to reduce batch size from `32` to `16`, with `12` as the sweet spot, add AMP for roughly `40%` memory reduction, and use gradient accumulation over `4` steps to simulate effective batch size `64`.\n- Performance optimization became a major theme: epoch time dropped from `45m` to `28m` after moving from `GPT-2 small` to `DistilGPT-2 v2.0`, API latency improved from `around 320ms on an RTX 3090` to `210ms`, and later discussions aimed for `under 250ms` and even `140ms` per image on an `NVIDIA RTX 3090`.\n- Data handling also became much more structured: raw images were treated separately from metadata, PostgreSQL `14.3` was used for tables like `images`, `captions`, `user_captions`, and `annotations`, JSONB was considered for flexible feature storage, DataLoader efficiency was tuned, and fetch time goals moved from `150ms` to `50ms`.\n- Deployment evolved from “serve the model somehow” into a multi-service architecture: FastAPI `v0.95` on port `8000`, feature extraction on `8001`, caption generation on `8002`, React `18.2` on `3000`, Redis `7.0.11` on `6379`, PostgreSQL on `5432`, and Nginx on `80`.\n- Caching became central to responsiveness: Redis was used for embeddings and captions with SHA256-based keys, TTL initially `3600 seconds` later `7200 seconds`, `maxmemory 2GB`, eviction policy `allkeys-lru` with `volatile-lru` as an alternative, connection pool size `20`, and repeated focus on stale-cache races, invalidation, and cache warming.\n- Containerization and production hardening also expanded significantly: Docker `20.10`, Docker Compose `v2.15`, CUDA images `nvidia/cuda:11.7-base-ubuntu20.04` and `nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`, image size reduction from `1.2GB` toward `650MB`, and later Kubernetes `v1.26`, blue-green deployment preferences, ArgoCD `v2.7`, and AWS targets like `g4dn.xlarge`.\n- Around that core platform, the system broadened into a real product: Swagger UI `4.0.0`, Auth0 React SDK `v2.0.0`, OAuth2/JWT/PKCE, Socket.IO `v4.7.1`, Prometheus `2.44`, Grafana `9.4`, Jaeger, Sentry `21.9`, ELK/Fluentd, serverless discussions with Lambda/API Gateway/SAM, multi-language support with `English` and `Turkish` first, accessibility targets under WCAG `2.1`, and frontend performance work that improved caption rendering from `450ms` to `180ms` and bundle size by `25%`.\n\nA few big patterns define the evolution:\n\n- You moved from a model-centric prototype to a platform-centric system.\n- You repeatedly traded raw model size for practical throughput and deployability.\n- You separated feature extraction, caption generation, API serving, and caching so each could scale independently.\n- You expanded from core caption generation into security, observability, multilingual support, accessibility, and production operations.\n\nWhat remains unresolved is mostly about correctness rather than ambition: several earlier example implementations were conceptually shaky, so the next phase should be cleaning up the actual diffusion-to-decoder bridge, validating the caption training pipeline end to end, and making the Redis/Auth/API patterns production-correct without losing the exact constraints and metrics you established.",
+            "scores": {
+              "keyword": 0.366,
+              "token_f1": 0.137,
+              "llm_judge": 0.3,
+              "combined": 0.269
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you provide a detailed summary of the entire process involved in developing and deploying the image captioning API, covering all major technical challenges, design decisions, optimization strategies, error handling approaches, and deployment considerations discussed across the different stages?",
+            "expected": "The development and deployment of the image captioning API involved multiple interconnected stages addressing both technical and operational challenges. Initially, the API was designed using FastAPI with a transformer-based caption generation model, incorporating a Pydantic request model to accept image inputs as base64 strings or URLs. The implementation included loading a pre-trained transformer model and tokenizer, tokenizing inputs, generating captions, and decoding outputs. Subsequent sessions focused on robust error handling, introducing validation for image inputs, handling network timeouts, and managing exceptions to ensure API reliability. Performance optimization was addressed through caching strategies using LRU caches, asynchronous processing, and efficient resource management, including mixed precision training and gradient accumulation to reduce memory footprint. Deployment considerations involved containerizing the application with Docker, deploying on cloud platforms like AWS ECS or Google Cloud GKE, and setting up monitoring and logging using cloud-native tools to maintain production stability. Additional discussions covered debugging CUDA out-of-memory errors by adjusting batch sizes, enabling mixed precision, and implementing gradient accumulation with proper optimizer initialization. Network-level issues such as connection resets were mitigated by increasing Uvicorn workers, implementing retry middleware, and enhancing logging for diagnostics. Finally, concurrency issues in Redis cache updates were resolved using atomic transactions with WATCH/MULTI/EXEC commands and retry mechanisms to prevent stale caption returns under concurrent requests. Throughout the process, best practices in API design, error handling, performance tuning, deployment, and debugging were integrated to build a robust, scalable, and maintainable image captioning service.",
+            "model_answer": "You developed the image captioning API in stages, moving from a custom research prototype to a production-oriented, multi-service system.\n\n**Foundation**\n\n- You started with a custom captioning pipeline built on `Python 3.10`, `PyTorch 1.13`, and `Transformers v4.29`, with the goal of combining diffusion-based visual features and a transformer caption generator rather than relying on an end-to-end off-the-shelf captioning model.\n- Early design work centered on `COCO 2017` with `123,287 images` and `5 captions per image`, plus a `30,000` BPE vocabulary and image preprocessing using `torchvision 0.14.1`.\n- The main visual/text architecture direction became `ViT-B/16`-aligned visual features with a `768-dim` bridge into `GPT-2 small`, later revisiting `DistilGPT-2 v2.0` for efficiency.\n\n**Model Design Decisions**\n\n- `ViT-B/16` was chosen as a practical visual backbone because it gave solid image features without making the system too heavy too early.\n- `GPT-2 small` was the initial decoder because it was a manageable autoregressive baseline for caption generation and easier to fine-tune under your hardware constraints.\n- Later, `DistilGPT-2 v2.0` became attractive because it reduced epoch time from `45m` to `28m`.\n- The diffusion component was treated as a feature extractor, specifically around `stabilityai/stable-diffusion-2-1-base`, with an explicit desire to preserve `768-dim` embeddings for downstream caption generation.\n\n**Training Setup**\n\n- You discussed `AdamW`, learning rates like `3e-5` and `5e-5`, max caption length `40`, beam width `5`, `top-p=0.9`, and label smoothing `0.1`.\n- Evaluation moved beyond basic loss into `BLEU-4`, `METEOR`, `CIDEr`, and later `ROUGE-L`, with reported snapshots including:\n  - after `10 epochs`: `BLEU-4 32.5`, `METEOR 27.1`, `CIDEr 98.3`\n  - later: `BLEU-4 38.7`, `METEOR 31.4`, `CIDEr 112.5`\n  - later tuning snapshot: `BLEU-4 39.2`\n- You explicitly decided that final evaluation metrics should always be included when discussing model performance.\n\n**Main Training Challenges**\n\n- CUDA memory pressure became one of the biggest recurring problems.\n- You explicitly hit:\n  - `RuntimeError: CUDA out of memory at line 112 in train.py`\n  - `RuntimeError: CUDA out of memory`\n  - `RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`\n- Batch size `32` caused OOM, so you reduced to `16`, and later identified `12` as the sweet spot balancing memory and throughput.\n- You also discussed gradient accumulation over `4 steps` to simulate effective batch size `64`.\n\n**Optimization Strategies**\n\n- Mixed precision was a major optimization theme; AMP/Apex reduced memory usage by about `40%`.\n- You also worked through mixed-precision correctness issues such as:\n  - `RuntimeError: expected scalar type Half but found Float`\n- Performance tuning targeted both training and inference:\n  - epoch time improved from `45m` to `28m`\n  - API latency improved from `around 320ms on an RTX 3090` to `210ms`\n  - later goals targeted `under 250ms per image on an NVIDIA RTX 3090 GPU`, and even `140ms`\n- Data pipeline optimization was also important:\n  - GPU idle time was around `60%`\n  - you targeted reducing data fetch time from `150ms` to `50ms`\n  - tuning `num_workers` and DataLoader behavior was part of the plan\n\n**Data Management and Storage**\n\n- You organized the system around structured metadata plus separate image storage, rather than storing everything monolithically.\n- PostgreSQL `14.3` became the main structured store for tables like:\n  - `images`\n  - `captions`\n  - `user_captions`\n  - `annotations`\n- You discussed:\n  - foreign keys\n  - JSONB feature storage\n  - nested JSON queries\n  - materialized views like `image_captions`\n  - indexing strategies including GIN and `pg_trgm`\n- Operational DB issues included:\n  - `psycopg2.Error: relation \"user_captions\" already exists`\n  - `psycopg2.Error: relation \"user_captions\" does not exist`\n  - `KeyError: 'caption_text'`\n  - `AttributeError: 'NoneType' object has no attribute 'shape'`\n\n**Caching and Performance Layer**\n\n- Redis `7.0.11` became central for performance.\n- You used it for caching embeddings and captions, with explicit cache configuration:\n  - TTL initially `3600 seconds`, later `7200 seconds`\n  - `maxmemory 2GB`\n  - eviction `allkeys-lru`\n  - alternative `volatile-lru`\n  - connection pool size `20`\n  - `3` shards in cluster discussions\n  - average network latency `15ms`\n- Redis was used to reduce DB load, with a target of `40%` reduction.\n- You also discussed cache warming for popular image embeddings and keeping separate caches for images and captions.\n- Redis failure modes were a recurring theme:\n  - `TimeoutError: Redis connection timed out after 5s`\n  - `RedisError: Connection reset by peer`\n  - `ConnectionResetError: [Errno 104] Connection reset by peer`\n  - `AttributeError: 'NoneType' object has no attribute 'decode'`\n- Race-safe invalidation and stale-cache handling remained an unresolved production concern.\n\n**API Development**\n\n- FastAPI `v0.95` became the main API framework.\n- Key endpoints discussed included:\n  - `/caption`\n  - `/caption/`\n  - `/v1/caption`\n  - `/v2/caption`\n  - `/captions/{image_id}`\n  - `/check_caption/{image_id}`\n  - `/cancel/{request_id}`\n- You supported image upload and base64 payload flows, with custom `400`-class error handling.\n- You emphasized async API calls and caching to improve responsiveness without sacrificing accuracy.\n\n**Error Handling Approach**\n\n- You repeatedly focused on robust, explicit error reporting and preserving verbatim errors.\n- Important API/application-side errors included:\n  - `JSONDecodeError: Expecting value: line 1 column 1 (char 0)`\n  - `ValueError: invalid image size`\n  - `504 Gateway Timeout`\n  - `invalid_token`\n  - `UnhandledPromiseRejectionWarning`\n- You also wanted standardized JSON error responses and correct separation between route-level `404` behavior and application exceptions in FastAPI.\n- Retry logic, circuit breakers, and fallback-to-cache behavior were discussed as ways to improve resilience.\n\n**Frontend Integration**\n\n- React `18.2` was used for the frontend, including upload UX, previews, history, annotations, and gallery behavior.\n- Frontend performance became measurable:\n  - caption rendering improved from `450ms` to `180ms`\n  - bundle reduction target was `20%`, later reported `25%`\n- You also covered:\n  - Axios `1.4.0`\n  - upload size limit `5MB`\n  - timeout example `10000`\n  - dynamic imports and Webpack `5.75`\n  - Swagger UI `4.0.0` embedded in the React frontend\n- Accessibility later became part of the product requirements, with WCAG `2.1`, high-contrast mode, and screen reader support.\n\n**Service Decomposition**\n\n- The architecture evolved into separate services to improve scalability:\n  - API service on `8000`\n  - feature extraction on `8001`\n  - caption generation on `8002`\n  - React dev server on `3000`\n  - Redis on `6379`\n  - PostgreSQL on `5432`\n  - Nginx on `80`\n- This separation let you think about independently scaling heavy components like feature extraction and caption generation.\n- You also discussed gRPC for internal service-to-service communication, while keeping REST/FastAPI for external clients.\n\n**Containerization and Deployment**\n\n- Deployment discussions started with Docker `20.10` and Docker Compose `v2.15`.\n- Exact CUDA images discussed were:\n  - `nvidia/cuda:11.7-base-ubuntu20.04`\n  - `nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`\n- Image size was a concern:\n  - current issue `1.2GB`\n  - target `650MB`\n- You hit the Docker port binding error:\n  - `docker: Error response from daemon: failed to create endpoint enthusiastic_morse on network bridge: failed to add endpoint enthusiastic_morse to network bridge: Bind for 0.0.0.0:8000 failed: port is already allocated.`\n- Nginx was part of the reverse proxy layer, along with SSL/gzip discussions.\n\n**Production Scaling**\n\n- The deployment conversation expanded into Kubernetes `v1.26`, Helm, autoscaling, and EKS.\n- Blue-green deployment became a preferred strategy for safer production rollouts.\n- ArgoCD `v2.7` was discussed for GitOps-style deployment control.\n- AWS planning included `g4dn.xlarge` for GPU workloads and `50GB` storage targets.\n- Later serverless discussions introduced Lambda, API Gateway, SAM, and provisioned concurrency, including:\n  - old API Gateway timeout `30s`\n  - later `60s`\n  - cold start improvement goals from `1.2s` to `400ms`\n  - later example `150ms` with `2 pre-warmed instances`\n  - another provisioned concurrency example of `5 pre-warmed instances`\n\n**Monitoring and Observability**\n\n- Production observability became a full layer in the design:\n  - Prometheus `2.44`\n  - Grafana `9.4`\n  - Redis exporter on `9121`\n  - Jaeger on `16686`, `14268`, `14250`, `9411`\n  - Fluentd `1.15`\n  - Elasticsearch `8.7`\n  - Sentry `21.9`\n- You discussed:\n  - API latency monitoring\n  - Redis hit rate dashboards\n  - error-rate alerts\n  - tracing across microservices\n  - Slack webhook notifications for critical failures\n- Uptime and load test metrics also appeared, including `99.9% uptime over 72-hour production monitoring`.\n\n**Security and Auth**\n\n- Security requirements grew over time.\n- You preferred robust auth even with added complexity, including OAuth2, JWT, Auth0, PKCE, and RBAC.\n- Key auth details discussed:\n  - token URL `token`\n  - scope `openid profile email`\n  - response type `code`\n  - state `123456`\n  - code challenge method `S256`\n  - redirect URI `http://localhost:3000/callback`\n  - token expiry example `15-minute`\n- You also worked through token refresh, roles with no permissions, multiple roles, and secure storage concerns.\n\n**Multi-language and Product Expansion**\n\n- The captioning system later expanded beyond English-only ideas.\n- You explicitly wanted multi-language support, with language options always specified:\n  - primary: `English`, `Turkish`\n  - additional examples: `Spanish`, `French`\n- Translation-related models discussed:\n  - `Helsinki-NLP/opus-mt-tr-en`\n  - `Helsinki-NLP/opus-mt-en-tr`\n- UI persistence via cookies/localStorage and language embedding tokens were also discussed.\n\n**Milestones and Planning**\n\n- You set and updated project deadlines:\n  - feature extraction: `April 15` -> `April 20`\n  - transformer training: `May 30` -> `June 10`\n  - deployment: `July 10` -> `August 10`\n- Later roadmap planning included a `July 27, 2024` completion example and Sprint 9 focused on:\n  - multi-language support\n  - security hardening\n  - final performance tuning\n\n**What Changed Most Over Time**\n\n- The project started as a modeling problem and became a full platform problem.\n- The main shift was from “train a custom captioner” to “operate a scalable captioning product.”\n- You moved from single-model concerns into:\n  - service decomposition\n  - caching strategy\n  - DB/query optimization\n  - frontend performance\n  - deployment automation\n  - observability\n  - auth/security\n  - multilingual support\n  - accessibility\n\n**Still Unresolved**\n\n- The diffusion feature extractor to caption-decoder bridge still needs a production-correct implementation.\n- Several earlier examples were conceptually shaky, especially around model APIs, Redis patterns, and some FastAPI snippets, so future implementation should correct them rather than extend them.\n- Race-safe Redis invalidation, production-grade FastAPI exception handling, clean Auth0/JWT/RBAC flow, and a validated end-to-end caption fine-tuning path remain the main unfinished engineering tasks.\n\nIf you want, I can turn this into a cleaner phase-by-phase timeline, a system architecture document, or a “lessons learned” version next.",
+            "scores": {
+              "keyword": 0.522,
+              "token_f1": 0.163,
+              "llm_judge": 0.1,
+              "combined": 0.179
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How many days do I have between finishing the initial feature extraction and completing the transformer training?",
+            "expected": "There are 45 days between finishing the initial feature extraction on April 15 and completing the transformer training by May 30.",
+            "model_answer": "You have `51 days` between the updated feature extraction deadline of `April 20` and the updated transformer training deadline of `June 10`.",
+            "scores": {
+              "keyword": 0.5,
+              "token_f1": 0.519,
+              "llm_judge": 0.0,
+              "combined": 0.205
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How many days are there between the start of Sprint 9 and my project's scheduled completion date?",
+            "expected": "There are 26 days between the start of Sprint 9 on July 1 and the project's scheduled completion date on July 27.",
+            "model_answer": "There are `26 days` between the start of Sprint 9 on `2024-07-01` and the scheduled project completion date of `July 27, 2024`.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.839,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

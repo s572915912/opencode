@@ -1,0 +1,26 @@
+# Chose / Batch / Size
+
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [UPDATE] `[training] batch_size_reduced: 16 (was: 32)` | supersedes:oom_batch_size_default
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [UPDATE] `training_batch_size_reduced: 16 (was: 32)` | supersedes:training_batch_size_default_problematic
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [UPDATE] `training_batch_size_reduced: 16 (was: 32)` | supersedes:training_batch_size_default_problematic
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [UPDATE] `training_batch_size_reduced: 16 (was: 32)` | supersedes:training_batch_size_default_problematic
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [UPDATE] `training_batch_size_reduced: 16 (was: 32)` | supersedes:training_batch_size_default_problematic
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [UPDATE] `training_batch_size_reduced: 16 (was: 32)` | supersedes:training_batch_size_default_problematic
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM
+- [UPDATE] `training_batch_size_reduced: 16 (was: 32)` | supersedes:training_batch_size_default_problematic
+- [DECISION] chose `batch size of 16` because `batch size of 32` triggered CUDA OOM

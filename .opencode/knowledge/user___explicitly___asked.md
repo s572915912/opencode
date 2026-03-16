@@ -1,0 +1,31 @@
+# User / Explicitly / Asked
+
+- [DECISION] because the user explicitly asked for AWS security help repeatedly → future AWS security responses must include **IAM policy details**
+- [DECISION] because the user explicitly asked for deployment best-practice guidance repeatedly → future deployment best-practice responses must include a **security checklist**
+- [DECISION] because the user explicitly asked for code quality guidance repeatedly → future code-quality responses must include a **code review checklist**
+- [DECISION] because the user explicitly requested it → future production launch schedule answers must include a **deployment timeline**
+- [FACT] user repeatedly moved between application code and infrastructure/ops; next agent should expect context switching across React, Flask/FastAPI, OpenCV/PyTorch, Redis, Docker/Kubernetes, and AWS in a single thread.
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization.
+- [FACT] The user asked “What did we do so far?” immediately after requesting deeper guidance on dtype optimization; this indicates the next agent should resume from the memory-optimization thread unless the user switches context again.
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization.
+- [FACT] The user asked “What did we do so far?” immediately after requesting deeper guidance on dtype optimization; unless the user switches context again, the next agent should resume from the memory-optimization thread first.
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization.
+- [FACT] The user asked “What did we do so far?” immediately after requesting deeper guidance on dtype optimization; unless the user switches context again, the next agent should resume from the memory-optimization thread first.
+- [DECISION] Because the user repeatedly requested exact preservation of numbers, versions, dates, and identifiers → future summaries and follow-up responses should preserve exact literals verbatim.
+- [DECISION] Because the user repeatedly requested exact preservation of numbers, versions, dates, endpoints, and identifiers → future summaries and follow-up responses should preserve exact literals verbatim.
+- [DECISION] Because the user repeatedly requested exact preservation of numbers, versions, dates, endpoints, and identifiers → future summaries and follow-up responses should preserve exact literals verbatim
+- [DECISION] because the user explicitly prefers **AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.** → the next agent should compare **EKS vs ECS Fargate** directly, not discuss EKS in isolation
+- [DECISION] because the user explicitly prefers **AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.** → the next agent should compare **EKS vs ECS Fargate** directly, not discuss EKS in isolation
+- [FACT] user explicitly asked “What did we do so far?” and then requested a continuation summary prompt with strict preservation rules
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization | supersedes:generic_memory_optimization
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” after the memory fix → if resuming the memory branch, start with dtype selection before broader optimization
+- [DECISION] Because the user repeatedly requested exact preservation of versions, dates, ports, and identifiers → future summaries should preserve exact literals verbatim
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization
+- [DECISION] because the user explicitly prefers AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead. → the next agent should compare `EKS` vs `ECS Fargate` directly, not discuss EKS in isolation
+- [DECISION] because the user explicitly prefers `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.` → future AWS guidance should compare `EKS` vs `ECS Fargate` directly
+- [DECISION] because the user explicitly prefers `AWS ECS Fargate for serverless container deployment to reduce infrastructure management overhead.` → future AWS guidance should compare `EKS` vs `ECS Fargate` directly
+- [DECISION] because the user explicitly said `How about we start with ensuring I'm using the right data types?` → next response should begin with dtype selection (`np.uint8` vs `np.float32`) before broader image-processing optimization
+- [FACT] exact Socket.io room events repeatedly referenced: `'joinRoom'`, `'leaveRoom'`, `'chatMessage'`
+- [FACT] exact typing indicator events repeatedly referenced: `'typing'`, `'stopTyping'`, `'userTyping'`, `'userStopTyping'`

@@ -1,0 +1,273 @@
+{
+  "test_type": "OpenCode BEAM Benchmark (500K)",
+  "scoring_method": "50% LLM Judge + 30% Token F1 + 20% Keyword Overlap",
+  "model": "changyouopenai/gpt-5.4",
+  "split": "500K",
+  "compaction_interval": 0,
+  "compaction_token_threshold": 128000,
+  "compaction_mode": "progressive(@128K tokens)",
+  "cases_tested": 1,
+  "results": [
+    {
+      "case_id": 4,
+      "session_id": "ses_311fb09b9ffedV44A6rXdY1dSb",
+      "messages_fed": 442,
+      "token_usage": {
+        "input": 748779,
+        "output": 34922,
+        "cache_read": 74496,
+        "cache_write": 0,
+        "api_total": 783701
+      },
+      "before_compaction": {
+        "avg_combined": 0,
+        "results": []
+      },
+      "after_compaction": {
+        "avg_combined": 0.5276,
+        "results": [
+          {
+            "type": "abstention",
+            "question": "What were the main discussion points or decisions made during the sprint planning meeting on April 3, 2024?",
+            "expected": "Based on the provided chat, there is no information related to the discussion points or decisions from the April 3, 2024 sprint planning meeting.",
+            "model_answer": "I don’t see any explicit `April 3, 2024` sprint planning meeting notes in what we’ve covered so far.\n\nClosest planning decisions around that period were:\n- The Instagram automation prototype deadline moved from `April 1, 2024` to `April 5, 2024`.\n- APScheduler `v3.9.1` stayed the preferred scheduler over raw cron for Python integration and error handling.\n- The stack stayed pinned around `Python 3.10`, `Tweepy v4.10.1`, `facebook-sdk v3.1.0`, `requests v2.28.1`, and `PostgreSQL 14`.\n- Testing and reliability remained key priorities: stronger error handling, scheduling resilience, and coverage goals that later grew toward `90%`, then `96%`, and eventually `100%` for `scheduling.py`.\n- The team was actively expanding from Twitter/Facebook into Instagram Graph API work, later tied to `Instagram Graph API v15.0`.\n\nIf you want, I can also reconstruct a likely `April 3, 2024` sprint-planning summary from the nearby timeline and label it clearly as inferred rather than explicitly recorded.",
+            "scores": {
+              "keyword": 0.467,
+              "token_f1": 0.128,
+              "llm_judge": 0.3,
+              "combined": 0.282
+            }
+          },
+          {
+            "type": "abstention",
+            "question": "What are the specific criteria or factors that led to choosing APScheduler over raw cron jobs initially?",
+            "expected": "Based on the provided chat, there is no information related to the specific criteria or factors behind choosing APScheduler over raw cron jobs.",
+            "model_answer": "We chose `APScheduler v3.9.1` over raw cron jobs mainly because it fit the Python app better:\n\n- Better Python integration; scheduling lived inside the application instead of separate OS-level cron entries.\n- Stronger error handling; job failures, retries, and fallback logic were easier to implement in Python.\n- More flexible scheduling; we discussed both interval-based and exact-time scheduling, which APScheduler handled cleanly.\n- Easier dynamic control; adding, updating, canceling, and prioritizing jobs at runtime was important for scheduled social posts.\n- Better fit for app logic; timezone handling, platform-specific rules, retry windows, and queue integration were easier to keep in one place.\n- More observable behavior; logging and profiling job dispatch were easier than with raw cron.\n\nLater, cron was still explored as a fallback for Ubuntu `22.04` reliability and lower memory overhead, but the initial decision favored APScheduler because of application-level control and error-handling flexibility.",
+            "scores": {
+              "keyword": 0.438,
+              "token_f1": 0.136,
+              "llm_judge": 0.0,
+              "combined": 0.1
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I ever rotated my Twitter API keys or updated the related environment variables for my integration?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have rotated the Twitter API keys and updated the environment variables, but you also mentioned that you have never done so. Could you clarify which is correct?",
+            "model_answer": "Yes.\n\n- You mentioned rotating your Twitter API keys and said they were updated on `April 15, 2024`.\n- We also discussed related deployment/environment configuration in the context of AWS EC2 staging and Docker-based environment variable management.\n- I do not see a verbatim record of the exact variable names being changed, but the conversation does record that the Twitter API keys were updated on `April 15, 2024`.",
+            "scores": {
+              "keyword": 0.45,
+              "token_f1": 0.302,
+              "llm_judge": 0.2,
+              "combined": 0.263
+            }
+          },
+          {
+            "type": "contradiction_resolution",
+            "question": "Have I developed any hashtag generation tools using spaCy or other NLP libraries?",
+            "expected": "I notice you've mentioned contradictory information about this. You said you have developed a hashtag generator using spaCy v3.5.0, but you also mentioned that you have never developed any hashtag generation tools using spaCy or any NLP library. Could you clarify which is correct?",
+            "model_answer": "Yes.\n\n- You worked on hashtag generation and validation multiple times.\n- You specifically discussed using `spaCy v3.5.0` for keyword extraction to support hashtag generation.\n- You also asked for best-practice review for a `spaCy v3.5.0` hashtag generation workflow.\n- Related work included Unicode/emoji hashtag handling, regression tests, and fixing async Twitter metrics/hashtag generation bugs.\n\nSo the recorded history shows you did develop or at least actively design and refine hashtag generation tooling using `spaCy v3.5.0`, along with supporting validation logic.",
+            "scores": {
+              "keyword": 0.36,
+              "token_f1": 0.219,
+              "llm_judge": 0.3,
+              "combined": 0.289
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "Can you walk me through the order in which I brought up different challenges and solutions related to my social media API integrations and automation across our conversations, in order (mention 10 items)?",
+            "expected": "You mentioned these topics in this order: 1) Registering for the developer account and setting up API keys with Tweepy to post tweets, 2) Encountering and troubleshooting '403 Forbidden' errors related to media uploads and tweet creation limits, 3) Facing rate limit errors and discussing rate limiting strategies like token bucket algorithms, 4) Debugging 'Invalid media ID' errors during media uploads with Tweepy, 5) Optimizing database batch inserts for engagement data performance, 6) Handling intermittent connection reset errors with retry mechanisms and exponential backoff, 7) Implementing two-factor authentication and managing OAuth token issues, 8) Working on token refresh strategies for Instagram automation to avoid expired token errors, 9) Adjusting HTTP client timeout settings to fix timeout errors and improve performance, 10) Setting up and optimizing PagerDuty alerts for critical failures with response time goals.",
+            "model_answer": "Yes — here’s the sequence of 10 major integration/automation topics you raised, in order:\n\n- `1.` You started with Python `3.10` social media automation planning using `Tweepy v4.10.1` and `facebook-sdk v3.1.0`, including project structure and timeline.\n- `2.` You moved into posting reliability: error handling, input validation, and debugging `requests v2.28.1` POST issues for Twitter and Facebook.\n- `3.` You shifted to scheduling automation, first with cron-style ideas, then chose `APScheduler v3.9.1` for interval and exact-time scheduling.\n- `4.` You debugged Twitter auth problems, including `401 Unauthorized` on `March 2, 2024`, no-browser auth, PIN flow, and secure token handling.\n- `5.` You designed persistence and orchestration pieces: `PostgreSQL 14` schema design, unified Twitter/Facebook posting classes, retries, and scheduling metadata.\n- `6.` You expanded Facebook integration work: token permissions, renewal, Graph API `v12.0` image uploads, batching against `200 calls per hour per user`, and `(#200) Permissions error`.\n- `7.` You began Instagram automation planning and implementation, later centering on `Instagram Graph API v15.0`, rate limits, token expiry, retries for `429 Too Many Requests`, and posting constraints like `25 posts per day`.\n- `8.` You optimized scale and performance across the stack: `asyncpg v0.29.0`, Redis caching, priority queues, ETL from PostgreSQL to Redis, and scheduler memory improvements from `70MB` to `45MB`.\n- `9.` You deepened reliability and observability: Docker, AWS EC2, API Gateway logging to CloudWatch, Sentry `v1.12.0`, HAProxy `2.6.0`, TLS `1.3`, PagerDuty, Kibana, and AWS X-Ray tracing.\n- `10.` You later focused on production hardening and maintenance topics: Twitter OAuth `2.0` PKCE with `https://twitter.com/i/oauth2/authorize` and `https://twitter.com/i/oauth2/token`, exact dependency pinning in `requirements.txt`, CI/CD, and exact coverage tracking up to `96%` overall with `100%` as the goal for `scheduling.py`.\n\nIf you want, I can also turn this into a dated timeline with exact milestones like `March 2, 2024`, `April 15, 2024`, `July 18, 2024`, and `July 19, 2024`.",
+            "scores": {
+              "keyword": 0.407,
+              "token_f1": 0.222,
+              "llm_judge": 0.1,
+              "combined": 0.177
+            }
+          },
+          {
+            "type": "event_ordering",
+            "question": "Can you list the order in which I brought up different aspects of my scheduling and automation projects throughout our conversations in order (mention 5 items)?",
+            "expected": "You mentioned these aspects in this order: 1) First, you discussed implementing a scheduling algorithm with priority and time windows, 2) Then you asked about adding posts dynamically while the scheduler is running, 3) Next, you brought up automating Instagram posts using the Instagram Graph API and handling rate limits, 4) After that, you talked about optimizing image processing with caching to improve performance, 5) Finally, you mentioned offloading image processing to AWS Lambda to reduce CPU spikes and further optimize scheduling.",
+            "model_answer": "Yes — in order, the main scheduling/automation topics you brought up were:\n\n- `1.` You first asked about scheduling social posts at optimal times, then moved from cron-style ideas to `APScheduler v3.9.1`.\n- `2.` You refined that into exact-time scheduling, retries, fallback behavior, and rescheduling logic for failed jobs.\n- `3.` You then expanded scheduling around `PostgreSQL 14`, storing scheduling metadata and optimizing retrieval/query performance for queued posts.\n- `4.` After that, you focused on scale: priority queues, dynamic additions, timezone handling, higher concurrency, and memory reduction from `70MB` to `45MB`.\n- `5.` Later, you added durability and automation around Redis/PostgreSQL reconciliation every `5 minutes`, urgent-post handling during Redis downtime, and eventually explored whether cron on `Ubuntu 22.04` might be a lighter alternative.\n\nIf you want, I can also give this as a more detailed dated timeline.",
+            "scores": {
+              "keyword": 0.377,
+              "token_f1": 0.268,
+              "llm_judge": 0.2,
+              "combined": 0.244
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "Which authentication method did I use for my integration, and which environment variables did I store securely?",
+            "expected": "I used OAuth 1.0a for authentication and stored the environment variables TWITTER_API_KEY and TWITTER_API_SECRET securely.",
+            "model_answer": "From what we covered, there wasn’t just one auth method across the whole project:\n\n- For Twitter, you initially used `OAuth 1.0a` and debugged a `401 Unauthorized` flow on `March 2, 2024`.\n- Later, you moved toward `OAuth 2.0 PKCE` for Twitter, using `https://twitter.com/i/oauth2/authorize` and `https://twitter.com/i/oauth2/token`, with `http://localhost:8080/callback`.\n- For Facebook and Instagram, you discussed Graph API token-based OAuth flows, including token permissions, renewal, and expired-token handling.\n\nOn secure storage, the conversation records that you stored credentials/tokens securely and discussed encrypted token storage, but it does not explicitly record exact environment variable names.\n\nWhat is clearly reflected as securely stored:\n- Twitter API keys\n- Twitter access tokens / related auth tokens\n- Facebook access tokens\n- Instagram/Graph API access tokens\n- PKCE temporary secrets like `code_verifier` and `state` were discussed for temporary secure storage\n\nWhat is not explicitly recorded:\n- exact env var names such as `TWITTER_API_KEY`, `TWITTER_API_SECRET`, etc.\n\nSo: auth methods were mainly `Twitter OAuth 1.0a` first, then `Twitter OAuth 2.0 PKCE`, plus Facebook/Instagram OAuth token flows; exact secure env var names were not captured in the conversation.",
+            "scores": {
+              "keyword": 0.818,
+              "token_f1": 0.18,
+              "llm_judge": 0.4,
+              "combined": 0.408
+            }
+          },
+          {
+            "type": "information_extraction",
+            "question": "Which version of the Facebook SDK did I say I was using in my code example?",
+            "expected": "You mentioned using Facebook SDK version 3.1.0 in your code example.",
+            "model_answer": "You said you were using `facebook-sdk v3.1.0`.",
+            "scores": {
+              "keyword": 0.6,
+              "token_f1": 0.588,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "Which version of the Facebook API should I use in my Python code to ensure compatibility?",
+            "expected": "Response should specify the exact API version number relevant to the integration example or explanation.",
+            "model_answer": "Based on what you used in our discussions, the safest compatibility choice for your Facebook Python code was `Facebook Graph API v13.0`.\n\n- Your common Python examples used `https://graph.facebook.com/v13.0/me` and `https://graph.facebook.com/v13.0/me/posts`.\n- You also referenced `facebook-sdk v3.1.0`.\n- Other versions did come up: `v12.0` for some image upload/debugging cases and `v15.0` for `/me/feed`, but `v13.0` was the main baseline in your code examples.\n\nSo if you want the version you most consistently used in code examples: `Facebook Graph API v13.0`.",
+            "scores": {
+              "keyword": 0.3,
+              "token_f1": 0.077,
+              "llm_judge": 0.8,
+              "combined": 0.8
+            }
+          },
+          {
+            "type": "instruction_following",
+            "question": "Which libraries are included in the technology stack for this project?",
+            "expected": "Response should include the precise versions of each library mentioned in the technology stack.",
+            "model_answer": "The technology stack libraries and core tools we discussed included:\n\n- `Tweepy v4.10.1` and later `Tweepy v4.12.1`\n- `facebook-sdk v3.1.0`\n- `requests v2.28.1`\n- `APScheduler v3.9.1`\n- `asyncpg v0.29.0`\n- `redis-py v4.3.4`\n- `RabbitMQ v3.9.13`\n- `Pillow v9.4.0`\n- `spaCy v3.5.0`\n- `tqdm v4.64.1`\n- `Click v8.1.3`\n- `Rich v13.3.2`\n- `pytest v7.2.0`\n- `Selenium v4.8.0`\n- `flake8 v5.0.4`\n- `Black v22.3.0`\n- `isort v5.10.1`\n- `Sentry v1.12.0`\n\nRelated platform/runtime pieces also included:\n- `Python 3.10`\n- `PostgreSQL 14`\n- `React 18.2`\n- `React Native v0.71`\n- `Gunicorn v20.1.0`\n- `HAProxy 2.6.0`\n- `OpenSSL 3.0.7`\n\nIf you want, I can regroup these into categories like `backend`, `testing`, `infra`, and `frontend/mobile`.",
+            "scores": {
+              "keyword": 0.333,
+              "token_f1": 0.044,
+              "llm_judge": 0.8,
+              "combined": 0.8
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "What is the deadline for completing the Instagram automation prototype sprint?",
+            "expected": "April 5, 2024",
+            "model_answer": "The Instagram automation prototype sprint deadline was updated to `April 5, 2024`.\n\n- It was originally `April 1, 2024`.\n- Later, you moved it to `April 5, 2024`.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.375,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "knowledge_update",
+            "question": "How many concurrent scheduled items can my scheduler handle to achieve improved throughput?",
+            "expected": "75 concurrent scheduled items with a 50% improvement in throughput",
+            "model_answer": "You later discussed handling `75` concurrent scheduled items in the context of achieving a `50%` throughput improvement.\n\nRelated earlier benchmark:\n- You also tested the urgent priority queue with `50 concurrent scheduled items`.\n\nSo for the improved-throughput figure specifically, the number was `75 concurrent scheduled items`.",
+            "scores": {
+              "keyword": 1.0,
+              "token_f1": 0.452,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "How many different Twitter API tasks have I mentioned trying to automate or debug across my sessions?",
+            "expected": "Four tasks: posting a tweet, uploading media before tweeting, handling rate limits, and fixing an invalid media ID error.",
+            "model_answer": "By my count, you brought up about `19` distinct Twitter-related automation/debugging tasks, depending on how finely you split them.\n\nThat includes topics like:\n- tweet posting automation\n- `requests v2.28.1` POST debugging\n- Twitter API `v2` integration\n- `OAuth 1.0a` `401 Unauthorized`\n- no-browser/PIN flow\n- token generation/refresh and encrypted storage\n- media upload guidance and `\"403 Forbidden\"`\n- hashtag validation/generation\n- async posting and missing `await`\n- token bucket rate limiting and `\"Rate limit exceeded\"`\n- `\"Invalid media ID\"`\n- metrics/engagement tracking bugs\n- media upload callback `AttributeError: 'NoneType' object has no attribute 'id'`\n- Tweepy `v4.12.1` media upload rate limiting\n- `\"Invalid JSON payload\"`\n- OAuth `2.0` PKCE with `https://twitter.com/i/oauth2/authorize` and `https://twitter.com/i/oauth2/token`\n- streaming for hashtag capture\n- latency optimization to `150ms`\n- IP allowlisting\n\nIf you want, I can also turn that into a numbered chronological Twitter-only timeline.",
+            "scores": {
+              "keyword": 0.533,
+              "token_f1": 0.132,
+              "llm_judge": 0.0,
+              "combined": 0.113
+            }
+          },
+          {
+            "type": "multi_session_reasoning",
+            "question": "How many different social media platforms am I trying to integrate or post to across my projects?",
+            "expected": "Two platforms: Twitter and Facebook.",
+            "model_answer": "You discussed `3` social media platforms:\n\n- `Twitter`\n- `Facebook`\n- `Instagram`\n\nThose were the platforms you were integrating, automating, debugging, or posting to across the project.",
+            "scores": {
+              "keyword": 0.75,
+              "token_f1": 0.316,
+              "llm_judge": 0.2,
+              "combined": 0.311
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm working on making multiple API requests to gather tweet metrics efficiently. How would you suggest structuring the code to handle these calls?",
+            "expected": "Response should recommend approaches or libraries that enable concurrent or asynchronous API calls rather than synchronous or blocking methods, aligning with the user's preference for async Python solutions.",
+            "model_answer": "For efficient tweet-metrics collection, I’d structure it as a small pipeline: batch ids, fetch concurrently with limits, normalize results, then persist.\n\n- Use a dedicated client wrapper for `Twitter API v2` or `Twitter API v2.3.1` if that’s the version you’re targeting in your app.\n- Split tweet IDs into chunks, since metrics collection usually works best in bounded batches rather than one request per tweet.\n- Add a rate-limit guard around the fetch layer so `\"Rate limit exceeded\"` responses back off cleanly.\n- Keep parsing/normalization separate from transport so retries don’t duplicate business logic.\n- Write results in bulk to `PostgreSQL 14` instead of one row at a time.\n\nA clean Python shape would look like this:\n\n```python\nimport asyncio\nimport aiohttp\n\nURL = \"https://api.twitter.com/2/tweets\"\n\nclass TwitterMetrics:\n    def __init__(self, token, limit=5):\n        self.token = token\n        self.sem = asyncio.Semaphore(limit)\n\n    async def fetch_batch(self, session, ids):\n        params = {\n            \"ids\": \",\".join(ids),\n            \"tweet.fields\": \"public_metrics,created_at\"\n        }\n        headers = {\"Authorization\": f\"Bearer {self.token}\"}\n\n        async with self.sem:\n            async with session.get(URL, params=params, headers=headers) as r:\n                if r.status == 429:\n                    raise RuntimeError(\"Rate limit exceeded\")\n                r.raise_for_status()\n                return await r.json()\n\n    async def fetch_all(self, ids, size=100):\n        chunks = [ids[i:i + size] for i in range(0, len(ids), size)]\n\n        async with aiohttp.ClientSession() as session:\n            res = await asyncio.gather(\n                *(self.fetch_batch(session, chunk) for chunk in chunks),\n                return_exceptions=True,\n            )\n\n        return [item for item in res if not isinstance(item, Exception)]\n```\n\nRecommended design pieces:\n- `fetch_batch`: one HTTP request for one chunk\n- `fetch_all`: orchestrates concurrency\n- `normalize`: convert API payloads into your DB shape\n- `store`: bulk insert/update with `asyncpg v0.29.0`\n- `backoff`: retry only transient failures like `429` or `500`\n\nIf you want, I can turn this into a production-ready version using `asyncpg v0.29.0`, exact retry/backoff logic, and bulk upserts for your metrics table.",
+            "scores": {
+              "keyword": 0.429,
+              "token_f1": 0.066,
+              "llm_judge": 0.6,
+              "combined": 0.441
+            }
+          },
+          {
+            "type": "preference_following",
+            "question": "I'm building an app that needs to securely authenticate users without a backend server. How should I handle the token exchange process to keep it safe?",
+            "expected": "Response should recommend using OAuth 2.0 PKCE or an equivalent secure method designed for public clients to handle token exchange, emphasizing security best practices for such scenarios.",
+            "model_answer": "Use `OAuth 2.0 PKCE`.\n\n- For a public client with no backend, do not ship a client secret; use `code_verifier` + `code_challenge` instead.\n- Generate a high-entropy `code_verifier` on the device, derive an `S256` `code_challenge`, and send only the challenge in the authorize request.\n- After redirect, exchange the auth code for tokens directly against the token endpoint using the original `code_verifier`.\n- Store the `code_verifier` and `state` only temporarily, in app memory or secure OS storage if the flow may survive app restarts.\n- Always validate the returned `state`; reject the callback if it does not match exactly.\n- Use an exact redirect URI you control, preferably an app deep link or loopback redirect like `http://localhost:8080/callback` for desktop flows.\n- Keep access tokens in secure platform storage (`Keychain`, `Keystore`); never in plain local storage or source-controlled config.\n- Prefer short-lived access tokens, rotate refresh tokens if the provider supports it, and request the minimum scopes.\n\nBasic flow:\n```text\n1. Generate code_verifier + state\n2. Derive code_challenge = BASE64URL(SHA256(code_verifier))\n3. Redirect user to authorize endpoint with code_challenge_method=S256\n4. Receive authorization code on your redirect URI\n5. POST code + code_verifier to token endpoint\n6. Validate state, then securely store tokens\n```\n\nFor your Twitter flow, that maps to:\n- authorize: `https://twitter.com/i/oauth2/authorize`\n- token: `https://twitter.com/i/oauth2/token`\n\nIf you want, I can give you a concrete PKCE implementation for `Python 3.10`, `React Native v0.71`, or a desktop app.",
+            "scores": {
+              "keyword": 0.455,
+              "token_f1": 0.129,
+              "llm_judge": 0.95,
+              "combined": 0.95
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you give me a comprehensive summary of how I developed and improved my social media automation project throughout our conversations?",
+            "expected": "Your social media automation project began with a basic Python script to schedule posts at optimal times using the schedule library. You sought improvements to include timing mechanisms and content strategies relevant to your role as a paramedic in Davistown, Palau, which led to enhanced code incorporating input validation and API integrations for Twitter and Facebook. Later, you explored more advanced scheduling options by switching to APScheduler, learning how to schedule posts at intervals and specific times, and how to handle errors and keep the scheduler running reliably. You also addressed authentication challenges with Twitter's API, moving from OAuth 1.0a to OAuth 2.0 bearer tokens, and discussed secure handling of credentials and token refresh strategies. Finally, you integrated posting functionalities into a unified, object-oriented interface for multiple platforms, adding robust error handling and logging to ensure reliable and maintainable automation. Throughout these stages, your project evolved from simple scheduling to a sophisticated, secure, and flexible social media automation system.",
+            "model_answer": "You built the project in stages, moving from a basic Python automation idea into a broader, production-minded platform for `Twitter`, `Facebook`, and `Instagram`.\n\n- You started with the core stack and plan: `Python 3.10`, `Tweepy v4.10.1`, `facebook-sdk v3.1.0`, `requests v2.28.1`, `PostgreSQL 14`, and a sprint-driven roadmap beginning `March 1, 2024`.\n- You quickly focused on posting reliability: input validation, API request debugging, exact error handling, and scheduler behavior for social posts.\n- Scheduling became a major theme early. You moved from cron-style ideas to `APScheduler v3.9.1` because it fit Python better, supported retries/rescheduling, and handled exact-time jobs, dynamic updates, and richer logging.\n- You designed the data layer around `PostgreSQL 14`, including post metadata, scheduling state, GDPR-related fields, and later engagement metrics and `instagram_posts` support.\n- You expanded from simple posting scripts into unified platform abstractions for Twitter and Facebook, then added Instagram automation planning and implementation with `Instagram Graph API v15.0`.\n- Twitter work covered a lot of depth: `Twitter API v2`, OAuth `1.0a` debugging, no-browser/PIN flow questions, token refresh/storage, media upload issues like `\"403 Forbidden\"` and `\"Invalid media ID\"`, `\"Invalid JSON payload\"`, `\"Rate limit exceeded\"`, token-bucket rate limiting, and later OAuth `2.0` PKCE using `https://twitter.com/i/oauth2/authorize` and `https://twitter.com/i/oauth2/token`.\n- Facebook work evolved from SDK integration into Graph API version-specific handling, permissions errors like `(#200) Permissions error`, batching within `200 calls per hour per user`, posting performance tuning, monitoring, and integration testing.\n- Instagram work grew into one of the largest areas: prototype planning, the deadline update to `April 5, 2024`, token expiry handling, rate-limit retries for `429 Too Many Requests`, posting constraints like `25 posts per day`, webhook handling, Selenium `v4.8.0` end-to-end testing, and image-processing integration.\n- Performance optimization became a recurring thread. You improved DB queries from `400ms` to `120ms`, image work from `800ms` to `200ms`, scheduler memory from `70MB` to `45MB`, dispatch latency from `500ms` to `150ms`, and Twitter posting latency down to `150ms`.\n- You introduced async and scaling patterns with `asyncpg v0.29.0`, Redis caching, PostgreSQL-to-Redis ETL, reconciliation jobs every `5 minutes`, priority queues, concurrency tuning up to `75` concurrent scheduled items, and fallback strategies for Redis downtime.\n- You also matured the project operationally: Docker image optimization from `120MB` to `85MB`, Ubuntu `22.04` deployment, Gunicorn `v20.1.0`, HAProxy `2.6.0`, API Gateway logging to CloudWatch, AWS X-Ray, Kibana monitoring, PagerDuty alerting, SNS + `Lambda v3.2.1`, and `TLS 1.3` with an `A+` `Qualys SSL Labs` rating.\n- On quality and maintainability, you built out `pytest v7.2.0`, flake8 `v5.0.4`, Black `v22.3.0`, isort `v5.10.1`, TDD around validation logic, and coverage tracking that moved from `85%` toward `90%`, later `96%` overall, with `scheduling.py` reaching `95%` and targeting `100%`.\n- You also added richer product features around hashtag generation and NLP using `spaCy v3.5.0`, Unicode/emoji handling, image resizing to `(1080, 1080)` with `arial.ttf`, responsive `React 18.2` dashboard work, accessibility improvements, and a `React Native v0.71` mobile prototype path.\n- By `July 2024`, the conversation had shifted toward release hardening, dependency locking in `requirements.txt`, exact-version discipline, CI/CD, observability, technical debt alerts, GDPR deletion within `24 hours`, nightly ETL for `12 million engagement records daily`, and maintenance-phase readiness.\n- The biggest overall pattern was that you kept revisiting the same system from deeper angles: first making it work, then making it reliable, then scalable, then secure, then testable and maintainable.\n\nA few concrete milestone points:\n- Sprint end moved from `March 15, 2024` to `March 18, 2024`\n- Instagram prototype deadline moved from `April 1, 2024` to `April 5, 2024`\n- Twitter API keys were rotated on `April 15, 2024`\n- Stable Facebook integration was tagged `v1.0.0` on `July 17, 2024`\n- Production rollout was described as completed on `July 18, 2024` with `zero downtime` and `99.95% uptime in the first 48 hours`\n- Final sprint review and maintenance readiness were marked on `July 19, 2024`\n\nOne important caveat:\n- Everything we did here was discussion, design, debugging guidance, and architecture planning; in this conversation, no repository files were actually inspected or modified.\n\nIf you want, I can turn this into:\n1. a one-page executive timeline\n2. a technical architecture summary\n3. a resume/project case-study version",
+            "scores": {
+              "keyword": 0.485,
+              "token_f1": 0.175,
+              "llm_judge": 0.3,
+              "combined": 0.296
+            }
+          },
+          {
+            "type": "summarization",
+            "question": "Can you provide a detailed summary of the entire process I went through, from the initial setup to the final implementation, covering all the challenges I faced, the solutions you suggested, and how the different components and tools were integrated and optimized throughout?",
+            "expected": "The summary should comprehensively cover the user's journey starting with scheduling social media posts using APScheduler and integrating it with the Facebook SDK, including improvements like switching to BackgroundScheduler, adding error handling, and logging. It should then address troubleshooting Twitter API integration issues such as the '403 Forbidden' error by verifying authentication, permissions, rate limits, and correct endpoint usage, along with example code for media uploads and tweet creation. The narrative should include managing Facebook Graph API rate limits by implementing batching and scheduling API calls with APScheduler to respect the 200 calls per hour limit, incorporating error handling and graceful shutdown. It should also cover renewing Facebook access tokens using the fb_exchange_token flow to resolve permissions errors, verifying token validity and permissions, and posting content with images. The summary must integrate the design of polymorphic classes to unify Twitter and Facebook posting interfaces, enabling platform-specific payload handling within a unified scheduler. Additionally, it should explain implementing OAuth 1.0a authentication for Twitter with secure token storage using Fernet encryption, paralleling the Facebook OAuth 2.0 flow. The narrative should include refining hashtag extraction with regex to comply with Twitter's rules, excluding special characters. Finally, it should describe refactoring synchronous Twitter posting code to asynchronous functions using asyncio, aiohttp, and asyncpg for database operations, integrating async scheduling with APScheduler, implementing retry mechanisms for failed posts, and handling failures with robust error logging and notification strategies. Throughout, the summary should weave these threads into a coherent story of progressive problem-solving, technical integration, optimization, and error management across multiple platforms and tools.",
+            "model_answer": "You built the project as a gradual expansion from a small Python automation setup into a fairly complete social media operations platform spanning posting, scheduling, analytics, security, testing, and deployment.\n\n**Start**\n- You began with a `Python 3.10` stack for social media automation, centered on `Tweepy v4.10.1`, `facebook-sdk v3.1.0`, `requests v2.28.1`, and `PostgreSQL 14`.\n- Early planning focused on project structure, sprint timing, and adding a safer testing phase before deployment.\n- You wanted the system to automate posting across `Twitter`, `Facebook`, and later `Instagram`, while staying maintainable and production-friendly.\n\n**Core Posting**\n- The first technical work centered on basic post creation, API requests, and input validation.\n- You asked about handling malformed requests, bad payloads, token issues, and platform-specific failures.\n- We discussed clearer request validation, platform wrappers, reusable posting logic, and preserving exact failure text like `\"Invalid JSON payload\"`, `\"Invalid or expired token\"`, `\"Invalid media ID\"`, and `\"Rate limit exceeded\"`.\n\n**Scheduling**\n- Scheduling became one of the main foundations of the project.\n- You first explored cron-style scheduling, then moved to `APScheduler v3.9.1`.\n- The main reasons were tighter Python integration, better runtime control, cleaner retries/rescheduling, easier timezone handling, and stronger application-level error handling.\n- You later extended scheduling to exact-time jobs, retry windows, fallback behavior, priorities, urgent queues, cancellation/rescheduling, and dynamic job insertion.\n\n**Database Design**\n- You designed a `PostgreSQL 14` schema for posts, scheduling state, platform metadata, GDPR fields, and later engagement metrics.\n- Over time, this expanded to support `instagram_posts`, anonymization workflows, deletion logic, and analytics storage.\n- You optimized retrieval paths with indexing and query tuning, including a composite index on `(post_time, status)` that improved DB query performance from `400ms` to `120ms`.\n\n**Twitter Integration**\n- Twitter work started with basic posting and `Twitter API v2`.\n- You then hit auth and integration issues: `401 Unauthorized`, no-browser auth questions, PIN flow concerns, token storage, token refresh, and media upload failures.\n- You debugged specific cases including `\"403 Forbidden\"`, `\"Invalid media ID\"`, `\"Invalid JSON payload\"`, and `\"Rate limit exceeded\"`.\n- Later, you discussed rate limiting using a token bucket at `300 per 15 minutes`, async metrics gathering, upload callback failures like `AttributeError: 'NoneType' object has no attribute 'id'`, and performance goals under `300ms`, eventually reaching `150ms`.\n- You also rotated Twitter API keys on `April 15, 2024`.\n- Near the end, you shifted toward `OAuth 2.0 PKCE` using `https://twitter.com/i/oauth2/authorize`, `https://twitter.com/i/oauth2/token`, and a redirect URI like `http://localhost:8080/callback`, with secure temporary storage of `code_verifier` and `state`.\n\n**Facebook Integration**\n- Facebook work grew from SDK setup into deeper Graph API behavior.\n- You used `facebook-sdk v3.1.0` and mainly referenced `Facebook Graph API v13.0`, with some cases involving `v12.0` and `v15.0`.\n- You dealt with token permissions, renewals, image upload issues, batching under the `200 calls per hour per user` limit, post performance, and Graph API errors like `(#200) Permissions error` and later `(#10) Application request limit reached`.\n- You also added request logging, integration tests, and monitoring targets above `99.8%` success rate.\n\n**Instagram Integration**\n- Instagram started as a prototype plan, originally due `April 1, 2024`, then moved to `April 5, 2024`.\n- It evolved into one of the most complex parts of the system, using `Instagram Graph API v15.0`.\n- You discussed token expiry, retry logic for `429 Too Many Requests`, posting constraints like `25 posts per day` and `30 hashtags per post`, webhook handling, reconciliation logic, and robust end-to-end testing.\n- You later validated stability with `1000+ posts over 7 days`.\n\n**Async, Queues, and Throughput**\n- As scale became important, you moved toward `asyncpg v0.29.0`, async posting patterns, and queue-based orchestration.\n- You integrated Redis caching and PostgreSQL-to-Redis ETL, then added reconciliation jobs every `5 minutes` so cache and DB stayed in sync.\n- You improved urgent scheduling with priority queues, tested `50 concurrent scheduled items`, and later discussed `75` concurrent scheduled items tied to a `50%` throughput improvement.\n- You also explored durability strategies for Redis downtime by falling back to PostgreSQL dual storage.\n\n**Performance Optimization**\n- Performance work touched nearly every layer.\n- DB reads improved from `400ms` to `120ms`.\n- Image processing dropped from `800ms` to `200ms` using Redis caching.\n- Scheduler memory dropped from `70MB` to `45MB`.\n- Dispatch latency improved from `500ms` to `150ms`.\n- Twitter posting latency reached `150ms`.\n- You also optimized Facebook CPU usage from `35%` to `20%`, batch inserts for engagement data, materialized views, and CSV/JSON export paths.\n\n**Image and Media Pipeline**\n- Media handling became a dedicated workstream.\n- You used `Pillow v9.4.0` for resizing and captioning, eventually standardizing image handling around `(1080, 1080)`, `arial.ttf`, and caption size `24`.\n- This pipeline was tied into Instagram uploads, Redis image caching, and background processing for faster throughput.\n\n**Hashtags and NLP**\n- You repeatedly refined hashtag generation and validation.\n- This included regex validation, Unicode and emoji support, regression testing, and keyword extraction using `spaCy v3.5.0`.\n- You also discussed streaming and engagement-based enrichment for better hashtag suggestions.\n\n**Testing and Quality**\n- You added `pytest v7.2.0`, `flake8 v5.0.4`, `Black v22.3.0`, `isort v5.10.1`, and TDD-style validation work.\n- Test coverage started around `85%`, targeted `90%`, later reached `96%` across modules, with `scheduling.py` at `95%` and a final goal of `100%`.\n- You also introduced `Selenium v4.8.0` for Instagram end-to-end testing and built platform-specific integration tests, including Facebook API failure cases.\n\n**Security and Compliance**\n- Security matured over time.\n- You discussed encrypted token storage, AES-256 key rotation every `90 days`, OAuth hardening, PKCE for public clients, TLS `1.3`, and secure temporary storage of auth state.\n- On the compliance side, you built GDPR deletion, anonymization, consent revocation, access/deletion workflows, and discussed a `24 hours` deletion SLA.\n- You also verified transport security with `OpenSSL 3.0.7` and `Qualys SSL Labs`, achieving an `A+` rating.\n\n**Observability and Operations**\n- The project gradually became production-oriented.\n- You added logging, profiling, Sentry `v1.12.0`, API Gateway logs to CloudWatch, Kibana dashboards, AWS X-Ray tracing, PagerDuty alerts, SNS events with `Lambda v3.2.1`, and HAProxy `2.6.0`.\n- You looked at WebSockets vs SSE for metrics streaming and favored practical observability over just basic logs.\n- You also monitored success rates, queue health, retries, technical debt, and operational response times under `5 minutes`.\n\n**Deployment and Infra**\n- Deployment work included `Ubuntu 22.04`, Gunicorn `v20.1.0`, Nginx on `port 8080`, AWS EC2 on `t3.medium`, and later consideration of `t3.large`.\n- You containerized the Instagram posting service, then optimized Docker image size from `120MB` to `85MB`.\n- You also discussed ECR, CI/CD, health checks, IP allowlisting with `192.0.2.1` and `198.51.100.1`, backup scheduling at `2:00 AM UTC`, and load balancing across worker instances.\n\n**Frontend and Mobile**\n- On the UI side, you explored a responsive `React 18.2` scheduling dashboard and later accessibility improvements.\n- You also planned a `React Native v0.71` mobile app, with a `v0.9 beta` on iOS TestFlight.\n\n**Timeline Changes and Milestones**\n- The initial sprint ending `March 15, 2024` was extended to `March 18, 2024`.\n- The Instagram prototype deadline moved from `April 1, 2024` to `April 5, 2024`.\n- A release was tagged `v0.3.0` on `April 18, 2024`.\n- Stable Facebook integration was tagged `v1.0.0` on `July 17, 2024`.\n- You described a production rollout on `July 18, 2024` with `zero downtime` and `99.95% uptime in the first 48 hours`.\n- By `July 19, 2024`, the project was described as ready for maintenance.\n\n**Key Decisions**\n- `APScheduler v3.9.1` was preferred over raw cron because it gave better Python integration and richer error handling.\n- Exact dependency pinning in `requirements.txt` became a strong preference for build consistency.\n- OAuth `2.0 PKCE` became the preferred auth approach for public-client Twitter flows.\n- Redis was treated as a performance layer, with PostgreSQL as the durability anchor.\n- Coverage, observability, and reproducibility became as important as feature delivery.\n\n**Biggest Challenges**\n- OAuth confusion across platforms\n- token expiry and refresh handling\n- media upload failures\n- rate limiting and batching\n- scheduler growth and memory pressure\n- Redis pool exhaustion and temporary outages\n- keeping analytics and scheduled-post state consistent across systems\n- making the image pipeline fast enough\n- raising test coverage while keeping behavior realistic\n- moving from “working scripts” to “operable system”\n\n**How the Pieces Fit Together**\n- `Python 3.10` handled core business logic.\n- `Tweepy`, `facebook-sdk`, and Graph API calls handled platform posting.\n- `APScheduler v3.9.1` orchestrated timing and retries.\n- `PostgreSQL 14` stored durable state and analytics.\n- `Redis` accelerated queues, caches, and scheduling performance.\n- `asyncpg v0.29.0` supported higher-throughput async DB paths.\n- `Pillow v9.4.0` handled media preparation.\n- `pytest v7.2.0`, `Selenium v4.8.0`, `flake8 v5.0.4`, `Black v22.3.0`, and `isort v5.10.1` improved quality.\n- Docker, Gunicorn, Nginx, HAProxy, AWS, Kibana, Sentry, CloudWatch, and X-Ray supported deployment and monitoring.\n\n**End State**\n- The project ended up as a multi-platform automation system with stronger scheduling, better failure handling, more scalable data flow, improved media handling, richer monitoring, tighter security, and near-maintenance-phase maturity.\n- The overall pattern was: first get posting working, then make scheduling reliable, then optimize throughput and memory, then harden auth/security, then improve observability and testing, and finally prepare for stable operation.\n\nIf you want, I can turn this into:\n1. a strict chronological timeline\n2. an architecture document\n3. a “challenges → fixes → outcomes” table",
+            "scores": {
+              "keyword": 0.5,
+              "token_f1": 0.174,
+              "llm_judge": 0.1,
+              "combined": 0.178
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "If my sprint was originally set to end on a specific date but I extended it by three days, how many total days will my sprint last now?",
+            "expected": "The original sprint was planned for 14 days ending on the specific date, so extending it by three days makes the total sprint duration 17 days.",
+            "model_answer": "If you mean the planned sprint duration, it becomes `17 days` total:\n\n- original sprint: `14 days`\n- extension: `3 days`\n- new total: `17 days`\n\nIf you want it measured by calendar dates from `March 1, 2024` through `March 18, 2024` inclusive, that span is `18 days`.",
+            "scores": {
+              "keyword": 0.643,
+              "token_f1": 0.421,
+              "llm_judge": 0.9,
+              "combined": 0.9
+            }
+          },
+          {
+            "type": "temporal_reasoning",
+            "question": "How many days after I first encountered the 401 Unauthorized error did I see the Invalid or expired token error?",
+            "expected": "1 day elapsed between encountering the 401 Unauthorized error on March 2, 2024, and seeing the Invalid or expired token error on March 3, 2024.",
+            "model_answer": "`1 day`\n\n- `401 Unauthorized`: `March 2, 2024`\n- `\"Invalid or expired token\"`: `March 3, 2024`",
+            "scores": {
+              "keyword": 0.688,
+              "token_f1": 0.815,
+              "llm_judge": 1.0,
+              "combined": 1.0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

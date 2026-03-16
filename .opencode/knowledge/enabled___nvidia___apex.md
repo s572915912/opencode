@@ -1,0 +1,21 @@
+# Enabled / Nvidia / Apex
+
+- [DECISION] enabled NVIDIA Apex AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled NVIDIA Apex AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled NVIDIA Apex AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled NVIDIA Apex AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled NVIDIA Apex AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled NVIDIA Apex AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled NVIDIA Apex AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled `NVIDIA Apex AMP` because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [DECISION] enabled AMP because reducing memory usage was necessary; outcome was `40%` lower memory usage
+- [UPDATE] `redis_memory_usage_new: 200MB with 15,000 keys (was: 150MB with 10,000 keys)` | supersedes:chatapp/cache/redis_memory_usage_old
