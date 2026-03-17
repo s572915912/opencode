@@ -628,6 +628,14 @@ When constructing the summary, try to stick to this template:
 
 Below is a structured knowledge store. Extract ALL of the following from the conversation and MERGE with any existing persistent knowledge provided. Do NOT include user biographical info (name, location, occupation).
 
+### QUALITY FILTER — apply to EVERY entry below:
+Before adding any item, it must pass ALL 4 tests:
+1. **Persistence**: Will this still be true/relevant after 6 months?
+2. **Specificity**: Does it contain concrete, searchable information (names, numbers, paths, versions)?
+3. **Utility**: Can this help predict or serve future user needs?
+4. **Independence**: Can it be understood WITHOUT the original conversation context?
+Skip entries that fail ANY test. Prefer fewer HIGH-VALUE entries over many vague ones.
+
 ### Value Registry (MOST CRITICAL — exact values only)
 For EVERY specific number, metric, measurement, version, config value, date, or deadline mentioned:
 - key: EXACT value (e.g., "inference_time: 45ms/frame", "python_version: 3.10", "deadline: March 15, 2024")
@@ -635,7 +643,7 @@ For EVERY specific number, metric, measurement, version, config value, date, or 
 - Include ALL of: ports, URLs, file paths, error codes, batch sizes, thresholds, latencies, dimensions, counts
 - NEVER approximate — "~45ms" must stay "~45ms", "45.2ms" must stay "45.2ms"
 
-### Chronological Event Log (preserve temporal order)
+### Chronological Event Log (preserve temporal order — CRITICAL for event_ordering)
 Number each event sequentially. Include ALL significant actions, decisions, and milestones:
 1. [date/context if known] First thing that happened
 2. [date/context if known] Second thing that happened
@@ -643,6 +651,12 @@ Number each event sequentially. Include ALL significant actions, decisions, and 
 - Events include: deployments, config changes, bug discoveries, decisions made, features added
 - NEVER reorder or merge events — append new events at the end with increasing numbers
 - When updating: keep old events, add new ones with next number
+- CRITICAL temporal preservation:
+  - Record the EXACT timestamp or relative position for each event ("before X", "after Y", "during Z")
+  - Record causal dependencies ("X happened because Y completed first")
+  - Use sequence markers ("first", "then", "next", "finally", "meanwhile")
+  - If two events happened in the SAME session, preserve their original order
+  - For multi-step processes, number sub-steps (e.g., "3a. ...", "3b. ...")
 
 ### Contradiction & Update Log
 For EVERY piece of information that changed or was contradicted:
@@ -668,17 +682,22 @@ RULES:
 
 ## Knowledge Gap Analysis (Prediction-Correction)
 
-After writing your Persistent Knowledge above, re-read the ORIGINAL conversation and identify details NOT preserved in your summary.
+Use the Prediction-Correction method to extract ONLY genuinely missing knowledge:
 
-ALWAYS extract these (even if mentioned in PK):
+STEP 1 — PREDICT: Read the Persistent Knowledge above. This is your "knowledge model" — what a future agent would know.
+STEP 2 — COMPARE: Re-read the ORIGINAL conversation carefully. Find concrete facts, events, values, and decisions that exist in the conversation but are MISSING, WRONG, or IMPRECISE in the PK above.
+STEP 3 — EXTRACT SURPRISES ONLY: Output ONLY the gaps — information that would be LOST if someone relied solely on the PK. If the PK already captures something accurately, DO NOT repeat it here.
+
+ALWAYS extract these (they represent critical state changes):
 - [UPDATE] new_value (was: old_value) — EVERY value change must be listed atomically | supersedes:previous_ref
 - [DECISION] chose X because Y — every decision with its full reasoning chain
 
-Extract these ONLY if missing from PK:
-- [FACT] exact value that was approximated or omitted | session:N | turn:N
-- [EVENT] event whose precise timing/ordering was lost | order:N
+Extract these ONLY if genuinely missing from PK:
+- [FACT] exact value that the PK approximated, omitted, or got wrong | session:N | turn:N
+- [EVENT] event whose precise timing/ordering is lost in the PK | order:N
+- [TEMPORAL] "X happened before/after Y" — temporal relationships not captured in Event Log | order:N
 
-Keep your Persistent Knowledge section CONCISE — avoid repeating the same information across multiple PK sections. Each fact should appear ONCE in the most appropriate section.
+Quality check: for each item, ask "Would someone reading ONLY the PK above miss this?" If no, skip it.
 If existing SK items are provided below, PRESERVE existing items and ADD only NEW gaps.
 ---`
 
