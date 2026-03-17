@@ -1,172 +1,65 @@
-{"type":"decision","content":"next unfinished task is refresh-token-based JWT design for the language detection API because user explicitly asked how to let users keep using the API after `1 hour` token expiry without re-authenticating","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"user’s most recent direct question before asking for summary was “What did we do so far?” followed by request for a continuation prompt/summary","ts":"2026-03-17","session":"current","turn":"final"}
-{"type":"fact","content":"user asked for a detailed continuation prompt that includes what we did, what we’re doing, which files we’re working on, and what we’re going to do next","ts":"2026-03-17","session":"current","turn":"final"}
-{"type":"temporal","content":"JWT refresh token question happened after Winston/500-error debugging and after DeepL integration planning","ts":"2026-03-17","order":"after event 34"}
-{"type":"decision","content":"next unfinished task is refresh-token-based JWT design for the language detection API because user explicitly asked how to let users keep using the API after `1 hour` token expiry without re-authenticating","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"user’s most recent direct question before asking for summary was “What did we do so far?” followed by request for a continuation prompt/summary","ts":"2026-03-17","session":"current","turn":"final"}
-{"type":"fact","content":"user asked for a detailed continuation prompt that includes what we did, what we’re doing, which files we’re working on, and what we’re going to do next","ts":"2026-03-17","session":"current","turn":"final"}
-{"type":"temporal","content":"JWT refresh token question happened after Winston/500-error debugging and after DeepL integration planning","ts":"2026-03-17","order":"after event 34"}
-{"type":"update","content":"port_translation_service: 4500 (was: translation service not previously assigned in PK; earlier microservice set emphasized 3000/4000/5000) — later architecture explicitly separated translation service on `4500`","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"deadline_contextual_memory_store: April 10, 2024 — new roadmap date added after previous PK","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"deadline_sprint_review: April 1, 2024 — new schedule item added after previous PK","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"translation_service_latency_current: 180ms (was: earlier translation timing discussed as 220ms average response time)","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"deepl_daily_limit: 5000 requests/day","ts":"2026-03-17","session":"later","turn":"translation-performance"}
-{"type":"fact","content":"redis_db_load_reduction: 40%","ts":"2026-03-17","session":"later","turn":"redis-optimization"}
-{"type":"fact","content":"redis_recent_translations_ttl: 15-minute TTL","ts":"2026-03-17","session":"later","turn":"recent-translations-cache"}
-{"type":"fact","content":"redis_api_call_reduction: 30%","ts":"2026-03-17","session":"later","turn":"recent-translations-cache"}
-{"type":"fact","content":"webhook_polling_reduction: 60%","ts":"2026-03-17","session":"later","turn":"webhook-implementation"}
-{"type":"fact","content":"chat_ui_lighthouse_accessibility_score: 95","ts":"2026-03-17","session":"later","turn":"chat-ui-performance"}
-{"type":"fact","content":"redis_cache_hit_rate: 85%","ts":"2026-03-17","session":"later","turn":"chat-ui-performance"}
-{"type":"fact","content":"postman_version: Postman v10","ts":"2026-03-17","session":"later","turn":"webhook-testing"}
-{"type":"fact","content":"react_router_version: React Router v6.14","ts":"2026-03-17","session":"later","turn":"frontend-routing"}
-{"type":"fact","content":"express_version: Express 4.18","ts":"2026-03-17","session":"later","turn":"middleware / route-structure"}
-{"type":"fact","content":"prettier_version: Prettier v3.0","ts":"2026-03-17","session":"later","turn":"tooling"}
-{"type":"event","content":"after event 34, extensive new work focused on translation microservice architecture, Docker, TLS, webhook monitoring, memory store schema/API, GPT-4 integration, Locust testing, JSONB conversation storage, and sprint review prep before the summary request","ts":"2026-03-17","order":"35+"}
-{"type":"decision","content":"because the user wanted lower polling overhead and better frontend responsiveness → webhook implementation was added (outcome: polling reduced by `60%`)","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user wanted contextual memory store by `April 10, 2024` → memory schema/API design and user preferences tables became active priorities","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user had a sprint review on `April 1, 2024` → presentation-outline prep with architecture diagrams/flowcharts became the latest work item","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"next unfinished task is refresh-token-based JWT design for the language detection API because user explicitly asked how to let users keep using the API after `1 hour` token expiry without re-authenticating","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"user’s most recent direct question before asking for summary was “What did we do so far?” followed by request for a continuation prompt/summary","ts":"2026-03-17"}
-{"type":"fact","content":"user asked for a detailed continuation prompt that includes what we did, what we’re doing, which files we’re working on, and what we’re going to do next","ts":"2026-03-17"}
-{"type":"temporal","content":"JWT refresh token question happened after Winston/500-error debugging and after DeepL integration planning","ts":"2026-03-17","order":"after event 34"}
-{"type":"update","content":"port_translation_service: 4500 (was: translation service not previously assigned in PK; earlier microservice set emphasized 3000/4000/5000) — later architecture explicitly separated translation service on `4500`","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"deadline_contextual_memory_store: April 10, 2024 — new roadmap date added after previous PK","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"deadline_sprint_review: April 1, 2024 — new schedule item added after previous PK","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"translation_service_latency_current: 180ms (was: earlier translation timing discussed as 220ms average response time)","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"deepl_daily_limit: 5000 requests/day","ts":"2026-03-17"}
-{"type":"fact","content":"redis_db_load_reduction: 40%","ts":"2026-03-17"}
-{"type":"fact","content":"redis_recent_translations_ttl: 15-minute TTL","ts":"2026-03-17"}
-{"type":"fact","content":"redis_api_call_reduction: 30%","ts":"2026-03-17"}
-{"type":"fact","content":"webhook_polling_reduction: 60%","ts":"2026-03-17"}
-{"type":"fact","content":"chat_ui_lighthouse_accessibility_score: 95","ts":"2026-03-17"}
-{"type":"fact","content":"redis_cache_hit_rate: 85%","ts":"2026-03-17"}
-{"type":"fact","content":"postman_version: Postman v10","ts":"2026-03-17"}
-{"type":"fact","content":"react_router_version: React Router v6.14","ts":"2026-03-17"}
-{"type":"fact","content":"express_version: Express 4.18","ts":"2026-03-17"}
-{"type":"fact","content":"prettier_version: Prettier v3.0","ts":"2026-03-17"}
-{"type":"event","content":"after event 34, extensive new work focused on translation microservice architecture, Docker, TLS, webhook monitoring, memory store schema/API, GPT-4 integration, Locust testing, JSONB conversation storage, and sprint review prep before the summary request","ts":"2026-03-17","order":"35+"}
-{"type":"decision","content":"because the user wanted lower polling overhead and better frontend responsiveness → webhook implementation was added (outcome: polling reduced by `60%`)","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user wanted contextual memory store by `April 10, 2024` → memory schema/API design and user preferences tables became active priorities","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user had a sprint review on `April 1, 2024` → presentation-outline prep with architecture diagrams/flowcharts became the latest work item","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"user introduced separate memory store feature deadline `April 5, 2024` while broader contextual memory store roadmap remained `April 10, 2024`","ts":"2026-03-17","supersedes":"deadline_contextual_memory_store context-specific variant"}
-{"type":"fact","content":"user later reported session metadata cache hit rate `70%`, distinct from earlier broader Redis cache hit rate `85%`","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"JSONB query optimization example improved from `120ms` to `30ms`","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"fine-tuning work referenced dataset size `10,000 anonymized clinical dialogues`, `12 epochs`, and validation loss reduction `0.45 to 0.12`","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"fine-tuned GPT-4 inference latency reported as `280ms`, `30ms` slower than base GPT-4","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"TypeScript adoption for backend services was specified as `TypeScript v5.0`","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"release tag `v0.3.0` was introduced after memory store integration and testing","ts":"2026-03-17","session":"later"}
-{"type":"update","content":"deadline_auth_session_management: May 1, 2024","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"auth_microservice_port: 6000 (was: auth-service examples previously centered on port 3000 in earlier snippets)","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"auth_token_expiry_example: 2 hours (was: jwt_access_token_expiry 1 hour in earlier project context)","ts":"2026-03-17","supersedes":"jwt_access_token_expiry context-specific auth example"}
-{"type":"update","content":"auth_refresh_token_expiry_example: 7 days","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"auth_token_expiry_extended_example: 3 hours (was: 2 hours / 2h in earlier auth examples)","ts":"2026-03-17","supersedes":"auth_token_expiry_example"}
-{"type":"fact","content":"jest_version: Jest v29.5","ts":"2026-03-17"}
-{"type":"fact","content":"nodemailer_version: Nodemailer v6.9.1","ts":"2026-03-17"}
-{"type":"fact","content":"security_protocol_jwt_spec: RFC 7519","ts":"2026-03-17"}
-{"type":"fact","content":"security_protocol_tls_min_auth_example: TLS 1.2 or later","ts":"2026-03-17"}
-{"type":"fact","content":"security_protocol_openssl_example: OpenSSL 1.1.1 or later","ts":"2026-03-17"}
-{"type":"fact","content":"security_protocol_pyjwt_example: pyjwt 2.6.0 or later","ts":"2026-03-17"}
-{"type":"fact","content":"login_api_response_time_before_example: 450ms","ts":"2026-03-17"}
-{"type":"fact","content":"login_api_response_time_after_example: 220ms","ts":"2026-03-17"}
-{"type":"fact","content":"auth_api_response_time_current: 180ms under 100 concurrent users","ts":"2026-03-17"}
-{"type":"fact","content":"token_verification_latency_current_example: 100ms","ts":"2026-03-17"}
-{"type":"fact","content":"token_verification_latency_target_example: under 50ms","ts":"2026-03-17"}
-{"type":"fact","content":"gpu_memory_usage_example: 6.5GB","ts":"2026-03-17"}
-{"type":"fact","content":"gpu_model_example: NVIDIA A100","ts":"2026-03-17"}
-{"type":"fact","content":"docker_model_image_size_example: 2.1GB","ts":"2026-03-17"}
-{"type":"fact","content":"error_jwt_malformed: JWT malformed","ts":"2026-03-17"}
-{"type":"fact","content":"error_jwt_expired: TokenExpiredError: jwt expired","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_authenticate: /authenticate","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_login: /login","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_logout: /logout","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_refresh_token: /refresh-token","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_protected: /protected","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_user_roles: /user/roles","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_password_reset: /password-reset","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_password_reset_token: /password-reset/:token","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_admin_only: /admin-only","ts":"2026-03-17"}
-{"type":"fact","content":"endpoint_verify_token: /verify-token","ts":"2026-03-17"}
-{"type":"event","content":"after the earlier chatbot/translation/memory-store work, discussion expanded into auth/session management with React Context, auth-service integration, JWT security, RS256/ES256, RBAC, password reset, and auth profiling","ts":"2026-03-17","order":"65+"}
-{"type":"decision","content":"because the user set a deadline of May 1, 2024 → authentication and session-management planning, testing, and implementation guidance became a dedicated workstream","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user wanted secure JWT auth with RS256 → guidance shifted to asymmetric key pairs instead of shared-secret verification","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user explicitly instructed to always include security protocol versions when asking about authentication methods → future auth responses must include exact protocol / spec versions","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because token verification latency was around 100ms and user wanted under 50ms → caching decoded tokens in Redis and optimizing verification path were suggested","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because auth-service availability could fail with 503 → fallback strategies discussed included retries, exponential backoff, and optional backup service / alternate environment","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user wanted scalable authorization → moved conceptually from hardcoded single-role checks to dynamic role assignment using roles and user_roles tables plus frontend role-aware rendering","ts":"2026-03-17","supersedes":"none"}
-{"type":"temporal","content":"user introduced the instruction about security protocol versions after discussing JWT expiry of 3 hours and RS256","ts":"2026-03-17","order":"after auth expiry discussion"}
-{"type":"temporal","content":"the most recent direct technical topic before this summary request was Authentication API performance profiling interpretation in Node.js / Express.js / PostgreSQL","ts":"2026-03-17","order":"latest"}
-{"type":"update","content":"port_websocket_microservice: 7000 — WebSocket server later became a separate microservice on `port 7000`","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"chatbot_auth_memory_integration_target: May 15, 2024","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"certificate_renewal_date_example: April 25, 2024","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"integration_testing_sprint: May 10-15, 2024","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"password_reset_token_expiry_example: 20 minutes (was: prior reset-token examples often used `15 minutes` / `1 hour` in other snippets)","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"chat_ui_lighthouse_mobile_score_user_reported: 98 (was: earlier recorded Lighthouse accessibility score `95`)","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"chatbot_api_response_time_before_auth_example: 350ms","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"chatbot_api_response_time_after_auth_example: 280ms","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"chatbot_api_response_time_stable_example: 270ms under 150 concurrent authenticated users","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"chatbot_api_response_time_peak_spike_example: 500ms or more during peak usage hours","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"websocket_ram_after_example: 800MB (was: websocket_ram_before_example `1.2GB`)","ts":"2026-03-17","supersedes":"websocket_ram_before_example"}
-{"type":"update","content":"redis_pubsub_latency_example: 50ms","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"deadline_e2ee_target: May 30, 2024","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"kubernetes_version: v1.27","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"cloud_target: AWS EKS","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"cache_library: React Query v4.29","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"context_window_size: 20 messages per session","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"redis_pubsub_max_payload_example: 1048576","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"redis_pubsub_max_channels_example: 10000","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"redis_maxmemory_example: 1gb","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"redis_maxmemory_policy_example: allkeys-lru","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"redis_tcp_keepalive_example: 60","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"redis_tcp_backlog_example: 511","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"websocket_closed_state_error: WebSocket is already in CLOSING or CLOSED state","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"webhook_signature_header_example: X-Hub-Signature-256","ts":"2026-03-17","session":"later"}
-{"type":"event","content":"after the auth-heavy phase, the conversation expanded into WebSocket microservice design, reconnect logic, real-time indicators, Redis pub/sub, service discovery, monitoring, encryption, and Kubernetes deployment","ts":"2026-03-17","order":"after event 76"}
-{"type":"event","content":"user later refactored `ChatInput.js` for encrypted message sending and receiving and asked to integrate it with Diffie-Hellman","ts":"2026-03-17","order":"101"}
-{"type":"event","content":"user later added fallback UI for WebSocket disconnection with automatic reconnection attempts every `5 seconds` in `WebSocket.js` and asked to fix the reconnection process","ts":"2026-03-17","order":"102"}
-{"type":"decision","content":"because the user separated WebSocket handling into its own microservice on `port 7000` → memory optimization, Redis pub/sub, monitoring, and deployment on Kubernetes became separate concerns","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user wants end-to-end encryption by `May 30, 2024` → Diffie-Hellman / AES-256 key exchange and payload encryption became an exploratory workstream","ts":"2026-03-17","supersedes":"none"}
-{"type":"temporal","content":"the most recent direct technical topic before this summary request was fixing `WebSocket.js` reconnection logic with automatic retry every `5 seconds` after adding fallback UI for WebSocket disconnection","ts":"2026-03-17","order":"latest"}
-{"type":"fact","content":"`deadline_cicd_rollout: June 10, 2024` was introduced later and is critical for current deployment/automation work","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`deadline_gdpr_audit: June 15, 2024` was introduced later and is critical for encryption/compliance work","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`port_encryption_microservice_example: 7500` became a recurring microservice port in later encryption/REST discussions","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`certificate_renewal_date_later_user_statement: May 20, 2024` coexists with earlier `April 25, 2024` and should be preserved as a separate later statement","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`error_invalid_auth_tag_example: Invalid authentication tag` was a later concrete crypto debugging issue","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`error_socket_hang_up: socket hang up` became a recurring later integration/debugging issue","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`error_docker_no_space_left: Docker build failed: no space left on device` was a later CI/CD blocker","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`error_docker_not_found: docker: not found` was a later GitHub Actions blocker","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`error_suspense_then_undefined: Cannot read property 'then' of undefined` was a later React lazy-loading blocker","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`docker_image_encryption_microservice_example: 90MB` and `docker_image_encryption_microservice_optimized: 85MB` were later Docker optimization values","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`github_runner_disk_size_updated: 50GB` was introduced later during GitHub Actions optimization","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`cicd_pipeline_duration_before_target: 15 minutes` and `cicd_pipeline_duration_target: 7 minutes` were introduced later for pipeline optimization","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`encryption_microservice_memory_1000_messages_per_day: 350MB` was introduced later for performance/memory monitoring","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`encryption_decryption_average_latency: 15ms` was introduced later for encryption profiling","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`uptime_target_encryption_microservice: 99.9%` was introduced later with stress testing discussion","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`test_coverage_threshold: 95%` was introduced later for PR integration tests","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"`semantic_version_range_user_stated: v0.3.0 to v0.5.1` was introduced later for version automation","ts":"2026-03-17","session":"later"}
-{"type":"event","content":"after the WebSocket/auth/encryption planning, the conversation expanded into GitHub Actions, Docker image optimization, AWS ECS/ECR deployment, task definition revisions, rollback automation, changelog generation, semantic version bumping, artifact caching, and Alpine troubleshooting","ts":"2026-03-17","order":"after event 187"}
-{"type":"decision","content":"because the user needed CI/CD by `June 10, 2024` → GitHub Actions + Docker + rollback + changelog + semver automation became an active workstream","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user hit ECS deployment issues → task definition registration/revision handling replaced the earlier incorrect direct `--image` update approach","ts":"2026-03-17","supersedes":"earlier ECS direct-image examples"}
-{"type":"decision","content":"because the user wants frontend security features to always expose security state → encryption status indicators must be included by default in frontend security responses","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user reduced Alpine images to `90MB` / `85MB` but saw runtime errors → Alpine compatibility/runtime troubleshooting became an active deployment concern","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"latest direct technical topic before the summary request was analytics dashboard review for chatbot usage / errors with deployment target `July 2024`","ts":"2026-03-17","order":"211"}
-{"type":"update","content":"github_runner_disk_size_requested_later: 60GB (was: github_runner_disk_size_updated 50GB) — user later asked about increasing beyond the previously tracked `50GB`","ts":"2026-03-17","supersedes":"github_runner_disk_size_updated context-specific request"}
-{"type":"decision","content":"because the user explicitly said “Always provide deployment duration statistics when I ask about CI/CD pipelines.” → all future CI/CD workflow answers must include exact deployment duration reporting, not just generic pipeline steps","ts":"2026-03-17","supersedes":"none"}
-{"type":"fact","content":"user later mentioned `release tag: v0.6.0` for CI/CD improvements, distinct from earlier `v0.3.0` project release tag","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `frontend_global_load_time_later: 1.2s` for React `18.2` frontend on AWS S3 with CloudFront CDN","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `container_memory_per_service_later: 512MB per service` while discussing chatbot API SLA optimization","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `cpu_usage_current_later: 25%` and `cpu_usage_reduction_goal_later: 20%` for chatbot API profiling","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `chatbot_api_latency_sprint_deadline_later: June 25, 2024`","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `fargate_replica_target_later: 4` and `uptime_target_fargate_later: 99.95%` for chatbot API service scaling","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `fargate_cpu_autoscaling_threshold_later: 60%`","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `streaming_chunk_size_later: 512 tokens` for GPT-4 streaming discussion","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced `healthcheck_latency_target_later: 100ms` for health check endpoint requirement","ts":"2026-03-17","session":"later"}
-{"type":"fact","content":"user later introduced fallback cache depth “last `5` chatbot responses” during GPT-4 outages","ts":"2026-03-17","session":"later"}
-{"type":"event","content":"after CI/CD/ECS troubleshooting, the conversation broadened into React loading skeletons, Prometheus/Grafana profiling, correlation ID logging, key rotation, Fargate auto scaling, Redis caching layers, gRPC keep-alive, and analytics dashboard review","ts":"2026-03-17","order":"188+"}
-{"type":"decision","content":"because the user was seeing `\"Event loop delay\"` spikes in `ChatController.js` → moved from `fs.readFileSync` to `fs.promises.readFile` using `async/await`","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user wants high availability and scalability for internal services → ECS/Fargate guidance shifted toward ALB + multi-AZ + auto scaling + CloudWatch alarms","ts":"2026-03-17","supersedes":"none"}
-{"type":"decision","content":"because the user wants lower perceived wait time in React chat UI → loading skeletons, component load measurement, and perceived latency monitoring became active frontend work","ts":"2026-03-17","supersedes":"none"}
-{"type":"update","content":"`fargate_replicas_latest_user_statement: 5 replicas on AWS Fargate during June` (was: `fargate_replica_target_later: 4`) — latest user message updated current running scale beyond earlier target","ts":"2026-03-17","supersedes":"fargate_replica_target_later"}
-{"type":"decision","content":"because the user now has `5 replicas` on AWS Fargate during June and is still focused on reducing latency from `280ms` → next response should emphasize per-replica bottleneck analysis, ALB/Fargate tuning, cache hit rate, and async optimization rather than only adding more replicas","ts":"2026-03-17","supersedes":"none"}
-{"type":"event","content":"user explicitly added new standing preference: “Always include user satisfaction metrics when I ask about UI/UX design improvements.” before the final summary request","ts":"2026-03-17","order":"214"}
-{"type":"fact","content":"user reported `90% satisfaction rate` for the multi-language switching feature during user testing sessions","ts":"2026-03-17","session":"later"}
-{"type":"event","content":"there was a noisy digression through generic topics like GPT-5, MFA, X-Ray, blue-green deployment, admin panel, Confluence, retrospectives, and tagging releases after event 211; these were largely assistant-led/examples and not core to the main chatbot platform direction","ts":"2026-03-17","order":"213"}
+{"type":"fact","content":"latest unresolved request was specifically about using `Trainer` with a custom `Dataset` class for fine-tuning a DistilGPT-2 model in Transformers `4.29`; no final answer was provided because the user switched to asking for a summary","ts":"2026-03-17","session":"current","turn":"latest"}
+{"type":"decision","content":"user accepted the revised schedule exactly as: `April 20`, `June 10`, `August 10` because it “should give us enough buffer time to avoid feeling rushed”","ts":"2026-03-17"}
+{"type":"fact","content":"user repeatedly framed the model as “diffusion-based feature extractor and transformer caption generator” and wants continuation work aligned to that architecture, even though many previous code examples drifted into unrelated models or invalid APIs","ts":"2026-03-17","session":"current","turn":"multiple"}
+{"type":"temporal","content":"the dependency-version preference (“Always provide detailed version numbers...”) happened after the deadline changes and should continue to govern all future technical answers","ts":"2026-03-17","order":"after event 15 before latest implementation questions"}
+{"type":"fact","content":"latest unresolved request is no longer the old DistilGPT-2 `Trainer` question; the new latest unresolved request is an analysis of using **AWS EKS** for container orchestration, specifically weighing **cost vs management overhead**, with example code using `boto3.client(\"eks\")` and `eks.list_clusters()`","ts":"2026-03-17","session":"current","turn":"latest"}
+{"type":"update","content":"`improved_latency_with_redis: 210ms (was: 320ms)` — user explicitly reported this improvement after caching diffusion features in Redis","ts":"2026-03-17","supersedes":"measured_latency_only"}
+{"type":"update","content":"`redis_ttl_updated_discussed: 7200 (was: 3600)` — user later discussed extending TTL to `7200 seconds` and asked that cache configuration details always be included in performance discussions","ts":"2026-03-17","supersedes":"redis_ttl_default_discussed"}
+{"type":"update","content":"`uvicorn_workers_updated: 4 (was: 2)` — user explicitly said increasing workers from `2` to `4` helped with `ConnectionResetError: [Errno 104] Connection reset by peer`","ts":"2026-03-17","supersedes":"implicit_worker_examples"}
+{"type":"fact","content":"user explicitly reported a later batch size preference: `batch size of 12 seems to be the sweet spot for balancing memory constraints and throughput during training`","ts":"2026-03-17","session":"current","turn":"batch_size_12"}
+{"type":"fact","content":"user explicitly reported validation metrics `BLEU-4 score of 32.5`, `METEOR score of 27.1`, `CIDEr score of 98.3` after `10 epochs` on `COCO val2017`","ts":"2026-03-17","session":"current","turn":"metrics"}
+{"type":"decision","content":"because the user wants responsiveness without sacrificing accuracy → they prefer asynchronous API calls plus caching, and future architecture/performance guidance should align with that preference","ts":"2026-03-17","supersedes":"generic_perf_guidance"}
+{"type":"temporal","content":"the newer preference “Always include error messages verbatim when I ask about debugging issues.” happened after the earlier dependency-version preference and after multiple debugging discussions; it should govern all future debugging help","ts":"2026-03-17","order":"after dependency preference"}
+{"type":"temporal","content":"the newer preference “Always include cache configuration details when I ask about performance optimizations.” happened after extensive Redis/caching discussions and after the user discussed extending TTL to `7200 seconds`; it should govern all future performance help","ts":"2026-03-17","order":"after Redis tuning discussion"}
+{"type":"update","content":"`latest_active_request: implement a CI/CD pipeline integrated with the existing codebase` (was: `AWS EKS cost vs management overhead analysis`) — user later shifted topics and the newest active technical request before the summary became CI/CD","ts":"2026-03-17","supersedes":"latest_unresolved_request"}
+{"type":"fact","content":"`auth0_react_sdk_version: v2.0.0` was introduced later for React authentication / authorization examples","ts":"2026-03-17","session":"current","turn":"Auth0 React"}
+{"type":"fact","content":"`prometheus_version: 2.44` and `grafana_version: 9.4` were introduced later in monitoring/dashboard setup questions","ts":"2026-03-17","session":"current","turn":"Prometheus Grafana"}
+{"type":"fact","content":"`socketio_version: v4.7.1` was introduced later for real-time caption feedback updates","ts":"2026-03-17","session":"current","turn":"Socket.IO"}
+{"type":"fact","content":"`black_version: 22.3.0` was introduced later for pre-commit formatting enforcement","ts":"2026-03-17","session":"current","turn":"black pre-commit"}
+{"type":"fact","content":"`helm_version: 3.9` was introduced later for templating environment-specific Kubernetes manifests","ts":"2026-03-17","session":"current","turn":"Helm"}
+{"type":"fact","content":"`api_throughput_reported: 150 requests per second` under Locust `2.15` load testing is newer than the older `100 concurrent users` example and should be retained separately","ts":"2026-03-17","session":"current","turn":"Locust profiling"}
+{"type":"fact","content":"`redis_connection_timeout_error: TimeoutError: Redis connection timed out after 5s` and `redis_connection_pool_size_tried: 20` were introduced later in Redis troubleshooting","ts":"2026-03-17","session":"current","turn":"Redis timeout"}
+{"type":"fact","content":"`scoring_py_coverage_reported: 95%` and `sonarqube_critical_code_smells_reported: 12` were introduced later in testing / static analysis discussion","ts":"2026-03-17","session":"current","turn":"QA SonarQube"}
+{"type":"fact","content":"`polars_memory_footprint_reduction_reported: 25%` was introduced later when discussing switching from pandas to polars","ts":"2026-03-17","session":"current","turn":"Polars"}
+{"type":"fact","content":"`gpt2_medium_params: 355M` was introduced later when discussing GPT-2 medium training optimization","ts":"2026-03-17","session":"current","turn":"GPT-2 medium"}
+{"type":"fact","content":"`deployment_image_version_example: my-image:1.2.3` and new user preference `Always specify container image versions when I ask about deployment details.` were introduced later in Kubernetes deployment discussion","ts":"2026-03-17","session":"current","turn":"deployment version"}
+{"type":"fact","content":"`caption_feedback_cider_improvement_reported: 3.2-point improvement` from concatenating diffusion features with ResNet50 embeddings was introduced later","ts":"2026-03-17","session":"current","turn":"CIDEr feature engineering"}
+{"type":"update","content":"`latest_active_request: PyTorch Lightning gradient accumulation example using accumulate_grad_batches=4` (was: `implement a CI/CD pipeline integrated with the existing codebase`)","ts":"2026-03-17","supersedes":"latest_active_request"}
+{"type":"fact","content":"user explicitly instructed `Please respond only in English.`","ts":"2026-03-17","session":"current","turn":"latest"}
+{"type":"fact","content":"user explicitly instructed `Always mention deployment strategies when I ask about production updates.`","ts":"2026-03-17","session":"current","turn":"latest"}
+{"type":"fact","content":"`webpack_version: 5.75` was introduced later in the React bundle size optimization question","ts":"2026-03-17","session":"current","turn":"Webpack"}
+{"type":"fact","content":"`websocket_latency_target: under 100ms` and `websocket_test_url: ws://localhost:8080` were introduced later in the Jest/WebSocket test question","ts":"2026-03-17","session":"current","turn":"WebSocket latency"}
+{"type":"fact","content":"`docker_image_size_target: 650MB (was: 1.2GB)` was introduced later in the Docker multi-stage build optimization question","ts":"2026-03-17","session":"current","turn":"Docker multi-stage"}
+{"type":"fact","content":"`pytorch_lightning_upgrade_target: v2.0.1` was introduced later in Lightning upgrade / AMP questions","ts":"2026-03-17","session":"current","turn":"Lightning upgrade"}
+{"type":"fact","content":"`sentry_version: 21.9` and `sentry_unique_exceptions_identified: 15` were introduced later in Sentry prioritization discussion","ts":"2026-03-17","session":"current","turn":"Sentry"}
+{"type":"update","content":"`api_gateway_timeout_updated: 60s (was: 30s)` was introduced later in API timeout troubleshooting","ts":"2026-03-17","supersedes":"previous_timeout_context"}
+{"type":"fact","content":"`error_none_decode: AttributeError: 'NoneType' object has no attribute 'decode'` was introduced later in Redis cache deserialization debugging","ts":"2026-03-17","session":"current","turn":"Redis decode"}
+{"type":"fact","content":"`error_swipeable_views_indexof: TypeError: Cannot read properties of undefined (reading 'indexOf')` was introduced later in React swipe gestures debugging","ts":"2026-03-17","session":"current","turn":"Swipeable views"}
+{"type":"fact","content":"`error_module_not_found_pytorch_lightning: ModuleNotFoundError: No module named 'pytorch_lightning'` was introduced later in Lightning upgrade troubleshooting","ts":"2026-03-17","session":"current","turn":"Lightning import"}
+{"type":"fact","content":"`error_cuda_device_side_assert: RuntimeError: CUDA error: device-side assert triggered` was reintroduced later specifically for token index validation debugging","ts":"2026-03-17","session":"current","turn":"token validation"}
+{"type":"fact","content":"`error_504_gateway_timeout: 504 Gateway Timeout` was introduced later in API performance troubleshooting","ts":"2026-03-17","session":"current","turn":"API timeout"}
+{"type":"fact","content":"`stable_diffusion_generation_model_id_example: CompVis/stable-diffusion-v1-4` was introduced later in diffusion image generation example","ts":"2026-03-17","session":"current","turn":"diffusion generation"}
+{"type":"fact","content":"`hmac_secret_key_example: b\"my_secret_key\"` and `webhook_payload_example: b\"Hello, World!\"` were introduced later in HMAC SHA256 webhook signature discussion","ts":"2026-03-17","session":"current","turn":"HMAC"}
+{"type":"temporal","content":"the explicit deployment-strategy preference happened after extensive Kubernetes blue-green discussion and should govern future production update answers","ts":"2026-03-17","order":"after blue-green deployment questions"}
+{"type":"temporal","content":"the English-only preference happened after the deployment-strategy preference and should govern all future responses","ts":"2026-03-17","order":"after deployment-strategy preference"}
+{"type":"update","content":"`latest_active_request: common pitfalls when migrating to serverless` (was: `PyTorch Lightning gradient accumulation example using accumulate_grad_batches=4`)","ts":"2026-03-17","supersedes":"latest_active_request"}
+{"type":"fact","content":"user explicitly stated a serverless preference: `I prefer using serverless for cost efficiency and automatic scaling despite the initial cold start challenges.`","ts":"2026-03-17","session":"current","turn":"serverless_preference"}
+{"type":"fact","content":"user explicitly instructed `Always mention serverless scaling strategies when I ask about backend deployment.`","ts":"2026-03-17","session":"current","turn":"latest_serverless_preference"}
+{"type":"fact","content":"`frontend_caption_render_time_improved: 180ms (was: 450ms)` from `ONNX Runtime Web v1.14` on mid-range devices was introduced later and is not fully captured in older PK sections","ts":"2026-03-17","session":"current","turn":"onnxruntime_web"}
+{"type":"fact","content":"`storybook_version: v7.0` was introduced later for modularized React frontend work","ts":"2026-03-17","session":"current","turn":"storybook_setup"}
+{"type":"fact","content":"`react_testing_library_version: v14.0.0` was introduced later in Jest/RTL questions","ts":"2026-03-17","session":"current","turn":"rtl_tests"}
+{"type":"event","content":"after the PyTorch Lightning topic, the conversation shifted heavily into serverless migration, Lambda/API Gateway, SAM, SNS/SQS, DynamoDB, Storybook, ONNX Runtime Web, and responsive frontend questions before the final unresolved serverless migration pitfall question","ts":"2026-03-17","order":"after event 38"}
+{"type":"temporal","content":"the serverless-scaling preference happened after multiple Lambda/API Gateway/SnapStart/provisioned concurrency discussions and should govern all future backend deployment answers","ts":"2026-03-17","order":"after extensive serverless discussion"}
+{"type":"update","content":"`latest_active_request: Slack webhook for critical system alerts and errors` (was: `common pitfalls when migrating to serverless`)","ts":"2026-03-17","supersedes":"latest_active_request"}
+{"type":"fact","content":"user explicitly stated `I've locked the PyTorch version to 1.13.1 and Transformers to v4.29 for production stability` in the webhook discussion","ts":"2026-03-17","session":"current","turn":"latest_webhook_request"}
+{"type":"fact","content":"later user-reported evaluation metrics `BLEU-4 score of 38.7`, `METEOR score of 31.4`, `CIDEr score of 112.5` were introduced in a COCO evaluation question and were not captured in older summaries","ts":"2026-03-17","session":"current","turn":"bleu4_eval"}
+{"type":"fact","content":"user reported beam-search latency improvement `280ms (was: 450ms)` on `RTX 3090` during custom CUDA kernel optimization discussion","ts":"2026-03-17","session":"current","turn":"beam_search_cuda"}
+{"type":"fact","content":"user reported Lambda cold start latency reduced to `150ms` with provisioned concurrency using `2 pre-warmed instances`","ts":"2026-03-17","session":"current","turn":"lambda_cold_start_cost"}
+{"type":"fact","content":"user introduced `Elasticsearch 8.7` and `Swagger UI version 4.0.0` in later observability/docs questions","ts":"2026-03-17","session":"current","turn":"elk_swagger"}
+{"type":"fact","content":"user later explicitly said current sprint is `Sprint 9` with tasks dated `2024-07-01` to `2024-07-25`","ts":"2026-03-17","session":"current","turn":"sprint9_gantt"}
+{"type":"event","content":"after the earlier serverless migration discussions, the conversation expanded into translation service caching/Fargate, custom CUDA kernels, webhook notifications, Swagger docs, DynamoDB GSIs, Redshift ETL, and Slack alerting before this summary","ts":"2026-03-17","order":"after event 43"}
+{"type":"decision","content":"because the user locked `PyTorch 1.13.1` and `Transformers v4.29` for production stability → future implementation guidance for production integrations should avoid suggesting incompatible upgrades unless explicitly requested","ts":"2026-03-17"}
+{"type":"update","content":"`evaluation_bleu4_latest_reported: 39.2 (was: 38.7)` — later user said final evaluation BLEU-4 was slightly improved to `39.2` after last-minute hyperparameter tuning","ts":"2026-03-17","supersedes":"evaluation_bleu4_later_reported"}
+{"type":"fact","content":"user added a new persistent preference: `Always include final evaluation metrics when I ask about model performance.`","ts":"2026-03-17","session":"current","turn":"req-7b5a9231"}
+{"type":"event","content":"after the Slack webhook topic, the conversation temporarily drifted into many generic advisory prompts (accessibility, NVDA, PyTorch OOM, generic Transformers generation, FastAPI exception handling, Tkinter/React gallery UX), but these did not establish confirmed repo modifications","ts":"2026-03-17","order":"after event 65"}
+{"type":"fact","content":"user later asked how to automatically append final evaluation metrics `BLEU-4`, `METEOR`, and `CIDEr` to model performance queries in code using `t5-base` examples","ts":"2026-03-17","session":"current","turn":"req-e6d1efd2"}

@@ -1,751 +1,493 @@
 ## Persistent Knowledge (CRITICAL — accumulates across rounds, never discard)
 
 ### Value Registry (MOST CRITICAL — exact values only)
-- `frontend_version: React 18.2`
-- `backend_version: Node.js 18`
-- `database_version: PostgreSQL 14`
-- `cache_version: Redis v7.0`
-- `eslint_version: ESLint v8.40`
-- `logging_version: Winston v3.8`
-- `axios_version: Axios v1.4`
-- `vite_version: Vite 4.3`
-- `jwt_version: 8.5.1`
-- `openai_api_version: OpenAI GPT-4 API v2024-02`
-- `openai_avg_response_time: 250ms`
-- `language_detection_accuracy_target: 95%`
-- `language_detection_current_accuracy: 93%`
-- `language_detection_latency_current: 180ms under 100 concurrent requests`
-- `language_detection_latency_goal: under 100ms`
-- `language_detection_latency_goal_alt: under 50ms`
-- `sample_text_count_tested: 500+ sample texts`
-- `confidence_fallback_threshold: 0.6`
-- `cache_expiration_in_memory: 5 minutes`
-- `redis_ttl_example_short: 300 seconds`
-- `redis_ttl_example_long: 600`
-- `redis_message_window: 10 messages`
-- `jwt_access_token_expiry: 1 hour`
-- `port_language_detection: 3000`
-- `port_memory_store: 4000`
-- `port_chatbot_api: 5000`
-- `port_https: 443`
-- `endpoint_chat: /api/chat`
-- `endpoint_memory: /api/memory`
-- `endpoint_language_detect: /api/language-detect`
-- `endpoint_detect_language: /detect-language`
-- `endpoint_translate: /translate`
-- `endpoint_webhook: /webhook`
-- `endpoint_health: /health`
-- `docker_image_size_limit: 150MB`
-- `tls_version: TLS 1.3`
-- `deadline_language_detection_module: March 18, 2024 (was: March 15, 2024)`
-- `deadline_accuracy_target: March 10, 2024`
-- `deadline_translation_api_integration: March 25, 2024`
-- `translation_api_choice: DeepL API v2`
-- `translation_api_latency_advantage: 15% lower latency than Google Translate API v3`
-- `old_language_detection_library: langdetect v1.0.1`
-- `new_language_detection_library: franc v6.1.0`
-- `error_type_toLowerCase: TypeError: Cannot read property 'toLowerCase' of undefined`
-- `error_vite: Error: Cannot find module 'vite'`
-- `error_http_500: 500 Internal Server Error`
-- `error_http_404: 404`
-- `port_translation_service: 4500`
-- `endpoint_api_translate: /api/translate`
-- `endpoint_api_webhook: /api/webhook`
-- `endpoint_translation_complete: /api/translation-complete`
-- `endpoint_metrics: /metrics`
-- `endpoint_messages: /api/messages`
-- `endpoint_memory_plural: /api/memories`
-- `endpoint_languages: /api/languages`
-- `endpoint_settings: /api/settings`
-- `endpoint_poll: /api/poll`
-- `endpoint_gpt4_completions: /v1/completions`
-- `docker_image_size_current_example: 120MB`
-- `docker_build_time_example: 45s`
-- `deadline_contextual_memory_store: April 10, 2024`
-- `deadline_sprint_review: April 1, 2024`
-- `translation_api_avg_response_time: 220ms`
-- `translation_service_latency_current: 180ms`
-- `translation_service_latency_target: under 200ms`
-- `translation_service_sla: 300ms`
-- `deepl_daily_limit: 5000 requests/day`
-- `error_http_429: 429`
-- `error_unhandled_promise_rejection: UnhandledPromiseRejectionWarning`
-- `redis_db_load_reduction: 40%`
-- `redis_recent_translations_ttl: 15-minute TTL`
-- `redis_api_call_reduction: 30%`
-- `webhook_polling_reduction: 60%`
-- `chat_ui_lighthouse_accessibility_score: 95`
-- `redis_cache_hit_rate: 85%`
-- `postman_version: Postman v10`
-- `react_router_version: React Router v6.14`
-- `express_version: Express 4.18`
-- `prettier_version: Prettier v3.0`
-- `locust_gpt4_concurrent_users: 50 concurrent users`
-- `locust_chatbot_concurrent_users: 100 concurrent users`
-- `deadline_memory_store_feature_goal: April 5, 2024`
-- `deadline_gpt4_fine_tuning: April 20, 2024`
-- `typescript_version: TypeScript v5.0`
-- `pgadmin_version: pgAdmin 4 v7.4`
-- `container_size_memory_store_example: 180MB`
-- `port_clinical_model_endpoint: 5001`
-- `port_redis: 6379`
-- `port_postgresql: 5432`
-- `endpoint_update_last_active: /webhook/update-last-active`
-- `endpoint_gpt4_clinical: /api/gpt-4-clinical`
-- `endpoint_user_clinical_mode: /api/user/:userId/clinical-mode`
-- `error_http_503: 503 Service Unavailable`
-- `error_pg_jsonb_cast: syntax error at or near '::jsonb'`
-- `error_pg_jsonb_unknown_operator: operator does not exist: jsonb @> unknown`
-- `error_finetune_validation_loss: Validation loss not decreasing`
-- `error_finetune_invalid_dataset: Invalid dataset format`
-- `error_finetune_invalid_dataset_format: Invalid fine-tune dataset format`
-- `clinical_dataset_size: 10,000 anonymized clinical dialogues`
-- `fine_tuning_epochs_completed: 12`
-- `validation_loss_reduction: 0.45 to 0.12`
-- `fine_tuned_model_inference_latency: 280ms`
-- `fine_tuned_model_latency_delta: 30ms slower than the base GPT-4 model`
-- `fine_tuning_max_tokens_example: 1024`
-- `fine_tuning_temperature_example: 0.7`
-- `release_tag: v0.3.0`
-- `session_metadata_cache_hit_rate_current: 70%`
-- `jsonb_query_time_before_example: 120ms`
-- `jsonb_query_time_after_example: 30ms`
-- `db_retry_max_attempts_example: 3`
-- `db_retry_backoff_factor_example: 0.5`
-- `deadline_auth_session_management: May 1, 2024`
-- `jest_version: Jest v29.5`
-- `nodemailer_version: Nodemailer v6.9.1`
-- `auth_microservice_port: 6000`
-- `auth_token_expiry_example: 2 hours`
-- `auth_token_expiry_example_short: 2h`
-- `auth_refresh_token_expiry_example: 7 days`
-- `auth_refresh_token_expiry_example_short: 7d`
-- `auth_token_expiry_extended_example: 3 hours`
-- `security_protocol_jwt_spec: RFC 7519`
-- `security_protocol_tls_min_auth_example: TLS 1.2 or later`
-- `security_protocol_openssl_example: OpenSSL 1.1.1 or later`
-- `security_protocol_pyjwt_example: pyjwt 2.6.0 or later`
-- `login_api_response_time_before_example: 450ms`
-- `login_api_response_time_after_example: 220ms`
-- `auth_api_response_time_current: 180ms under 100 concurrent users`
-- `token_verification_latency_current_example: 100ms`
-- `token_verification_latency_target_example: under 50ms`
-- `gpu_memory_usage_example: 6.5GB`
-- `gpu_model_example: NVIDIA A100`
-- `docker_model_image_size_example: 2.1GB`
-- `error_jwt_malformed: JWT malformed`
-- `error_jwt_expired: TokenExpiredError: jwt expired`
-- `endpoint_authenticate: /authenticate`
-- `endpoint_login: /login`
-- `endpoint_logout: /logout`
-- `endpoint_refresh_token: /refresh-token`
-- `endpoint_protected: /protected`
-- `endpoint_user_roles: /user/roles`
-- `endpoint_password_reset: /password-reset`
-- `endpoint_password_reset_token: /password-reset/:token`
-- `endpoint_admin_only: /admin-only`
-- `endpoint_verify_token: /verify-token`
-- `port_websocket_microservice: 7000`
-- `port_websocket_example_legacy: 8080`
-- `certificate_renewal_date_example: April 25, 2024`
-- `integration_testing_sprint: May 10-15, 2024`
-- `chatbot_auth_memory_integration_target: May 15, 2024`
-- `deadline_e2ee_target: May 30, 2024`
-- `websocket_closed_state_error: WebSocket is already in CLOSING or CLOSED state`
-- `openai_response_latency_example: 250ms`
-- `chat_ui_lighthouse_mobile_score_user_reported: 98`
-- `chatbot_api_response_time_before_auth_example: 350ms`
-- `chatbot_api_response_time_after_auth_example: 280ms`
-- `chatbot_api_response_time_stable_example: 270ms under 150 concurrent authenticated users`
-- `chatbot_api_response_time_peak_spike_example: 500ms or more during peak usage hours`
-- `websocket_ram_before_example: 1.2GB`
-- `websocket_ram_after_example: 800MB`
-- `redis_pubsub_latency_example: 50ms`
-- `password_reset_token_expiry_example: 20 minutes`
-- `password_reset_table_expiry_example: 15 minutes`
-- `redis_pubsub_max_payload_example: 1048576`
-- `redis_pubsub_max_channels_example: 10000`
-- `redis_maxmemory_example: 1gb`
-- `redis_maxmemory_policy_example: allkeys-lru`
-- `redis_tcp_keepalive_example: 60`
-- `redis_tcp_backlog_example: 511`
-- `webhook_signature_header_example: X-Hub-Signature-256`
-- `port_encryption_microservice_example: 7500`
-- `endpoint_encrypt_example: /encrypt`
-- `endpoint_decrypt_example: /decrypt`
-- `docker_image_encryption_microservice_example: 90MB`
-- `docker_image_encryption_microservice_optimized: 85MB`
-- `certificate_renewal_date_later_user_statement: May 20, 2024`
-- `deadline_cicd_rollout: June 10, 2024`
-- `deadline_gdpr_audit: June 15, 2024`
-- `error_invalid_auth_tag_example: Invalid authentication tag`
-- `error_socket_hang_up: socket hang up`
-- `error_docker_no_space_left: Docker build failed: no space left on device`
-- `error_docker_not_found: docker: not found`
-- `error_suspense_then_undefined: Cannot read property 'then' of undefined`
-- `websocket_ram_typical_load_later: 750MB`
-- `cache_library: React Query v4.29`
-- `context_window_size: 20 messages per session`
-- `kubernetes_version: v1.27`
-- `cloud_target: AWS EKS`
-- `cicd_pipeline_duration_before_target: 15 minutes`
-- `cicd_pipeline_duration_target: 7 minutes`
-- `github_runner_disk_size_updated: 50GB`
-- `encryption_microservice_memory_1000_messages_per_day: 350MB`
-- `encryption_decryption_average_latency: 15ms`
-- `uptime_target_encryption_microservice: 99.9%`
-- `test_coverage_threshold: 95%`
-- `automated_test_example_request_count: 1000`
-- `semantic_version_start_example: 0.3.0`
-- `semantic_version_target_example: 0.4.0`
-- `semantic_version_range_user_stated: v0.3.0 to v0.5.1`
-- `github_runner_disk_size_requested_later: 60GB`
-- `release_tag_later_user_statement: v0.6.0`
-- `chatbot_api_latency_sprint_deadline_later: June 25, 2024`
-- `frontend_global_load_time_later: 1.2s`
-- `container_memory_per_service_later: 512MB per service`
-- `cpu_usage_current_later: 25%`
-- `cpu_usage_reduction_goal_later: 20%`
-- `fargate_replica_target_later: 4`
-- `uptime_target_fargate_later: 99.95%`
-- `fargate_cpu_autoscaling_threshold_later: 60%`
-- `streaming_chunk_size_later: 512 tokens`
-- `healthcheck_latency_target_later: 100ms`
-- `analytics_dashboard_target_later: July 2024`
-- `fallback_cache_depth_last_responses: 5`
-- `user_satisfaction_rate_multilanguage_switching: 90%`
+- `python_version: 3.10`
+- `python_version_recommended: 3.10.10`
+- `pytorch_version: 1.13`
+- `pytorch_version_recommended: 1.13.1`
+- `transformers_version: v4.29`
+- `transformers_version_recommended: 4.29.2`
+- `fastapi_version: 0.95`
+- `postgresql_version: 14.3`
+- `pytest_version: 7.2.0`
+- `pylint_version: 2.15.4`
+- `torchvision_version: 0.14.1`
+- `docker_version: 20.10`
+- `react_version: 18.2`
+- `api_port: 8000`
+- `feature_extraction_port: 8001`
+- `caption_generation_port: 8002`
+- `target_latency: under 250ms per image`
+- `measured_latency: 320ms`
+- `gpu_target: NVIDIA RTX 3090`
+- `ec2_instance_type: g4dn.xlarge`
+- `s3_storage_target: 50GB`
+- `coco_dataset_size: 123,287 images`
+- `captions_per_image: 5`
+- `gpt2_small_params: 124M`
+- `epoch_time_change: 28m (was: 45m)`
+- `memory_reduction_with_amp: 40%`
+- `docker_image_size_issue: 1.2GB`
+- `batch_size_values: 32, 16, 64`
+- `learning_rate_values: 5e-5, 3e-5, 1e-4, 2e-4`
+- `max_caption_length: 40`
+- `initial_feature_extraction_deadline: April 20 (was: April 15)`
+- `transformer_training_deadline: June 10 (was: May 30)`
+- `deployment_deadline: August 10 (was: July 10)`
+- `sprint_1_dates: March 1 to April 15`
+- `original_feature_extraction_date_referenced: March 30`
+- `buffer_1: April 20 to June 10`
+- `buffer_2: June 10 to August 10`
+- `imagenet_mean: [0.485, 0.456, 0.406]`
+- `imagenet_std: [0.229, 0.224, 0.225]`
+- `resize_value: 256`
+- `centercrop_value: 256`
+- `docker_memory_flag_example: --memory 512m`
+- `docker_memory_swap_flag_example: --memory-swap 512m`
+- `ubuntu_region: us-east-1`
+- `ubuntu_version: 20.04 LTS`
+- `canonical_owner_id: 099720109477`
+- `example_ami_id: ami-0c55b159cbfafead3`
+- `example_key_name: my-key-pair`
+- `model_id_stable_diffusion: stabilityai/stable-diffusion-2-1-base`
+- `model_id_stable_diffusion_alt: CompVis/stable-diffusion-v2-1`
+- `vit_model_id: google/vit-base-patch16-224-in21k`
+- `vit_model_id_alt: google/vit-base-patch16-224`
+- `t5_model_id: t5-base`
+- `gpt2_model_id: gpt2`
+- `distilgpt2_model_id: distilgpt2`
+- `distilgpt2_alt_id_used_in_examples: distilgpt2-v2`
+- `blip_model_id: Salesforce/blip-image-captioning-base`
+- `coco_train_annotations: captions_train2017.json`
+- `coco_val_annotations: captions_val2017.json`
+- `coco_test_annotations: image_info_test2017.json`
+- `pylint_max_line_length: 88`
+- `pytorch_version_previous_mentioned_for_upgrade: 1.12.1`
+- `axios_version: 1.4.0`
+- `cypress_version: 12.8`
+- `docker_compose_version: v2.15`
+- `redis_version: 7.0.11`
+- `pillow_version: 9.4.0`
+- `tokenizers_version: 0.13.3`
+- `kubernetes_version: v1.26`
+- `react_dev_port: 3000`
+- `redis_port: 6379`
+- `postgres_port: 5432`
+- `locust_web_port: 8089`
+- `prometheus_port: 9090`
+- `redis_exporter_port: 9121`
+- `grafana_port: 3000`
+- `jaeger_ui_port: 16686`
+- `jaeger_collector_port: 14268`
+- `jaeger_grpc_port: 14250`
+- `jaeger_zipkin_port: 9411`
+- `nginx_http_port: 80`
+- `nginx_https_port: 443`
+- `improved_latency_with_redis: 210ms`
+- `latency_goal_discussed_later: 140ms`
+- `gpu_idle_during_data_loading: 60%`
+- `data_fetch_time_target: 50ms (was: 150ms)`
+- `mixed_precision_inference_memory_reduction_claim: up to 35%`
+- `batch_size_additional_values: 12, 8, 4`
+- `batch_size_sweet_spot_reported: 12`
+- `centercrop_additional_value_mentioned: 224`
+- `file_size_limit_react_example: 5MB`
+- `redis_ttl_default_discussed: 3600`
+- `redis_ttl_updated_discussed: 7200`
+- `redis_maxmemory_discussed: 2GB`
+- `redis_eviction_policy_discussed: allkeys-lru`
+- `locust_concurrent_users_example: 100`
+- `label_smoothing_value: 0.1`
+- `meteor_improvement_with_label_smoothing: 1.5 points`
+- `validation_bleu4_reported: 32.5`
+- `validation_meteor_reported: 27.1`
+- `validation_cider_reported: 98.3`
+- `validation_epoch_count_for_metrics: 10`
+- `amp_output_tolerance_target: 1%`
+- `nucleus_sampling_top_p: 0.9`
+- `beam_width_value: 5`
+- `uvicorn_workers_updated: 4 (was: 2)`
+- `error_cuda_oom_train_py: RuntimeError: CUDA out of memory at line 112 in train.py`
+- `error_cuda_oom_generic: RuntimeError: CUDA out of memory`
+- `error_none_shape: AttributeError: 'NoneType' object has no attribute 'shape'`
+- `error_invalid_image_size: ValueError: invalid image size`
+- `error_batch_size_mismatch: ValueError: Expected input batch_size (16) to match target batch_size (32)`
+- `error_connection_reset: ConnectionResetError: [Errno 104] Connection reset by peer`
+- `error_json_decode: JSONDecodeError: Expecting value: line 1 column 1 (char 0)`
+- `error_docker_port_allocated: docker: Error response from daemon: failed to create endpoint enthusiastic_morse on network bridge: failed to add endpoint enthusiastic_morse to network bridge: Bind for 0.0.0.0:8000 failed: port is already allocated.`
+- `error_docker_command_not_found: docker command is not found`
+- `error_pytest_not_found: pytest command is not found`
+- `cuda_base_image: nvidia/cuda:11.7-base-ubuntu20.04`
+- `cuda_runtime_image_suggested: nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`
+- `black_version: 22.3.0`
+- `helm_version: 3.9`
+- `socketio_version: v4.7.1`
+- `prometheus_version: 2.44`
+- `grafana_version: 9.4`
+- `auth0_react_sdk_version: v2.0.0`
+- `locust_version: 2.15`
+- `api_throughput_reported: 150 requests per second`
+- `redis_connection_timeout_error: TimeoutError: Redis connection timed out after 5s`
+- `redis_connection_pool_size_tried: 20`
+- `kubernetes_memory_limit_requested: 6GB`
+- `kubernetes_memory_limit_corrected: 6Gi`
+- `kubernetes_memory_request_corrected: 4Gi`
+- `deployment_image_version_example: my-image:1.2.3`
+- `api_gateway_throttling_limit: 1000 requests per minute`
+- `gpt2_medium_params: 355M`
+- `gradient_accumulation_steps_reported: 4`
+- `simulated_batch_size_reported: 64`
+- `rtx_3090_vram_reported: 24GB VRAM`
+- `scoring_py_coverage_reported: 95%`
+- `sonarqube_critical_code_smells_reported: 12`
+- `polars_memory_footprint_reduction_reported: 25%`
+- `caption_feedback_cider_improvement_reported: 3.2-point improvement`
+- `error_keyerror_caption_text: KeyError: 'caption_text'`
+- `error_amp_half_float: RuntimeError: expected scalar type Half but found Float`
+- `error_user_captions_exists: psycopg2.Error: relation "user_captions" already exists`
+- `error_user_captions_missing: psycopg2.Error: relation "user_captions" does not exist`
+- `auth0_pkce_error: code_challenge parameter is invalid`
+- `webpack_version: 5.75`
+- `websocket_latency_target: under 100ms`
+- `websocket_test_url: ws://localhost:8080`
+- `docker_image_size_target: 650MB (was: 1.2GB)`
+- `pytorch_lightning_upgrade_target: v2.0.1`
+- `sentry_version: 21.9`
+- `sentry_unique_exceptions_identified: 15`
+- `api_gateway_timeout_updated: 60s (was: 30s)`
+- `example_long_running_operation_duration: 60`
+- `circuit_breaker_failure_threshold_example: 3`
+- `circuit_breaker_timeout_example: 30`
+- `hmac_secret_key_example: b"my_secret_key"`
+- `webhook_payload_example: b"Hello, World!"`
+- `webhook_user_id_example: 123`
+- `stable_diffusion_generation_model_id_example: CompVis/stable-diffusion-v1-4`
+- `error_none_decode: AttributeError: 'NoneType' object has no attribute 'decode'`
+- `error_swipeable_views_indexof: TypeError: Cannot read properties of undefined (reading 'indexOf')`
+- `error_module_not_found_pytorch_lightning: ModuleNotFoundError: No module named 'pytorch_lightning'`
+- `error_cuda_device_side_assert: RuntimeError: CUDA error: device-side assert triggered`
+- `error_504_gateway_timeout: 504 Gateway Timeout`
+- `frontend_caption_render_time_improved: 180ms (was: 450ms)`
+- `onnxruntime_web_version: v1.14`
+- `storybook_version: v7.0`
+- `react_testing_library_version: v14.0.0`
+- `pytorch_version_locked_for_production: 1.13.1`
+- `transformers_version_locked_for_production: v4.29`
+- `evaluation_bleu4_later_reported: 38.7`
+- `evaluation_meteor_later_reported: 31.4`
+- `evaluation_cider_later_reported: 112.5`
+- `api_rate_limit_per_user_initial_example: 5000 requests/day per user`
+- `api_rate_limit_attempted_update_example: 6000 requests/day per user`
+- `lambda_error_rate_alarm_threshold: 0.5%`
+- `provisioned_concurrency_prewarmed_instances_example: 2`
+- `lambda_cold_start_latency_improved: 150ms`
+- `beam_search_latency_improved: 280ms (was: 450ms)`
+- `sprint_9_task_multilanguage_start: 2024-07-01`
+- `sprint_9_task_multilanguage_end: 2024-07-15`
+- `sprint_9_task_security_start: 2024-07-10`
+- `sprint_9_task_security_end: 2024-07-20`
+- `sprint_9_task_performance_start: 2024-07-15`
+- `sprint_9_task_performance_end: 2024-07-25`
+- `session_timeout_seconds: 600`
+- `session_timeout_duration: 10 minutes`
+- `elasticsearch_version: 8.7`
+- `swagger_ui_version: 4.0.0`
+- `pact_version: v4.3.0`
+- `production_monitoring_uptime: 99.9% uptime over 72-hour production monitoring`
+- `redshift_etl_schedule: every 6 hours`
+- `translation_fargate_cpu: 256`
+- `translation_fargate_memory: 512`
+- `translation_service_container_port: 8080`
+- `cloudfront_cache_control_example: max-age=3600`
+- `notification_violation_threshold_example: 5`
+- `notification_interval_example_seconds: 300`
+- `violations_window_example_seconds: 300`
+- `language_options_initially_supported: English, Turkish`
+- `evaluation_bleu4_latest_reported: 39.2`
+- `error_cuda_oom_detailed: RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`
 
-### Chronological Event Log
-17. Deadline for language detection module changed from `March 15, 2024` to `March 18, 2024`.
-18. `franc v6.1.0` and `langdetect v1.0.1` were compared; user switched to `franc v6.1.0`.
-19. User implemented `franc v6.1.0` language detection and encountered multi-turn / undefined-language issues.
-20. User reported `TypeError: Cannot read property 'toLowerCase' of undefined`; cause traced to undefined language code handling.
-21. User reported achieving `93%` with `franc v6.1.0`.
-22. User asked about latency measurement and later explicitly required detailed API response time metrics.
-23. OpenAI timing example with `250ms` average response time was discussed.
-24. User optimized `franc v6.1.0` service and reported `180ms under 100 concurrent requests`.
-25. Redis caching was repeatedly introduced for language detection and conversation context.
-26. React frontend integration with Axios `v1.4` was debugged; `404` caused by `GET` vs expected `POST`.
-27. Language indicator badge and dynamic language switching were discussed in React `18.2`.
-28. Confidence fallback logic to English for score `< 0.6` was discussed.
-29. Redis examples for last `10 messages` and conversation history were discussed.
-30. User chose `DeepL API v2` over `Google Translate API v3`.
-31. Translation API integration deadline of `March 25, 2024` was scheduled.
-32. Winston `v3.8` logging was adopted for intermittent `500 Internal Server Error`.
-33. Logging enhancements were affirmed as needed.
-34. User asked how to add refresh tokens to a JWT-secured language detection API with `1 hour` access tokens.
-35. Discussion expanded into translation microservice architecture, Docker, TLS, webhook monitoring, memory store schema/API, GPT-4 integration, Locust testing, JSONB storage, and sprint review prep.
-36. User requested production hardening across translation and chatbot services.
-37. User required error handling details for API integration issues.
-38. User set roadmap references: contextual memory store by `April 10, 2024` and sprint review on `April 1, 2024`.
-39. User requested sprint review slides / diagrams / flowcharts.
-40. User previously asked “What did we do so far?” and requested a continuation summary.
-41. Discussion expanded heavily into memory store APIs, Redis TTLs, PostgreSQL JSONB querying, rate limiting, RBAC, Docker Compose issues, and concurrent request performance.
-42. User introduced repeated PostgreSQL JSONB debugging around `::jsonb`, `@>`, indexes, and pgAdmin `4 v7.4`.
-43. User discussed memory API concurrency around `200 concurrent` requests and `/api/memory` returning last `20 messages`.
-44. User discussed translation API concurrency around `200 concurrent` requests on `/api/translate`.
-45. User explicitly required fallback strategies for API error handling.
-46. User explored GPT-4 context handling, retries, empty-context fallback, caching, and robust error handling.
-47. User expanded into session metadata, Redis TTL `300`, JSONB `metadata`, GIN indexing, and `user_sessions`.
-48. User asked RBAC / Docker Compose / memory store questions involving `flask-principal`, `messages.session_id`, and cache layers.
-49. User reported session metadata cache hit rate `70%`.
-50. User asked WCAG / ARIA compliance questions for chat UI.
-51. User asked about race conditions causing stale context during simultaneous sends.
-52. User asked for fallback error handling examples for API services.
-53. User asked about Redis hit-rate monitoring and accidental counter resets.
-54. User designed webhook flow to update `last_active` and asked about retries.
-55. User introduced fine-tuning work on `10,000 anonymized clinical dialogues`, `12 epochs`, validation loss `0.45 to 0.12`.
-56. User asked about monitoring fine-tuning progress, re-uploading datasets, JSONL schema, and invalid dataset errors.
-57. User reported fine-tuned GPT-4 latency `280ms`.
-58. User asked how to deploy fine-tuned GPT-4 as endpoint on `5001`.
-59. User asked about clinical mode toggle in React and backend persistence.
-60. User reported `503 Service Unavailable` from `gpt-4-clinical` and fallback to base GPT-4.
-61. User asked how to route clinical queries in `Node.js 18` / `Express 4.18`.
-62. User asked how to handle errors in the clinical mode toggle UI.
-63. User asked for a strict-preservation continuation prompt/summary.
-64. Discussion expanded into Redis API caching, React clinical-mode UX, backend persistence, optimistic updates.
-65. User asked about dataset prep, model isolation, `NVIDIA A100`, Redis model-output caching, and bottlenecks.
-66. User introduced auth/session deadline `May 1, 2024`.
-67. User discussed Docker Compose updates for auth-service, React auth integration, auth performance, JWT `RS256` issues.
-68. User introduced Docker model optimization around `2.1GB` image and secure `users` / password reset schema.
-69. User asked about Redis caching for session tokens, JWT malformed debugging, chat UI Lighthouse optimization, logout invalidation webhook.
-70. User asked about Nodemailer `v6.9.1`, fallback when clinical model fails, password reset flow, webhook testing, centralized Express errors, login API optimization, and auth microservice integration on `6000`.
-71. User asked about Jest `v29.5`, sprint planning for auth/session by `May 1, 2024`, Git workflow, JWT expiry `3 hours`, and security protocol versions.
-72. User explicitly instructed to always include security protocol versions for auth methods.
-73. User asked about RSA key storage, `RS256` vs `ES256`, React JWT integration, `TokenExpiredError: jwt expired`, token verification optimization, Redis deployment choices, and `503` fallback for auth service.
-74. User asked whether backup auth should be separate instance or environment, debugged refresh-token logic, then discussed auth hardening, RBAC, dynamic roles, role-aware rendering, and auth API latency `180ms under 100 concurrent users`.
-75. User asked about interpreting Authentication API performance profiling results.
-76. Discussion drifted through many frontend/auth examples; some were generic and not always production-safe.
-77. User introduced target to integrate chatbot core with authentication and memory store by `May 15, 2024`.
-78. User asked about HSTS on `port 443` with certificate renewed on `April 25, 2024`.
-79. User discussed `password_reset_tokens`, Redis logout invalidation, quick re-login cache behavior, and permission caching hit rate `80%`.
-80. User asked about token refresh race conditions, login accessibility, caching, logout invalidation, chatbot auth injection, GPT-4 prompt context, retries, and secure cookies.
-81. User required token expiry durations in auth answers.
-82. User asked for secure JWT microservice examples with `RS256`.
-83. User reported integration tests with `120 total tests`, `2%` failing with `401 Unauthorized`.
-84. User asked about Axios retry logic with up to `3` retries.
-85. User reported chatbot API around `280ms` after auth integration with spikes `500ms or more during peak usage hours`.
-86. User asked about secure token storage on React using `HttpOnly` cookies.
-87. User asked about RBAC for chatbot API using JWT.
-88. User reported chatbot API stable at `270ms under 150 concurrent authenticated users` and asked for caching strategy with `React Query v4.29`, context window `20 messages per session`.
-89. User asked about chat UI performance, React Suspense, and lazy loading.
-90. User asked about React Query caching and data consistency multiple times.
-91. User asked about multi-turn support with context window size `20 messages per session`.
-92. User asked many WebSocket questions: disconnects, typing indicators, delivery status, error handling, memory, compression, discovery, monitoring.
-93. User decided to run WebSocket server as a separate microservice on `port 7000`.
-94. User reported WebSocket memory reduction from `1.2GB` to `800MB`.
-95. User asked about AES-256 encryption for WebSocket payloads, Chrome DevTools, and secure key exchange.
-96. User planned E2EE by `May 30, 2024`.
-97. User added `encrypted_message` `BYTEA` column to `messages`.
-98. User enabled Redis pub/sub and reported latency reduced to `50ms`.
-99. User asked about Kubernetes `v1.27` deployment on AWS EKS for WebSocket microservice.
-100. User asked about WebSocket reconnect logic after `"WebSocket is already in CLOSING or CLOSED state"`.
-101. User refactored `ChatInput.js` for encrypted messaging and asked about Diffie-Hellman integration.
-102. User added fallback UI for WebSocket disconnection with automatic reconnect every `5 seconds` in `WebSocket.js`.
-103. User asked again “What did we do so far?” and requested a detailed prompt for continuation.
-104. Conversation expanded heavily into encryption microservice design, Diffie-Hellman / ECDH / AES-256-GCM math and examples, secure key exchange, key storage, and TLS configuration review.
-105. User introduced encryption key management microservice on `port 7500`.
-106. User asked about securely sharing public keys without exposing private keys.
-107. User asked about securely storing JWT tokens in Redis.
-108. User asked about Redis performance profiling and monitoring.
-109. User introduced `feature/encryption` branch and security compliance work targeting `May 30, 2024`.
-110. User asked how to integrate ECDH into WebSocket server and handle disconnects during key exchange.
-111. User asked for review of initial key exchange implementation on `feature/encryption`.
-112. User asked how to securely store and manage derived symmetric keys.
-113. User asked for a project timeline from `May 12, 2024` to `May 30, 2024`.
-114. User asked how to optimize encryption latency and performance on `feature/encryption`.
-115. User asked about resolving repeated merge conflicts in `feature/encryption`.
-116. User asked for secure key storage strategy examples to meet security standards by `May 30, 2024`.
-117. User reported WebSocket server RAM later down to `750MB under typical load`.
-118. User added instruction: “Always provide latency improvements when I ask about performance profiling.”
-119. User asked for integration tests between chatbot API and authentication service.
-120. User asked about AES-256-GCM + Diffie-Hellman implementation errors in Python and key-loading issues.
-121. User stated TLS `1.3` enforced on all microservices and certificates renewed on `May 20, 2024`, then asked for review.
-122. User debugged `ValueError: Invalid padding`; cause was incorrect padding with GCM.
-123. User asked how to reduce AES-256-GCM latency.
-124. User asked about secure key storage methods and whether environment variables or cloud KMS are easier.
-125. User debugged `"Invalid authentication tag"` in `EncryptionService.js`, suspecting nonce reuse.
-126. User reported encryption/decryption latency down to `15ms`.
-127. User integrated encryption microservice with chat and memory store via secure REST API on `port 7500`.
-128. User asked about secure key management / cloud KMS integration ease.
-129. User asked about debugging encryption-related issues and which metrics to monitor.
-130. User implemented frontend encryption status indicator and error handling UI, but status labels and error boundary behavior were incorrect.
-131. User asked how to transparently encrypt outgoing and decrypt incoming messages in React.
-132. User asked how to test encryption status indicator and mock API responses.
-133. User asked how to encrypt API integration calls and securely exchange encryption keys between clients, including MITM prevention.
-134. User asked for AES-GCM examples using `Node.js crypto module v20.3`.
-135. User asked how to monitor encryption microservice memory under `1000 messages per day`.
-136. User reported encryption microservice memory around `350MB` under `1000 messages per day`.
-137. User asked for secure REST API integration between encryption microservice and chat/memory store on `port 7500`.
-138. User asked how to optimize memory usage and monitor performance of encryption microservice.
-139. User introduced CI/CD pipeline target by `June 10, 2024`.
-140. User asked whether Docker must be installed locally for CI/CD.
-141. User asked how to use Wireshark to detect MITM attacks and whether extra plugins are needed.
-142. User reported multi-stage Dockerfile image size `90MB` and asked for further optimization.
-143. User asked again how to securely implement Diffie-Hellman for end-to-end encryption.
-144. User asked how to troubleshoot encryption algorithm stack traces and implement caching in encryption microservice.
-145. User introduced GDPR compliance audit scheduled for `June 15, 2024` and asked for review of Python encryption code.
-146. User asked whether additional Python packages were needed (`cryptography`).
-147. User configured GitHub Actions to build/push Docker images and hit `"docker: not found"`.
-148. User reported storing encrypted payloads in PostgreSQL with base64 and saw about `30%` size increase.
-149. User asked about CI/CD pipeline review using GitHub Actions and whether Docker is needed locally.
-150. User hit `"The image size is too large"` with Python Docker image and asked how to optimize Dockerfile.
-151. User asked whether CI/CD pipeline should be updated for Dockerfile changes.
-152. User returned to PostgreSQL indexing strategy and VACUUM / ANALYZE.
-153. User asked about secure caching alternatives for encrypted messages instead of plaintext Redis caching.
-154. User debugged intermittent `"socket hang up"` errors for encryption API calls.
-155. User worked on UX for encryption disable confirmation modal and encryption info modal.
-156. User returned to `"socket hang up"` debugging with logging.
-157. User asked about reducing encryption/decryption latency further and about user-facing messaging for encryption benefits.
-158. User asked how to integrate Docker scans into CI/CD pipeline.
-159. User asked for React `18.2` Suspense lazy-loading review for encryption status components.
-160. User asked for webhook examples to notify encryption microservice on new session creation for key generation.
-161. User asked how to optimize CI/CD pipeline performance for tests and Docker scans.
-162. User hit React lazy loading error `"Cannot read property 'then' of undefined"` and asked whether cross-browser testing is needed.
-163. User again asked for webhook example for automatic key generation.
-164. User asked how to deploy encryption microservice independently with zero downtime using Docker + Kubernetes.
-165. User asked about centralized Winston `v3.8` logging for encryption microservice.
-166. User asked how to interpret stress test results for `99.9%` uptime.
-167. User asked for secure error handling in AES-256-GCM encrypt/decrypt code.
-168. User asked for scalable microservice architecture with zero downtime.
-169. User asked how to interpret profiling output for `encrypt` and `decrypt`.
-170. User asked for semantic version auto-bump script using `semver`.
-171. User asked for CI/CD rollback planning for `June 10, 2024`.
-172. User merged `feature/encryption` into `main` after a successful security audit and asked for AES-256-GCM + Diffie-Hellman REST API example.
-173. User asked for project planning / Gantt / Trello-style board to meet `June 10, 2024`.
-174. User asked for changelog generation from commit history using Node.js and git tooling.
-175. User asked for rollback backup script using Node.js and Docker tooling.
-176. User reported encryption microservice Docker image down to `85MB` and asked for Dockerfile + AES-256-GCM review.
-177. User added instruction: “Always show encryption status indicators when I ask about frontend security features.”
-178. User asked how to implement encryption status indicator in React `18.2` with `"Secure"` / `"Not Secure"`.
-179. User began AWS ECS deployment troubleshooting using GitHub Actions, ECR, and Docker.
-180. User fixed `"Docker build failed: no space left on device"` by increasing runner disk size to `50GB`, then asked about performance impact.
-181. User returned to AWS ECS GitHub Actions troubleshooting for `docker build`, `update-service`, missing task definitions, existing task definitions, high revision numbers, and cleanup automation.
-182. User asked how to cache build artifacts in a separate directory and then how to restore cached artifacts in subsequent builds.
-183. User asked about optimizing Alpine multi-stage Dockerfile for encryption microservice image size.
-184. User asked about optimizing automated integration tests running on every pull request with `95%` coverage threshold, then asked how to identify slow tests and which tools/plugins to use.
-185. User asked how to cache Docker dependencies to reduce pipeline duration from `15 minutes` to `7 minutes`.
-186. User asked about troubleshooting Alpine base image container runtime issues after reducing image size from `180MB` to `90MB`.
-187. User asked “What did we do so far?” and then requested this detailed continuation prompt.
-188. User later introduced user analytics dashboard code using `pandas` and `matplotlib` to monitor chatbot usage and `error_rate`, targeting deployment by `July 2024`.
-189. User asked about GitHub runner disk size increase from existing `50GB` to `60GB` and wanted deployment duration statistics included in CI/CD outputs.
-190. User added explicit instruction: “Always provide deployment duration statistics when I ask about CI/CD pipelines.”
-191. User asked for a first-time GitHub Actions example deploying microservices to AWS ECS with deployment duration metrics.
-192. User returned to async chatbot API latency optimization, with current average latency `280ms` after optimization and desire to reduce it further.
-193. User discussed Redis vs in-memory caching choices and cache invalidation strategies.
-194. User identified synchronous file system calls in `ChatController.js` causing `"Event loop delay"` spikes and converted `fs.readFileSync` to `fs.promises.readFile`.
-195. User introduced Prometheus / Grafana setup, profiling with `console.time`, and performance metric visualization for chatbot API latency.
-196. User asked about GPT-4 style streaming in Python with chunk size `512 tokens`.
-197. User asked about health check endpoints returning `200 OK` within `100ms` and scaling under high traffic.
-198. User introduced fallback cache serving last `5` chatbot responses during GPT-4 API outages.
-199. User asked for async Node.js optimization patterns for chatbot API latency reduction.
-200. User asked how to verify GitHub runner disk size after increasing to `50GB`.
-201. User revisited circuit breaker pattern for GPT-4 API downtime.
-202. User asked about React loading skeletons, combining `react-loading-skeleton` with custom skeletons, and measuring perceived wait time.
-203. User introduced centralized logging issues with correlation IDs, fallback handling for correlation ID generation failures, and default fallback values.
-204. User asked about key rotation using key versioning for encryption.
-205. User asked how to measure actual React component load times.
-206. User asked about AWS Fargate high availability for `4 replicas` with `99.95% uptime`, service discovery, load balancing, auto scaling, and alarms.
-207. User revisited PostgreSQL query optimization for context retrieval with partitioning by `user_id`.
-208. User asked about prepared statements in PostgreSQL and query optimization such as limiting selected columns.
-209. User asked about Redis caching layer design for chatbot API.
-210. User introduced gRPC internal microservice communication latency issues and asked about keep-alive settings in Node.js.
-211. User asked for review of analytics dashboard code for chatbot usage and errors, with deployment by `July 2024`.
-212. User asked again “What did we do so far?” and requested a detailed continuation prompt.
-213. User briefly diverged into generic topics from prior assistant output around GPT-5 planning, X-Ray, MFA, blue-green deployment, admin panel, Confluence, retrospectives, tagging releases, and CI/CD examples, but these were not part of the core chatbot platform work and mostly contained generic/example guidance.
-214. User added explicit instruction: “Always include user satisfaction metrics when I ask about UI/UX design improvements.”
-215. User reported scaling chatbot API to `5 replicas` on AWS Fargate during June and asked how to balance scaling with latency reduction.
-216. User then asked again for a strict continuation summary of the whole conversation.
+### Chronological Event Log (preserve temporal order — CRITICAL for event_ordering)
+1. User started by asking about a custom image captioning model combining diffusion and transformer tech with `PyTorch 1.13`, `Transformers v4.29`, and `Python 3.10`.
+2. Discussion moved through image-to-text using BLIP, installation/import issues with `transformers==4.29.0`, and environment troubleshooting.
+3. User shared early caption-generation code using `t5-base`; guidance shifted toward image captioning models rather than text tokenizers for images.
+4. User asked about preprocessing, batch handling, and inference speed optimization for captioning models.
+5. User explored diffusion model integration, custom diffusion code, CUDA OOM issues, and modular system design.
+6. User proposed using `Stable Diffusion v2.1` for feature enhancement before captioning and asked for review/optimization/debugging.
+7. User shifted toward broader system design: ViT-B/16 backbone with GPT-2 small (`124M params`), COCO 2017 dataset handling, PostgreSQL storage, DataLoader optimization, gradient accumulation, preprocessing, profiling, and model parallelism.
+8. User requested project planning help with milestone dates.
+9. User discussed AWS EC2 `g4dn.xlarge`, target inference latency `under 250ms per image` on `NVIDIA RTX 3090`, S3 bucket setup, and deployment concerns.
+10. User moved into API and frontend concerns: FastAPI `v0.95`, React `18.2` SPA, error handling, caching, deployment, monitoring, and Swagger/OpenAPI docs.
+11. User repeatedly asked about CUDA OOM debugging, GitHub Actions with pylint `2.15.4`, unit testing with pytest `7.2.0`, mixed precision with NVIDIA Apex AMP, image preprocessing with `torchvision 0.14.1`, and custom dataset/transform classes.
+12. User asked about PostgreSQL indexing for `captions(image_id, caption_id)`, microservices with `docker-compose.yml`, Docker GPU optimization, Redis caching, and memory monitoring.
+13. User requested roadmap tracking and deadline planning for Sprint 1 (`March 1 to April 15`), then later asked to adjust deadlines.
+14. User changed the milestone for initial feature extraction to `April 20`, raising concerns about transformer training by `May 30` and deployment by `July 10`.
+15. After timeline review, transformer training was pushed from `May 30` to `June 10`, and deployment from `July 10` to `August 10`.
+16. User explicitly instructed: “Always provide detailed version numbers when I ask about software dependencies.”
+17. User revisited implementation topics including Stable Diffusion `v2.1` embeddings, transformer training on COCO, accuracy metrics, FastAPI deployment, CUDA OOM debugging, mixed precision review, pytest coverage, image upload APIs, Docker size optimization, PostgreSQL JSONB usage, API latency measurement, async processing, and fine-tuning with `Trainer`.
+18. User shifted heavily into frontend integration topics: React upload, Axios, FastAPI image upload, preview, drag-and-drop, file size limits, loading and error UX.
+19. User discussed data loading bottlenecks, Nsight Systems profiling, `num_workers`, `pin_memory`, and GPU idle time during input pipeline stalls.
+20. User repeatedly returned to FastAPI troubleshooting, 500 errors, validation, and debugging strategies.
+21. User discussed decoupling feature extractor and caption generator into microservices via REST using FastAPI `0.95` and PostgreSQL `14.3`.
+22. User revisited CUDA OOM on `RTX 3090`, profiling, memory optimization, and API latency tooling.
+23. User discussed beam search vs greedy decoding, METEOR computation, batch size mismatch debugging, and matching feature extractor / transformer data loader batch sizes.
+24. User fixed the batch size mismatch by setting both DataLoaders to `16`.
+25. User asked about Redis `7.0.11` caching of diffusion features to reduce API latency from `320ms`, then reported improvement to `210ms`.
+26. User implemented or discussed SHA256-based Redis cache keys with TTL `3600`.
+27. User discussed Docker Compose networking for `feature_extractor`, `caption_generator`, `redis`, `postgres`, and internal bridge networks.
+28. User instructed: “Always include cache configuration details when I ask about performance optimizations.”
+29. User instructed: “Always include error messages verbatim when I ask about debugging issues.”
+30. User discussed webhook notifications after async processing, background tasks in FastAPI `0.95`, polling/cancellation semantics, and frontend gallery toggles.
+31. User discussed Nginx reverse proxy on `80`/`443`, caching, LRU caching, and `ConnectionResetError: [Errno 104] Connection reset by peer`.
+32. User discussed Prometheus/Grafana/Jaeger monitoring.
+33. User discussed AMP autocast, `torch.profiler`, reducing latency from `210ms` to `140ms`, and AMP dtype mismatch errors.
+34. User discussed Kubernetes `v1.26` scaling, AWS EKS cost vs management overhead, Helm `3.9`, secret management, Auth0, Redis race conditions, Prometheus alerts, Socket.IO, PostgreSQL materialized views, and CI/CD integration.
+35. User later moved into many implementation-example questions spanning Redis decode errors, API timeout debugging, DB bottleneck detection, circuit breaker patterns, React localStorage persistence, Webpack code splitting, WebSocket latency testing, Docker multi-stage builds, PyTorch Lightning AMP/scheduler questions, ROUGE-L, HMAC SHA256, Sentry prioritization, webhook sending, React voting persistence, and diffusion image generation examples.
+36. User explicitly instructed: “Always mention deployment strategies when I ask about production updates.”
+37. User explicitly requested English-only responses: “Please respond only in English.”
+38. User asked how to implement gradient accumulation correctly in PyTorch Lightning using `accumulate_grad_batches=4` for a transformer model.
+39. User then asked a long sequence of generic implementation/debugging questions across React, PostgreSQL, GraphQL, CI/CD, Trivy, spaCy, DynamoDB, AWS Lambda, Storybook, serverless migration, ONNX Runtime Web, GA4, responsive design, and Redis, mostly advisory rather than tied to confirmed repo changes.
+40. User introduced frontend ONNX Runtime Web mixed-precision inference with `ONNX Runtime Web v1.14`, improving caption rendering from `450ms` to `180ms` on mid-range devices.
+41. User repeatedly asked about serverless AWS topics: EC2 to Lambda/API Gateway migration, SAM CLI testing, Lambda cold starts, provisioned concurrency, SnapStart, Step Functions chaining, SNS/SQS event-driven architecture, SQS consumer scaling, CloudFront CDN caching, DynamoDB optimization, and GitHub Actions for SAM deployments.
+42. User explicitly instructed: “Always mention serverless scaling strategies when I ask about backend deployment.”
+43. User asked for unit tests validating AMP inference outputs against FP32 baseline within `1%` tolerance.
+44. User asked about Kubernetes `v1.26` horizontal scaling with multiple API pods behind a load balancer.
+45. User asked for an analysis of AWS EKS cost vs management overhead for container orchestration using `boto3` and `eks.list_clusters()`.
+46. Latest active request then changed over time from EKS cost analysis to CI/CD integration, then to PyTorch Lightning gradient accumulation, then to serverless migration pitfalls.
+47. After the PyTorch Lightning topic, the conversation shifted heavily into serverless migration, Lambda/API Gateway, SAM, SNS/SQS, DynamoDB, Storybook, ONNX Runtime Web, and responsive frontend questions.
+48. User asked about debugging AMP inference unit tests with `RuntimeError: expected scalar type Half but found Float` and also about Kubernetes pod/service communication patterns.
+49. User asked about Helm `3.9`, secret management, API keys, and gRPC between feature extractor and caption generator services.
+50. User asked about FastAPI/React/Auth0/Auth0 RBAC/Auth0 React SDK `v2.0.0` integration, including multiple roles, missing roles, and profile refresh issues.
+51. User asked about Redis maxmemory policies, Redis Sentinel redundancy, Redis health checks, Redis timeouts, connection pool size `20`, and race conditions causing stale caption returns under concurrent requests.
+52. User asked about Prometheus `2.44` and Grafana `9.4` dashboards and alerts for latency/error rates, including simultaneous alerting.
+53. User asked about Socket.IO `v4.7.1` real-time caption updates and how to trigger broadcasts from other parts of the application.
+54. User asked about PostgreSQL materialized views, indexes, table creation/insertion for `user_captions`, and errors `relation "user_captions" already exists` / `relation "user_captions" does not exist`.
+55. User reported/mentioned development work including JWT auth, gradient accumulation over `4 steps`, Redis Sentinel, caption feedback storage, `torch.backends.cudnn.benchmark=True`, and a `3.2-point improvement` in `CIDEr` from concatenating diffusion features with ResNet50 embeddings.
+56. User asked about CI/CD pipeline integration with existing codebase; this later changed again.
+57. User explicitly stated a serverless preference for cost efficiency and automatic scaling despite cold start challenges.
+58. User asked about React async error handling, Lambda memory exhaustion, generator-based processing, and repeated React/Lambda implementation reviews.
+59. User asked about provisioned concurrency in Lambda, Pact `v4.3.0`, AWS SAM with CodePipeline, API Gateway usage plans, GPT-2 large optimization, JWT refresh tokens, session timeout modal, DynamoDB partition/composite keys, and GA4 setup.
+60. User asked about mixed-precision frontend inference in ONNX Runtime Web, multi-language caption selection via API headers, React cookie-based language selector, Turkish model timeout fallback, MarianMT integration, and translation service caching.
+61. User asked about translation microservice autoscaling on AWS Fargate, Docker image optimization, Redis cache invalidation and testing, local Redis setup, and language embedding tokens.
+62. User discussed Sprint 9 planning, beam search plus nucleus sampling, multilingual generation, CloudFront CDN caching, API Gateway rate limits, and user preference: “Always specify language options when I ask about multi-language support.”
+63. User asked about GPU beam search optimization with custom CUDA kernels, synchronization, memory allocation, kernel launch configuration errors, C++/CUDA API integration, Lambda provisioned concurrency, BLEU-4 evaluation, integration/load testing, ELK logging, React promise rejection handling, circuit breaker patterns, GraphQL subscriptions, dashboard query optimization, retry policy with `tenacity`, OAuth2/localStorage token handling, DynamoDB GSI throughput monitoring, CloudWatch alarm testing, Redshift ETL scheduling, and Slack/webhook notifications.
+64. User explicitly stated `I've locked the PyTorch version to 1.13.1 and Transformers to v4.29 for production stability` in the webhook discussion.
+65. User asked for an example of implementing a **Slack webhook for critical system alerts and errors**.
+66. Conversation then drifted through many generic follow-up prompts unrelated to the main repo context, including accessibility testing, NVDA settings, generic PyTorch OOM debugging, generic Transformers text generation, caching/memoization, FastAPI exception handlers, Tkinter gallery UX, and React zoom/pan examples; these were largely advisory and not confirmed repo changes.
+67. User added a permanent preference: always include final evaluation metrics when asking about model performance.
+68. User asked how to automatically append final evaluation metrics such as BLEU-4, METEOR, and CIDEr to model performance queries.
+69. User asked, “What did we do so far?”
+70. User then requested a detailed continuation prompt/summary preserving exact values, dates, versions, identifiers, preferences, contradictions, and persistent knowledge.
 
 ### Contradiction & Update Log
-- `deadline_language_detection_module` was originally `March 15, 2024` → later changed to `March 18, 2024`.
-- `language_detection_library` was originally `langdetect v1.0.1` → later changed to `franc v6.1.0`.
-- Translation API evaluation considered both `Google Translate API v3` and `DeepL API v2` → later user chose `DeepL API v2`.
-- Frontend Axios call used `GET /language-detect` → corrected to `POST /api/language-detect`.
-- Translation microservice port was later introduced as `4500`, while earlier chatbot API architecture used `5000` for chatbot and existing service set emphasized `3000/4000/5000`.
-- Webhook discussion originally used basic webhook endpoint patterns, later mixed with SSE examples and monitoring endpoints.
-- User-level memory-store deadline introduced as `April 5, 2024`, while roadmap-level contextual memory store remained `April 10, 2024`.
-- Fine-tuned session metadata cache hit rate in a later user example was `70%`, while earlier broader Redis cache hit rate mentioned in the project was `85%`.
-- Fine-tuned GPT-4 latency was reported as `280ms`, compared to base GPT-4 average response time `250ms` (difference explicitly stated as `30ms` slower).
-- Access token expiry baseline in earlier project context was `1 hour` → later auth examples used `2 hours` / `2h` (context: auth microservice examples) → later user requested extended token expiry of `3 hours` (context: session continuity during peak usage).
-- Auth signing examples initially used symmetric secret strings while referring to `RS256` → later corrected conceptually to asymmetric RSA keys.
-- Auth-service examples used `port 3000` in some snippets → later separate architecture emphasized `port 6000`.
-- Translation API evaluation considered `Google Translate API v3` and `DeepL API v2` → later user chose `DeepL API v2`.
-- Translation service port later introduced as `4500`.
-- Session metadata cache hit rate later reported as `70%`, while broader Redis cache hit rate was `85%`.
-- Access token expiry baseline `1 hour` → later auth examples `2 hours` / `2h` → later user-requested extension `3 hours`.
-- Chat UI Lighthouse accessibility score earlier `95` → later user-reported mobile performance score `98`.
-- Access token expiry baseline `1 hour` → later `2 hours` / `2h` → later `3 hours`.
-- Auth-service examples used `port 3000` earlier → later separate architecture emphasized `port 6000`.
-- WebSocket RAM `1.2GB` → `800MB` → later `750MB under typical load`.
-- Encryption microservice image size `90MB` → later `85MB`.
-- Certificate renewal date example `April 25, 2024` coexists with later user TLS statement `May 20, 2024`.
-- ECS examples incorrectly used `aws ecs update-service --image ...`; later discovered correct approach is task definition revision update + `--force-new-deployment`.
-- Many earlier encryption/key-storage examples were conceptual and should be revalidated before production.
-- Auth-service examples used `port 3000` earlier → later `port 6000`.
-- GitHub runner disk size tracked as `50GB`; later user requested `60GB`.
-- Earlier ECS examples incorrectly used direct image updates; later corrected to task definition revision + service update.
+- `initial feature extraction deadline` was originally `April 15` → later changed to `April 20`.
+- `transformer training deadline` was originally `May 30` → later changed to `June 10`.
+- `deployment deadline` was originally `July 10` → later changed to `August 10`.
+- Multiple example code snippets used incorrect/non-standard classes or APIs:
+  - `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`, `distilgpt2-v2`
+  - `torchvision.transforms.Transform`
+  - `torchvision.datasets.Dataset`
+  - `StableDiffusionPipeline.preprocess_image`
+  - `StableDiffusionPipeline.get_embeddings`
+  - `from base64 import Base64`
+- `measured API latency` was originally `320ms` → later improved to `210ms`.
+- `redis cache ttl` examples originally centered on `3600` → later user discussed extending to `7200` (context: performance optimization and cache instruction preference).
+- `uvicorn workers` were originally `2` → later increased to `4`.
+- User first said they had never encountered CUDA OOM during training → later repeatedly discussed and requested handling for `RuntimeError: CUDA out of memory` and specifically `RuntimeError: CUDA out of memory at line 112 in train.py`.
+- User later referenced `April 15` as a sprint target after previously accepting revised dates `April 20`, `June 10`, `August 10`; revised dates remain the accepted plan.
+  - `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2LMHeadModel`, `DistilGPT2ForSequenceClassification`, `distilgpt2-v2`
+  - `DistilBertTokenizer` / `DistilBertForSequenceClassification` / `DistilBertForMaskedLM` with `distilgpt2`
+  - `StableDiffusionPipeline(...).latent_dist.sample()` style extraction examples
+  - `fastapi.swagger import SwaggerUI`
+  - `responses` proposed for `httpx` mocking
+- Later assistant examples around Auth0, gRPC-Web, API Gateway, Redshift, AMP casting, and some Kubernetes snippets were also oversimplified or potentially incorrect and should be revalidated before implementation.
+- Deployment guidance was later constrained by a new user preference: always specify exact container image versions.
+- `redis cache ttl` focus was originally `3600` → later also `7200`.
+- `uvicorn workers` were originally `2` → later updated to `4`.
+- `API gateway timeout` was originally `30s` → later increased to `60s`.
+- `docker image size target` later became `650MB` from `1.2GB`.
+- Earlier unresolved request changed over time:
+  - DistilGPT-2 `Trainer` example → AWS EKS cost analysis → CI/CD integration → PyTorch Lightning gradient accumulation → now latest unresolved request is serverless migration pitfalls.
+- Multiple prior assistant examples were invalid or suspect and should be revalidated:
+  - `StableDiffusionPipeline(...).latent_dist.sample()` extraction patterns
+  - later generic Lightning / AMP / React / Redis examples may also need revalidation
+- `frontend caption rendering time` improved from `450ms` to `180ms`.
+  - later generic Lightning / AMP / React / Redis / AWS / circuit breaker / Storybook examples may also need revalidation
+- User first implied unfamiliarity with serverless migration, later clarified preference for serverless due to cost efficiency and automatic scaling despite cold start challenges.
+- `beam search latency` improved from `450ms` to `280ms`.
+- latest active request changed over time:
+  - `Trainer` with custom `Dataset` for DistilGPT-2
+  - then `AWS EKS cost vs management overhead`
+  - then `CI/CD pipeline integration`
+  - then `PyTorch Lightning gradient accumulation`
+  - then `common pitfalls when migrating to serverless`
+  - now `Slack webhook for critical alerts and errors`
+- Many prior assistant snippets were likely invalid or oversimplified and should be revalidated:
+  - various DistilGPT-2 classes / IDs
+  - `StableDiffusionPipeline` helper methods
+  - custom CUDA + PyTorch extension examples
+  - AWS Lambda embedding-code examples
+  - API Gateway usage plan snippets
+  - GraphQL subscription lifecycle examples
+  - Swagger UI customization examples
+- `redis cache ttl` examples centered on `3600` → later also `7200`.
+  - `AWS EKS cost vs management overhead`
+  - `implement a CI/CD pipeline integrated with the existing codebase`
+  - `PyTorch Lightning gradient accumulation example using accumulate_grad_batches=4`
+  - `common pitfalls when migrating to serverless`
+  - `Slack webhook for critical system alerts and errors`
+- later user-reported BLEU-4 changed from `38.7` to `39.2` in a subsequent performance discussion
+- many prior assistant examples were generic, invalid, or oversimplified and should be revalidated before reuse:
+  - AWS Lambda snippets
+  - generic Tkinter/React examples unrelated to confirmed repo state
 
 ### Technical Specifications
-- `[frontend] React 18.2`
-- `[backend] Node.js 18`
-- `[database] PostgreSQL 14`
-- `[cache] Redis v7.0`
-- `[language-detection-lib] franc v6.1.0`
-- `[old-language-detection-lib] langdetect v1.0.1`
-- `[linting] ESLint v8.40 + Airbnb style guide`
-- `[logging] Winston v3.8`
-- `[http-client] Axios v1.4`
-- `[build-tool] Vite 4.3`
-- `[auth] JWT version 8.5.1`
-- `[microservice-port] 3000`
-- `[microservice-port] 4000`
-- `[microservice-port] 5000`
-- `[security] TLS 1.3 on port 443`
-- `[response-time] 180ms under 100 concurrent requests`
-- `[response-time] 250ms average response time`
-- `[accuracy] 93% achieved`
-- `[accuracy-target] 95%`
-- `[fallback-threshold] 0.6`
-- `[jwt-expiry] 1 hour`
-- `[frontend-router] React Router v6.14`
-- `[backend-framework] Express 4.18`
-- `[translation-api] DeepL API v2`
-- `[openai-api] OpenAI GPT-4 API v2024-02`
-- `[formatter] Prettier v3.0`
-- `[microservice-port] 4500`
-- `[translation-latency] 220ms`
-- `[translation-latency] 180ms`
-- `[docker-image-limit] 150MB`
-- `[docker-build-time] 45s`
-- `[monitoring] Postman v10`
-- `[load-test] locust 50 concurrent users`
-- `[load-test] locust 100 concurrent users`
-- `[microservice-port] 5001`
-- `[fine-tuned-latency] 280ms`
-- `[monitoring] pgAdmin 4 v7.4`
-- `[language] TypeScript v5.0`
-- `[release] v0.3.0`
-- `[microservice-port] 6000`
-- `[auth-api-latency] 180ms under 100 concurrent users`
-- `[token-verification-latency] 100ms`
-- `[token-verification-goal] under 50ms`
-- `[login-api-latency-before] 450ms`
-- `[login-api-latency-after] 220ms`
-- `[auth-access-token-expiry] 2 hours`
-- `[auth-refresh-token-expiry] 7 days`
-- `[auth-access-token-expiry-updated] 3 hours`
-- `[testing] Jest v29.5`
-- `[email] Nodemailer v6.9.1`
-- `[jwt-spec] RFC 7519`
-- `[auth-security-protocol] TLS 1.2 or later`
-- `[crypto-tooling] OpenSSL 1.1.1 or later`
-- `[pyjwt-version-example] pyjwt 2.6.0 or later`
-- `[gpu] NVIDIA A100`
-- `[gpu-memory-usage] 6.5GB`
-- `[docker-model-image-size] 2.1GB`
-- `[auth] JWT 8.5.1`
-- `[websocket-microservice-port] 7000`
-- `[websocket-example-port] 8080`
-- `[kubernetes-version] v1.27`
-- `[cloud-target] AWS EKS`
-- `[cache-library] React Query v4.29`
-- `[context-window-size] 20 messages per session`
-- `[mobile-lighthouse-score] 98`
-- `[encryption-microservice-port] 7500`
-- `[runner-os] ubuntu-latest`
-- `[github-actions-actions] actions/checkout@v3, actions/setup-node@v3, docker/login-action@v2, aws-actions/configure-aws-credentials@v1, kubernetes/deploy-action@v1`
-- `[docker-base-images-mentioned] node:18, node:18-alpine, alpine:latest, alpine:3.16, python:3.9-slim, python:3.9-alpine, node:14-alpine`
-- `[github-actions-actions] actions/checkout@v2, actions/checkout@v3, actions/setup-node@v2, actions/setup-node@v3, docker/login-action@v2, aws-actions/configure-aws-credentials@v1, kubernetes/deploy-action@v1`
-- `[analytics-tooling] pandas, matplotlib`
-- `[grpc] Node.js gRPC keep-alive tuning discussed`
-- `[profiling] Prometheus, Grafana, console.time, perf_hooks, Chrome DevTools, heapdump`
-- `[fargate_replicas_latest_user_statement] 5 replicas on AWS Fargate during June`
+- [API] FastAPI `0.95`, port `8000`
+- [DB] PostgreSQL `14.3`
+- [ML] PyTorch `1.13`, Transformers `v4.29`
+- [Testing] pytest `7.2.0`
+- [Linting] pylint `2.15.4`, max line length `88`
+- [Vision preprocessing] `Resize(256)`, `CenterCrop(256)`, `ToTensor()`, `Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])`
+- [Infra] Docker `20.10`, AWS EC2 `g4dn.xlarge`, S3 `50GB`
+- [Latency target] `under 250ms per image` on `NVIDIA RTX 3090`
+- [Observed latency] `320ms`
+- [Feature extraction service] port `8001`
+- [Caption generation service] port `8002`
+- [DB] PostgreSQL `14.3`, port `5432`
+- [Cache] Redis `7.0.11`, port `6379`, TTLs `3600` and `7200`, eviction `allkeys-lru`, maxmemory `2GB`
+- [ML] PyTorch `1.13`, recommended `1.13.1`; Transformers `v4.29`, recommended `4.29.2`
+- [Infra] Docker `20.10`, Docker Compose `v2.15`, Kubernetes `v1.26`, AWS EC2 `g4dn.xlarge`
+- [Frontend] React `18.2`, Axios `1.4.0`, Cypress `12.8`
+- [Monitoring] Prometheus `9090`, Redis exporter `9121`, Grafana `3000`, Jaeger `16686` / `14268` / `14250` / `9411`
+- [Observed latencies] `320ms`, later `210ms`, further target `140ms`
+- [Testing] pytest `7.2.0`, AMP parity tolerance `1%`
+- [Monitoring versions] Prometheus `2.44`, Grafana `9.4`
+- [Realtime] Socket.IO `v4.7.1`
+- [Tooling] black `22.3.0`, Helm `3.9`, Auth0 React SDK `v2.0.0`, Locust `2.15`, Webpack `5.75`, Sentry `21.9`
+- [Monitoring] Prometheus `2.44`, Grafana `9.4`, Jaeger `16686` / `14268` / `14250` / `9411`
+- [Webpack] `5.75`
+- [Sentry] `21.9`
+- [PyTorch Lightning target mentioned later] `v2.0.1`
+- [Docker base image example] `python:3.9-slim`
+- [WebSocket test] `ws://localhost:8080`
+- [Frontend] React `18.2`, Axios `1.4.0`, Cypress `12.8`, Storybook `v7.0`, React Testing Library `v14.0.0`
+- [Frontend inference] `ONNX Runtime Web v1.14`
+- [Observed frontend latency] `450ms`, later `180ms`
+- [Serverless] AWS Lambda, API Gateway, AWS SAM, CloudFront, SNS/SQS, Step Functions, DynamoDB, Redis caching layers discussed extensively
+- [ML] PyTorch `1.13`, recommended and production-locked `1.13.1`; Transformers `v4.29`, recommended `4.29.2`, production-locked `v4.29`
+- [PyTorch Lightning target] `v2.0.1`
+- [Translation microservice example] AWS Fargate with `cpu='256'`, `memory='512'`, container port `8080`
+- [Observability] Elasticsearch `8.7`, Swagger UI `4.0.0`
+- [Scheduling] Redshift analytics update every `6 hours`
 
 ### Causal Decisions
-- Because the user wanted better multi-language support → chose `franc v6.1.0` over `langdetect v1.0.1`.
-- Because the user wanted lower translation latency → chose `DeepL API v2`.
-- Because response time was `180ms under 100 concurrent requests` → explored Redis caching, preprocessing, and profiling.
-- Because frontend calls returned `404` → changed recommendation from `GET` to `POST` for `/api/language-detect` (outcome: route mismatch identified).
-- Because intermittent `500 Internal Server Error` occurred → added Winston logging and validation.
-- Because user wanted persistent auth after access token expiry of `1 hour` → next step became refresh token flow design.
-- Because user wanted lower polling overhead → webhook implementation was introduced (outcome: polling reduced by `60%`).
-- Because Redis caching reduced API / DB load (`40%` DB load reduction and `30%` API call reduction) → further optimization discussion focused on TTLs, hit ratio monitoring, race conditions, and fallback when Redis is unavailable.
-- Because translation service had `220ms` then `180ms` latency and SLA `300ms` → discussed caching, batching, async concurrency, queueing, circuit breakers, bulkheads, and Prometheus/Grafana monitoring.
-- Because user wanted secure production-ready APIs → repeated emphasis on HTTPS + `TLS 1.3`, CORS, Helmet, rate limiting, structured Express error handling, and environment-variable-based secrets.
-- Because user wanted contextual memory by `April 10, 2024` → memory schema/API design and user preferences tables became active work items.
-- Because user had a sprint review on `April 1, 2024` → presentation-outline prep with architecture diagrams/flowcharts became the latest work item.
-- Because the user encountered `503 Service Unavailable` on `gpt-4-clinical` → fallback to base GPT-4 was recommended.
-- Because the user wants UI responsiveness for clinical mode → frontend should optimistically reflect the toggle immediately, then revert on backend failure.
-- Because the user wants role-based or profile-based model routing → backend `/api/chat` should check `userProfile.clinicalMode` before selecting `gpt-4-clinical` vs base GPT-4.
-- Because the user wants caching guidance with measurable impact → cache hit rate statistics must always be included.
-- Because the user wanted auth and session management completed by `May 1, 2024` → auth flow, session persistence, refresh tokens, RBAC, and testing became active work items.
-- Because the user hit `429` during fine-tuned model calls → retry / backoff / caching / batching discussions were added.
-- Because the user wanted `RS256` → corrected guidance to require RSA private/public key pairs instead of a shared secret string.
-- Because the user asked about secure auth methods and explicitly requested protocol versions → auth answers must include versions like `RFC 7519`, `TLS 1.2 or later`, `OpenSSL 1.1.1 or later`, and relevant library versions.
-- Because token verification was around `100ms` and user wanted `under 50ms` → Redis caching of decoded tokens and verification-path optimization were discussed.
-- Because auth microservice could be unavailable → retry / exponential backoff / fallback / backup instance patterns were discussed, with explicit `503 Service Unavailable` handling.
-- Because the user wanted scalable RBAC → schema evolved conceptually from hardcoded roles to dynamic `roles` + `user_roles` tables and frontend role-aware rendering.
-- Because the user wanted to confirm email ownership during password reset → verification tokens and email links were added to the reset flow.
-- Because frontend calls returned `404` → changed from `GET` to `POST` for `/api/language-detect`.
-- Because user wanted persistent auth after `1 hour` expiry → refresh-token flow became active work.
-- Because Redis caching reduced DB/API load → further work focused on TTLs, hit ratio monitoring, race conditions, fallback behavior.
-- Because the user wanted secure production-ready APIs → repeated emphasis on HTTPS + `TLS 1.3`, Helmet, rate limiting, structured errors, environment-variable secrets.
-- Because the user wanted contextual memory by `April 10, 2024` → memory schema/API design and user preferences became active priorities.
-- Because the user had a sprint review on `April 1, 2024` → presentation-outline prep became important.
-- Because the user wanted UI responsiveness for clinical mode → optimistic UI updates were recommended.
-- Because the user wants role-based/profile-based model routing → backend `/api/chat` should check `userProfile.clinicalMode`.
-- Because the user set auth deadline `May 1, 2024` → auth/session work became a dedicated track.
-- Because the user wanted `RS256` → guidance shifted to asymmetric key pairs instead of shared secret verification.
-- Because token verification was around `100ms` and target was `under 50ms` → Redis caching of decoded tokens and verification-path optimization were suggested.
-- Because auth-service availability could fail with `503` → retries, exponential backoff, and optional backup instance patterns were discussed.
-- Because the user wanted scalable authorization → concept evolved to dynamic `roles` + `user_roles`.
-- Because the user wanted email ownership verification → verification links / tokens were added to reset flow.
-- Because the user wanted secure token management answers → token expiry durations must always be included.
-- Because WebSocket server became a separate microservice on `7000` → scaling, Redis pub/sub, Kubernetes, monitoring, and memory tuning became active topics.
-- Because user observed WebSocket reconnect/state errors → reconnect logic, close-state checks, and timer cleanup became active.
-- Because frontend returned `404` → fixed route mismatch from `GET` to `POST`.
-- Because user wanted E2EE by `May 30, 2024` → Diffie-Hellman / AES-256 key exchange and payload encryption became an exploratory workstream.
-- Because AES-GCM padding caused `ValueError: Invalid padding` → removed padding and emphasized AEAD behavior.
-- Because nonce reuse caused `"Invalid authentication tag"` → IV uniqueness became a key requirement.
-- Because user wanted centralized logs → Winston multi-transport logging became a topic.
-- Because CI/CD rollout deadline is `June 10, 2024` → GitHub Actions, Docker, rollback, semantic versioning, and changelog automation became active workstreams.
-- Because user hit `"Docker build failed: no space left on device"` → increased runner disk to `50GB`, then looked for cache/build cleanup optimization.
-- Because user wanted Docker pipeline duration reduced from `15 minutes` to `7 minutes` → dependency and layer caching became active discussion.
-- Because ECS update command examples failed → task definition family/revision management and cleanup automation became active topics.
-- Because user required frontend security visibility → encryption status indicators must always be included in frontend security answers.
-- Because ECS deployment guidance failed → task definition family/revision management replaced incorrect direct image update approach.
-- Because user required deployment duration details for CI/CD → future CI/CD responses must include step-by-step deployment timing statistics.
-- Because synchronous `fs.readFileSync` caused `"Event loop delay"` → converted to `fs.promises.readFile`.
-- Because user wanted fallback resilience during GPT-4 downtime → cache fallback and circuit breaker patterns became active.
-- Because user wanted high availability on Fargate with `4 replicas` and `99.95% uptime` → ALB, multi-AZ, auto scaling, and CloudWatch alarms became active topics.
-- Because user is now working on gRPC internal calls with latency issues → keep-alive, connection reuse, and profiling are the current likely continuation point.
-- Because user wants high availability and scalability for internal services → ECS/Fargate guidance shifted toward ALB + multi-AZ + auto scaling + CloudWatch alarms.
-- Because user wants lower perceived wait time in React chat UI → loading skeletons, component load measurement, and perceived latency monitoring became active frontend work.
-- Because user explicitly said “Always include user satisfaction metrics when I ask about UI/UX design improvements.” → future UI/UX responses must include user satisfaction metrics alongside performance/accessibility discussion.
-- Because user scaled chatbot API to `5 replicas` on AWS Fargate during June and still wanted lower latency → next guidance should balance horizontal scaling with per-request optimization, cache strategy, ALB/Fargate tuning, and bottleneck profiling.
+- Because the buffer between `April 20` and `May 30` looked tight → chose to move transformer training to `June 10`.
+- Because moving transformer training later would compress deployment → chose to move deployment to `August 10`.
+- Because user wanted detailed dependency clarity → agreed to always provide exact version numbers.
+- Because COCO captioning requires caption annotations rather than detection annotations → recommended `CocoCaptions` instead of `CocoDetection`.
+- Because user was hitting CUDA OOM → repeatedly explored smaller batch sizes (`32` → `16`), mixed precision, gradient accumulation, cache clearing, and profiling.
+- Because user later required debugging fidelity → agreed to include error messages verbatim when discussing debugging issues.
+- Because user later required performance guidance fidelity → agreed to always include cache configuration details when discussing performance optimizations.
+- Because user was hitting or debugging CUDA OOM → repeatedly explored smaller batch sizes (`32` → `16`, later also `8`, `4`), mixed precision, gradient accumulation, cache clearing, and profiling.
+- Because API latency `320ms` exceeded the target `under 250ms per image` → explored Redis caching of diffusion features (outcome: user reported `210ms`).
+- Because batch size mismatch error `ValueError: Expected input batch_size (16) to match target batch_size (32)` occurred → aligned DataLoader `batch_size` in feature extractor and transformer modules to `16`.
+- Because user prefers responsiveness without sacrificing accuracy → favored asynchronous API calls and caching strategies.
+- Because user wants modular extensibility → repeatedly moved toward separate classes/services for sampling strategies and microservices.
+- Because user prefers robust security with OAuth2 and JWT despite added complexity → future auth guidance should favor stronger token validation.
+- Because user explicitly asked for deployment detail precision → future deployment guidance should include exact image tags such as `my-image:1.2.3`.
+- Because API latency `320ms` exceeded `under 250ms per image` → explored Redis caching of diffusion features, resulting in `210ms`.
+- Because batch size mismatch `ValueError: Expected input batch_size (16) to match target batch_size (32)` occurred → aligned DataLoader batch sizes to `16`.
+- Because user wants responsiveness without sacrificing accuracy → prefer asynchronous API calls plus caching.
+- Because user explicitly asked for deployment precision → include exact image tags such as `my-image:1.2.3`.
+- Because user explicitly asked for production-update guidance style → always mention deployment strategies when discussing production updates.
+- Because user explicitly asked for backend deployment guidance style → always mention serverless scaling strategies when discussing backend deployment.
+- Because frontend caption rendering was improved from `450ms` to `180ms` using `ONNX Runtime Web v1.14` mixed precision → future frontend performance guidance should connect optimizations back to measurable UI metrics.
+- Because user explicitly wants multi-language support broadened despite complexity → future multi-language answers should specify language options explicitly.
+- Because user locked `PyTorch 1.13.1` and `Transformers v4.29` for production stability → future production integration guidance should avoid suggesting incompatible upgrades unless explicitly requested.
+- Because user wanted detailed dependency clarity → always provide exact version numbers.
+- Because user asked to always include final evaluation metrics when discussing model performance → future performance answers should include BLEU-4, METEOR, CIDEr, and other explicitly requested final metrics.
 
 ### User Preferences & Constraints
-- “Always provide detailed API response time metrics when I ask about performance profiling.”
-- User wants scalable and maintainable project organization.
-- User wants a multi-language assistant with contextual memory.
-- User wants microservices separated by responsibility.
-- User wants production-ready code examples with error handling and logging.
-- User is prioritizing the implementation of a memory store before integrating translation APIs.
-- User wants secure authentication and authorization with JWT tokens.
-- User wants to meet roadmap deadlines exactly, especially `March 18, 2024` and `March 25, 2024`.
-- [DECISION] next unfinished task is refresh-token-based JWT design for the language detection API because user explicitly asked how to let users keep using the API after `1 hour` token expiry without re-authenticating | supersedes:none
-- [FACT] user’s most recent direct question before asking for summary was “What did we do so far?” followed by request for a continuation prompt/summary
-- [FACT] user asked for a detailed continuation prompt that includes what we did, what we’re doing, which files we’re working on, and what we’re going to do next
-- [TEMPORAL] JWT refresh token question happened after Winston/500-error debugging and after DeepL integration planning | order:after event 34
-- “Always include error handling details when I ask about API integration issues.”
-- [UPDATE] port_translation_service: 4500 (was: translation service not previously assigned in PK; earlier microservice set emphasized 3000/4000/5000) — later architecture explicitly separated translation service on `4500` | supersedes:none
-- [UPDATE] deadline_contextual_memory_store: April 10, 2024 — new roadmap date added after previous PK | supersedes:none
-- [UPDATE] deadline_sprint_review: April 1, 2024 — new schedule item added after previous PK | supersedes:none
-- [UPDATE] translation_service_latency_current: 180ms (was: earlier translation timing discussed as 220ms average response time) | supersedes:none
-- [FACT] deepl_daily_limit: 5000 requests/day
-- [FACT] redis_db_load_reduction: 40%
-- [FACT] redis_recent_translations_ttl: 15-minute TTL
-- [FACT] redis_api_call_reduction: 30%
-- [FACT] webhook_polling_reduction: 60%
-- [FACT] chat_ui_lighthouse_accessibility_score: 95
-- [FACT] redis_cache_hit_rate: 85%
-- [FACT] postman_version: Postman v10
-- [FACT] react_router_version: React Router v6.14
-- [FACT] express_version: Express 4.18
-- [FACT] prettier_version: Prettier v3.0
-- [EVENT] after event 34, extensive new work focused on translation microservice architecture, Docker, TLS, webhook monitoring, memory store schema/API, GPT-4 integration, Locust testing, JSONB conversation storage, and sprint review prep before the summary request | order:35+
-- [DECISION] because the user wanted lower polling overhead and better frontend responsiveness → webhook implementation was added (outcome: polling reduced by `60%`) | supersedes:none
-- [DECISION] because the user wanted contextual memory store by `April 10, 2024` → memory schema/API design and user preferences tables became active priorities | supersedes:none
-- [DECISION] because the user had a sprint review on `April 1, 2024` → presentation-outline prep with architecture diagrams/flowcharts became the latest work item | supersedes:none
-- “Always provide fallback strategies when I ask about error handling in API services.”
-- “Always include cache hit rate statistics when I ask about caching strategies.”
-- [UPDATE] user introduced separate memory store feature deadline `April 5, 2024` while broader contextual memory store roadmap remained `April 10, 2024` | supersedes:deadline_contextual_memory_store context-specific variant
-- [FACT] user later reported session metadata cache hit rate `70%`, distinct from earlier broader Redis cache hit rate `85%` | session:later
-- [FACT] JSONB query optimization example improved from `120ms` to `30ms` | session:later
-- [FACT] fine-tuning work referenced dataset size `10,000 anonymized clinical dialogues`, `12 epochs`, and validation loss reduction `0.45 to 0.12` | session:later
-- [FACT] fine-tuned GPT-4 inference latency reported as `280ms`, `30ms` slower than base GPT-4 | session:later
-- [FACT] TypeScript adoption for backend services was specified as `TypeScript v5.0` | session:later
-- [FACT] release tag `v0.3.0` was introduced after memory store integration and testing | session:later
-- “Always include security protocol versions when I ask about authentication methods.”
-- [UPDATE] deadline_auth_session_management: May 1, 2024 | supersedes:none
-- [UPDATE] auth_microservice_port: 6000 (was: auth-service examples previously centered on port 3000 in earlier snippets) | supersedes:none
-- [UPDATE] auth_token_expiry_example: 2 hours (was: jwt_access_token_expiry 1 hour in earlier project context) | supersedes:jwt_access_token_expiry context-specific auth example
-- [UPDATE] auth_refresh_token_expiry_example: 7 days | supersedes:none
-- [UPDATE] auth_token_expiry_extended_example: 3 hours (was: 2 hours / 2h in earlier auth examples) | supersedes:auth_token_expiry_example
-- [FACT] jest_version: Jest v29.5
-- [FACT] nodemailer_version: Nodemailer v6.9.1
-- [FACT] security_protocol_jwt_spec: RFC 7519
-- [FACT] security_protocol_tls_min_auth_example: TLS 1.2 or later
-- [FACT] security_protocol_openssl_example: OpenSSL 1.1.1 or later
-- [FACT] security_protocol_pyjwt_example: pyjwt 2.6.0 or later
-- [FACT] login_api_response_time_before_example: 450ms
-- [FACT] login_api_response_time_after_example: 220ms
-- [FACT] auth_api_response_time_current: 180ms under 100 concurrent users
-- [FACT] token_verification_latency_current_example: 100ms
-- [FACT] token_verification_latency_target_example: under 50ms
-- [FACT] gpu_memory_usage_example: 6.5GB
-- [FACT] gpu_model_example: NVIDIA A100
-- [FACT] docker_model_image_size_example: 2.1GB
-- [FACT] error_jwt_malformed: JWT malformed
-- [FACT] error_jwt_expired: TokenExpiredError: jwt expired
-- [FACT] endpoint_authenticate: /authenticate
-- [FACT] endpoint_login: /login
-- [FACT] endpoint_logout: /logout
-- [FACT] endpoint_refresh_token: /refresh-token
-- [FACT] endpoint_protected: /protected
-- [FACT] endpoint_user_roles: /user/roles
-- [FACT] endpoint_password_reset: /password-reset
-- [FACT] endpoint_password_reset_token: /password-reset/:token
-- [FACT] endpoint_admin_only: /admin-only
-- [FACT] endpoint_verify_token: /verify-token
-- [EVENT] after the earlier chatbot/translation/memory-store work, discussion expanded into auth/session management with React Context, auth-service integration, JWT security, RS256/ES256, RBAC, password reset, and auth profiling | order:65+
-- [DECISION] because the user set a deadline of May 1, 2024 → authentication and session-management planning, testing, and implementation guidance became a dedicated workstream | supersedes:none
-- [DECISION] because the user wanted secure JWT auth with RS256 → guidance shifted to asymmetric key pairs instead of shared-secret verification | supersedes:none
-- [DECISION] because the user explicitly instructed to always include security protocol versions when asking about authentication methods → future auth responses must include exact protocol / spec versions | supersedes:none
-- [DECISION] because token verification latency was around 100ms and user wanted under 50ms → caching decoded tokens in Redis and optimizing verification path were suggested | supersedes:none
-- [DECISION] because auth-service availability could fail with 503 → fallback strategies discussed included retries, exponential backoff, and optional backup service / alternate environment | supersedes:none
-- [DECISION] because the user wanted scalable authorization → moved conceptually from hardcoded single-role checks to dynamic role assignment using roles and user_roles tables plus frontend role-aware rendering | supersedes:none
-- [TEMPORAL] user introduced the instruction about security protocol versions after discussing JWT expiry of 3 hours and RS256 | order:after auth expiry discussion
-- [TEMPORAL] the most recent direct technical topic before this summary request was fixing `WebSocket.js` reconnection logic with automatic retry every `5 seconds` after adding fallback UI for WebSocket disconnection | order:latest
-- “Always include token expiry durations when I ask about authentication token management.”
-- User wants accessible chat UI and WCAG `2.1 AA` compliance.
-- User wants to meet roadmap deadlines exactly.
-- [UPDATE] port_websocket_microservice: 7000 — WebSocket server later became a separate microservice on `port 7000` | supersedes:none
-- [UPDATE] chatbot_auth_memory_integration_target: May 15, 2024 | supersedes:none
-- [UPDATE] certificate_renewal_date_example: April 25, 2024 | supersedes:none
-- [UPDATE] integration_testing_sprint: May 10-15, 2024 | supersedes:none
-- [UPDATE] password_reset_token_expiry_example: 20 minutes (was: prior reset-token examples often used `15 minutes` / `1 hour` in other snippets) | supersedes:none
-- [UPDATE] chat_ui_lighthouse_mobile_score_user_reported: 98 (was: earlier recorded Lighthouse accessibility score `95`) | supersedes:none
-- [UPDATE] chatbot_api_response_time_before_auth_example: 350ms | supersedes:none
-- [UPDATE] chatbot_api_response_time_after_auth_example: 280ms | supersedes:none
-- [UPDATE] chatbot_api_response_time_stable_example: 270ms under 150 concurrent authenticated users | supersedes:none
-- [UPDATE] chatbot_api_response_time_peak_spike_example: 500ms or more during peak usage hours | supersedes:none
-- [UPDATE] websocket_ram_after_example: 800MB (was: websocket_ram_before_example `1.2GB`) | supersedes:websocket_ram_before_example
-- [UPDATE] redis_pubsub_latency_example: 50ms | supersedes:none
-- [UPDATE] deadline_e2ee_target: May 30, 2024 | supersedes:none
-- [FACT] kubernetes_version: v1.27 | session:later
-- [FACT] cloud_target: AWS EKS | session:later
-- [FACT] cache_library: React Query v4.29 | session:later
-- [FACT] context_window_size: 20 messages per session | session:later
-- [FACT] redis_pubsub_max_payload_example: 1048576 | session:later
-- [FACT] redis_pubsub_max_channels_example: 10000 | session:later
-- [FACT] redis_maxmemory_example: 1gb | session:later
-- [FACT] redis_maxmemory_policy_example: allkeys-lru | session:later
-- [FACT] redis_tcp_keepalive_example: 60 | session:later
-- [FACT] redis_tcp_backlog_example: 511 | session:later
-- [FACT] websocket_closed_state_error: WebSocket is already in CLOSING or CLOSED state | session:later
-- [FACT] webhook_signature_header_example: X-Hub-Signature-256 | session:later
-- [EVENT] after the auth-heavy phase, the conversation expanded into WebSocket microservice design, reconnect logic, real-time indicators, Redis pub/sub, service discovery, monitoring, encryption, and Kubernetes deployment | order:after event 76
-- [EVENT] user later refactored `ChatInput.js` for encrypted message sending and receiving and asked to integrate it with Diffie-Hellman | order:101
-- [EVENT] user later added fallback UI for WebSocket disconnection with automatic reconnection attempts every `5 seconds` in `WebSocket.js` and asked to fix the reconnection process | order:102
-- [DECISION] because the user separated WebSocket handling into its own microservice on `port 7000` → memory optimization, Redis pub/sub, monitoring, and deployment on Kubernetes became separate concerns | supersedes:none
-- [DECISION] because the user wants end-to-end encryption by `May 30, 2024` → Diffie-Hellman / AES-256 key exchange and payload encryption became an exploratory workstream | supersedes:none
-- “Always show encryption status indicators when I ask about frontend security features.”
-- User is prioritizing the memory store before integrating translation APIs.
-- [FACT] `deadline_cicd_rollout: June 10, 2024` was introduced later and is critical for current deployment/automation work | session:later
-- [FACT] `deadline_gdpr_audit: June 15, 2024` was introduced later and is critical for encryption/compliance work | session:later
-- [FACT] `port_encryption_microservice_example: 7500` became a recurring microservice port in later encryption/REST discussions | session:later
-- [FACT] `certificate_renewal_date_later_user_statement: May 20, 2024` coexists with earlier `April 25, 2024` and should be preserved as a separate later statement | session:later
-- [FACT] `error_invalid_auth_tag_example: Invalid authentication tag` was a later concrete crypto debugging issue | session:later
-- [FACT] `error_socket_hang_up: socket hang up` became a recurring later integration/debugging issue | session:later
-- [FACT] `error_docker_no_space_left: Docker build failed: no space left on device` was a later CI/CD blocker | session:later
-- [FACT] `error_docker_not_found: docker: not found` was a later GitHub Actions blocker | session:later
-- [FACT] `error_suspense_then_undefined: Cannot read property 'then' of undefined` was a later React lazy-loading blocker | session:later
-- [FACT] `docker_image_encryption_microservice_example: 90MB` and `docker_image_encryption_microservice_optimized: 85MB` were later Docker optimization values | session:later
-- [FACT] `github_runner_disk_size_updated: 50GB` was introduced later during GitHub Actions optimization | session:later
-- [FACT] `cicd_pipeline_duration_before_target: 15 minutes` and `cicd_pipeline_duration_target: 7 minutes` were introduced later for pipeline optimization | session:later
-- [FACT] `encryption_microservice_memory_1000_messages_per_day: 350MB` was introduced later for performance/memory monitoring | session:later
-- [FACT] `encryption_decryption_average_latency: 15ms` was introduced later for encryption profiling | session:later
-- [FACT] `uptime_target_encryption_microservice: 99.9%` was introduced later with stress testing discussion | session:later
-- [FACT] `test_coverage_threshold: 95%` was introduced later for PR integration tests | session:later
-- [FACT] `semantic_version_range_user_stated: v0.3.0 to v0.5.1` was introduced later for version automation | session:later
-- [EVENT] after the WebSocket/auth/encryption planning, the conversation expanded into GitHub Actions, Docker image optimization, AWS ECS/ECR deployment, task definition revisions, rollback automation, changelog generation, semantic version bumping, artifact caching, and Alpine troubleshooting | order:after event 187
-- [DECISION] because the user needed CI/CD by `June 10, 2024` → GitHub Actions + Docker + rollback + changelog + semver automation became an active workstream | supersedes:none
-- [DECISION] because the user hit ECS deployment issues → task definition registration/revision handling replaced the earlier incorrect direct `--image` update approach | supersedes:earlier ECS direct-image examples
-- [DECISION] because the user wants frontend security features to always expose security state → encryption status indicators must be included by default in frontend security responses | supersedes:none
-- [DECISION] because the user reduced Alpine images to `90MB` / `85MB` but saw runtime errors → Alpine compatibility/runtime troubleshooting became an active deployment concern | supersedes:none
-- “Always provide deployment duration statistics when I ask about CI/CD pipelines.”
-- [FACT] latest direct technical topic before the summary request was analytics dashboard review for chatbot usage / errors with deployment target `July 2024` | order:211
-- [UPDATE] github_runner_disk_size_requested_later: 60GB (was: github_runner_disk_size_updated 50GB) — user later asked about increasing beyond the previously tracked `50GB` | supersedes:github_runner_disk_size_updated context-specific request
-- [DECISION] because the user explicitly said “Always provide deployment duration statistics when I ask about CI/CD pipelines.” → all future CI/CD workflow answers must include exact deployment duration reporting, not just generic pipeline steps | supersedes:none
-- [FACT] user later mentioned `release tag: v0.6.0` for CI/CD improvements, distinct from earlier `v0.3.0` project release tag | session:later
-- [FACT] user later introduced `frontend_global_load_time_later: 1.2s` for React `18.2` frontend on AWS S3 with CloudFront CDN | session:later
-- [FACT] user later introduced `container_memory_per_service_later: 512MB per service` while discussing chatbot API SLA optimization | session:later
-- [FACT] user later introduced `cpu_usage_current_later: 25%` and `cpu_usage_reduction_goal_later: 20%` for chatbot API profiling | session:later
-- [FACT] user later introduced `chatbot_api_latency_sprint_deadline_later: June 25, 2024` | session:later
-- [FACT] user later introduced `fargate_replica_target_later: 4` and `uptime_target_fargate_later: 99.95%` for chatbot API service scaling | session:later
-- [FACT] user later introduced `fargate_cpu_autoscaling_threshold_later: 60%` | session:later
-- [FACT] user later introduced `streaming_chunk_size_later: 512 tokens` for GPT-4 streaming discussion | session:later
-- [FACT] user later introduced `healthcheck_latency_target_later: 100ms` for health check endpoint requirement | session:later
-- [FACT] user later introduced fallback cache depth “last `5` chatbot responses” during GPT-4 outages | session:later
-- [EVENT] after CI/CD/ECS troubleshooting, the conversation broadened into React loading skeletons, Prometheus/Grafana profiling, correlation ID logging, key rotation, Fargate auto scaling, Redis caching layers, gRPC keep-alive, and analytics dashboard review | order:188+
-- [DECISION] because the user was seeing `"Event loop delay"` spikes in `ChatController.js` → moved from `fs.readFileSync` to `fs.promises.readFile` using `async/await` | supersedes:none
-- [DECISION] because the user wants high availability and scalability for internal services → ECS/Fargate guidance shifted toward ALB + multi-AZ + auto scaling + CloudWatch alarms | supersedes:none
-- [DECISION] because the user wants lower perceived wait time in React chat UI → loading skeletons, component load measurement, and perceived latency monitoring became active frontend work | supersedes:none
-- “Always include user satisfaction metrics when I ask about UI/UX design improvements.”
-- [UPDATE] `fargate_replicas_latest_user_statement: 5 replicas on AWS Fargate during June` (was: `fargate_replica_target_later: 4`) — latest user message updated current running scale beyond earlier target | supersedes:fargate_replica_target_later
-- [DECISION] because the user now has `5 replicas` on AWS Fargate during June and is still focused on reducing latency from `280ms` → next response should emphasize per-replica bottleneck analysis, ALB/Fargate tuning, cache hit rate, and async optimization rather than only adding more replicas | supersedes:none
-- [EVENT] user explicitly added new standing preference: “Always include user satisfaction metrics when I ask about UI/UX design improvements.” before the final summary request | order:214
-- [FACT] user reported `90% satisfaction rate` for the multi-language switching feature during user testing sessions | session:later
-- [EVENT] there was a noisy digression through generic topics like GPT-5, MFA, X-Ray, blue-green deployment, admin panel, Confluence, retrospectives, and tagging releases after event 211; these were largely assistant-led/examples and not core to the main chatbot platform direction | order:213
+- “Always provide detailed version numbers when I ask about software dependencies.”
+- User wants a modular pipeline with separate diffusion-based feature extractor and transformer caption generator components.
+- User wants the system to be testable and scalable.
+- User is targeting `under 250ms per image` on an `NVIDIA RTX 3090 GPU`.
+- User is using `Python 3.10`, `PyTorch 1.13`, `Hugging Face Transformers v4.29`, `FastAPI v0.95`, `PostgreSQL 14.3`, `pytest 7.2.0`, `pylint 2.15.4`, `torchvision 0.14.1`, `Docker 20.10`, `React 18.2`.
+- [FACT] latest unresolved request was specifically about using `Trainer` with a custom `Dataset` class for fine-tuning a DistilGPT-2 model in Transformers `4.29`; no final answer was provided because the user switched to asking for a summary | session:current | turn:latest
+- [DECISION] user accepted the revised schedule exactly as: `April 20`, `June 10`, `August 10` because it “should give us enough buffer time to avoid feeling rushed”
+- [FACT] user repeatedly framed the model as “diffusion-based feature extractor and transformer caption generator” and wants continuation work aligned to that architecture, even though many previous code examples drifted into unrelated models or invalid APIs | session:current | turn:multiple
+- [TEMPORAL] the dependency-version preference (“Always provide detailed version numbers...”) happened after the deadline changes and should continue to govern all future technical answers | order:after event 15 before latest implementation questions
+- “Always include error messages verbatim when I ask about debugging issues.”
+- “Always include cache configuration details when I ask about performance optimizations.”
+- User prefers asynchronous API calls and caching to improve responsiveness without sacrificing accuracy.
+- [FACT] latest unresolved request is no longer the old DistilGPT-2 `Trainer` question; the new latest unresolved request is an analysis of using **AWS EKS** for container orchestration, specifically weighing **cost vs management overhead**, with example code using `boto3.client("eks")` and `eks.list_clusters()` | session:current | turn:latest
+- [UPDATE] `improved_latency_with_redis: 210ms (was: 320ms)` — user explicitly reported this improvement after caching diffusion features in Redis | supersedes:measured_latency_only
+- [UPDATE] `redis_ttl_updated_discussed: 7200 (was: 3600)` — user later discussed extending TTL to `7200 seconds` and asked that cache configuration details always be included in performance discussions | supersedes:redis_ttl_default_discussed
+- [UPDATE] `uvicorn_workers_updated: 4 (was: 2)` — user explicitly said increasing workers from `2` to `4` helped with `ConnectionResetError: [Errno 104] Connection reset by peer` | supersedes:implicit_worker_examples
+- [FACT] user explicitly reported a later batch size preference: `batch size of 12 seems to be the sweet spot for balancing memory constraints and throughput during training` | session:current | turn:batch_size_12
+- [FACT] user explicitly reported validation metrics `BLEU-4 score of 32.5`, `METEOR score of 27.1`, `CIDEr score of 98.3` after `10 epochs` on `COCO val2017` | session:current | turn:metrics
+- [DECISION] because the user wants responsiveness without sacrificing accuracy → they prefer asynchronous API calls plus caching, and future architecture/performance guidance should align with that preference | supersedes:generic_perf_guidance
+- [TEMPORAL] the newer preference “Always include error messages verbatim when I ask about debugging issues.” happened after the earlier dependency-version preference and after multiple debugging discussions; it should govern all future debugging help | order:after dependency preference
+- [TEMPORAL] the newer preference “Always include cache configuration details when I ask about performance optimizations.” happened after extensive Redis/caching discussions and after the user discussed extending TTL to `7200 seconds`; it should govern all future performance help | order:after Redis tuning discussion
+- `Always specify container image versions when I ask about deployment details.`
+- `I prefer robust security with OAuth2 and JWT despite added complexity to protect user data and API usage.`
+- [UPDATE] `latest_active_request: Slack webhook for critical system alerts and errors` (was: `common pitfalls when migrating to serverless`) | supersedes:latest_active_request
+- [FACT] `auth0_react_sdk_version: v2.0.0` was introduced later for React authentication / authorization examples | session:current | turn:Auth0 React
+- [FACT] `prometheus_version: 2.44` and `grafana_version: 9.4` were introduced later in monitoring/dashboard setup questions | session:current | turn:Prometheus Grafana
+- [FACT] `socketio_version: v4.7.1` was introduced later for real-time caption feedback updates | session:current | turn:Socket.IO
+- [FACT] `black_version: 22.3.0` was introduced later for pre-commit formatting enforcement | session:current | turn:black pre-commit
+- [FACT] `helm_version: 3.9` was introduced later for templating environment-specific Kubernetes manifests | session:current | turn:Helm
+- [FACT] `api_throughput_reported: 150 requests per second` under Locust `2.15` load testing is newer than the older `100 concurrent users` example and should be retained separately | session:current | turn:Locust profiling
+- [FACT] `redis_connection_timeout_error: TimeoutError: Redis connection timed out after 5s` and `redis_connection_pool_size_tried: 20` were introduced later in Redis troubleshooting | session:current | turn:Redis timeout
+- [FACT] `scoring_py_coverage_reported: 95%` and `sonarqube_critical_code_smells_reported: 12` were introduced later in testing / static analysis discussion | session:current | turn:QA SonarQube
+- [FACT] `polars_memory_footprint_reduction_reported: 25%` was introduced later when discussing switching from pandas to polars | session:current | turn:Polars
+- [FACT] `gpt2_medium_params: 355M` was introduced later when discussing GPT-2 medium training optimization | session:current | turn:GPT-2 medium
+- [FACT] `deployment_image_version_example: my-image:1.2.3` and new user preference `Always specify container image versions when I ask about deployment details.` were introduced later in Kubernetes deployment discussion | session:current | turn:deployment version
+- [FACT] `caption_feedback_cider_improvement_reported: 3.2-point improvement` from concatenating diffusion features with ResNet50 embeddings was introduced later | session:current | turn:CIDEr feature engineering
+- “Always specify container image versions when I ask about deployment details.”
+- “Always mention deployment strategies when I ask about production updates.”
+- “I prefer robust security with OAuth2 and JWT despite added complexity to protect user data and API usage.”
+- “Please respond only in English.”
+- User repeatedly frames the architecture as diffusion-based feature extractor + transformer caption generator.
+- [FACT] user explicitly instructed `Please respond only in English.` | session:current | turn:latest
+- [FACT] user explicitly instructed `Always mention deployment strategies when I ask about production updates.` | session:current | turn:latest
+- [FACT] `webpack_version: 5.75` was introduced later in the React bundle size optimization question | session:current | turn:Webpack
+- [FACT] `websocket_latency_target: under 100ms` and `websocket_test_url: ws://localhost:8080` were introduced later in the Jest/WebSocket test question | session:current | turn:WebSocket latency
+- [FACT] `docker_image_size_target: 650MB (was: 1.2GB)` was introduced later in the Docker multi-stage build optimization question | session:current | turn:Docker multi-stage
+- [FACT] `pytorch_lightning_upgrade_target: v2.0.1` was introduced later in Lightning upgrade / AMP questions | session:current | turn:Lightning upgrade
+- [FACT] `sentry_version: 21.9` and `sentry_unique_exceptions_identified: 15` were introduced later in Sentry prioritization discussion | session:current | turn:Sentry
+- [UPDATE] `api_gateway_timeout_updated: 60s (was: 30s)` was introduced later in API timeout troubleshooting | supersedes:previous_timeout_context
+- [FACT] `error_none_decode: AttributeError: 'NoneType' object has no attribute 'decode'` was introduced later in Redis cache deserialization debugging | session:current | turn:Redis decode
+- [FACT] `error_swipeable_views_indexof: TypeError: Cannot read properties of undefined (reading 'indexOf')` was introduced later in React swipe gestures debugging | session:current | turn:Swipeable views
+- [FACT] `error_module_not_found_pytorch_lightning: ModuleNotFoundError: No module named 'pytorch_lightning'` was introduced later in Lightning upgrade troubleshooting | session:current | turn:Lightning import
+- [FACT] `error_cuda_device_side_assert: RuntimeError: CUDA error: device-side assert triggered` was reintroduced later specifically for token index validation debugging | session:current | turn:token validation
+- [FACT] `error_504_gateway_timeout: 504 Gateway Timeout` was introduced later in API performance troubleshooting | session:current | turn:API timeout
+- [FACT] `stable_diffusion_generation_model_id_example: CompVis/stable-diffusion-v1-4` was introduced later in diffusion image generation example | session:current | turn:diffusion generation
+- [FACT] `hmac_secret_key_example: b"my_secret_key"` and `webhook_payload_example: b"Hello, World!"` were introduced later in HMAC SHA256 webhook signature discussion | session:current | turn:HMAC
+- [TEMPORAL] the explicit deployment-strategy preference happened after extensive Kubernetes blue-green discussion and should govern future production update answers | order:after blue-green deployment questions
+- [TEMPORAL] the English-only preference happened after the deployment-strategy preference and should govern all future responses | order:after deployment-strategy preference
+- “Always mention serverless scaling strategies when I ask about backend deployment.”
+- User prefers serverless for cost efficiency and automatic scaling despite initial cold start challenges.
+- User wants frontend/UI discussions to include frontend performance metrics.
+- [FACT] user explicitly stated a serverless preference: `I prefer using serverless for cost efficiency and automatic scaling despite the initial cold start challenges.` | session:current | turn:serverless_preference
+- [FACT] user explicitly instructed `Always mention serverless scaling strategies when I ask about backend deployment.` | session:current | turn:latest_serverless_preference
+- [FACT] `frontend_caption_render_time_improved: 180ms (was: 450ms)` from `ONNX Runtime Web v1.14` on mid-range devices was introduced later and is not fully captured in older PK sections | session:current | turn:onnxruntime_web
+- [FACT] `storybook_version: v7.0` was introduced later for modularized React frontend work | session:current | turn:storybook_setup
+- [FACT] `react_testing_library_version: v14.0.0` was introduced later in Jest/RTL questions | session:current | turn:rtl_tests
+- [EVENT] after the PyTorch Lightning topic, the conversation shifted heavily into serverless migration, Lambda/API Gateway, SAM, SNS/SQS, DynamoDB, Storybook, ONNX Runtime Web, and responsive frontend questions before the final unresolved serverless migration pitfall question | order:after event 38
+- [TEMPORAL] the serverless-scaling preference happened after multiple Lambda/API Gateway/SnapStart/provisioned concurrency discussions and should govern all future backend deployment answers | order:after extensive serverless discussion
+- “Always specify language options when I ask about multi-language support.”
+- User prefers multi-language support to broaden the user base despite added model complexity and maintenance.
+- [FACT] user explicitly stated `I've locked the PyTorch version to 1.13.1 and Transformers to v4.29 for production stability` in the webhook discussion | session:current | turn:latest_webhook_request
+- [FACT] later user-reported evaluation metrics `BLEU-4 score of 38.7`, `METEOR score of 31.4`, `CIDEr score of 112.5` were introduced in a COCO evaluation question and were not captured in older summaries | session:current | turn:bleu4_eval
+- [FACT] user reported beam-search latency improvement `280ms (was: 450ms)` on `RTX 3090` during custom CUDA kernel optimization discussion | session:current | turn:beam_search_cuda
+- [FACT] user reported Lambda cold start latency reduced to `150ms` with provisioned concurrency using `2 pre-warmed instances` | session:current | turn:lambda_cold_start_cost
+- [FACT] user introduced `Elasticsearch 8.7` and `Swagger UI version 4.0.0` in later observability/docs questions | session:current | turn:elk_swagger
+- [FACT] user later explicitly said current sprint is `Sprint 9` with tasks dated `2024-07-01` to `2024-07-25` | session:current | turn:sprint9_gantt
+- [EVENT] after the earlier serverless migration discussions, the conversation expanded into translation service caching/Fargate, custom CUDA kernels, webhook notifications, Swagger docs, DynamoDB GSIs, Redshift ETL, and Slack alerting before this summary | order:after event 43
+- [DECISION] because the user locked `PyTorch 1.13.1` and `Transformers v4.29` for production stability → future implementation guidance for production integrations should avoid suggesting incompatible upgrades unless explicitly requested
+---
+- “Always include final evaluation metrics when I ask about model performance.”
+- [UPDATE] `evaluation_bleu4_latest_reported: 39.2 (was: 38.7)` — later user said final evaluation BLEU-4 was slightly improved to `39.2` after last-minute hyperparameter tuning | supersedes:evaluation_bleu4_later_reported
+- [FACT] user added a new persistent preference: `Always include final evaluation metrics when I ask about model performance.` | session:current | turn:req-7b5a9231
+- [EVENT] after the Slack webhook topic, the conversation temporarily drifted into many generic advisory prompts (accessibility, NVDA, PyTorch OOM, generic Transformers generation, FastAPI exception handling, Tkinter/React gallery UX), but these did not establish confirmed repo modifications | order:after event 65
+- [FACT] user later asked how to automatically append final evaluation metrics `BLEU-4`, `METEOR`, and `CIDEr` to model performance queries in code using `t5-base` examples | session:current | turn:req-e6d1efd2

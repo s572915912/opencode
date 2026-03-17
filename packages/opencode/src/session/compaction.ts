@@ -709,18 +709,17 @@ If existing SK items are provided below, PRESERVE existing items and ADD only NE
       : ""
     log.info("persistent knowledge", { source: filePK ? "file" : pk ? "message" : "none", length: pk?.length ?? 0 })
 
-    // Inject FILTERED SK — only high-value items (numbers, dates, updates, decisions)
+    // V15a: Theme-structured SK injection — ALL items, organized by topic
+    // (filtering only in recall tool for conversation-time retrieval)
     const sk = await readSK()
     let skContext = ""
     if (sk.length > 0) {
-      const filtered = filterSK(sk)
-      if (filtered.length > 0) {
-        const lines = filtered.map(i =>
-          `- [${i.type.toUpperCase()}] ${i.content}${i.order ? ` | order:${i.order}` : ""}${i.supersedes ? ` | supersedes:${i.supersedes}` : ""}`
-        ).join("\n")
-        skContext = `\n\n---\nKnowledge gaps from previous compactions (${filtered.length} items out of ${sk.length} total).\nPRESERVE all existing items and ADD only NEW gaps in your ## Knowledge Gap Analysis output.\n\n${lines}`
+      const themes = clusterSK(sk)
+      if (themes.length > 0) {
+        const expanded = formatExpanded(themes)
+        skContext = `\n\n---\nKnowledge gaps from previous compactions (${sk.length} items, ${themes.length} topics):\n${expanded}\n\nPRESERVE all existing items and ADD only NEW gaps in your ## Knowledge Gap Analysis output.`
       }
-      log.info("structured knowledge", { total: sk.length, filtered: filtered.length })
+      log.info("structured knowledge", { total: sk.length, themes: themes.length })
     }
 
     const promptText = compacting.prompt ?? [defaultPrompt + pkContext + skContext, ...compacting.context].join("\n\n")
