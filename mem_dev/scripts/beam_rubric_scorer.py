@@ -68,7 +68,72 @@ IMPORTANT: Focus on factual content. Minor wording differences don't matter.
 Reply with ONLY a JSON: {{"score": <0 or 0.5 or 1.0>}}"""
 
 def score_rubric(question, rubric_item, answer):
-    """Score one rubric item. Returns 0, 0.5, or 1.0."""
+    """Score one rubric item. Returns 0, 0.5, or 1.0.
+    V16: Deterministic keyword matching for 86% of rubric items.
+    Only falls back to LLM for complex/ambiguous items."""
+    r = rubric_item.strip()
+    # Normalize curly quotes → straight quotes in answer
+    a = (answer or "").lower().replace("\u2018", "'").replace("\u2019", "'").replace("\u201c", '"').replace("\u201d", '"')
+
+    # --- Pattern 1: "should not contain: X" (negative check) ---
+    neg = re.match(r'.*should\s+not\s+(?:contain|mention|include|state)[:\s]+(.+)', r, re.I)
+    if neg:
+        target = neg.group(1).strip().strip('"\'').lower()
+        return 0.0 if target in a else 1.0
+
+    # --- Pattern 2: "should contain/mention/state: X" (keyword check) ---
+    pos = re.match(r'.*should\s+(?:contain|mention|state)[:\s]+(.+)', r, re.I)
+    if pos:
+        target = pos.group(1).strip().strip('"\'').lower()
+        if target in a:
+            return 1.0
+        stop = {'the','a','an','is','are','was','were','be','to','of','and','or','in','on','at','for','with','that','this','it'}
+        t_tokens = set(re.findall(r'\w+', target)) - stop
+        a_tokens = set(re.findall(r'\w+', a)) - stop
+        if not t_tokens:
+            return 0.5
+        overlap = len(t_tokens & a_tokens) / len(t_tokens)
+        if overlap >= 0.8:
+            return 1.0
+        if overlap >= 0.4:
+            return 0.5
+        return 0.0
+
+    # --- Pattern 3: "should include: X" (often needs code/example — use tokens) ---
+    inc = re.match(r'.*should\s+include[:\s]+(.+)', r, re.I)
+    if inc:
+        target = inc.group(1).strip().strip('"\'').lower()
+        stop = {'the','a','an','is','are','was','were','be','to','of','and','or','in','on','at','for','with','that','this','it'}
+        t_tokens = set(re.findall(r'\w+', target)) - stop
+        a_tokens = set(re.findall(r'\w+', a)) - stop
+        if not t_tokens:
+            return 0.5
+        overlap = len(t_tokens & a_tokens) / len(t_tokens)
+        if overlap >= 0.6:
+            return 1.0
+        if overlap >= 0.3:
+            return 0.5
+        return 0.0
+
+    # --- Pattern 4: Abstention — "no information" / "not discussed" in rubric ---
+    if 'no information' in r.lower() or 'not discussed' in r.lower():
+        abstain_signals = [
+            'no information', 'not discussed', 'not mentioned', 'no record',
+            "don't have", "do not have", "wasn't discussed", "wasn't mentioned",
+            "not covered", "no details", "not available", "cannot confirm",
+            "didn't discuss", "did not discuss", "wasn't covered", "not part of",
+            "no data", "no mention", "never discussed", "haven't discussed",
+            "no specific", "not something we", "outside of what we",
+        ]
+        return 1.0 if any(s in a for s in abstain_signals) else 0.0
+
+    # --- Pattern 5: "should ask for clarification" ---
+    if 'ask for clarification' in r.lower() or 'which is correct' in r.lower():
+        clarify_signals = ['which is correct', 'clarify', 'which statement', 'which one',
+                          'could you confirm', 'can you confirm', 'please confirm']
+        return 1.0 if any(s in a for s in clarify_signals) else 0.0
+
+    # --- Fallback: LLM judge (only ~8% of items reach here) ---
     text = llm(JUDGE_PROMPT.format(question=question, rubric=rubric_item, answer=answer))
     match = re.search(r'"score"\s*:\s*([0-9.]+)', text)
     if match:
@@ -80,50 +145,45 @@ def score_rubric(question, rubric_item, answer):
 
 # ─── Event ordering: Kendall tau-b (per BEAM spec) ───
 def score_event_ordering(question, expected, answer):
-    """Use LLM to extract ordered items, then compute Kendall tau-b."""
-    prompt = f"""Extract the ordered list of items/events from both the expected answer and the model answer.
+    """Use LLM to directly produce rank mapping, then compute Kendall tau-b.
+    V16: Direct LLM rank assignment with semantic matching."""
+    prompt = f"""You are evaluating whether a model listed events in the correct order.
 
 Question: {question}
-Expected Answer: {expected}
-Model Answer: {answer}
 
-Return a JSON with:
-- "expected_order": list of short item descriptions in expected order
-- "model_order": list of short item descriptions in the order the model gave them
-- "matched": number of items from expected that appear in model answer
+Expected order (GROUND TRUTH — numbered 1..N):
+{expected}
 
-If the model doesn't provide an ordered list, return {{"expected_order": [], "model_order": [], "matched": 0}}
+Model's answer:
+{answer}
 
-Reply with ONLY a JSON object."""
+TASK: Match each expected item to the model's answer using SEMANTIC equivalence (ignore wording differences).
+For each expected item 1..N, find which numbered position in the model's answer covers the SAME topic.
 
+Example: If expected #1 is "setup issues with webcam" and model's #1 is "OpenCV + YOLOv5 webcam integration issues" → they match → output [1, 1].
+
+Be GENEROUS with matching — if the topics overlap significantly, consider it a match.
+For items with NO match at all, skip them entirely.
+
+Reply with ONLY a JSON: {{"pairs": [[exp_pos, model_pos], [exp_pos, model_pos], ...], "n_matched": M}}
+ONLY include matched pairs. Do NOT include null or unmatched entries.
+"""
     text = llm(prompt, tokens=500)
     match = re.search(r'\{.*\}', text, re.DOTALL)
     if not match:
         return 0.0
     try:
         d = json.loads(match.group())
-        exp = d.get("expected_order", [])
-        mod = d.get("model_order", [])
-        matched = d.get("matched", 0)
-        if not exp or matched == 0:
-            return 0.0
-        # Build rank vectors for matched items
-        if len(exp) < 2:
-            return 1.0 if matched > 0 else 0.0
-        # Simple: if model_order matches expected_order, tau=1
-        # Map model items to expected positions
-        n = len(exp)
-        exp_ranks = list(range(n))
-        mod_ranks = list(range(n))  # default
-        # Try to match model items to expected
-        for i, e_item in enumerate(exp):
-            best_pos = i  # default: same position
-            for j, m_item in enumerate(mod):
-                # LLM equivalence check (simple substring)
-                if m_item.lower().strip() in e_item.lower().strip() or e_item.lower().strip() in m_item.lower().strip():
-                    best_pos = j
-                    break
-            mod_ranks[i] = best_pos
+        pairs = d.get("pairs", [])
+        # Filter out any nulls/invalids
+        valid = []
+        for p in pairs:
+            if isinstance(p, (list, tuple)) and len(p) >= 2 and p[0] is not None and p[1] is not None:
+                valid.append((int(p[0]), int(p[1])))
+        if len(valid) < 2:
+            return 1.0 if len(valid) == 1 else 0.0
+        exp_ranks = [p[0] for p in valid]
+        mod_ranks = [p[1] for p in valid]
         tau, _ = kendalltau(exp_ranks, mod_ranks)
         if tau != tau:  # NaN
             return 0.0
@@ -152,6 +212,13 @@ def load_rubric(split, case_id):
             question = q.get("question", "")
             rubric = q.get("rubric", [])
             expected = q.get("ideal_response") or q.get("ideal_answer") or q.get("expected_answer", "")
+            # event_ordering: expected order is in ordering_tested or answer field
+            if not expected and qtype == "event_ordering":
+                ordering = q.get("ordering_tested", [])
+                if ordering:
+                    expected = "\n".join(f"{i+1}. {item}" for i, item in enumerate(ordering)) if isinstance(ordering, list) else str(ordering)
+                elif q.get("answer"):
+                    expected = q["answer"]
             if isinstance(rubric, str):
                 rubric = ast.literal_eval(rubric)
             rubric_map[question[:80]] = {

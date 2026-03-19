@@ -574,6 +574,41 @@ def _read_episodes():
     episodes.sort(key=lambda e: e.get("order", 0))
     return episodes
 
+def _read_events_ledger():
+    """V16: Read append-only events.jsonl — immutable event store."""
+    p = os.path.join(_OPENCODE_DIR, "events.jsonl")
+    if not os.path.exists(p):
+        return []
+    events = []
+    with open(p) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                events.append(json.loads(line))
+            except Exception:
+                pass
+    events.sort(key=lambda e: e.get("seq", 0))
+    return events
+
+def _read_contradictions():
+    """V16: Read append-only contradictions.jsonl — immutable contradiction pairs."""
+    p = os.path.join(_OPENCODE_DIR, "contradictions.jsonl")
+    if not os.path.exists(p):
+        return []
+    pairs = []
+    with open(p) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                pairs.append(json.loads(line))
+            except Exception:
+                pass
+    return pairs
+
 def _extract_event_log(pk_ctx):
     """Extract the Chronological Event Log section from PK context."""
     if not pk_ctx:
@@ -646,10 +681,22 @@ _QTYPE_SECTIONS = {
     "abstention":              [],  # no injection — avoid hallucination
 }
 
-def _build_probe(pk_ctx, question, qtype, episodes=None, timeline=""):
+def _build_probe(pk_ctx, question, qtype, episodes=None, timeline="", events_ledger=None, contradictions=None):
     """Build probe message with xMemory-inspired type-aware section injection.
-    Each question type receives only the most relevant PK section."""
+    Each question type receives only the most relevant PK section.
+    V16: Also injects immutable events_ledger and contradictions."""
     if qtype == "event_ordering":
+        # V16: Prefer immutable event ledger over episodes/PK
+        if events_ledger:
+            ep_lines = "\n".join(
+                f"{e['seq']}. [{e.get('ts', '?')}] {e['event']}" for e in events_ledger
+            )
+            return (
+                f"The following is the EXACT chronological sequence of events from our conversation, "
+                f"in the order they actually happened. This is an append-only log — the ordering is GROUND TRUTH. "
+                f"Use these entries directly to answer the question:\n\n"
+                f"{ep_lines}\n\n{question}"
+            )
         if episodes:
             ep_lines = "\n".join(
                 f"{e['order']}. [{e.get('ts', '?')}] {e['event']}" for e in episodes
@@ -667,6 +714,23 @@ def _build_probe(pk_ctx, question, qtype, episodes=None, timeline=""):
                     f"Use it to answer accurately:\n\n{event_log}\n\n{question}"
                 )
         return question
+
+    # V16: For contradiction_resolution, inject immutable contradiction pairs
+    if qtype == "contradiction_resolution" and contradictions:
+        pairs_text = "\n".join(
+            f"- Topic: {c.get('topic','?')} — You originally said: \"{c['said']}\" but later said: \"{c['then']}\""
+            for c in contradictions
+        )
+        pk_section = _extract_pk_section(pk_ctx, "Contradiction", "Value Registry") if pk_ctx else ""
+        ctx = f"IMPORTANT — The following contradictions were detected in the conversation history:\n\n{pairs_text}"
+        if pk_section:
+            ctx += f"\n\n{pk_section}"
+        return (
+            f"{ctx}\n\n"
+            f"When answering, if the question relates to any of the contradictions above, "
+            f"you MUST explicitly state that there is contradictory information, "
+            f"mention BOTH sides, and ask which statement is correct.\n\n{question}"
+        )
 
     sections = _QTYPE_SECTIONS.get(qtype, [])
     if not sections:
@@ -719,12 +783,18 @@ def _run_probes_sequential(session_id, questions, use_fresh_session=False):
     pk_ctx = _read_pk_context()
     timeline = _read_timeline()
     episodes = _read_episodes()
+    events_ledger = _read_events_ledger()
+    contradictions = _read_contradictions()
     if pk_ctx:
         print(f"  📎 memory.md: {len(pk_ctx)} chars — section injection enabled")
     if timeline:
         print(f"  🕐 timeline.jsonl loaded for temporal_reasoning injection")
     if episodes:
         print(f"  🗂  {len(episodes)} episodes loaded for event_ordering injection")
+    if events_ledger:
+        print(f"  📋 {len(events_ledger)} events from immutable ledger (V16)")
+    if contradictions:
+        print(f"  ⚡ {len(contradictions)} contradiction pairs from immutable store (V16)")
 
     print(f"\n  📝 Probing {len(questions)} questions — sequential in same compacted session (V12 mode)")
 
@@ -732,7 +802,8 @@ def _run_probes_sequential(session_id, questions, use_fresh_session=False):
     for i, q in enumerate(questions):
         print(f"  [{i+1}/{len(questions)}] ({q['type']}) {q['question'][:80]}...")
         # V12: reuse the same compacted session — all questions see the same memory
-        probe = _build_probe(pk_ctx, q["question"], q["type"], episodes=episodes, timeline=timeline)
+        probe = _build_probe(pk_ctx, q["question"], q["type"], episodes=episodes, timeline=timeline,
+                             events_ledger=events_ledger, contradictions=contradictions)
         answer = send_message(session_id, probe, cache_bust=True, no_compact=True)
         answers.append(answer)
         time.sleep(0.3)

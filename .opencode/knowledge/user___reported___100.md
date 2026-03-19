@@ -1,0 +1,25 @@
+# User / Reported / 100
+
+- [FACT] user reported `100% positive feedback` from final UAT with `5 paramedic volunteers`
+- [FACT] The user later reported/used a translation-service `85%` Redis cache hit rate and `180ms` average latency in several optimization prompts
+- [FACT] User reported a fine-tuning dataset size of `10,000 anonymized clinical psychology dialogues`
+- [FACT] User reported `12 epochs` with validation loss reduction from `0.45 to 0.12` in the clinical fine-tuning thread
+- [FACT] User reported inference latency averaging `280ms`, which is `30ms slower than the base GPT-4 model`
+- [FACT] User introduced a separate clinical inference endpoint at `http://localhost:5001/api/gpt-4-clinical` and later reported `500` errors calling it with `requests.post`
+- [FACT] User later discussed `503 Service Unavailable` when routing clinical queries and explicitly implemented fallback to the base GPT-4 model
+- [FACT] In the later auth thread, the user introduced an authentication microservice specifically on `port 6000`, separate from the chatbot backend, using RESTful communication between services.
+- [FACT] The user reported token verification was taking around `100ms` and wanted to reduce it to `under 50ms`.
+- [FACT] The user reported Authentication API performance of `180ms` under `100 concurrent users` using `Node.js`, `Express.js`, and `PostgreSQL`, and asked how to optimize and interpret profiling results.
+- [FACT] User reported switching from `GPT-2 small` to `DistilGPT-2 v2.0` reduced epoch time from `45m` to `28m`
+- [FACT] User reported reducing batch size from `32` to `16` and enabling mixed precision with NVIDIA Apex AMP cut memory usage by `40%`
+- [UPDATE] `batch_size_captioning_reduced: 16 (was: 32)` | supersedes:batch_size_captioning_initial
+- [FACT] A new error string was introduced for AMP inference:
+- [FACT] A new Docker daemon error string was introduced exactly:
+- [FACT] exact error `Error: Failed to load model: invalid model file.`
+- [FACT] exact error `Error: Fallback function not defined.`
+- [FACT] exact error `TypeError: Cannot read property 'map' of undefined`
+- [FACT] exact error `UnhandledPromiseRejectionWarning`
+- [FACT] exact error `CUDA kernel launch failed: invalid configuration argument`
+- [FACT] exact recent CUDA OOM error text was `RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`
+- [FACT] user reported `100% positive feedback` from final UAT with `5 paramedic volunteers` in the AWS deployment/stability thread
+- [FACT] The user also discussed gzip reducing frontend asset size by `40%` on an Nginx reverse proxy in the AWS/ops continuation.

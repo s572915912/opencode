@@ -1,0 +1,148 @@
+# Recent / User / Request
+
+- [FACT] Most recent user request was specifically about improving a runtime-toggleable object counting overlay implementation with total frame latency at `180ms` and existing class:
+- [FACT] Most recent user request was specifically about improving a runtime-toggleable object counting overlay implementation with total frame latency at `180ms` and existing class:
+- [FACT] The last unanswered user request before the summary was specifically: “Sure, let's dive deeper into using efficient data types and optimizing image processing operations. I think those could make a big difference in my current setup. How about we start with ensuring I'm using the right data types? Could you give me a quick rundown on how to switch to `np.float32` or `np.uint8` where appropriate?”
+- [FACT] The last direct unanswered user question before the summary request was: `Can you provide an example of how to configure sticky sessions on an ALB using the AWS CLI or SDKs?` in the context of `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled` and concern about `intermittent WebSocket disconnects` behind AWS ALB | order:latest
+- [FACT] The last direct unanswered user question before the summary request was: `Can you provide an example of how to configure sticky sessions on an ALB using the AWS CLI or SDKs?` in the context of `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled` and concern about `intermittent WebSocket disconnects` behind AWS ALB | order:latest
+- [FACT] The last user message before asking for summary was specifically about fixing a `sync_data()` reconciliation job using `psycopg2`, `redis`, and `schedule` to sync `scheduled_posts` between PostgreSQL and Redis every 5 minutes
+- [FACT] The most recent direct user request before the summary was specifically about **GDPR compliance for user data access and deletion requests**, with audit logging already added and a request for an example Python implementation for compliant deletion handling
+- [FACT] Latest direct unresolved user request after all prior topics was specifically: **find the official Twitter API docs for the Twitter API v2.3.1 new metrics endpoints and provide a Python example of how to use them**
+- [DECISION] Because the user’s final request was a handoff / continuation prompt, the next agent should not assume the active topic changed away from the prior unresolved work; instead, start by confirming whether to continue with **Twitter API v2.3.1 metrics docs/examples**, **GDPR compliance**, **testing/coverage automation**, or another recent ops/performance thread.
+- [FACT] Latest direct unresolved request is specifically about adding a refresh token flow to JWT auth for a secured language detection API where tokens currently expire after `1 hour`
+- [DECISION] Because the user asked for a handoff summary after broad topic drift, the next agent should begin by re-grounding on the user’s preferred active thread instead of assuming a single unresolved issue. The strongest current candidates are JWT refresh-token flow, contextual memory store API/schema, GPT-4 API integration on port `5000`, webhook integration/measurement, or sprint review presentation prep | supersedes:single-thread assumptions
+- [FACT] The last direct user request before this summary was specifically about optimizing latency of the chatbot backend API integration for the `gpt-4-clinical` endpoint in `Node.js 18` and `Express 4.18`
+- [DECISION] Because the user’s latest implementation request was backend latency reduction for `gpt-4-clinical`, the next agent should likely start by re-grounding and asking whether to continue with `clinicalMode` routing / endpoint optimization, JWT refresh-token flow, contextual memory store API/schema, or sprint review prep | supersedes:single_assumed_active_thread
+- [FACT] The user asked for handling `TokenExpiredError: jwt expired` in a JWT-based authentication microservice with login, logout, and token refresh endpoints.
+- [FACT] The user showed a concrete JWT auth implementation using `2 hours` token expiry and `7 days` refresh token lifetime, then asked for a security/efficiency review.
+- [FACT] The user asked whether Redis must be configured separately and whether Redis must be installed on every server for the auth microservice deployment.
+- [FACT] The user asked for fallback handling of `503 Service Unavailable` when the authentication microservice is down.
+- [FACT] The user introduced concrete RBAC roles `admin`, `moderator`, `user` and asked how to secure admin-only endpoints in `Node.js` / `Express.js`.
+- [FACT] The user asked whether the frontend must be updated to reflect user roles dynamically.
+- [FACT] The user introduced password reset flow work using `Node.js`, `Express.js`, and `Nodemailer`, then specifically asked how to implement email verification and whether the frontend must handle token verification and token expiration separately.
+- [FACT] The user introduced `Nodemailer v6.9.1` explicitly in the password reset / email verification thread.
+- [FACT] The user asked for Jest `v29.5` tests for `auth.module.js` / login error handling edge cases.
+- [DECISION] Because the user asked for security protocol versions when discussing authentication methods, the next auth-related answer should explicitly include protocol/version details such as `TLS 1.2 or later` / `TLS 1.3`, plus exact JWT algorithm details (`RS256`, `ES256`) if relevant.
+- [FACT] The most recent direct user request was a recap / continuation prompt, not a new implementation thread.
+- [FACT] The user explicitly mentioned `React Query v4.29` and a `20 messages per session` context window in the chat UI caching / consistency thread.
+- [FACT] The user explicitly mentioned Kubernetes `v1.27` on AWS EKS for the WebSocket microservice deployment and Redis pub/sub latency of `50ms`.
+- [DECISION] Because the latest recap request came after broad topic drift, the next agent should first re-ground with the user and offer focused continuation paths: auth refresh-token hardening, password reset + email verification, RBAC hardening, clinical endpoint optimization, or WebSocket reconnect reliability.
+- [FACT] The very latest conversation block before the handoff request added a new CI/CD + AWS ECS troubleshooting thread with exact GitHub Actions / ECS issues not fully represented above:
+- [FACT] The user explicitly asked for a Node.js + Express webhook example for notifying the encryption microservice on new session creation for key generation.
+- [FACT] The user explicitly asked for centralized logging help using `Winston v3.8` in the encryption microservice.
+- [FACT] The user explicitly asked for stress-test interpretation aimed at `99.9% uptime` for the encryption microservice.
+- [FACT] The user explicitly asked for Docker multi-stage optimization of the encryption microservice image after reducing it to `85MB`.
+- [FACT] The user explicitly asked for secure review of AES-256-GCM code using `crypto` in Node.js 18, including Dockerfile best practices for the encryption microservice.
+- [FACT] The user explicitly asked for semantic versioning automation using `semver` and changelog generation from commit history in Node.js for versions ranging from `v0.3.0` to `v0.5.1`.
+- [FACT] The user explicitly asked for rollback-strategy scripting using Docker in Node.js for the CI/CD pipeline.
+- [FACT] The user explicitly asked for a Gantt-chart / board-style planning example in Trello or Asana to meet the `June 10, 2024` CI/CD deadline.
+- [FACT] The user explicitly asked about using `Node.js crypto module v20.3` for AES-GCM examples.
+- [FACT] The user explicitly asked whether testing lazy loading in different browsers is necessary after fixing React Suspense issues.
+- [FACT] The user explicitly asked about React Suspense error `Cannot read property 'then' of undefined`.
+- [FACT] The user explicitly asked about automated integration tests running on every pull request with a `95%` code coverage threshold and asked how to optimize slow tests.
+- [DECISION] Because the final request is a handoff prompt after broad topic drift, the next agent should first offer focused continuation paths rather than assume a single active thread. The strongest current candidates are:
+- [FACT] Later conversation included explicit React loading-skeleton / perceived wait-time measurement and component load-time measurement threads, beyond earlier generic frontend optimization summaries.
+- [FACT] Later conversation included gRPC internal microservice communication latency troubleshooting and specific Node.js gRPC keep-alive configuration questions.
+- [FACT] Later conversation included Redis cache-layer implementation questions for the chatbot API service using the `redis` package in Node.js and TTL-based cache design for reducing DB load.
+- [FACT] Later conversation included Node.js heap-dump analysis / memory-leak debugging for the chatbot API service and questions about additional tools for analyzing heap snapshots.
+- [FACT] Later conversation included ECS/Fargate high-availability scaling to `4 replicas`, ALB/service-discovery/load-balancing setup, and auto-scaling alarm/notification questions.
+- [FACT] Later conversation included health check endpoint performance/scaling questions with the explicit target of `200 OK` within `100ms`.
+- [FACT] Later conversation included correlation-ID generation failure handling and default-value strategy discussions for centralized logging.
+- [DECISION] Because the very last substantive technical topic before the recap was the analytics dashboard planned for `July 2024`, the next agent should offer that as a continuation option alongside auth / clinical / encryption / CI/CD rather than assuming only earlier threads matter.
+- [FACT] Later conversation added explicit UI/UX measurement guidance: multi-language switching user testing reached `90% satisfaction rate`, and future UX work should preserve that metric when discussing improvements.
+- [FACT] Later conversation added a project retrospective scheduling thread with exact date `June 30, 2024`.
+- [FACT] Later conversation added release-tagging discussion for `v1.0.0` as the production-ready chatbot release.
+- [FACT] Later conversation added chatbot latency optimization target change from current `280ms` toward `200ms`.
+- [FACT] Later conversation added admin-panel-specific architecture / session-management / Redis caching / CI/CD questions, which are adjacent to but distinct from the chatbot platform threads.
+- [FACT] Later conversation added speculative `GPT-5` planning questions; these should be treated as non-binding future-interest discussion, not an implementation commitment.
+- [DECISION] Because the final user message was a request for a continuation prompt after heavy topic drift, the next agent should start by re-grounding and offering explicit branches rather than assuming a single latest unresolved issue.
+- [FACT] The last explicit technical topic before the recap was **Docker image-size optimization for the fetcher service** using `python:3.10-slim`, current image size `120MB`, exposing `port 8080`
+- [FACT] User explicitly asked: `How can I modify this Dockerfile to reduce the image size while still including all the necessary dependencies?` for the fetcher service Dockerfile
+- [FACT] User’s ML-service Docker optimization thread separately used `port 8501` and also asked for smaller images with `python:3.10-slim`
+- [DECISION] Because the final user request was a recap/handoff immediately after the fetcher Dockerfile optimization question, the next agent should likely offer to continue with one of these nearby unresolved paths first: `fetcher Dockerfile optimization`, `final fetcher.py retry/caching implementation`, `pytest coverage for fetcher.py`, `PostgreSQL trades schema/query tuning`, or `Sprint 2 planning execution` | supersedes:generic_multi-topic_regrounding
+- [FACT] Latest direct user request before this summary was specifically: review and improve a `BacktestModule` implementation with `sma_crossover_strategy()` and `complex_strategy()` using `Python 3.10` and `pandas`, with intent to support more complex strategies later
+- [FACT] User explicitly showed a `complex_strategy()` combining:
+- [EVENT] The final topic sequence in this session was:
+- [DECISION] Because the latest substantive work shifted from fetcher/Docker back to backtesting architecture, the next continuation should likely start with refactoring `backtest.py` / `BacktestModule` for reusable indicator computation, signal composition, and scalable strategy execution rather than assuming fetcher/Docker is still the nearest active thread | supersedes:generic_fetcher_first_regrounding
+- [UPDATE] `flask_request_timeout_new_discussion: 60s (was: 30s)` | supersedes:none
+- [FACT] `docker_backtesting_image_size_ecs: 130MB`
+- [DECISION] Because the latest recent thread ended on trade-data / trade-status caching questions, the next continuation can plausibly start with cache invalidation strategy for Redis TTL `10 seconds` and in-memory TTL cache correctness if the user wants to resume the nearest unresolved implementation thread | supersedes:none
+- [FACT] `alpaca_auth_url_example_recent: https://app.alpaca.markets/oauth2/auth`
+- [FACT] `alpaca_token_url_example_recent: https://api.alpaca.markets/oauth2/token`
+- [FACT] `alpaca_websocket_attempt_user: wss://api.alpaca.markets/v2/orders`
+- [FACT] `alpaca_websocket_example_assistant: wss://stream.data.alpaca.markets/v2/iex`
+- [FACT] latest direct technical thread before the recap was persistent-session optimization of `LiveTradingAPI` after improving latency from `400ms` to `180ms`
+- [DECISION] Because the latest concrete backend thread was `LiveTradingAPI` session reuse and latency optimization, the next agent can reasonably resume there first unless the user prefers returning to dashboard/Alpaca auth/WebSocket work | supersedes:none
+- [DECISION] Because multiple recent Alpaca auth/WebSocket snippets may be inaccurate, the next agent should validate official Alpaca docs before extending OAuth or WebSocket implementations | supersedes:none
+- [FACT] `frontend_test_coverage_new: 90% (was: 70%)` was explicitly stated in this conversation and should persist for future frontend testing discussions.
+- [FACT] `redis_cache_ttl_recent: 12 hours`
+- [DECISION] Because this conversation introduced many likely inaccurate or loosely specified assistant examples across Twilio/Auth0/AWS, the next agent should validate official vendor docs before extending any of those integrations.
+- [FACT] Latest direct unresolved user request before the recap was specifically about optimizing a **real-time trade logging system using Kafka and Elasticsearch** so it can handle **high volumes of trade data** and **scale horizontally as needed**, with a shown `KafkaConsumer('my_topic', bootstrap_servers=['localhost:9092'], auto_offset_reset='earliest', enable_auto_commit=True)`
+- [DECISION] Because the final substantive technical thread ended on **scalability of the Kafka + Elasticsearch trade logging system**, the next continuation should likely start with **horizontal scaling architecture** (partitioning, consumer groups, sink scaling, Elasticsearch bulk ingestion, decoupling, backpressure) rather than older Kafka Manager or DLQ-only threads | supersedes:generic_monitoring_first_regrounding
+- [FACT] User explicitly attempted unsupported Kafka config/property usage multiple times in this thread:
+- [TEMPORAL] Within this Kafka / Elasticsearch session, the topic order was: producer optimization → durability → HA → Elasticsearch troubleshooting → circuit breaker → monitoring/alerts → Kafka Manager/MSK → JVM heap → schema/Watcher → consumer tuning → MSK encryption confusion → sprint planning → DLQ alerting → webhook analytics → AWS MSK throughput tuning → pipeline robustness → Elasticsearch sink connector → horizontal scalability | order:220-258
+- [DECISION] Because several assistant answers likely conflated **Kafka config**, **Kafka Connect config**, **MSK cluster config**, and **topic config**, the next agent should verify official docs before giving implementation advice on DLQ, encryption-at-rest, Kafka Manager, and sink connector details | supersedes:generic_validate_docs
+- [FACT] The latest direct unresolved user request before the recap was specifically about optimizing a **real-time trade logging system using Kafka and Elasticsearch** so it can handle **high volumes of trade data** and **scale horizontally as needed**, with a shown `KafkaConsumer('my_topic', bootstrap_servers=['localhost:9092'], auto_offset_reset='earliest', enable_auto_commit=True)`
+- [DECISION] Because the final substantive technical thread ended on **scalability of the Kafka + Elasticsearch trade logging system**, the next continuation should likely start with **horizontal scaling architecture** (partitioning, consumer groups, sink scaling, Elasticsearch bulk ingestion, decoupling, backpressure) rather than older Kafka Manager or DLQ-only threads | supersedes:generic_monitoring_first_regrounding
+- [FACT] User explicitly attempted unsupported Kafka config/property usage multiple times in this thread:
+- [TEMPORAL] Within this Kafka / Elasticsearch session, the topic order was: producer optimization → durability → HA → Elasticsearch troubleshooting → circuit breaker → monitoring/alerts → Kafka Manager/MSK → JVM heap → schema/Watcher → consumer tuning → MSK encryption confusion → sprint planning → DLQ alerting → webhook analytics → AWS MSK throughput tuning → pipeline robustness → Elasticsearch sink connector → horizontal scalability | order:220-258
+- [DECISION] Because several earlier assistant answers likely conflated **Kafka config**, **Kafka Connect config**, **MSK cluster config**, and **topic config**, the next agent should verify official docs before giving implementation advice on DLQ, encryption-at-rest, Kafka Manager, and sink connector details | supersedes:generic_validate_docs
+- [FACT] New domain/thread introduced here is a custom image-captioning system centered on `Python 3.10`, `PyTorch 1.13`, `Transformers v4.29`, `FastAPI v0.95`, `PostgreSQL 14.3`, `Docker 20.10`, `torchvision 0.14.1`, and `pylint 2.15.4`
+- [FACT] User’s current image-captioning milestone schedule was updated to:
+- [FACT] User’s current latency target in this thread is `under 250ms per image` on `NVIDIA RTX 3090`, with observed API latency `320ms on an RTX 3090`
+- [FACT] User’s current dataset setup in this thread is `COCO 2017` with `123,287 images` and `5 captions each` and `BPE vocab size 30,000`
+- [FACT] User’s current cloud target in this thread is `AWS EC2 g4dn.xlarge` with `S3 bucket for dataset storage (50GB)`
+- [FACT] User repeatedly asked about `Stable Diffusion v2.1` feature extraction, specifically wanting `768-dim embeddings` from `stabilityai/stable-diffusion-2-1-base`
+- [FACT] User’s current API work in this thread is centered on FastAPI `POST /caption` / `POST /caption/` with base64 image input or uploaded image input and JSON caption response on `port 8000`
+- [FACT] User’s current Docker issue in this thread is image size `1.2GB` for a `Python 3.10`, `PyTorch 1.13`, `FastAPI` image with dependencies pinned in `requirements.txt`
+- [FACT] User’s current PostgreSQL schema in this thread includes:
+- [DECISION] Because the user’s final request is a handoff summary after an image-captioning-specific thread, the next agent should re-ground on one of these active branches:
+- [DECISION] Because many examples in this thread used likely invalid Hugging Face class names (`DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`) and likely invalid diffusion-pipeline method calls (`pipe.preprocess_image`, `pipe.get_embeddings`), the next agent should correct API/class usage before extending any implementation.
+- [FACT] The very latest unresolved user request before the recap was not model training; it was **AWS EKS cost vs management overhead evaluation** for container orchestration using `boto3` / `eks.list_clusters()` context
+- [FACT] The user explicitly asked for a **detailed analysis of the costs and benefits** of using **AWS EKS**
+- [FACT] New exact versions introduced in the latest image-captioning continuation that were not fully reflected in prior PK:
+- [FACT] A newer latency data point was introduced: Redis caching brought caption API latency down to `210ms`
+- [FACT] A newer optimization target was introduced: reduce average latency from `210ms` to `140ms on an RTX 3090 GPU`
+- [FACT] The user added `confidence_score FLOAT NOT NULL` to the `captions` table for ranking generated captions
+- [FACT] The user asked specifically about PostgreSQL `GIN` + `pg_trgm` indexing on `captions.text` and how to verify index usage with `EXPLAIN`
+- [EVENT] The later image-captioning thread order after the initial recap moved through:
+- [DECISION] Because the final unresolved user topic is AWS EKS evaluation, the next agent should start with **EKS pros/cons, control plane cost, worker-node cost, ops burden, scaling, networking, observability, and when EKS is worth it for this image-captioning microservices architecture**, while preserving the user’s version/detail preferences | supersedes:image_captioning_generic_next_steps
+- [UPDATE] `latest_active_request: CI/CD pipeline integration for existing codebase using build_and_deploy() stub` (was: multiple earlier unresolved branches such as EKS evaluation / image-captioning deployment) | supersedes:previous_active_thread_assumptions
+- [FACT] The latest direct user code before recap was:
+- [FACT] `grafana_version_recent_user_thread: 9.4` is different from older PK `grafana_version_recent: 9.5` and should be preserved as a separate exact thread value
+- [FACT] API Gateway throttling in this thread was explicitly `1000 requests per minute`, not `1000 requests per second`
+- [EVENT] The final order immediately before recap was: Prometheus/Grafana → Auth0 PKCE → caption feedback DB → CUDA Docker → Redis timeout → Redis health check → cuDNN benchmark → webhook robustness → Socket.IO realtime captions → FastAPI OAuth2/JWT → pandas→polars → transformer fine-tuning → image preprocessing integration → CI/CD pipeline request → recap request | order:latest
+- [DECISION] Because the conversation ended on a CI/CD implementation request, the next agent should begin with pipeline design/integration unless the user explicitly redirects to another earlier thread | supersedes:older_branch_priority
+- [UPDATE] `latest_active_request: PyTorch Lightning gradient accumulation implementation using accumulate_grad_batches=4` (was: `CI/CD pipeline integration for existing codebase using build_and_deploy() stub`) | supersedes:latest_active_request
+- [FACT] The latest user code used `self.manual_backward(loss)` together with `trainer = pl.Trainer(accumulate_grad_batches=4)`, which implies a likely mismatch between manual and automatic optimization modes
+- [FACT] The latest user code manually called `self.optimizer.step()` and `self.optimizer.zero_grad()` inside `training_step`, but no valid `configure_optimizers` or optimizer assignment was shown
+- [FACT] The latest user code referenced `pl.transforms.Transformer()`, which is likely not a valid PyTorch Lightning API surface and should be revalidated before continuing
+- [DECISION] Because the newest unresolved request is specifically about Lightning gradient accumulation correctness, the next agent should begin with a corrected Lightning v2.0.1 training example using `accumulate_grad_batches=4`, explain why the current code is wrong, and only resume earlier CI/CD/Auth/Redis branches if the user redirects | supersedes:older_branch_priority
+- [UPDATE] `latest_active_request: common pitfalls when migrating to serverless` (was: `PyTorch Lightning gradient accumulation implementation using accumulate_grad_batches=4`) | supersedes:latest_active_request
+- [FACT] `react_testing_library_version: v14.0.0`
+- [FACT] `lambda_cold_start_target_example: 300ms`
+- [FACT] `api_gateway_timeout_updated_example: 60s (was: 30s)`
+- [FACT] `lambda_prewarmed_instances_example: 5`
+- [FACT] latest unresolved serverless question followed immediately after a migration walkthrough, so the next agent should continue with **pitfalls + mitigation + scaling strategies**, not restart from first-principles Lambda setup | order:323-324
+- [DECISION] Because the user explicitly asked about migrating from traditional server-based architecture to serverless and then asked about pitfalls, the next response should likely be structured as: benefits → pitfalls → mitigations → serverless scaling strategies → smooth-transition checklist | supersedes:generic_serverless_guidance
+- [UPDATE] `latest_active_request: Slack webhook notifications for critical system alerts and errors` (was: `common pitfalls when migrating to serverless`) | supersedes:latest_active_request
+- [FACT] User explicitly referenced locked production versions in the latest request: `PyTorch 1.13.1` and `Transformers v4.29`
+- [FACT] `elasticsearch_version_elk_thread: 8.7`
+- [FACT] `etl_schedule_interval: every 6 hours`
+- [EVENT] The latest final sequence before the summary request was: CloudWatch error-rate alarm simulation → Slack webhook implementation request → user asked `What did we do so far?` → user requested this continuation prompt | order:397-400
+- [DECISION] Because the user’s newest actual request is Slack webhook implementation for critical alerts, the next answer should begin there, not with serverless migration pitfalls or older CUDA/React branches | supersedes:generic_serverless_guidance
+- [UPDATE] latest active thread is now `automatic metric reporting for model performance queries` (was: `Slack webhook notifications for critical system alerts and errors`) | supersedes:latest_active_request
+- [FACT] user explicitly reported `over 1,200 registered users in the first week` for the public beta gallery app
+- [FACT] user explicitly requested automatic appending of `BLEU-4`, `METEOR`, and `CIDEr` to model-performance queries using `t5-base` example code
+- [DECISION] Because the latest direct user request is code for automatic metric appending, the next agent should continue there first rather than resuming older webhook/serverless topics.
+- [FACT] The latest local frontend/CV branch added explicit React UI component names `VideoStream` and `ControlPanel`, which are not clearly indexed in older PK as the current active frontend artifacts
+- [FACT] The user’s final unresolved request in this branch was specifically to start with `np.float32` / `np.uint8` usage after fixing `MemoryError: Unable to allocate 1.2GB array`, which is more specific than the broader older PK entry about frame-processing optimization
+- [EVENT] The conversation sequence in this branch moved from frontend React/WebSocket/UI optimization back to backend memory optimization, ending on dtype-specific guidance rather than remaining on UI work | order:464-468
+- [UPDATE] `latest_active_request: configure sticky sessions on an AWS ALB for ECS microservices deployment with detection, tracking, and API gateway services using service discovery, to improve WebSocket/API communication and reduce intermittent WebSocket disconnects` (was: `optimize frame processing after fixing MemoryError: Unable to allocate 1.2GB array by downscaling to 480p`) | supersedes:latest_active_request
+- [FACT] user’s latest production architecture was explicitly `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled`
+- [FACT] user’s ECS production cluster was explicitly `3 t3.medium instances behind an AWS ALB on port 80/443`
+- [EVENT] after earlier local frontend/CV/memory-optimization work, the conversation advanced into AWS ECS deployment operations and ended on ALB sticky sessions / WebSocket stability before the final recap request | order:after_470
+- [DECISION] Because the user’s latest unresolved question was specifically about sticky sessions on ALB for ECS microservices communication, the next continuation should focus on **ALB target group stickiness**, **WebSocket implications**, **service-to-service communication**, and likely **AWS CLI/Boto3 examples**, rather than returning to local dtype optimization | supersedes:generic_frame_optimization_advice
+- [FACT] In the recent AWS branch, after sticky-session discussion the user also asked about broader troubleshooting for intermittent WebSocket disconnects, including what specific signs to look for in logs.
+- [FACT] The user later branched into CodeDeploy deployment-group update logic, CloudTrail parsing, maintenance-window scripting, OAuth2 token revocation, Docker startup optimization, Redis query caching, architecture documentation, Cypress `12.17` E2E planning, graceful shutdown, Grafana-to-Slack alerts, latency plotting, and deployment timeline planning, but none of those became the final active thread.
+- [DECISION] Despite those later AWS/ops side branches, the latest unresolved request before this recap remained the **ALB sticky sessions / ECS microservices / WebSocket reliability** topic, so continuation should resume there unless the user redirects.

@@ -1,493 +1,2163 @@
 ## Persistent Knowledge (CRITICAL — accumulates across rounds, never discard)
 
 ### Value Registry (MOST CRITICAL — exact values only)
+- `opencv_version: 4.7.0`
 - `python_version: 3.10`
-- `python_version_recommended: 3.10.10`
-- `pytorch_version: 1.13`
-- `pytorch_version_recommended: 1.13.1`
-- `transformers_version: v4.29`
-- `transformers_version_recommended: 4.29.2`
-- `fastapi_version: 0.95`
-- `postgresql_version: 14.3`
+- `python_version_alt: 3.10.6`
+- `torch_version: 1.13.1`
 - `pytest_version: 7.2.0`
-- `pylint_version: 2.15.4`
-- `torchvision_version: 0.14.1`
-- `docker_version: 20.10`
+- `cpu_model: Intel i5-8250U`
+- `latency_target: under 250ms per frame`
+- `fps_target: 30 FPS`
+- `observed_fps: 28-30 FPS`
+- `latency_observed: 160ms`
+- `latency_goal: 150ms`
+- `api_response_time: 50ms under 10 concurrent requests`
+- `counting_overhead: 15ms`
+- `ram_usage: 900MB during 30-minute continuous run with counting enabled`
+- `ram_budget: under 1GB`
+- `frame_size: 640x480`
+- `input_size: 640x640`
+- `ssd_input_example: 300x300`
+- `nms_iou_threshold: 0.45`
+- `nms_threshold: 0.5`
+- `confidence_threshold: 0.7`
+- `rest_api_port: 5000`
+- `docker_api_port: 5000`
+- `docker_api_port_alt: 5001`
+- `zeromq_endpoint: tcp://localhost:5555`
+- `zeromq_rcv_timeout: 5000`
+- `docker_image_tag: cv-app:v0.1`
+- `log_file: app.log`
+- `log_max_bytes: 5*1024*1024`
+- `log_backup_count: 1`
+- `missing_docker_dependency: libgl1-mesa-glx`
+- `weights_size: 14MB`
+- `weights_size_updated: 14.2MB`
+- `weights_update_date: March 10, 2024`
+- `ssd_mobilenet_v2_model_size: 30MB`
+- `deadline: April 20, 2024`
 - `react_version: 18.2`
-- `api_port: 8000`
-- `feature_extraction_port: 8001`
-- `caption_generation_port: 8002`
-- `target_latency: under 250ms per image`
-- `measured_latency: 320ms`
-- `gpu_target: NVIDIA RTX 3090`
-- `ec2_instance_type: g4dn.xlarge`
-- `s3_storage_target: 50GB`
-- `coco_dataset_size: 123,287 images`
-- `captions_per_image: 5`
-- `gpt2_small_params: 124M`
-- `epoch_time_change: 28m (was: 45m)`
-- `memory_reduction_with_amp: 40%`
-- `docker_image_size_issue: 1.2GB`
-- `batch_size_values: 32, 16, 64`
-- `learning_rate_values: 5e-5, 3e-5, 1e-4, 2e-4`
+- `jest_version: 29.5`
+- `numpy_version: 1.24.2`
+- `numba_version: 0.57.0`
+- `flask_version: 2.3.2`
+- `flask_socketio_version: 5.3.2`
+- `confidence_threshold_tracker_reset: 0.2`
+- `frontend_port: 3000`
+- `redis_port: 6379`
+- `websocket_port: 6000`
+- `docker_image_tag_gpu: gpu-v0.2`
+- `deadline_sort_tracking: May 5, 2024`
+- `deadline_ui_frontend: May 20, 2024`
+- `deadline_uat: June 5, 2024`
+- `uat_volunteers: 5 paramedic volunteers`
+- `tracker_memory_footprint: 120MB stable during a 1-hour continuous run`
+- `tracker_memory_footprint_reduced: 90MB during a 1-hour continuous run`
+- `frontend_memory_usage: 150MB during a 1-hour continuous streaming session`
+- `frontend_memory_usage_reduced: 100MB during a 1-hour continuous streaming session`
+- `gpu_memory_usage_stable: 3.2GB during continuous inference`
+- `frontend_render_latency: 50ms per frame`
+- `ui_update_rate: 20 FPS`
+- `tensorrt_inference_time: 60ms`
+- `gpu_accelerated_latency: 90ms`
+- `tensorrt_wrapper_latency: 210ms`
+- `gpu_total_frame_latency: 115ms`
+- `cpu_total_frame_latency: 235ms`
+- `sort_max_age: 30`
+- `sort_min_hits: 3`
+- `sort_iou_threshold: 0.3`
+- `confidence_slider_min: 0.1`
+- `confidence_slider_max: 0.9`
+- `backend_resolution: 640x480`
+- `frontend_canvas_resolution: 1280x720`
+- `downscaled_processing_resolution: 640x480`
+- `downscaled_processing_label: 480p`
+- `memory_error_array_size: 1.2GB`
+- `webpack_bundle_size_initial: 1.2MB`
+- `webpack_bundle_size_optimized: 650KB`
+- `socketio_ping_timeout: 60`
+- `socketio_ping_interval: 30`
+- `schema_version_current: 1.1`
+- `schema_version_planned: 1.2`
+- `latency_observed_additional: 170ms`
+- `ram_usage_additional: 850MB during 10-minute continuous webcam streaming`
+- `nms_threshold_additional: 0.45`
+- `confidence_threshold_additional: 0.5`
+- `flask_version_upgrade_target: 2.3.3`
+- `flask_version_previous_user_version: 2.2.2`
+- `selenium_version: 4.9.0`
+- `flake8_version: 6.0.0`
+- `coverage_py_version: 7.2.7`
+- `sqlite_version: 3.39.4`
+- `dompurify_version: 2.3.4`
+- `aiofiles_version: 23.1.0`
+- `snyk_cli_version: 2.15.0`
+- `terraform_version: 1.4.6`
+- `locust_version: 2.15`
+- `black_version: 23.1.0`
+- `pip_tools_freeze_date: July 15, 2024`
+- `aws_ec2_instance_type: t3.medium`
+- `aws_os: Ubuntu 22.04 LTS`
+- `docker_version: 23.0.1`
+- `nvidia_driver_version: 525.60.11`
+- `ecs_cluster_instance_count: 3`
+- `alb_ports: 80/443`
+- `api_gateway_backend_port: 5000`
+- `k8s_nodeport_example: 30000`
+- `aws_deployment_target: June 25, 2024`
+- `security_audit_date: July 10, 2024`
+- `release_candidate_date: July 20, 2024`
+- `load_test_rps: 100 RPS`
+- `load_test_latency_percentile: 95% of requests under 300ms latency`
+- `uptime_result: 99.9% uptime over a 7-day monitoring period`
+- `aws_api_response_time_old: 180ms under 50 concurrent users`
+- `aws_api_response_time_new: 120ms under 50 concurrent users`
+- `ecs_cpu_reservation_old: 512`
+- `ecs_cpu_reservation_new: 1024 (was: 512)`
+- `batch_size: 3`
+- `throughput_improvement: 20%`
+- `container_memory_limit: 2GB`
+- `container_soft_limit: 1.8GB`
+- `container_memory_config_example: 2048`
+- `container_memory_reservation_example: 1800`
+- `api_gateway_cache_ttl: 60 seconds`
+- `api_gateway_throttle_rate: 1000 requests per second`
+- `api_gateway_throttle_burst: 200`
+- `rate_limit_per_ip: 60 requests per minute per IP`
+- `prometheus_alert_cpu: >80%`
+- `prometheus_alert_memory: >75%`
+- `prometheus_alert_api_error_rate: >1%`
+- `ec2_security_group_example_cidr: 192.168.1.0/24`
+- `alpine_image_size_old: 1.1GB`
+- `alpine_image_size_new: 350MB`
+- `backend_image_size_newer: 250MB`
+- `aws_api_response_time_additional: 110ms under 100 concurrent users`
+- `gzip_asset_reduction: 40%`
+- `container_startup_time_old: 25s`
+- `container_startup_time_new: 10s (was: 25s)`
+- `cloudtrail_event_time_example: 2024-07-21T14:30:00Z`
+- `maintenance_window_date: August 1, 2024`
+- `maintenance_window_time: 12:00:00`
+- `app_version_release: 1.0.0`
+- `cypress_version: 12.17`
+- `deployment_timeline_start_date: 2024-07-20`
+- `deployment_timeline_end_date: 2024-07-25`
+- `latency_observed_210ms: 210ms`
+- `counting_enabled_total_frame_latency: 180ms`
+- `orjson_latency_reduction: 40%`
+- `feature_flag_tensorrt_deadline: April 20, 2024`
+- `api_post_commands_deadline: April 15, 2024`
+- `object_counting_and_multiclass_tracking_deadline: April 1, 2024`
+- `basic_detection_pipeline_deadline: March 15, 2024`
+- `unit_tests_detector_deadline: March 20, 2024`
+- `python_version_social_media: 3.10`
+- `tweepy_version: 4.10.1`
+- `facebook_sdk_version: 3.1.0`
+- `apscheduler_version: 3.9.1`
+- `requests_version: 2.28.1`
+- `click_version_social_media: 8.1.3`
+- `flake8_version_social_media: 5.0.4`
+- `pytest_version_social_media: 7.2.0`
+- `postgresql_version_social_media: 14`
+- `rabbitmq_version: 3.9.13`
+- `tqdm_version: 4.64.1`
+- `pillow_version: 9.4.0`
+- `selenium_version_social_media: 4.8.0`
+- `react_version_social_media: 18.2`
+- `sprint_start_date_social_media: March 1, 2024`
+- `sprint_end_original: March 15, 2024`
+- `sprint_end_extended: March 18, 2024 (was: March 15, 2024)`
+- `instagram_prototype_deadline_original: April 1, 2024`
+- `instagram_prototype_deadline_updated: April 5, 2024 (was: April 1, 2024)`
+- `oauth_issue_date: March 2, 2024`
+- `token_error_logged_date: March 3, 2024`
+- `facebook_graph_api_v12_0: v12.0`
+- `facebook_graph_api_v13_0: v13.0`
+- `facebook_graph_api_v15_0: v15.0`
+- `instagram_graph_api_version: v15.0`
+- `twitter_api_version: v2`
+- `twitter_media_upload_endpoint: https://upload.twitter.com/1.1/media/upload.json`
+- `twitter_tweets_endpoint: https://api.twitter.com/2/tweets`
+- `facebook_photos_endpoint_v12: https://graph.facebook.com/v12.0/me/photos`
+- `facebook_feed_endpoint_v15: https://graph.facebook.com/v15.0/me/feed`
+- `instagram_media_endpoint_v15: https://graph.instagram.com/v15.0/{ig-user-id}/media`
+- `instagram_media_publish_endpoint_v15: https://graph.instagram.com/v15.0/{ig-user-id}/media_publish`
+- `twitter_tweet_limit: 280 characters`
+- `instagram_post_limit_per_day: 25 posts per day`
+- `instagram_hashtag_limit: 30 hashtags per post`
+- `facebook_rate_limit_example: 200 calls per hour per user`
+- `twitter_rate_limit_token_bucket: 300 per 15 minutes`
+- `twitter_post_response_target: under 300ms`
+- `scheduled_posts_query_target: under 50ms`
+- `db_query_time_old: 400ms`
+- `db_query_time_new: 120ms (was: 400ms)`
+- `facebook_post_time_old: 1.2s`
+- `facebook_post_time_target: 600ms (was: 1.2s)`
+- `scheduler_memory_old: 70MB`
+- `scheduler_memory_new: 45MB (was: 70MB)`
+- `scheduler_memory_cap_target: 50MB during 100 concurrent scheduled posts`
+- `dispatch_delay_under_load: 500ms`
+- `scheduler_uptime_target: 99.9% uptime`
+- `throughput_improvement_claim_async: 30%`
+- `ubuntu_version_social_media: 22.04`
+- `gunicorn_version: 20.1.0`
+- `nginx_port: 8080`
+- `gunicorn_bind: 0.0.0.0:8000`
+- `redis_port_social_media: 6379`
+- `ngrok_local_api: http://localhost:4040`
+- `error_401: 401 Unauthorized`
+- `error_403: 403 Forbidden`
+- `error_400: 400 Bad Request`
+- `error_invalid_or_expired_token: Invalid or expired token`
+- `facebook_permissions_error: facebook.GraphAPIError: (#200) Permissions error`
+- `error_rate_limit_exceeded: Rate limit exceeded`
+- `error_js_style_undefined: undefined is not a function`
+- `tweepy_version_alt: 4.12.1`
+- `spacy_version: 3.5.0`
+- `redis_py_version: 4.3.4`
+- `rich_version: 13.3.2`
+- `sentry_version: 1.12.0`
+- `black_version_alt: 22.3.0`
+- `isort_version: 5.10.1`
+- `react_native_version: 0.71`
+- `openssl_version: 3.0.7`
+- `psutil_version: 5.9.4`
+- `twitter_api_version_alt: v2.3.1`
+- `dispatch_latency_new: 150ms (was: 500ms)`
+- `image_processing_time_new: 200ms (was: 800ms)`
+- `docker_image_size_new: 85MB (was: 120MB)`
+- `redis_db_load_reduction: 30%`
+- `facebook_cpu_usage_new: 20% (was: 35%)`
+- `materialized_view_query_time_new: 400ms (was: 1.5s)`
+- `frontend_port_social_media_example: 3000`
+- `aws_ec2_instance_type_social_media_example: t3.medium`
+- `aws_ec2_upgrade_target: t3.large`
+- `haproxy_version: 2.6.0`
+- `haproxy_backend_instance_count: 4`
+- `facebook_token_incident_date: May 1, 2024`
+- `rabbitmq_lag_incident_date: May 3, 2024`
+- `mobile_demo_date: May 10, 2024`
+- `error_application_request_limit_reached: (#10) Application request limit reached`
+- `error_insufficient_instance_capacity: InsufficientInstanceCapacity`
+- `error_insufficient_instance_capacity_full: An error occurred (InsufficientInstanceCapacity) when calling the ModifyInstanceAttribute operation: The requested instance type (t3.large) is not available in the current availability zone.`
+- `error_invalid_media_id: Invalid media ID`
+- `error_none_id_attribute: AttributeError: 'NoneType' object has no attribute 'id'`
+- `error_connection_reset: ConnectionResetError`
+- `error_key_media_id: KeyError: 'media_id'`
+- `error_key_type: KeyError: 'type'`
+- `error_oauth_token_validation: OAuthException: Error validating access token`
+- `requests_version_updated: 2.28.2 (was: 2.28.1)`
+- `aiohttp_version: 3.8.3`
+- `expo_version: 5.4.4`
+- `postman_version: 10.15.0`
+- `facebook_cpu_time_before_json_optimization: 25%`
+- `facebook_cpu_time_after_json_optimization: 15% (was: 25%)`
+- `scheduler_cpu_spike_reduction_lambda_offload: 35%`
+- `api_gateway_cache_backend_load_reduction: 20%`
+- `api_gateway_target_after_load_test: 1500 requests per minute`
+- `memory_management_test_coverage_current: 96%`
+- `instagram_automation_test_coverage_current: 88%`
+- `twitter_caption_parser_test_coverage_current: 94%`
+- `facebook_insights_test_coverage_target: 90%`
+- `uptime_sla_exact: 99.9%`
+- `haproxy_requested_backend_count_new: 5 backend API servers`
+- `error_monitoring_retrospective_date: May 18, 2024`
+- `data_privacy_audit_date: June 1, 2024`
+- `react_native_deploy_log_date: June 4, 2024`
+- `ui_multiselect_update_date: June 19, 2024`
+- `release_version_1_1_0_target: July 10, 2024`
+- `sprint_retrospective_date_agile: July 3, 2024`
+- `error_timeout_error: TimeoutError`
+- `error_502: 502`
+- `token_rotation_interval_old_discussion: 45 minutes`
+- `token_rotation_interval_encryption_keys: 45 days`
+- `token_rotation_interval_instagram_keys_new: 90 days (was: 45 days in another context)`
+- `twitter_average_post_latency_reported: 800ms`
+- `release_v1_1_0_postponed: July 15, 2024 (was: July 10, 2024)`
+- `production_rollout_date: July 18, 2024`
+- `post_rollout_uptime: 99.95% uptime in the first 48 hours`
+- `documentation_last_updated: July 19, 2024`
+- `final_sprint_review_date: July 19, 2024`
+- `release_tag_facebook_integration: v1.0.0 on July 17, 2024`
+- `facebook_success_rate_target: above 99.8%`
+- `pagerduty_response_time_target: under 5 minutes`
+- `instagram_stability_validation: 1000+ posts over 7 days, with no failures reported`
+- `engagement_records_daily_volume: 12 million engagement records daily`
+- `database_size_example: 10 GB`
+- `backup_schedule: daily backup at 2:00 AM UTC`
+- `user_stated_twitter_latency: 150ms`
+- `node_version_chatbot_stack: 18`
+- `postgresql_version_chatbot_stack: 14`
+- `vite_version: 4.3`
+- `redis_version: 7.0`
+- `jwt_library_version: 8.5.1`
+- `eslint_version: 8.40`
+- `winston_version: 3.8`
+- `openai_api_version_chatbot: v2024-02`
+- `openai_average_response_time_reference: 250ms`
+- `language_detection_accuracy_current: 93%`
+- `language_detection_accuracy_target: 95%`
+- `language_detection_response_time_current: 180ms under 100 concurrent requests`
+- `language_detection_response_time_target: under 100ms`
+- `sample_text_count_tested: 500+ sample texts`
+- `translation_api_deadline: March 25, 2024`
+- `language_detection_accuracy_deadline: March 10, 2024`
+- `docker_image_size_target_chatbot: under 150MB`
+- `in_memory_cache_expiration: 5 minutes`
+- `redis_message_cache_limit: last 10 messages per user session`
+- `jwt_access_token_expiration_example: 1 hour`
+- `tls_version_required: 1.3`
+- `https_port_required: 443`
+- `language_detection_service_port: 3000`
+- `memory_store_service_port: 4000`
+- `chatbot_api_service_port: 5000`
+- `postgresql_default_port: 5432`
+- `api_latency_target_chatbot: under 300ms`
+- `language_detection_debounce_ms: 300ms`
+- `deepl_latency_advantage: 15% lower latency than Google Translate API v3`
+- `contextual_memory_store_target_date: April 10, 2024`
+- `sprint_review_translation_language_detection: April 1, 2024`
+- `translation_service_latency_old_example: 220ms`
+- `translation_service_latency_optimized_example: 180ms`
+- `translation_service_latency_target_example: under 200ms`
+- `redis_cache_hit_rate_translation_example: 85%`
+- `webhook_polling_reduction_example: 60%`
+- `express_version_chatbot_later: 4.18`
+- `typescript_version_backend_later: v5.0`
+- `release_tag_memory_store_integration: v0.3.0`
+- `clinical_dataset_size: 10,000 anonymized clinical psychology dialogues`
+- `clinical_finetune_epochs: 12 epochs`
+- `clinical_validation_loss_reduction: 0.45 to 0.12`
+- `clinical_inference_latency: 280ms`
+- `clinical_latency_delta_vs_base: 30ms slower than the base GPT-4 model`
+- `clinical_endpoint_local_example: http://localhost:5001/api/gpt-4-clinical`
+- `clinical_endpoint_port_local_example: 5001`
+- `clinical_endpoint_error_500: 500`
+- `clinical_endpoint_error_503: 503 Service Unavailable`
+- `openai_invalid_dataset_format_error: Invalid dataset format`
+- `openai_invalid_fine_tune_dataset_format_error: Invalid fine-tune dataset format`
+- `openai_validation_loss_not_decreasing_error: Validation loss not decreasing`
+- `auth_microservice_port: 6000`
+- `access_token_expiry_example_auth_microservice: 2h`
+- `refresh_token_expiry_example_auth_microservice: 7 days`
+- `jwt_extended_expiry_example: 3 hours`
+- `jwt_verification_latency_current: 100ms`
+- `jwt_verification_latency_target: under 50ms`
+- `authentication_api_response_time_current: 180ms under 100 concurrent users`
+- `login_api_response_time_old: 450ms`
+- `login_api_response_time_new: 220ms (was: 450ms)`
+- `may_1_2024_auth_deadline: May 1, 2024`
+- `nodemailer_version: 6.9.1`
+- `password_reset_token_validation_window_example: 1 hour`
+- `lighthouse_score_current: 90`
+- `lighthouse_score_target: 98`
+- `user_roles_defined_example: admin, moderator, user`
+- `react_query_version_user_mentioned: v4.29`
+- `context_window_size: 20 messages per session`
+- `chatbot_api_response_time_peak_example: 500ms or more during peak usage hours`
+- `chatbot_api_response_time_stable_example: 270ms under 150 concurrent authenticated users`
+- `websocket_port_example: 8080`
+- `websocket_microservice_port: 7000`
+- `websocket_ram_usage_old: 1.2GB`
+- `websocket_ram_usage_new: 800MB (was: 1.2GB)`
+- `redis_pubsub_latency_example: 50ms`
+- `kubernetes_version_websocket: v1.27`
+- `redis_pubsub_max_payload_example: 1048576`
+- `redis_pubsub_max_channels_example: 10000`
+- `websocket_reconnect_interval_example: 5 seconds`
+- `integration_testing_sprint_start: May 10, 2024`
+- `integration_testing_sprint_end: May 15, 2024`
+- `chatbot_auth_memory_integration_target: May 15, 2024`
+- `e2ee_target_date: May 30, 2024`
+- `certificate_renewed_date: April 25, 2024`
+- `encryption_microservice_port: 7500`
+- `encryption_average_latency: 15ms`
+- `encryption_microservice_memory_usage: 350MB under 1000 messages per day`
+- `encrypted_payload_base64_overhead: about 30%`
+- `encryption_error_invalid_padding: ValueError: Invalid padding`
+- `encryption_error_invalid_auth_tag: Invalid authentication tag`
+- `encryption_error_socket_hang_up: socket hang up`
+- `ci_cd_target_date: June 10, 2024`
+- `gdpr_audit_date: June 15, 2024`
+- `github_runner_disk_size: 50GB`
+- `docker_image_size_reduced_example: 180MB to 90MB`
+- `user_analytics_dashboard_deploy_target: July 2024`
+- newer conversation additions:
+- `ui_language_switching_satisfaction_rate: 90%`
+- `project_retrospective_date: June 30, 2024`
+- `code_coverage_threshold_pr_integration: 95%`
+- `python_version_fetcher_stack: 3.10`
+- `flask_version_fetcher_stack: 2.3.2`
+- `react_version_fetcher_stack: 18.2`
+- `postgresql_version_trading_bot: 14`
+- `redis_version_trading_bot: 7.0`
+- `pytest_version_fetcher_tests: 7.3.1`
+- `talib_version: 0.4.24`
+- `tensorflow_version_lstm: 2.11`
+- `docker_base_image_fetcher: python:3.10-slim`
+- `alpha_vantage_api_version: v2.1`
+- `alpha_vantage_endpoint: https://www.alphavantage.co/query`
+- `alpha_vantage_rate_limit: 5 calls per minute`
+- `alpha_vantage_interval: 1min`
+- `alpha_vantage_function: TIME_SERIES_INTRADAY`
+- `alpha_vantage_env_key: ALPHA_VANTAGE_KEY`
+- `alpha_vantage_key_rotation_date: March 14, 2024`
+- `error_key_time_series_1min: KeyError: 'Time Series (1min)'`
+- `error_http_429: HTTP 429 "Too Many Requests"`
+- `error_http_500_internal_server: 500 Internal Server Error`
+- `error_json_decode: JSONDecodeError`
+- `manual_rate_limit_delay: 12 seconds`
+- `api_response_time_old_alpha_vantage: 400ms`
+- `api_response_time_new_alpha_vantage: 220ms (was: 400ms)`
+- `api_response_time_target_stock_fetch: under 250ms`
+- `api_endpoint_prices_target: under 150ms`
+- `redis_cache_ttl_stock_prices: 60 seconds`
+- `query_time_old_recent_trades: 1.2 seconds`
+- `query_time_new_recent_trades: 0.3 seconds (was: 1.2 seconds)`
+- `memory_usage_old_loader: 180MB`
+- `memory_usage_new_loader: 140MB (was: 180MB)`
+- `milestone_1_completion_date: March 15, 2024`
+- `milestone_1_price_points: 10,000+ price points`
+- `sprint_2_start: March 16, 2024`
+- `sprint_2_end: March 29, 2024`
+- `strategy_accuracy_target: 65% or higher`
+- `historical_data_points_backtest: 5,000 historical data points`
+- `fetcher_coverage_target_discussion: 88%`
+- `code_coverage_target_sprint_discussion: 85%`
+- `alpaca_oauth_token_endpoint: https://api.alpaca.markets/oauth/token`
+- `alpaca_positions_endpoint: https://api.alpaca.markets/v2/positions`
+- `alpaca_paper_orders_endpoint: https://paper-api.alpaca.markets/v2/orders`
+- `alpaca_client_id_env: ALPACA_CLIENT_ID`
+- `alpaca_client_secret_env: ALPACA_CLIENT_SECRET`
+- `ml_service_port: 8501`
+- `fetcher_service_port: 8080`
+- `api_port_prices_example: 5000`
+- `docker_fetcher_image_size_example: 120MB`
+- `flask_version_webhook_later: 2.3.3`
+- `error_connection_reset_errno_104: ConnectionResetError: [Errno 104]`
+- `redis_cache_hit_rate_example_prices: 92%`
+- `pipeline_ram_old_later: 8GB`
+- `pipeline_ram_target_later: 5GB`
+- `historical_data_points_backtest_later: 50,000 historical data points`
+- `ml_preprocessing_coverage: 90%`
+- `backtest_module_coverage: 92%`
+- `integration_test_success_rate_current: 97% as of March 17, 2024`
+- `pipeline_success_rate_target: 93%`
+- `integration_test_coverage_discussion: 95%`
+- `docker_compose_version_user: v2.12.0`
+- `peer_review_submission_date_fetcher_strategy: March 16, 2024`
+- `peer_review_feedback_due: March 18, 2024`
+- `next_sprint_start: March 30`
+- `next_sprint_end: April 12`
+- `backtesting_paper_trading_estimate: 18 hours`
+- `daily_allocation_backtesting_paper: 3 hours`
+- `days_allocated_backtesting_paper: 6 days`
+- `ml_training_evaluation_estimate: 20 hours`
+- `ml_training_deadline: March 29, 2024`
+- `lstm_training_data_points: 30,000 data points`
+- `lstm_epochs_initial: 50`
+- `lstm_batch_size_initial: 64`
+- `lstm_validation_loss_initial: 0.032`
+- `lstm_epochs_updated: 60 (was: 50)`
+- `lstm_validation_loss_updated: 0.028 (was: 0.032)`
+- `lstm_metrics_date: March 30, 2024`
+- `lstm_batch_size_reduced_discussion: 32 (was: 64 in another context)`
+- `gpu_batch_size_old_discussion: 128`
+- `gpu_batch_size_new_discussion: 64 (was: 128)`
+- `jwt_token_expiry_example: 15 minutes`
+- `ml_model_docker_review_feedback_due: April 1, 2024`
+- `flask_version_paper_trading_api: 2.3.4`
+- `celery_version_paper_trading: 5.3.0`
+- `rabbitmq_version_paper_trading_thread: 3.9.13`
+- `sphinx_version_backtesting_docs: 5.3.0`
+- `numpy_version_backtesting_perf_thread: 1.24.3`
+- `backtesting_service_port: 5001`
+- `milestone_3_deadline: April 15, 2024`
+- `sprint_paper_trading_risk_start: April 13, 2024`
+- `sprint_paper_trading_risk_end: April 26, 2024`
+- `backtest_runtime_old: 12 minutes`
+- `backtest_runtime_new: 4 minutes (was: 12 minutes)`
+- `historical_data_points_backtest_april14: 60,000 historical data points as of April 14, 2024`
+- `peak_memory_usage_old_backtesting_framework: 3GB`
+- `peak_memory_usage_new_backtesting_framework: 1.2GB (was: 3GB)`
+- `backtest_result_cache_ttl: 1 hour`
+- `backtest_repeated_computation_reduction: 70%`
+- `trade_status_cache_ttl: 10 seconds`
+- `trade_data_cache_ttl_local_dict: 10 seconds`
+- `paper_trade_execution_latency_old: 350ms`
+- `paper_trade_execution_latency_new: 120ms (was: 350ms)`
+- `webhook_latency_target_under_100ms: under 100ms`
+- `webhook_latency_target_under_80ms: under 80ms`
+- `flask_request_timeout_old_discussion: 30s`
+- `flask_request_timeout_new_discussion: 60s (was: 30s)`
+- `risk_per_trade_max: 2% capital risk per trade`
+- `stop_loss_percentage: 1.5% below the entry price`
+- `max_drawdown_limit_daily: 10% per day`
+- `trailing_stop_loss_distance: 1% trailing distance`
+- `docker_backtesting_image_size_ecs: 130MB`
+- `integration_test_pass_rate_current_pipeline: 97%`
+- `integration_test_pass_rate_target_pipeline: 100%`
+- `integration_test_success_rate_target_pipeline: 95%`
+- `vault_version: 1.13`
+- `vault_key_rotation_interval: 7 days`
+- `celery_redis_broker_url_example: redis://localhost:6379/0`
+- `amqp_broker_url_old_example: amqp://guest:guest@localhost:5672//`
+- `alpaca_sandbox_orders_endpoint: https://paper-api.alpaca.markets/v2/orders`
+- `alpaca_sandbox_base_url_example: https://paper-api.alpaca.markets`
+- `error_api_invalid_api_version: APIError: invalid api version`
+- `error_api_invalid_endpoint: APIError: invalid endpoint`
+- `error_http_401_unauthorized: HTTP 401 Unauthorized`
+- `error_415_unsupported_media_type: 415 Unsupported Media Type`
+- `error_connection_reset_generic: ConnectionResetError`
+- `error_timeout_generic: TimeoutError`
+- `react_version_dashboard_thread: 18.2`
+- `chartjs_version_dashboard_thread: 4.3.0`
+- `cypress_version_dashboard_thread: 12.8.0`
+- `dashboard_load_time_old: 3.5s`
+- `dashboard_load_time_new: 1.2s (was: 3.5s)`
+- `dashboard_api_response_time_average: 120ms`
+- `live_trading_api_response_time_old: 400ms`
+- `live_trading_api_response_time_new: 180ms (was: 400ms)`
+- `rate_limit_new_requirement: 250 requests per 15 minutes`
+- `rate_limit_example_old_recent_thread: 200 requests per 15 minutes`
+- `js_rate_limiter_max_requests_example: 200`
+- `js_rate_limiter_timeout_example: 15000`
+- `alpaca_api_version_user_recent: v2.0`
+- `alpaca_orders_endpoint_recent: https://api.alpaca.markets/v2/orders`
+- `alpaca_auth_url_example_recent: https://app.alpaca.markets/oauth2/auth`
+- `alpaca_token_url_example_recent: https://api.alpaca.markets/oauth2/token`
+- `alpaca_websocket_attempt_user: wss://api.alpaca.markets/v2/orders`
+- `alpaca_websocket_example_assistant: wss://stream.data.alpaca.markets/v2/iex`
+- `oauth_authorization_code_lifespan_example_recent: 10 minutes`
+- `exponential_backoff_initial_delay_example_recent: 1 second`
+- `milestone_6_deadline: May 30, 2024`
+- `sprint_7_start: May 25`
+- `sprint_7_end: June 7`
+- `milestone_7_deadline_variant: June 10, 2024`
+- `production_deployment_monitoring_deadline: June 21, 2024`
+- `alert_notification_estimate: 18 hours`
+- `production_deployment_monitoring_estimate: 16 hours`
+- `dashboard_code_review_feedback_due: May 27, 2024`
+- `dashboard_load_time_may26: 0.9 seconds`
+- `typescript_version_frontend_thread: 4.9.5`
+- `redux_toolkit_version: 1.9.5`
+- `sentry_version_frontend_thread: 7.27.0`
+- `prometheus_version_recent: 2.44`
+- `grafana_version_recent: 9.5`
+- `wireshark_version_recent: 4.0`
+- `celery_version_recent: 5.3.1`
+- `nginx_version_recent: 1.24.0`
+- `lets_encrypt_version_recent: 1.24.0`
+- `twilio_api_version_user_reference: v8.0`
+- `auth0_version_user_reference: 2.0`
+- `frontend_test_coverage_old: 70%`
+- `frontend_test_coverage_new: 90% (was: 70%)`
+- `websocket_heartbeat_interval_old: 30s`
+- `websocket_heartbeat_interval_new: 10s (was: 30s)`
+- `websocket_reconnect_interval_recent: 5 seconds`
+- `memory_reduction_websocket_fix: 30MB`
+- `circuit_breaker_failure_threshold: 5 consecutive order failures within 10 minutes`
+- `notification_retry_max_per_alert: 5 retries`
+- `redis_cache_ttl_recent: 12 hours`
+- `localstorage_alert_expiry: 5-minute expiry`
+- `alert_escalation_e2e_success_rate: 98%`
+- `alert_escalation_failure_rate_remaining: 2%`
+- `alert_processing_latency_current: 500ms`
+- `alert_processing_latency_target: 150ms`
+- `lambda_memory_old: 1024MB`
+- `lambda_memory_new: 512MB (was: 1024MB)`
+- `lambda_execution_time_target_recent: under 200ms`
+- `lambda_provisioned_concurrency_example: 10`
+- `aws_sam_cli_version_user: 1.62.0`
+- `github_actions_version_user_recent: 2.294.0`
+- `kafka_version_trade_logging_thread: 3.4.0`
+- `elasticsearch_version_trade_logging_thread: 8.5.1`
+- `kafka_manager_version_trade_logging_thread: 3.0.0`
+- `trade_logging_validation_count: 10,000 simulated trades`
+- `trade_logging_event_delivery_success_rate: 99.99%`
+- `kafka_elasticsearch_api_pipeline_success_rate: 99.8%`
+- `log_ingestion_latency_old: 1.2s`
+- `log_ingestion_latency_new: 300ms (was: 1.2s)`
+- `trade_logs_api_endpoint: /api/tradelogs`
+- `trade_logs_api_response_time_average: 150ms`
+- `webhook_latency_target_sub_100ms: sub-100ms`
+- `production_trade_logging_monitoring_deadline: July 10, 2024`
+- `sprint_10_estimate: 14 hours`
+- `development_roadmap_estimate: 20 hours`
+- `kafka_consumer_poll_timeout_old: 100ms`
+- `kafka_consumer_poll_timeout_new: 500ms (was: 100ms)`
+- `kafka_batch_size_example_small: 1000`
+- `kafka_batch_size_example_large: 10000`
+- `kafka_fetch_min_bytes_example: 10000`
+- `kafka_fetch_max_wait_ms_example: 500`
+- `kafka_max_poll_records_example: 500`
+- `kafka_fetch_max_bytes_example: 5242880`
+- `kafka_max_partition_fetch_bytes_example: 1048576`
+- `kafka_request_timeout_ms_example: 45000`
+- `kafka_session_timeout_ms_example: 10000`
+- `kafka_heartbeat_interval_ms_example: 3000`
+- `kafka_heap_opts_attempt_old: -Xmx2g`
+- `kafka_heap_opts_example_new: -Xms2g -Xmx2g`
+- `aws_msk_broker_count_example: 3 broker nodes`
+- `kafka_replication_factor_example: 3`
+- `dead_letter_topic_example: my_dead_letter_topic`
+- `main_topic_example: my_topic`
+- `alert_topic_example: my_alert_topic`
+- `dead_letter_alert_threshold_example: 5`
+- `dead_letter_monitor_group_example: dead_letter_monitor_group`
+- `kms_key_arn_example_msk: arn:aws:kms:region:account-id:key/key-id`
+- `trade_event_field_trade_id_type_old_example: integer`
+- `trade_event_field_trade_id_type_new_example: long (was: integer)`
+- `trade_event_field_price_type_old_example: float`
+- `trade_event_field_price_type_new_example: double (was: float)`
+- `trade_event_field_quantity_type_example: integer`
+- `trade_event_field_timestamp_type_example: date`
+- `trade_event_field_symbol_type_old_example: text`
+- `trade_event_field_symbol_type_new_example: keyword (was: text)`
+- `trade_event_field_event_type_type_old_example: text`
+- `trade_event_field_event_type_type_new_example: keyword (was: text)`
+- `elasticsearch_watcher_price_deviation_threshold: 5%`
+- `elasticsearch_watcher_interval_example: 1m`
+- `elasticsearch_watcher_email_example: alert@example.com`
+- `docker_version_user_image_captioning: 20.10`
+- `fastapi_version_image_captioning: 0.95`
+- `postgresql_version_image_captioning: 14.3`
+- `transformers_version_user_requested: 4.29`
+- `transformers_version_detailed: 4.29.2`
+- `torchvision_version_image_captioning: 0.14.1`
+- `pylint_version_image_captioning: 2.15.4`
+- `docker_image_size_problem: 1.2GB`
+- `docker_memory_flag_example: 512m`
+- `aws_ec2_instance_type_image_captioning: g4dn.xlarge`
+- `aws_dataset_storage_s3: 50GB`
+- `latency_target_image_captioning: under 250ms per image`
+- `gpu_target_image_captioning: NVIDIA RTX 3090`
+- `api_port_image_captioning: 8000`
+- `coco_2017_image_count: 123,287 images`
+- `coco_2017_captions_per_image: 5 captions each`
+- `bpe_vocab_size_captioning: 30,000`
+- `optimizer_learning_rate_caption_generator: 3e-5`
+- `initial_learning_rate_tuning: 5e-5`
+- `batch_size_captioning_initial: 32`
+- `batch_size_captioning_reduced: 16 (was: 32)`
 - `max_caption_length: 40`
-- `initial_feature_extraction_deadline: April 20 (was: April 15)`
-- `transformer_training_deadline: June 10 (was: May 30)`
-- `deployment_deadline: August 10 (was: July 10)`
-- `sprint_1_dates: March 1 to April 15`
-- `original_feature_extraction_date_referenced: March 30`
-- `buffer_1: April 20 to June 10`
-- `buffer_2: June 10 to August 10`
+- `distilgpt2_epoch_time_old: 45m`
+- `distilgpt2_epoch_time_new: 28m (was: 45m)`
+- `mixed_precision_memory_reduction: 40%`
+- `cuda_oom_error_location: RuntimeError: CUDA out of memory at line 112 in train.py`
+- `api_average_response_time_current: 320ms on an RTX 3090`
+- `project_feature_extraction_deadline_new: April 20`
+- `project_transformer_training_deadline_old: May 30`
+- `project_transformer_training_deadline_new: June 10 (was: May 30)`
+- `project_deployment_deadline_old: July 10`
+- `project_deployment_deadline_new: August 10 (was: July 10)`
+- `sprint_1_start_image_captioning: March 1, 2024`
+- `sprint_1_end_original_image_captioning: April 15`
+- `vit_backbone_choice: ViT-B/16`
+- `gpt2_small_params: 124M params`
+- `stable_diffusion_model_id: stabilityai/stable-diffusion-2-1-base`
+- `t5_model_name: t5-base`
+- `distilgpt2_model_name: distilgpt2`
+- `distilgpt2_v2_model_name_user: distilgpt2-v2`
 - `imagenet_mean: [0.485, 0.456, 0.406]`
 - `imagenet_std: [0.229, 0.224, 0.225]`
-- `resize_value: 256`
-- `centercrop_value: 256`
-- `docker_memory_flag_example: --memory 512m`
-- `docker_memory_swap_flag_example: --memory-swap 512m`
-- `ubuntu_region: us-east-1`
-- `ubuntu_version: 20.04 LTS`
-- `canonical_owner_id: 099720109477`
-- `example_ami_id: ami-0c55b159cbfafead3`
-- `example_key_name: my-key-pair`
-- `model_id_stable_diffusion: stabilityai/stable-diffusion-2-1-base`
-- `model_id_stable_diffusion_alt: CompVis/stable-diffusion-v2-1`
-- `vit_model_id: google/vit-base-patch16-224-in21k`
-- `vit_model_id_alt: google/vit-base-patch16-224`
-- `t5_model_id: t5-base`
-- `gpt2_model_id: gpt2`
-- `distilgpt2_model_id: distilgpt2`
-- `distilgpt2_alt_id_used_in_examples: distilgpt2-v2`
-- `blip_model_id: Salesforce/blip-image-captioning-base`
-- `coco_train_annotations: captions_train2017.json`
-- `coco_val_annotations: captions_val2017.json`
-- `coco_test_annotations: image_info_test2017.json`
-- `pylint_max_line_length: 88`
-- `pytorch_version_previous_mentioned_for_upgrade: 1.12.1`
-- `axios_version: 1.4.0`
-- `cypress_version: 12.8`
-- `docker_compose_version: v2.15`
-- `redis_version: 7.0.11`
-- `pillow_version: 9.4.0`
+- `recommended_python_version_detailed: 3.10.10`
+- `uvicorn_version_recommended: 0.18.0`
+- `sqlalchemy_version_recommended: 1.4.44`
+- `psycopg2_binary_version_recommended: 2.9.3`
+- `axios_version_frontend_thread: 1.4.0`
+- `redis_version_thread_precise: 7.0.11`
 - `tokenizers_version: 0.13.3`
-- `kubernetes_version: v1.26`
-- `react_dev_port: 3000`
-- `redis_port: 6379`
-- `postgres_port: 5432`
-- `locust_web_port: 8089`
-- `prometheus_port: 9090`
-- `redis_exporter_port: 9121`
-- `grafana_port: 3000`
-- `jaeger_ui_port: 16686`
-- `jaeger_collector_port: 14268`
-- `jaeger_grpc_port: 14250`
-- `jaeger_zipkin_port: 9411`
-- `nginx_http_port: 80`
-- `nginx_https_port: 443`
-- `improved_latency_with_redis: 210ms`
-- `latency_goal_discussed_later: 140ms`
-- `gpu_idle_during_data_loading: 60%`
-- `data_fetch_time_target: 50ms (was: 150ms)`
-- `mixed_precision_inference_memory_reduction_claim: up to 35%`
-- `batch_size_additional_values: 12, 8, 4`
-- `batch_size_sweet_spot_reported: 12`
-- `centercrop_additional_value_mentioned: 224`
-- `file_size_limit_react_example: 5MB`
-- `redis_ttl_default_discussed: 3600`
-- `redis_ttl_updated_discussed: 7200`
-- `redis_maxmemory_discussed: 2GB`
-- `redis_eviction_policy_discussed: allkeys-lru`
-- `locust_concurrent_users_example: 100`
-- `label_smoothing_value: 0.1`
-- `meteor_improvement_with_label_smoothing: 1.5 points`
-- `validation_bleu4_reported: 32.5`
-- `validation_meteor_reported: 27.1`
-- `validation_cider_reported: 98.3`
-- `validation_epoch_count_for_metrics: 10`
-- `amp_output_tolerance_target: 1%`
-- `nucleus_sampling_top_p: 0.9`
-- `beam_width_value: 5`
-- `uvicorn_workers_updated: 4 (was: 2)`
-- `error_cuda_oom_train_py: RuntimeError: CUDA out of memory at line 112 in train.py`
-- `error_cuda_oom_generic: RuntimeError: CUDA out of memory`
-- `error_none_shape: AttributeError: 'NoneType' object has no attribute 'shape'`
-- `error_invalid_image_size: ValueError: invalid image size`
-- `error_batch_size_mismatch: ValueError: Expected input batch_size (16) to match target batch_size (32)`
-- `error_connection_reset: ConnectionResetError: [Errno 104] Connection reset by peer`
-- `error_json_decode: JSONDecodeError: Expecting value: line 1 column 1 (char 0)`
-- `error_docker_port_allocated: docker: Error response from daemon: failed to create endpoint enthusiastic_morse on network bridge: failed to add endpoint enthusiastic_morse to network bridge: Bind for 0.0.0.0:8000 failed: port is already allocated.`
-- `error_docker_command_not_found: docker command is not found`
-- `error_pytest_not_found: pytest command is not found`
-- `cuda_base_image: nvidia/cuda:11.7-base-ubuntu20.04`
-- `cuda_runtime_image_suggested: nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`
-- `black_version: 22.3.0`
-- `helm_version: 3.9`
-- `socketio_version: v4.7.1`
-- `prometheus_version: 2.44`
-- `grafana_version: 9.4`
-- `auth0_react_sdk_version: v2.0.0`
-- `locust_version: 2.15`
-- `api_throughput_reported: 150 requests per second`
-- `redis_connection_timeout_error: TimeoutError: Redis connection timed out after 5s`
-- `redis_connection_pool_size_tried: 20`
-- `kubernetes_memory_limit_requested: 6GB`
-- `kubernetes_memory_limit_corrected: 6Gi`
-- `kubernetes_memory_request_corrected: 4Gi`
-- `deployment_image_version_example: my-image:1.2.3`
-- `api_gateway_throttling_limit: 1000 requests per minute`
-- `gpt2_medium_params: 355M`
-- `gradient_accumulation_steps_reported: 4`
-- `simulated_batch_size_reported: 64`
-- `rtx_3090_vram_reported: 24GB VRAM`
-- `scoring_py_coverage_reported: 95%`
-- `sonarqube_critical_code_smells_reported: 12`
-- `polars_memory_footprint_reduction_reported: 25%`
-- `caption_feedback_cider_improvement_reported: 3.2-point improvement`
-- `error_keyerror_caption_text: KeyError: 'caption_text'`
-- `error_amp_half_float: RuntimeError: expected scalar type Half but found Float`
-- `error_user_captions_exists: psycopg2.Error: relation "user_captions" already exists`
-- `error_user_captions_missing: psycopg2.Error: relation "user_captions" does not exist`
-- `auth0_pkce_error: code_challenge parameter is invalid`
-- `webpack_version: 5.75`
-- `websocket_latency_target: under 100ms`
-- `websocket_test_url: ws://localhost:8080`
-- `docker_image_size_target: 650MB (was: 1.2GB)`
-- `pytorch_lightning_upgrade_target: v2.0.1`
-- `sentry_version: 21.9`
-- `sentry_unique_exceptions_identified: 15`
-- `api_gateway_timeout_updated: 60s (was: 30s)`
-- `example_long_running_operation_duration: 60`
-- `circuit_breaker_failure_threshold_example: 3`
-- `circuit_breaker_timeout_example: 30`
-- `hmac_secret_key_example: b"my_secret_key"`
-- `webhook_payload_example: b"Hello, World!"`
-- `webhook_user_id_example: 123`
-- `stable_diffusion_generation_model_id_example: CompVis/stable-diffusion-v1-4`
-- `error_none_decode: AttributeError: 'NoneType' object has no attribute 'decode'`
-- `error_swipeable_views_indexof: TypeError: Cannot read properties of undefined (reading 'indexOf')`
-- `error_module_not_found_pytorch_lightning: ModuleNotFoundError: No module named 'pytorch_lightning'`
-- `error_cuda_device_side_assert: RuntimeError: CUDA error: device-side assert triggered`
-- `error_504_gateway_timeout: 504 Gateway Timeout`
-- `frontend_caption_render_time_improved: 180ms (was: 450ms)`
+- `docker_compose_version_image_captioning_thread: v2.15`
+- `kubernetes_version_user_request: v1.26`
+- `cuda_base_image_version_thread: 11.7`
+- `batch_size_user_later_claim: 12`
+- `latency_observed_redis_cached_caption_api: 210ms`
+- `latency_goal_decoding_thread: 140ms`
+- `batch_mismatch_error: ValueError: Expected input batch_size (16) to match target batch_size (32)`
+- `none_shape_error: AttributeError: 'NoneType' object has no attribute 'shape'`
+- `pil_resize_error: ValueError: invalid image size`
+- `connection_reset_error_errno_104: ConnectionResetError: [Errno 104] Connection reset by peer`
+- `json_decode_error_text: JSONDecodeError: Expecting value: line 1 column 1 (char 0)`
+- `docker_port_bind_error: docker: Error response from daemon: failed to create endpoint enthusiastic_morse on network bridge: failed to add endpoint enthusiastic_morse to network bridge: Bind for 0.0.0.0:8000 failed: port is already allocated.`
+- `feature_extractor_service_port_example: 8000`
+- `caption_generator_service_port_example: 8001`
+- `redis_cache_ttl_example: 3600 seconds`
+- `redis_cache_ttl_extended_example: 7200 seconds`
+- `redis_eviction_policy_example: allkeys-lru`
+- `redis_maxmemory_example: 2GB`
+- `prometheus_version_recent_user_thread: 2.44`
+- `grafana_version_recent_user_thread: 9.4`
+- `socketio_version_realtime_caption_thread: v4.7.1`
+- `auth0_react_sdk_version_user_thread: v2.0.0`
+- `helm_version_user_thread: 3.9`
+- `kubernetes_version_user_thread_additional: v1.26`
+- `redis_timeout_error_text: TimeoutError: Redis connection timed out after 5s`
+- `redis_connection_pool_size_discussed: 20`
+- `api_gateway_throttling_limit_user_thread: 1000 requests per minute`
+- `locust_rps_current_user_thread: 150 requests per second`
+- `prometheus_scrape_interval_user_thread: 10s`
+- `prometheus_evaluation_interval_user_thread: 10s`
+- `prometheus_metrics_path_user_thread: /metrics`
+- `prometheus_target_user_thread: api:8000`
+- `grafana_latency_metric_initial_user_thread: api_latency_seconds_bucket`
+- `docker_cuda_base_image_user_thread: nvidia/cuda:11.7-base-ubuntu20.04`
+- `container_image_version_example_user_thread: my-image:1.2.3`
+- `kubernetes_memory_limit_target_user_thread: 6Gi`
+- `kubernetes_memory_request_example_user_thread: 4Gi`
+- `amp_error_exact_new: RuntimeError: expected scalar type Half but found Float`
+- `batch_size_mismatch_error_exact_repeat: ValueError: Expected input batch_size (16) to match target batch_size (32)`
+- `postgres_relation_exists_error_exact: psycopg2.Error: relation "user_captions" already exists`
+- `postgres_relation_missing_error_exact: psycopg2.Error: relation "user_captions" does not exist`
+- `gpt2_medium_params_user_thread: 355M parameters`
+- `gradient_accumulation_steps_user_thread: 4`
+- `effective_batch_size_target_user_thread: 64`
+- `gpu_vram_user_thread: 24GB VRAM`
+- `mixed_precision_memory_reduction_user_thread: 35%`
+- `latency_current_caption_api_optimized_thread: 210ms`
+- `latency_target_caption_api_optimized_thread: 140ms`
+- `batch_size_latency_thread: 8`
+- `redis_maxmemory_policy_option_1_user_thread: volatile-lru`
+- `redis_maxmemory_policy_option_2_user_thread: allkeys-lru`
+- `black_version_user_thread: 22.3.0`
+- `pytorch_lightning_version: 2.0.1`
 - `onnxruntime_web_version: v1.14`
-- `storybook_version: v7.0`
+- `frontend_caption_render_time_old: 450ms`
+- `frontend_caption_render_time_new: 180ms (was: 450ms)`
+- `webpack_version_discussed: 5.75`
 - `react_testing_library_version: v14.0.0`
-- `pytorch_version_locked_for_production: 1.13.1`
-- `transformers_version_locked_for_production: v4.29`
-- `evaluation_bleu4_later_reported: 38.7`
-- `evaluation_meteor_later_reported: 31.4`
-- `evaluation_cider_later_reported: 112.5`
-- `api_rate_limit_per_user_initial_example: 5000 requests/day per user`
-- `api_rate_limit_attempted_update_example: 6000 requests/day per user`
-- `lambda_error_rate_alarm_threshold: 0.5%`
-- `provisioned_concurrency_prewarmed_instances_example: 2`
-- `lambda_cold_start_latency_improved: 150ms`
-- `beam_search_latency_improved: 280ms (was: 450ms)`
-- `sprint_9_task_multilanguage_start: 2024-07-01`
-- `sprint_9_task_multilanguage_end: 2024-07-15`
-- `sprint_9_task_security_start: 2024-07-10`
-- `sprint_9_task_security_end: 2024-07-20`
-- `sprint_9_task_performance_start: 2024-07-15`
-- `sprint_9_task_performance_end: 2024-07-25`
-- `session_timeout_seconds: 600`
-- `session_timeout_duration: 10 minutes`
-- `elasticsearch_version: 8.7`
-- `swagger_ui_version: 4.0.0`
+- `storybook_version: v7.0`
+- `lambda_cold_start_target_example: 300ms`
+- `lambda_timeout_example: 30 seconds`
+- `api_gateway_timeout_updated_example: 60s (was: 30s)`
+- `human_evaluation_participants: 20`
+- `human_evaluation_scale: 5-point Likert scale`
+- `human_evaluation_average_score: 4.2`
+- `cloudfront_load_time_reduction_claim: 50%`
+- `sqs_scale_up_threshold_example: 1000`
+- `sqs_scale_down_threshold_example: 100`
+- `cloudwatch_alarm_error_rate_threshold: 1%`
+- `lambda_prewarmed_instances_example: 5`
+- `responsive_breakpoint_small: 360px`
+- `responsive_breakpoint_large: 361px`
+- `ga_product: Google Analytics 4`
+- `error_onnx_invalid_model: Error: Failed to load model: invalid model file.`
+- `error_circuit_breaker_fallback_missing: Error: Fallback function not defined.`
+- `error_react_map_undefined: TypeError: Cannot read property 'map' of undefined`
 - `pact_version: v4.3.0`
-- `production_monitoring_uptime: 99.9% uptime over 72-hour production monitoring`
-- `redshift_etl_schedule: every 6 hours`
-- `translation_fargate_cpu: 256`
-- `translation_fargate_memory: 512`
-- `translation_service_container_port: 8080`
-- `cloudfront_cache_control_example: max-age=3600`
-- `notification_violation_threshold_example: 5`
-- `notification_interval_example_seconds: 300`
-- `violations_window_example_seconds: 300`
-- `language_options_initially_supported: English, Turkish`
-- `evaluation_bleu4_latest_reported: 39.2`
-- `error_cuda_oom_detailed: RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`
+- `lambda_memory_old_additional: 1024MB`
+- `lambda_memory_new_additional: 2048MB (was: 1024MB)`
+- `runtime_python_sam_examples: python3.9`
+- `api_gateway_usage_plan_quota_example: 5000 requests per day per user`
+- `api_gateway_usage_plan_quota_updated_example: 6000 requests/day per user (was: 5000 requests/day per user)`
+- `api_gateway_usage_plan_burst_limit_example: 100`
+- `api_gateway_usage_plan_rate_limit_example: 50`
+- `api_gateway_usage_plan_admin_burst_example: 100`
+- `api_gateway_usage_plan_admin_rate_example: 50`
+- `api_gateway_usage_plan_user_burst_example: 50`
+- `api_gateway_usage_plan_user_rate_example: 25`
+- `api_gateway_usage_plan_endpoint1_daily_quota_example: 2500`
+- `api_gateway_usage_plan_endpoint2_daily_quota_example: 5000`
+- `gpt2_large_batch_size_example: 4`
+- `gpt2_large_sequence_length_example: 512`
+- `gpu_single_rtx_3090: single RTX 3090`
+- `translation_cache_ttl_example: 3600`
+- `translation_cache_ttl_label_example: 1 hour`
+- `redis_cache_warm_ids_example: ['image1', 'image2', 'image3', 'image4', 'image5']`
+- `elasticsearch_version_elk_thread: 8.7`
+- `swagger_ui_version: 4.0.0`
+- `bleu4_score_reported: 38.7`
+- `meteor_score_reported: 31.4`
+- `cider_score_reported: 112.5`
+- `uptime_monitoring_result_additional: 99.9% uptime over 72-hour production monitoring`
+- `beam_search_latency_old: 450ms`
+- `beam_search_latency_new: 280ms (was: 450ms)`
+- `beam_width_example: 10`
+- `beam_max_length_example: 50`
+- `cuda_block_size_example: 256`
+- `cuda_grid_size_example: 100`
+- `lambda_cold_start_new_example: 150ms`
+- `lambda_prewarmed_instances_new_example: 2`
+- `cloudwatch_alarm_error_rate_threshold_new_example: 0.5%`
+- `etl_schedule_interval: every 6 hours`
+- `token_expiration_vulnerability_count: 3`
+- `jwt_expired_timestamp_example: 1643723900`
+- `error_unhandled_promise_rejection_warning: UnhandledPromiseRejectionWarning`
+- `error_cuda_invalid_configuration: CUDA kernel launch failed: invalid configuration argument`
+- `cuda_oom_error_exact_recent: RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).`
+- `coverage_current_example: 98% coverage`
+- `project_completion_date_roadmap_thread: July 27, 2024`
+- `public_beta_registered_users_first_week: over 1,200 registered users in the first week`
+- `bleu4_score_recent: 39.2`
+- `model_name_metrics_thread: t5-base`
+- `fastapi_items_endpoint_example: /items/`
+- `fastapi_docs_endpoint_example: /docs`
+- `openapi_url_example: /openapi.json`
+- `redis_host_example: localhost`
+- `redis_port_example: 6379`
+- `redis_db_example: 0`
+- `circuit_breaker_threshold_example_recent: 3`
+- `circuit_breaker_timeout_example_recent: 5`
+- `distilbert_model_name_feedback_thread: distilbert-base-uncased`
+- `latest_active_request_cv_local: optimize frame processing after fixing MemoryError by downscaling to 480p, specifically guidance on switching to np.float32 or np.uint8 where appropriate`
+- `frontend_ui_feature_dark_mode_localstorage_discussed: true`
+- `frontend_video_component_name: VideoStream`
+- `frontend_control_component_name: ControlPanel`
+- `frontend_detection_controls_slider_min: 0.1`
+- `frontend_detection_controls_slider_max: 0.9`
+- `frontend_detection_toggle_control: enable/disable object detection`
+- `frontend_zoom_pan_discussed: true`
+- `frontend_object_selection_discussed: true`
+- `puppeteer_screenshot_workflow_discussed: true`
+- `react_hydration_mismatch_discussed: true`
+- `react_map_undefined_error_discussed: TypeError: Cannot read property 'map' of undefined`
+- `frontend_media_stream_cleanup_discussed: true`
+- `flask_socketio_async_mode_user: threading`
+- `flask_socketio_async_mode_suggested: eventlet`
+- `redis_message_broker_architecture_discussed: detection backend publishes detection results to Redis; frontend WebSocket server subscribes`
+- `docker_compose_services_discussed_local: backend, frontend, redis`
+- `frontend_bundle_size_current: 650KB`
+- `frontend_memory_usage_current: 100MB during a 1-hour continuous streaming session`
+- `frontend_render_latency_current: 50ms per frame`
+- `ui_update_rate_current: 20 FPS`
+- `tracker_visualization_requires_object_id_color_codes: true`
+- `frontend_ui_responses_should_include_screenshot_example: true`
+- `latest_active_request: configure sticky sessions on an AWS ALB for ECS microservices deployment with detection, tracking, and API gateway services using service discovery, to improve WebSocket/API communication and reduce intermittent WebSocket disconnects`
 
-### Chronological Event Log (preserve temporal order — CRITICAL for event_ordering)
-1. User started by asking about a custom image captioning model combining diffusion and transformer tech with `PyTorch 1.13`, `Transformers v4.29`, and `Python 3.10`.
-2. Discussion moved through image-to-text using BLIP, installation/import issues with `transformers==4.29.0`, and environment troubleshooting.
-3. User shared early caption-generation code using `t5-base`; guidance shifted toward image captioning models rather than text tokenizers for images.
-4. User asked about preprocessing, batch handling, and inference speed optimization for captioning models.
-5. User explored diffusion model integration, custom diffusion code, CUDA OOM issues, and modular system design.
-6. User proposed using `Stable Diffusion v2.1` for feature enhancement before captioning and asked for review/optimization/debugging.
-7. User shifted toward broader system design: ViT-B/16 backbone with GPT-2 small (`124M params`), COCO 2017 dataset handling, PostgreSQL storage, DataLoader optimization, gradient accumulation, preprocessing, profiling, and model parallelism.
-8. User requested project planning help with milestone dates.
-9. User discussed AWS EC2 `g4dn.xlarge`, target inference latency `under 250ms per image` on `NVIDIA RTX 3090`, S3 bucket setup, and deployment concerns.
-10. User moved into API and frontend concerns: FastAPI `v0.95`, React `18.2` SPA, error handling, caching, deployment, monitoring, and Swagger/OpenAPI docs.
-11. User repeatedly asked about CUDA OOM debugging, GitHub Actions with pylint `2.15.4`, unit testing with pytest `7.2.0`, mixed precision with NVIDIA Apex AMP, image preprocessing with `torchvision 0.14.1`, and custom dataset/transform classes.
-12. User asked about PostgreSQL indexing for `captions(image_id, caption_id)`, microservices with `docker-compose.yml`, Docker GPU optimization, Redis caching, and memory monitoring.
-13. User requested roadmap tracking and deadline planning for Sprint 1 (`March 1 to April 15`), then later asked to adjust deadlines.
-14. User changed the milestone for initial feature extraction to `April 20`, raising concerns about transformer training by `May 30` and deployment by `July 10`.
-15. After timeline review, transformer training was pushed from `May 30` to `June 10`, and deployment from `July 10` to `August 10`.
-16. User explicitly instructed: “Always provide detailed version numbers when I ask about software dependencies.”
-17. User revisited implementation topics including Stable Diffusion `v2.1` embeddings, transformer training on COCO, accuracy metrics, FastAPI deployment, CUDA OOM debugging, mixed precision review, pytest coverage, image upload APIs, Docker size optimization, PostgreSQL JSONB usage, API latency measurement, async processing, and fine-tuning with `Trainer`.
-18. User shifted heavily into frontend integration topics: React upload, Axios, FastAPI image upload, preview, drag-and-drop, file size limits, loading and error UX.
-19. User discussed data loading bottlenecks, Nsight Systems profiling, `num_workers`, `pin_memory`, and GPU idle time during input pipeline stalls.
-20. User repeatedly returned to FastAPI troubleshooting, 500 errors, validation, and debugging strategies.
-21. User discussed decoupling feature extractor and caption generator into microservices via REST using FastAPI `0.95` and PostgreSQL `14.3`.
-22. User revisited CUDA OOM on `RTX 3090`, profiling, memory optimization, and API latency tooling.
-23. User discussed beam search vs greedy decoding, METEOR computation, batch size mismatch debugging, and matching feature extractor / transformer data loader batch sizes.
-24. User fixed the batch size mismatch by setting both DataLoaders to `16`.
-25. User asked about Redis `7.0.11` caching of diffusion features to reduce API latency from `320ms`, then reported improvement to `210ms`.
-26. User implemented or discussed SHA256-based Redis cache keys with TTL `3600`.
-27. User discussed Docker Compose networking for `feature_extractor`, `caption_generator`, `redis`, `postgres`, and internal bridge networks.
-28. User instructed: “Always include cache configuration details when I ask about performance optimizations.”
-29. User instructed: “Always include error messages verbatim when I ask about debugging issues.”
-30. User discussed webhook notifications after async processing, background tasks in FastAPI `0.95`, polling/cancellation semantics, and frontend gallery toggles.
-31. User discussed Nginx reverse proxy on `80`/`443`, caching, LRU caching, and `ConnectionResetError: [Errno 104] Connection reset by peer`.
-32. User discussed Prometheus/Grafana/Jaeger monitoring.
-33. User discussed AMP autocast, `torch.profiler`, reducing latency from `210ms` to `140ms`, and AMP dtype mismatch errors.
-34. User discussed Kubernetes `v1.26` scaling, AWS EKS cost vs management overhead, Helm `3.9`, secret management, Auth0, Redis race conditions, Prometheus alerts, Socket.IO, PostgreSQL materialized views, and CI/CD integration.
-35. User later moved into many implementation-example questions spanning Redis decode errors, API timeout debugging, DB bottleneck detection, circuit breaker patterns, React localStorage persistence, Webpack code splitting, WebSocket latency testing, Docker multi-stage builds, PyTorch Lightning AMP/scheduler questions, ROUGE-L, HMAC SHA256, Sentry prioritization, webhook sending, React voting persistence, and diffusion image generation examples.
-36. User explicitly instructed: “Always mention deployment strategies when I ask about production updates.”
-37. User explicitly requested English-only responses: “Please respond only in English.”
-38. User asked how to implement gradient accumulation correctly in PyTorch Lightning using `accumulate_grad_batches=4` for a transformer model.
-39. User then asked a long sequence of generic implementation/debugging questions across React, PostgreSQL, GraphQL, CI/CD, Trivy, spaCy, DynamoDB, AWS Lambda, Storybook, serverless migration, ONNX Runtime Web, GA4, responsive design, and Redis, mostly advisory rather than tied to confirmed repo changes.
-40. User introduced frontend ONNX Runtime Web mixed-precision inference with `ONNX Runtime Web v1.14`, improving caption rendering from `450ms` to `180ms` on mid-range devices.
-41. User repeatedly asked about serverless AWS topics: EC2 to Lambda/API Gateway migration, SAM CLI testing, Lambda cold starts, provisioned concurrency, SnapStart, Step Functions chaining, SNS/SQS event-driven architecture, SQS consumer scaling, CloudFront CDN caching, DynamoDB optimization, and GitHub Actions for SAM deployments.
-42. User explicitly instructed: “Always mention serverless scaling strategies when I ask about backend deployment.”
-43. User asked for unit tests validating AMP inference outputs against FP32 baseline within `1%` tolerance.
-44. User asked about Kubernetes `v1.26` horizontal scaling with multiple API pods behind a load balancer.
-45. User asked for an analysis of AWS EKS cost vs management overhead for container orchestration using `boto3` and `eks.list_clusters()`.
-46. Latest active request then changed over time from EKS cost analysis to CI/CD integration, then to PyTorch Lightning gradient accumulation, then to serverless migration pitfalls.
-47. After the PyTorch Lightning topic, the conversation shifted heavily into serverless migration, Lambda/API Gateway, SAM, SNS/SQS, DynamoDB, Storybook, ONNX Runtime Web, and responsive frontend questions.
-48. User asked about debugging AMP inference unit tests with `RuntimeError: expected scalar type Half but found Float` and also about Kubernetes pod/service communication patterns.
-49. User asked about Helm `3.9`, secret management, API keys, and gRPC between feature extractor and caption generator services.
-50. User asked about FastAPI/React/Auth0/Auth0 RBAC/Auth0 React SDK `v2.0.0` integration, including multiple roles, missing roles, and profile refresh issues.
-51. User asked about Redis maxmemory policies, Redis Sentinel redundancy, Redis health checks, Redis timeouts, connection pool size `20`, and race conditions causing stale caption returns under concurrent requests.
-52. User asked about Prometheus `2.44` and Grafana `9.4` dashboards and alerts for latency/error rates, including simultaneous alerting.
-53. User asked about Socket.IO `v4.7.1` real-time caption updates and how to trigger broadcasts from other parts of the application.
-54. User asked about PostgreSQL materialized views, indexes, table creation/insertion for `user_captions`, and errors `relation "user_captions" already exists` / `relation "user_captions" does not exist`.
-55. User reported/mentioned development work including JWT auth, gradient accumulation over `4 steps`, Redis Sentinel, caption feedback storage, `torch.backends.cudnn.benchmark=True`, and a `3.2-point improvement` in `CIDEr` from concatenating diffusion features with ResNet50 embeddings.
-56. User asked about CI/CD pipeline integration with existing codebase; this later changed again.
-57. User explicitly stated a serverless preference for cost efficiency and automatic scaling despite cold start challenges.
-58. User asked about React async error handling, Lambda memory exhaustion, generator-based processing, and repeated React/Lambda implementation reviews.
-59. User asked about provisioned concurrency in Lambda, Pact `v4.3.0`, AWS SAM with CodePipeline, API Gateway usage plans, GPT-2 large optimization, JWT refresh tokens, session timeout modal, DynamoDB partition/composite keys, and GA4 setup.
-60. User asked about mixed-precision frontend inference in ONNX Runtime Web, multi-language caption selection via API headers, React cookie-based language selector, Turkish model timeout fallback, MarianMT integration, and translation service caching.
-61. User asked about translation microservice autoscaling on AWS Fargate, Docker image optimization, Redis cache invalidation and testing, local Redis setup, and language embedding tokens.
-62. User discussed Sprint 9 planning, beam search plus nucleus sampling, multilingual generation, CloudFront CDN caching, API Gateway rate limits, and user preference: “Always specify language options when I ask about multi-language support.”
-63. User asked about GPU beam search optimization with custom CUDA kernels, synchronization, memory allocation, kernel launch configuration errors, C++/CUDA API integration, Lambda provisioned concurrency, BLEU-4 evaluation, integration/load testing, ELK logging, React promise rejection handling, circuit breaker patterns, GraphQL subscriptions, dashboard query optimization, retry policy with `tenacity`, OAuth2/localStorage token handling, DynamoDB GSI throughput monitoring, CloudWatch alarm testing, Redshift ETL scheduling, and Slack/webhook notifications.
-64. User explicitly stated `I've locked the PyTorch version to 1.13.1 and Transformers to v4.29 for production stability` in the webhook discussion.
-65. User asked for an example of implementing a **Slack webhook for critical system alerts and errors**.
-66. Conversation then drifted through many generic follow-up prompts unrelated to the main repo context, including accessibility testing, NVDA settings, generic PyTorch OOM debugging, generic Transformers text generation, caching/memoization, FastAPI exception handlers, Tkinter gallery UX, and React zoom/pan examples; these were largely advisory and not confirmed repo changes.
-67. User added a permanent preference: always include final evaluation metrics when asking about model performance.
-68. User asked how to automatically append final evaluation metrics such as BLEU-4, METEOR, and CIDEr to model performance queries.
-69. User asked, “What did we do so far?”
-70. User then requested a detailed continuation prompt/summary preserving exact values, dates, versions, identifiers, preferences, contradictions, and persistent knowledge.
+### Chronological Event Log
+278. User asked about dynamic imports and code splitting with `Webpack 5.75`.
+279. User reported exact circuit breaker error `Error: Fallback function not defined.`
+280. User asked about HMAC SHA256 signature verification.
+281. User asked about Redis cache miss reduction and hashing strategy.
+282. User reported exact React error `TypeError: Cannot read property 'map' of undefined`.
+283. User asked about correct use of `useMemo` and `useCallback`.
+284. User asked how to migrate a Flask EC2 API to AWS Lambda with API Gateway.
+285. User asked how to use dynamic imports to reduce React bundle size.
+286. User asked about intermittent `504 Gateway Timeout` in API Gateway after increasing timeout from `30s` to `60s`.
+287. User asked how to add a circuit breaker to a Python API client.
+288. User asked about ROUGE-L calculation and reported a human study with `20 participants` and average `4.2`.
+289. User asked how to run `pytest` integration tests with AWS SAM CLI.
+290. User asked how to implement a Python circuit breaker.
+291. User asked how to add webhook notifications for generated captions.
+292. User asked how to redesign backend processing with SNS/SQS.
+293. User asked how to prevent SQS queues from being overwhelmed.
+294. User asked how to autoscale SQS consumers based on queue depth.
+295. User asked how to configure CloudFront CDN caching for React static assets.
+296. User asked how to reduce Lambda cold starts with provisioned concurrency on `Python 3.10 runtime`.
+297. User asked for troubleshooting strategies for AWS Lambda cold start latency.
+298. User asked for error/retry best practices in SNS/SQS asynchronous caption processing.
+299. User asked how to improve DynamoDB performance with Redis cache in front.
+300. User asked about Masonry layout issues in React.
+301. User asked about provisioned concurrency again for Lambda.
+302. User asked about GA4 integration in React.
+303. User asked about debugging a simple annotation feature in React.
+304. User asked about bundle-size optimization with Webpack splitChunks.
+305. User asked about Lambda timeout troubleshooting with `time.sleep(35)`.
+306. User asked how to chain Lambda invocations and later about Step Functions reuse.
+307. User asked how to automate deployment with GitHub Actions to AWS SAM.
+308. User asked whether a specific AWS CLI version was needed.
+309. User asked about debugging `TypeError: Cannot read property 'map' of undefined` in AWS SAM deployment context.
+310. User asked how to optimize DynamoDB for low latency in serverless.
+311. User asked how to configure ESLint `v8.39` with Airbnb.
+312. User asked for serverless deployment automation best practices with AWS SAM + GitHub Actions.
+313. User asked for review of DynamoDB migration code and later about DynamoDB throttling optimization.
+314. User asked about exporting a transformer to ONNX `v1.14` and unsupported operations.
+315. User asked how to handle unsupported ONNX operations when they cannot be replaced.
+316. User asked how to handle webhook/Lambda errors and responses.
+317. User asked about serverless backend architecture for React using Lambda + API Gateway.
+318. User asked about Jest/RTL `v14.0.0` testing with third-party library mocks.
+319. User asked about responsive CSS for devices under `360px`.
+320. User asked about Storybook `v7.0` setup and addons.
+321. User asked about provisioned concurrency trade-offs and dynamic adjustment.
+322. User added instruction: `Always mention serverless scaling strategies when I ask about backend deployment.`
+323. User asked for a walkthrough of migrating from traditional server-based architecture to serverless.
+324. User asked about common pitfalls when migrating to serverless.
+325. User then asked `What did we do so far?`
+326. User requested this detailed continuation prompt.
+327. User provided repeated examples/questions about fixing `UnhandledPromiseRejectionWarning` in React async API calls.
+328. User repeatedly asked about Lambda memory exhaustion after increasing memory from `1024MB` to `2048MB`.
+329. User asked what data-processing optimizations and generator patterns could reduce Lambda memory usage.
+330. User asked how to implement provisioned concurrency for Lambda and understand its benefits.
+331. User asked about contract testing with `Pact v4.3.0`, including parallel execution.
+332. User asked how to automate Lambda deployment using AWS CodePipeline and AWS SAM templates.
+333. User asked how to configure API Gateway usage plans to limit requests to `5000 per day per user`.
+334. User asked how to fine-tune and optimize GPT-2 large on a `single RTX 3090` with `batch size 4` and `sequence length 512`.
+335. User asked about inference optimization for GPT-2 large via pruning and distillation.
+336. User asked about scalable and secure API design with API Gateway + Lambda.
+337. User asked about JWT refresh token mechanisms, `15-minute` access token expiry, and Axios interceptors.
+338. User asked about a React session timeout warning modal with countdown and auto-logout after `10 minutes` inactivity.
+339. User asked about DynamoDB partition/composite key performance and later about GA4 tracking setup.
+340. User asked again about the session timeout modal.
+341. User asked about PyTorch `torch.cuda.empty_cache()` usage for memory management after inference.
+342. User asked for a security audit focused on OAuth2 flows and token storage in frontend `localStorage`.
+343. User asked how to optimize recent-feedback DynamoDB queries using a GSI on timestamp.
+344. User asked about ONNX Runtime Web mixed-precision inference compatibility/performance.
+345. User asked about API Gateway rate limiting refinement and endpoint-specific rate limits.
+346. User asked whether the same caption-generation approach could support languages beyond English and Turkish.
+347. User asked how to implement API Gateway usage plans correctly for security hardening.
+348. User asked whether usage plans and API keys can be automated via script.
+349. User added instruction: `Always specify language options when I ask about multi-language support.`
+350. User asked how to implement multi-language support for captions with explicit language options such as English and Turkish.
+351. User shifted into GPU-accelerated beam search optimization with custom CUDA kernels, reducing latency from `450ms` to `280ms` on `RTX 3090`.
+352. User shared a `BeamSearch` implementation with `beam width of 10` and `maximum length of 50` and asked for review.
+353. User asked specifically about optimizing custom CUDA kernels.
+354. User asked about improving CUDA memory access patterns and launch configuration using `block size of 256` and `grid size of 100`.
+355. User asked how to integrate the optimized CUDA kernel without breaking the beam search implementation.
+356. User asked about CUDA synchronization issues and use of `cudaDeviceSynchronize()`.
+357. User asked again for beam search review and performance suggestions.
+358. User asked how to measure actual performance improvement after CUDA/beam-search changes.
+359. User asked about CUDA memory allocation issues with `cudaMalloc`.
+360. User reported exact error `CUDA kernel launch failed: invalid configuration argument` and asked how to debug it.
+361. User asked the best way to check for CUDA kernel launch errors in Python.
+362. User asked how to refactor a PyTorch model to use the C++/CUDA API.
+363. User asked how to deploy a PyTorch model to AWS Lambda with provisioned concurrency.
+364. User asked how to use mixed precision training in PyTorch.
+365. User asked again about the CUDA invalid configuration error.
+366. User asked again about Lambda provisioned concurrency deployment.
+367. User asked about evaluating BLEU-4 on the COCO test set, reporting `BLEU-4 score of 38.7`, `METEOR score of 31.4`, and `CIDEr score of 112.5`.
+368. User asked for review of end-to-end integration/load tests and mentioned `99.9% uptime over 72-hour production monitoring`.
+369. User asked how to configure Logstash to parse logs correctly with `Elasticsearch 8.7`.
+370. User asked again about React `UnhandledPromiseRejectionWarning`.
+371. User asked how to calculate the cost of provisioned concurrency after reducing cold start latency to `150ms` with `2 pre-warmed instances`.
+372. User asked how to implement a circuit breaker pattern in an API client.
+373. User asked how to manage GraphQL subscription lifecycle and errors in a React frontend.
+374. User asked how to optimize API Gateway throttling after intermittent `429 Too Many Requests`.
+375. User asked how to show toast notifications and sound alerts for real-time caption updates in React.
+376. User asked how to debug a GraphQL subscription.
+377. User asked how to implement a circuit breaker with cached-caption fallback.
+378. User asked how to optimize API Gateway throttling rules for peak load.
+379. User asked how to warm Redis cache on startup using Python.
+380. User asked how to document usage limits, error codes, retry policies in Swagger UI `4.0.0` for `FastAPI 0.95`.
+381. User asked whether Swagger docs can include common error message examples.
+382. User asked whether Swagger docs can also include frontend error-handling notes.
+383. User asked how to optimize PostgreSQL `14.3` queries for a user dashboard with caption stats, usage history, and feedback summaries.
+384. User asked whether Redis can cache images and captions separately.
+385. User asked which caching strategy to choose between Redis and Memcached for `Python 3.10` + `FastAPI 0.95`.
+386. User asked again whether Redis can cache images and captions separately.
+387. User asked how to identify database-query bottlenecks in PostgreSQL `14.3`.
+388. User asked how to implement retry policies using `tenacity` in `Python 3.10` + `FastAPI 0.95`.
+389. User asked for a security audit focused on token expiration and showed a JWT verification example with `1643723900`.
+390. User asked how to simulate concurrent Lambda invocations to test auto-scaling on concurrent executions metric.
+391. User asked how to schedule a Redshift ETL pipeline every `6 hours`.
+392. User asked what Redshift-side setup is needed for the ETL pipeline.
+393. User asked how to store tokens securely in frontend `localStorage` and whether current usage is correct.
+394. User asked how to query DynamoDB using a GSI on `timestamp`.
+395. User asked whether GSI provisioned throughput must be adjusted separately.
+396. User asked whether the GSI must be monitored separately from the base table.
+397. User asked how to simulate a high Lambda error rate to trigger a CloudWatch alarm for error rate exceeding `0.5%`.
+398. User asked how to implement a webhook to trigger Slack notifications for critical system alerts and errors, mentioning locked versions `PyTorch 1.13.1` and `Transformers v4.29`.
+399. User asked `What did we do so far?`
+400. User requested this detailed continuation prompt.
+401. User asked about accessibility testing for a dashboard with high contrast mode and screen reader support.
+402. User asked whether specific NVDA settings are needed for testing.
+403. User shifted to PyTorch debugging and said version is locked to `1.13.1`.
+404. User provided exact CUDA OOM error showing attempted allocation of `160.00 MiB` on an `11.00 GiB` GPU.
+405. User discussed trying reduced batch size and mixed precision already.
+406. User asked for Transformers text-generation example from a prompt.
+407. User asked how to let users select different language models for caption generation.
+408. User asked how to reduce caption-generation latency with caching and other optimizations.
+409. User asked how to add Brotli compression to a FastAPI endpoint.
+410. User asked for API documentation best practices using Swagger UI.
+411. User asked whether Swagger UI can be embedded directly into a React frontend.
+412. User asked how to identify the remaining `2%` missing from `98% coverage`.
+413. User asked how to decide which code is not worth testing.
+414. User asked how to debug a FastAPI route using `pdb`.
+415. User asked how to implement Redis caching for database-query reduction.
+416. User asked how to implement memoization with a decorator.
+417. User asked about service boundaries, API contracts, and microservice communication.
+418. User asked for review of automated rollback with GitHub Actions and AWS Lambda.
+419. User asked how to integrate user feedback embeddings into a transformer model.
+420. User reported GitHub Actions repository access `"permission denied"` during CI/CD.
+421. User asked about adding language embedding tokens to transformer input.
+422. User asked how to improve a circuit breaker implementation for microservices.
+423. User asked how to implement global exception handling in FastAPI.
+424. User asked for a roadmap to finish by `July 27, 2024`.
+425. User asked how to improve the gallery app UX after public beta launch with `over 1,200 registered users in the first week`.
+426. User asked how to add zoom and pan controls in Tkinter.
+427. User asked how to make zoom/pan controls per-image instead of global.
+428. User asked whether the same zoom/pan behavior can be added to the React frontend.
+429. User reported BLEU-4 improved to `39.2` after last-minute hyperparameter tuning.
+430. User instructed: `Always include final evaluation metrics when I ask about model performance.`
+431. User asked how to automatically append `BLEU-4`, `METEOR`, and `CIDEr` to model performance queries in Python.
+432. User asked `What did we do so far?`
+433. User requested this detailed continuation prompt.
+434. User focused on React frontend for live video stream with bounding boxes and tracked IDs overlay using `React 18.2`.
+435. User asked about optimizing frontend rendering and batching bounding-box updates.
+436. User provided a sample React video stream + bounding boxes component and asked for performance optimization.
+437. User asked about zooming, panning, and selecting/tracking specific objects in the frontend UI.
+438. User asked how to reduce frontend rendering latency of `50ms per frame`, giving `20 FPS` UI updates.
+439. User asked about `CORS error 403` on Flask-SocketIO WebSocket connections.
+440. User asked whether `flask_cors` must be installed/configured separately from SocketIO.
+441. User asked about integrating SORT with object detection and troubleshooting tracker update issues.
+442. User confirmed the enhanced SORT tracker implementation looked promising and asked about adding `id` to `Track`.
+443. User asked about learned coordinate mapping from backend `640x480` to frontend canvas `1280x720`.
+444. User asked for React UI controls for class visibility and confidence threshold slider `0.1` to `0.9`.
+445. User asked about a `VideoStream` component integrated with Redux.
+446. User asked about fixing delayed detection-data rendering causing `.map` of undefined in React.
+447. User asked about multi-container Docker Compose with backend, frontend, and Redis.
+448. User asked about reducing frontend memory usage during `1-hour` continuous streaming from `150MB`.
+449. User asked how to configure Flask-SocketIO timeout correctly to `60` seconds.
+450. User asked for Jest `29.5` tests for a React `VideoStream` component.
+451. User asked how to reduce bandwidth by `70%` using OpenCV `cv2.imencode('.jpg', frame)`.
+452. User asked about upgrading Flask `2.3.2` + Flask-SocketIO `5.3.2` for async WebSocket stability.
+453. User asked how to use Redis as a message broker between detection backend and frontend WebSocket server.
+454. User asked how to improve WebSocket error handling and emit better messages to clients.
+455. User asked about optimizing a React component with Redux and Webpack tree shaking / code splitting, reducing bundle size from `1.2MB` to `650KB`.
+456. User asked about WebSocket schema versioning from `1.1` toward `1.2` with new tracking fields.
+457. User asked about integrating WebSocket data into Redux store updates.
+458. User asked how to use `React.memo` to reduce unnecessary re-renders.
+459. User asked about dark mode toggle with `localStorage` persistence and handling cleared browser storage.
+460. User asked again about fixing React `.map` of undefined errors in delayed API data.
+461. User asked how to use `React.memo` with a `VideoStream` component to reduce memory usage to `100MB`.
+462. User added the preference: `Always provide a screenshot example when I ask about frontend UI features`.
+463. User asked specifically for a dark mode toggle implementation with persistence in `localStorage`.
+464. User asked for a screenshot example workflow using Puppeteer for a UI with `VideoStream` and `ControlPanel`.
+465. User returned to backend production-readiness and fixed `MemoryError: Unable to allocate 1.2GB array` by downscaling to `480p`.
+466. User asked whether there are additional frame-processing optimizations beyond downscaling.
+467. User explicitly chose to dive deeper into efficient data types and image-processing optimizations first.
+468. User asked: “How about we start with ensuring I'm using the right data types? Could you give me a quick rundown on how to switch to np.float32 or np.uint8 where appropriate?”
+469. User then asked: `What did we do so far?`
+470. User requested a continuation prompt / handoff summary.
+471. User later resumed AWS deployment/operations topics and reported `100% positive feedback` from final UAT with `5 paramedic volunteers`.
+472. User described production ECS deployment architecture with `3 t3.medium instances behind an AWS ALB on port 80/443`.
+473. User confirmed production architecture with separate ECS services for detection, tracking, and API gateway, all with service discovery enabled.
+474. User reported intermittent WebSocket disconnect concerns behind AWS ALB and asked about sticky sessions.
+475. User asked specifically for an example of configuring sticky sessions on an ALB using AWS CLI or SDKs.
+476. User asked `What did we do so far?`
+477. User requested this detailed continuation prompt.
 
 ### Contradiction & Update Log
-- `initial feature extraction deadline` was originally `April 15` → later changed to `April 20`.
-- `transformer training deadline` was originally `May 30` → later changed to `June 10`.
-- `deployment deadline` was originally `July 10` → later changed to `August 10`.
-- Multiple example code snippets used incorrect/non-standard classes or APIs:
-  - `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`, `distilgpt2-v2`
-  - `torchvision.transforms.Transform`
-  - `torchvision.datasets.Dataset`
-  - `StableDiffusionPipeline.preprocess_image`
-  - `StableDiffusionPipeline.get_embeddings`
-  - `from base64 import Base64`
-- `measured API latency` was originally `320ms` → later improved to `210ms`.
-- `redis cache ttl` examples originally centered on `3600` → later user discussed extending to `7200` (context: performance optimization and cache instruction preference).
-- `uvicorn workers` were originally `2` → later increased to `4`.
-- User first said they had never encountered CUDA OOM during training → later repeatedly discussed and requested handling for `RuntimeError: CUDA out of memory` and specifically `RuntimeError: CUDA out of memory at line 112 in train.py`.
-- User later referenced `April 15` as a sprint target after previously accepting revised dates `April 20`, `June 10`, `August 10`; revised dates remain the accepted plan.
-  - `DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2LMHeadModel`, `DistilGPT2ForSequenceClassification`, `distilgpt2-v2`
-  - `DistilBertTokenizer` / `DistilBertForSequenceClassification` / `DistilBertForMaskedLM` with `distilgpt2`
-  - `StableDiffusionPipeline(...).latent_dist.sample()` style extraction examples
-  - `fastapi.swagger import SwaggerUI`
-  - `responses` proposed for `httpx` mocking
-- Later assistant examples around Auth0, gRPC-Web, API Gateway, Redshift, AMP casting, and some Kubernetes snippets were also oversimplified or potentially incorrect and should be revalidated before implementation.
-- Deployment guidance was later constrained by a new user preference: always specify exact container image versions.
-- `redis cache ttl` focus was originally `3600` → later also `7200`.
-- `uvicorn workers` were originally `2` → later updated to `4`.
-- `API gateway timeout` was originally `30s` → later increased to `60s`.
-- `docker image size target` later became `650MB` from `1.2GB`.
-- Earlier unresolved request changed over time:
-  - DistilGPT-2 `Trainer` example → AWS EKS cost analysis → CI/CD integration → PyTorch Lightning gradient accumulation → now latest unresolved request is serverless migration pitfalls.
-- Multiple prior assistant examples were invalid or suspect and should be revalidated:
-  - `StableDiffusionPipeline(...).latent_dist.sample()` extraction patterns
-  - later generic Lightning / AMP / React / Redis examples may also need revalidation
-- `frontend caption rendering time` improved from `450ms` to `180ms`.
-  - later generic Lightning / AMP / React / Redis / AWS / circuit breaker / Storybook examples may also need revalidation
-- User first implied unfamiliarity with serverless migration, later clarified preference for serverless due to cost efficiency and automatic scaling despite cold start challenges.
-- `beam search latency` improved from `450ms` to `280ms`.
-- latest active request changed over time:
-  - `Trainer` with custom `Dataset` for DistilGPT-2
-  - then `AWS EKS cost vs management overhead`
-  - then `CI/CD pipeline integration`
-  - then `PyTorch Lightning gradient accumulation`
-  - then `common pitfalls when migrating to serverless`
-  - now `Slack webhook for critical alerts and errors`
-- Many prior assistant snippets were likely invalid or oversimplified and should be revalidated:
-  - various DistilGPT-2 classes / IDs
-  - `StableDiffusionPipeline` helper methods
-  - custom CUDA + PyTorch extension examples
-  - AWS Lambda embedding-code examples
-  - API Gateway usage plan snippets
-  - GraphQL subscription lifecycle examples
-  - Swagger UI customization examples
-- `redis cache ttl` examples centered on `3600` → later also `7200`.
-  - `AWS EKS cost vs management overhead`
-  - `implement a CI/CD pipeline integrated with the existing codebase`
-  - `PyTorch Lightning gradient accumulation example using accumulate_grad_batches=4`
-  - `common pitfalls when migrating to serverless`
-  - `Slack webhook for critical system alerts and errors`
-- later user-reported BLEU-4 changed from `38.7` to `39.2` in a subsequent performance discussion
-- many prior assistant examples were generic, invalid, or oversimplified and should be revalidated before reuse:
-  - AWS Lambda snippets
-  - generic Tkinter/React examples unrelated to confirmed repo state
+- `weights_size` was originally stated as `14MB` → later updated to `14.2MB`
+- `latency` improved across multiple stages:
+  - `250ms` → `190ms`
+  - `190ms` → `180ms`
+  - `200ms` → `160ms`
+  - `250ms` → `210ms`
+  - latest mentioned with counting enabled: `180ms`
+- `backupCount` in logging examples was originally `1` → some suggested examples changed to `5` (context: stronger logging retention suggestion)
+- `device` naming varied:
+  - user uses `cpu`
+  - some examples used `gpu`
+  - other examples earlier used `cuda`
+- Tracker memory footprint was discussed as `120MB stable during a 1-hour continuous run` → later reduced to `90MB during a 1-hour continuous run`
+- Frontend memory usage was discussed as `150MB during a 1-hour continuous streaming session` → later optimized to `100MB during a 1-hour continuous streaming session`
+- Frontend bundle size was discussed as `1.2MB` → later reduced to `650KB`
+- TensorRT-related latency was discussed as `210ms` in one integration state → user later reported `90ms` after acceleration improvements
+- User fixed a memory failure by changing frame processing from high-resolution to `480p`
+- Container image size using Alpine changed from `1.1GB` → `350MB` → `250MB`
+- AWS API response time changed from `180ms under 50 concurrent users` → `120ms under 50 concurrent users`, later `110ms under 100 concurrent users`.
+- ECS task CPU reservation changed from `512` → `1024` (context: fixed `"503 Service Unavailable"` errors)
+- `weights_size` was originally `14MB` → later `14.2MB`
+- `latency` improved across stages:
+- `backupCount` was originally `1` → later examples used `5`
+- `tracker_memory_footprint` was `120MB` → later `90MB`
+- `frontend_memory_usage` was `150MB` → later `100MB`
+- `frontend bundle size` was `1.2MB` → later `650KB`
+- `TensorRT latency` was `210ms` → later `90ms`
+- `AWS API response time` was `180ms under 50 concurrent users` → later `120ms under 50 concurrent users`
+- later additional metric introduced: `110ms under 100 concurrent users`
+- `ECS CPU reservation` was `512` → later `1024`
+- `container image size` changed `1.1GB` → `350MB` → `250MB`
+- `container startup time` example changed `25s` → `10s`
+- latest active topic drifted from ALB sticky sessions alone to broader deployment timeline / blue-green / ops planning, while WebSocket stability remains unresolved
+- `latest_active_request` changed from NumPy dtype optimization after `MemoryError: Unable to allocate 1.2GB array` → AWS ALB sticky sessions → now back to local app-level counting/toggle/modularity topics
+- `latest_active_request` changed multiple times across AWS ops, object counting, frontend UI, and backend memory optimization threads
+- Most recent end-state before this summary: active topic was `optimize frame processing after fixing MemoryError: Unable to allocate 1.2GB array by downscaling to 480p`; user specifically wanted deeper guidance on switching to `np.float32` or `np.uint8` where appropriate
+- `container startup time` changed `25s` → `10s`
+- `latest_active_request` changed from backend dtype optimization after `MemoryError: Unable to allocate 1.2GB array` → AWS ALB sticky sessions for ECS microservices
+- Sprint deadline was originally March 15, 2024 → later changed to March 18, 2024.
+- Instagram automation prototype deadline was originally April 1, 2024 → later changed to April 5, 2024.
+- DB query time was originally 400ms → later reduced to 120ms by adding a composite index on `(post_time, status)`.
+- Scheduler memory footprint was originally 70MB → later reduced to 45MB.
+- Image processing time was originally 800ms → later reduced to 200ms.
+- Active topic changed many times across Twitter/Facebook/Instagram/auth/scheduling/testing/deployment; latest unresolved coding topic is PostgreSQL ↔ Redis scheduled-post reconciliation every 5 minutes.
+- Docker image size was discussed as 120MB → later reduced to 85MB.
+- Async scheduler dispatch latency was discussed as 500ms → later reduced to 150ms.
+- Facebook CPU usage was discussed as 35% → later reduced to 20%.
+- Materialized view query time was discussed as 1.5s → later reduced to 400ms.
+- Active topic changed repeatedly across Twitter/Facebook/Instagram/auth/scheduling/testing/deployment/compliance; latest topic before recap is GDPR deletion/access-request handling.
+- DB query time was originally 400ms → later reduced to 120ms.
+- `requests_version` baseline was `2.28.1` → later user stated upgrade to `2.28.2`.
+- Facebook post CPU time improved from `25%` → `15%`.
+- API Gateway throttling discussion earlier mentioned `1000 requests per minute` in one context → later user targeted `1500 requests per minute`.
+- Token rotation discussions involved multiple contexts:
+  - every `45 minutes` for some token-refresh threads
+  - every `45 days` for rotated encryption keys
+  - every `90 days` for Instagram token encryption key rotation after July 3, 2024 retrospective
+- Active topic shifted many times; latest unresolved direct request is Twitter API v2.3.1 metrics endpoint documentation/examples, while GDPR deletion/consent handling remains a major nearby open topic.
+- `requests_version` baseline was `2.28.1` → later upgraded to `2.28.2`.
+  - `45 minutes`
+  - `45 days`
+  - `90 days`
+- Release `v1.1.0` target was `July 10, 2024` → later user said it was postponed to `July 15, 2024` to incorporate additional security patches.
+- Language detection module completion milestone was originally March 15, 2024 → later adjusted to March 18, 2024.
+- Active technical focus changed many times across schema design, Unicode, testing, project planning, DB debugging, microservices, performance, Redis, React i18n, DeepL integration, and finally JWT refresh-token handling.
+- Several examples incorrectly used OpenAI completions/chat patterns and outdated engines while referring to GPT-4; future continuation should correct this if implementation resumes there.
+- PostgreSQL connection examples initially used port `4000` incorrectly for DB access → corrected to `5432`.
+- Sprint deadline was originally `March 15, 2024` → later changed to `March 18, 2024`.
+- Language detection library preference shifted from evaluating `langdetect v1.0.1` vs `franc v6.1.0` → favored `franc v6.1.0`.
+- Translation latency examples evolved from `220ms` → optimized `180ms`.
+- Redis caching results later introduced `85%` cache hit rate and webhook polling reduction by `60%`.
+- Active topic shifted many times; most recent high-value unresolved coding themes are JWT refresh-token flow, contextual memory store API/schema, GPT-4 API configuration/error handling, webhook integration, and sprint review presentation materials.
+- Later assistant guidance repeatedly used outdated OpenAI `FineTune` / `Completion.create(engine="gpt-4", ...)` style examples; future continuation should correct this rather than preserve it as implementation truth.
+- Sprint deadline changed from `March 15, 2024` → `March 18, 2024`.
+- Frontend/backend integration bug:
+  - frontend `GET /language-detect`
+  - backend `POST /api/language-detect`
+- PostgreSQL access examples initially confused service port `4000` with DB port `5432`.
+- Translation latency examples evolved from `220ms` → `180ms`.
+- Login API average response time improved from `450ms` → `220ms`.
+- Some auth examples incorrectly used RS256 with `'secret_key'`; correct RS256 requires RSA key pair.
+- Several earlier assistant responses used insecure patterns:
+  - plaintext password queries
+  - hardcoded secrets
+  - outdated OpenAI API usage
+- Active topic shifted multiple times:
+  - JWT refresh-token flow
+  - GDPR
+  - Twitter API docs
+  - clinical-mode routing
+  - auth performance
+  - password reset / email verification
+  - summary / handoff request
+- Translation latency changed from `220ms` → `180ms`.
+- Login API response time changed from `450ms` → `220ms`.
+- Access-token examples varied across threads:
+  - `1 hour`
+  - `2h`
+  - `3 hours`
+- Password reset expiry examples varied across threads:
+  - `15 minutes`
+  - `20 minutes`
+- Auth guidance drifted into insecure cookie handling:
+  - some examples incorrectly tried to set `HttpOnly` cookies from frontend JavaScript
+- RS256 guidance drifted into incorrect examples using `'secret_key'`; correct RS256 requires an RSA key pair.
+- OpenAI / GPT-4 examples drifted into inaccurate / outdated patterns and should be corrected in future continuation.
+- Instagram prototype deadline changed from `April 1, 2024` → `April 5, 2024`.
+- WebSocket RAM changed from `1.2GB` → `800MB`.
+- Docker image size changed in different threads:
+  - `180MB` → `90MB`
+  - `120MB` → `85MB`
+- Container startup time changed from `25s` → `10s`.
+- ECS CPU reservation changed from `512` → `1024`.
+- Password reset / auth token expiry examples varied:
+  - access token `1 hour`, `2h`, `3 hours`
+  - refresh token `7 days`
+  - password reset `15 minutes`, `20 minutes`, `1 hour`
+- Token rotation intervals varied by context:
+- Release `v1.1.0` target changed from `July 10, 2024` → `July 15, 2024`.
+  - `1.1GB` → `350MB` → `250MB`
+  - password reset `1 hour`
+- Latest active topic changed many times; do not assume one unresolved branch without re-grounding.
+- `api_response_time` was originally `400ms` → later changed to `220ms` (context: after optimizing HTTP session reuse)
+- `query_time_recent_trades` was originally `1.2 seconds` → later changed to `0.3 seconds` (context: after indexing `symbol` and `timestamp`)
+- `memory_usage_loader` was originally `180MB` → later changed to `140MB` (context: after closing DB cursors properly)
+- Active topic drifted across ingestion, caching, tests, DB schema, Docker, OAuth, ML, and backtesting; the latest direct user request is a recap/handoff, not a fresh implementation task.
+- `lstm_epochs` was originally `50` → later changed to `60` (context: later training run)
+- `lstm_validation_loss` was originally `0.032` → later changed to `0.028` (context: later training run on `March 30, 2024`)
+- `lstm_batch_size` discussion changed from `64` → `32` in one optimization thread
+- GPU troubleshooting batch size changed from `128` → `64`
+- historical backtesting size was originally `5,000 historical data points` → later a performance thread used `50,000 historical data points`
+- active topic drifted repeatedly across ingestion, caching, tests, DB schema, Docker, OAuth, ML, and backtesting; latest direct user request is recap/handoff, not a fresh implementation task
+- `backtest_runtime` was originally `12 minutes` → later reduced to `4 minutes` (context: vectorizing Pandas operations)
+- `peak_memory_usage_backtesting_framework` was originally `3GB` → later reduced to `1.2GB` (context: streaming data in chunks)
+- `paper_trade_execution_latency` was originally `350ms` → later reduced to `120ms` (context: HTTP session reuse)
+- latest discussed backtesting dataset size evolved from `50,000 historical data points` → later `60,000 historical data points as of April 14, 2024`
+- timeout discussion changed from `30s` → `60s` (context: webhook listener troubleshooting)
+- `dashboard_load_time` changed from `3.5s` → `1.2s`
+- `live_trading_api_response_time` changed from `400ms` → `180ms`
+- recent rate limit requirement introduced `250 requests per 15 minutes`, while other nearby examples still used `200 requests per 15 minutes`
+- recent Alpaca auth/WebSocket guidance may conflict with actual official Alpaca behavior and should be revalidated before implementation
+- `dashboard_load_time` was `1.2s` in the earlier dashboard thread → later reported as `0.9 seconds` on `May 26, 2024` (context: further dashboard optimization)
+- frontend test coverage was `70%` → later `90%`
+- WebSocket heartbeat interval was `30s` → later `10s`
+- Lambda memory allocation was `1024MB` → later `512MB`
+- alert escalation completion target appeared in two nearby contexts:
+  - `June 7, 2024`
+  - `June 10, 2024`
+- some assistant implementation examples used questionable version labels / SDK assumptions and should be verified before reuse:
+  - `Twilio API v8.0`
+  - `Integrated Auth0 2.0`
+  - `AWS SQS 3.0`
+- `log_ingestion_latency` was `1.2s` → later improved to `300ms` (context: Kafka batch size and compression tuning)
+- `kafka_consumer_poll_timeout` was `100ms` → later `500ms`
+- Elasticsearch field type recommendations changed during schema review:
+  - `trade_id`: `integer` → `long`
+  - `price`: `float` → `double`
+  - `symbol`: `text` → `keyword`
+  - `event_type`: `text` → `keyword`
+- assistant examples used unsupported or likely incorrect Kafka/MSK config properties:
+  - `alert`
+  - `dead_letter_topic`
+  - `encryption.key`
+  - `kafka.log.encryption.keys`
+- assistant examples mixed Kafka client config naming and broker/property naming in ways that should be validated before implementation
+- `log_ingestion_latency` changed from `1.2s` → `300ms`
+- `kafka_consumer_poll_timeout` changed from `100ms` → `500ms`
+- Elasticsearch mapping recommendations changed:
+- Unsupported / likely incorrect config properties appeared in earlier assistant examples:
+- `project_transformer_training_deadline` was originally `May 30` → later changed to `June 10`
+- `project_deployment_deadline` was originally `July 10` → later changed to `August 10`
+- `batch_size` was originally `32` → later reduced to `16`
+- `epoch time` was originally `45m` → later reduced to `28m`
+- `docker_image_size_problem` remained `1.2GB`; optimization attempts with `python:3.10-alpine` did not significantly help
+- Several model/class names in conversation were inconsistent or likely invalid:
+  - `DistilGPT2ForCausalLM`
+  - `DistilGPT2Tokenizer`
+  - `DistilGPT2ForSequenceClassification`
+  - `distilgpt2-v2`
+- Several diffusion pipeline methods referenced in examples were likely invalid/inaccurate:
+  - `pipe.preprocess_image(image)`
+  - `pipe.get_embeddings(image)`
+- user later also claimed a `batch size of 12` as a “sweet spot” in a separate optimization turn
+- API latency was originally discussed at `320ms on an RTX 3090` → later Redis-cached path reached `210ms`
+- Multiple earlier assistant examples used incorrect Hugging Face model/tokenizer classes and should not be treated as valid implementation truth
+- `grafana_version_recent` in older PK was `9.5` → later user explicitly referenced `Grafana 9.4` in this monitoring thread.
+- API Gateway throttling values conflict across threads:
+  - older PK contains `1000 requests per second`
+  - later user explicitly asked for `1000 requests per minute`
+  - future continuation should preserve both as separate thread-specific contexts.
+- Kubernetes memory examples moved from loose `4GB` / `6GB` wording → should be treated as corrected Kubernetes-style `4Gi` / `6Gi`.
+- Active unresolved topic changed from many prior branches → latest actual unresolved request is now **CI/CD pipeline integration**.
+- `latest_active_request` was previously summarized as `CI/CD pipeline integration for existing codebase using build_and_deploy() stub` → later changed to `PyTorch Lightning gradient accumulation implementation using accumulate_grad_batches=4` (context: this conversation continued past the earlier handoff).
+- `grafana_version_recent` in older knowledge was `9.5` → this user thread explicitly used `9.4`.
+- API Gateway throttling values differ by thread:
+  - older thread: `1000 requests per second`
+  - this thread: `1000 requests per minute`
+- Kubernetes memory examples evolved from loose `4GB` / `6GB` phrasing → corrected to `4Gi` / `6Gi`.
+- `frontend_caption_render_time` changed from `450ms` → `180ms`
+- `api_gateway_timeout_example` changed from `30s` → `60s`
+- `latest_active_request` changed from `PyTorch Lightning gradient accumulation implementation using accumulate_grad_batches=4` → `common pitfalls when migrating to serverless`
+- `latest_active_request` changed multiple times across prior threads; in this final stretch it should now be treated as `Slack webhook notifications for critical system alerts and errors`
+- `lambda_memory` changed from `1024MB` → `2048MB` in one Lambda memory troubleshooting thread
+- `API Gateway usage plan daily quota` example changed from `5000 requests per day per user` → `6000 requests/day per user`
+- `beam search latency` changed from `450ms` → `280ms`
+- `Lambda cold start latency` changed from earlier `300ms` target/example → user later reported `150ms` with `2 pre-warmed instances`
+- `CloudWatch alarm error-rate threshold` older common thread value was `1%` → later explicit testing thread used `0.5%`
+- `latest_active_request` from older preserved knowledge (`common pitfalls when migrating to serverless`) is now superseded by the newer webhook/Slack request
+- `model_performance_reporting_preference` was not previously explicit → later updated to `Always include final evaluation metrics when I ask about model performance.`
+- Latest active topic changed many times across accessibility, PyTorch, FastAPI, CI/CD, UI, and metrics; the final active topic in this stretch is now **automatic model metric reporting**.
+- `BLEU-4 score` was discussed earlier in broader conversation as `38.7` → this later thread reported `39.2` after last-minute hyperparameter tuning.
+- `frontend_memory_usage` was originally `150MB during a 1-hour continuous streaming session` → later `100MB during a 1-hour continuous streaming session`
+- `frontend_bundle_size` was originally `1.2MB` → later `650KB`
+- `latest_active_request` in earlier preserved knowledge had drifted through many topics; in this local CV/frontend branch the final unresolved request before recap became dtype/image-processing optimization after fixing `MemoryError: Unable to allocate 1.2GB array`
+- `React map undefined` appeared in multiple threads; latest React frontend thread reaffirmed the exact error as `TypeError: Cannot read property 'map' of undefined`
+- `frontend_memory_usage` was `150MB during a 1-hour continuous streaming session` → later `100MB during a 1-hour continuous streaming session`
+- `frontend_bundle_size` was `1.2MB` → later `650KB`
+- `aws_api_response_time` changed `180ms under 50 concurrent users` → `120ms under 50 concurrent users`
+- `ecs_cpu_reservation` changed `512` → `1024`
+- `container_startup_time` changed `25s` → `10s`
+- active topic changed from local dtype/image-processing optimization after `MemoryError: Unable to allocate 1.2GB array` → AWS ECS microservices + ALB sticky sessions / WebSocket reliability
 
 ### Technical Specifications
-- [API] FastAPI `0.95`, port `8000`
-- [DB] PostgreSQL `14.3`
-- [ML] PyTorch `1.13`, Transformers `v4.29`
-- [Testing] pytest `7.2.0`
-- [Linting] pylint `2.15.4`, max line length `88`
-- [Vision preprocessing] `Resize(256)`, `CenterCrop(256)`, `ToTensor()`, `Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])`
-- [Infra] Docker `20.10`, AWS EC2 `g4dn.xlarge`, S3 `50GB`
-- [Latency target] `under 250ms per image` on `NVIDIA RTX 3090`
-- [Observed latency] `320ms`
-- [Feature extraction service] port `8001`
-- [Caption generation service] port `8002`
-- [DB] PostgreSQL `14.3`, port `5432`
-- [Cache] Redis `7.0.11`, port `6379`, TTLs `3600` and `7200`, eviction `allkeys-lru`, maxmemory `2GB`
-- [ML] PyTorch `1.13`, recommended `1.13.1`; Transformers `v4.29`, recommended `4.29.2`
-- [Infra] Docker `20.10`, Docker Compose `v2.15`, Kubernetes `v1.26`, AWS EC2 `g4dn.xlarge`
-- [Frontend] React `18.2`, Axios `1.4.0`, Cypress `12.8`
-- [Monitoring] Prometheus `9090`, Redis exporter `9121`, Grafana `3000`, Jaeger `16686` / `14268` / `14250` / `9411`
-- [Observed latencies] `320ms`, later `210ms`, further target `140ms`
-- [Testing] pytest `7.2.0`, AMP parity tolerance `1%`
-- [Monitoring versions] Prometheus `2.44`, Grafana `9.4`
-- [Realtime] Socket.IO `v4.7.1`
-- [Tooling] black `22.3.0`, Helm `3.9`, Auth0 React SDK `v2.0.0`, Locust `2.15`, Webpack `5.75`, Sentry `21.9`
-- [Monitoring] Prometheus `2.44`, Grafana `9.4`, Jaeger `16686` / `14268` / `14250` / `9411`
-- [Webpack] `5.75`
-- [Sentry] `21.9`
-- [PyTorch Lightning target mentioned later] `v2.0.1`
-- [Docker base image example] `python:3.9-slim`
-- [WebSocket test] `ws://localhost:8080`
-- [Frontend] React `18.2`, Axios `1.4.0`, Cypress `12.8`, Storybook `v7.0`, React Testing Library `v14.0.0`
-- [Frontend inference] `ONNX Runtime Web v1.14`
-- [Observed frontend latency] `450ms`, later `180ms`
-- [Serverless] AWS Lambda, API Gateway, AWS SAM, CloudFront, SNS/SQS, Step Functions, DynamoDB, Redis caching layers discussed extensively
-- [ML] PyTorch `1.13`, recommended and production-locked `1.13.1`; Transformers `v4.29`, recommended `4.29.2`, production-locked `v4.29`
-- [PyTorch Lightning target] `v2.0.1`
-- [Translation microservice example] AWS Fargate with `cpu='256'`, `memory='512'`, container port `8080`
-- [Observability] Elasticsearch `8.7`, Swagger UI `4.0.0`
-- [Scheduling] Redshift analytics update every `6 hours`
+- [OpenCV] `4.7.0`
+- [Python] `3.10`, `3.10.6`
+- [PyTorch] `1.13.1`
+- [pytest] `7.2.0`
+- [Flask endpoint] `/status`
+- [Flask endpoint planned] `/control`
+- [Flask endpoint planned] `/command`
+- [Flask endpoint planned] `/update_detections`
+- [ZeroMQ] `tcp://localhost:5555`
+- [Docker image] `cv-app:v0.1`
+- [Logging] `RotatingFileHandler('app.log', maxBytes=5*1024*1024, backupCount=1)`
+- [Model files] `yolov5s.pt`, `yolov5x.pt`, `yolov5s.onnx`, `yolov5s_v6.2.onnx`, `yolov5s.cfg`, `yolov5s.weights`, `model.pth`, `model.onnx`, `model.trt`, `yolov5s.trt`
+- [CLI flags] `--counting`, `--confidence-threshold`, `--device`, `--enable-tracking`, `--use-tensorrt`
+- [React] `18.2`
+- [Jest] `29.5`
+- [NumPy] `1.24.2`
+- [numba] `0.57.0`
+- [flask] `2.3.2`
+- [Flask-SocketIO] `5.3.2`
+- [Flask endpoint added/planned] `/config`
+- [REST endpoint planned] `/tracker/history`
+- [Redis] `localhost:6379`, `db=0`
+- [WebSocket] `ws://localhost:6000`
+- [Socket.IO settings] `ping_timeout=60`, `ping_interval=30`
+- [Tracking parameters] `max_age=30`, `min_hits=3`, `iou_threshold=0.3`
+- [Frontend controls] confidence threshold slider `0.1` to `0.9`
+- [WebSocket schema] versioning from `1.1` toward `1.2`
+- [Terraform] `1.4.6`
+- [Selenium] `4.9.0`
+- [Locust] `2.15`
+- [Black] `23.1.0`
+- [flake8] `6.0.0`
+- [coverage.py] `7.2.7`
+- [SQLite] `3.39.4`
+- [DOMPurify] `2.3.4`
+- [aiofiles] `23.1.0`
+- [Snyk CLI] `2.15.0`
+- [EC2] `t3.medium`
+- [OS] `Ubuntu 22.04 LTS`
+- [Docker] `23.0.1`
+- [NVIDIA Driver] `525.60.11`
+- [ALB ports] `80/443`
+- [WebSocket security group issue port] `6000`
+- [API Gateway caching TTL] `60 seconds`
+- [API Gateway throttling] `1000 requests per second`, `200` burst
+- [Rate limiting] `60 requests per minute per IP`
+- [Flask endpoint] `/revoke-token`
+- [Flask endpoint planned] `/config`
+- [Logging example] `RotatingFileHandler('maintenance.log', maxBytes=1024*1024, backupCount=5)`
+- [AWS ALB ports] `80/443`
+- [WebSocket issue port] `6000`
+- [Cypress] `12.17`
+- [Release version] `1.0.0`
+- [Flask endpoint] `/api/response`
+- [REST logging file] `app.log`
+- [Docker compose services] `detection`, `api`
+- [Alternative model] `SSDMobileNetV2`
+- [orjson] faster JSON serialization/deserialization
+- [Python] `3.10`
+- [Tweepy] `4.10.1`
+- [facebook-sdk] `3.1.0`
+- [APScheduler] `3.9.1`
+- [requests] `2.28.1`
+- [Click] `8.1.3`
+- [flake8] `5.0.4`
+- [PostgreSQL] `14`
+- [RabbitMQ] `3.9.13`
+- [tqdm] `4.64.1`
+- [Pillow] `9.4.0`
+- [Selenium] `4.8.0`
+- [Gunicorn] `20.1.0`
+- [Ubuntu] `22.04`
+- [Twitter endpoint] `https://api.twitter.com/2/tweets`
+- [Facebook endpoint] `https://graph.facebook.com/v15.0/me/feed`
+- [Instagram endpoint] `https://graph.instagram.com/v15.0/{ig-user-id}/media_publish`
+- [Nginx port] `8080`
+- [Gunicorn bind] `0.0.0.0:8000`
+- [redis port] `6379`
+- [Tweepy] `4.10.1`, `4.12.1`
+- [spaCy] `3.5.0`
+- [redis-py] `4.3.4`
+- [Rich] `13.3.2`
+- [Sentry] `1.12.0`
+- [black] `22.3.0`
+- [isort] `5.10.1`
+- [React Native] `0.71`
+- [OpenSSL] `3.0.7`
+- [psutil] `5.9.4`
+- [HAProxy] `2.6.0`
+- [Frontend port example] `3000`
+- [requests] `2.28.1`, `2.28.2`
+- [aiohttp] `3.8.3`
+- [Expo] `5.4.4`
+- [Postman] `10.15.0`
+- [API Gateway caching TTL example] `60 seconds`
+- [Requested Redis TTL strategy] `1 hour`
+- [frontend] `React 18.2`
+- [Backend] `Node.js 18`
+- [Database] `PostgreSQL 14`
+- [Build tool] `Vite 4.3`
+- [Redis] `Redis v7.0`
+- [JWT] `jsonwebtoken 8.5.1`
+- [Linting] `ESLint v8.40`
+- [Logging] `Winston v3.8`
+- [Language detection libraries] `franc v6.1.0`, `langdetect v1.0.1`
+- [Translation APIs] `Google Translate API v3`, `DeepL API v2`
+- [OpenAI reference] `OpenAI GPT-4 API v2024-02`
+- [Ports] `3000`, `4000`, `5000`, `5432`, `443`, `80`
+- [REST endpoints] `/api/chat`, `/api/memory`, `/api/language-detect`, `/detect-language`, `/health`, `/webhook`, `/api/translation-complete`, `/api/gpt-4-clinical`, `/webhook/update-last-active`, `/api/user/:userId/clinical-mode`
+- [CI/CD path] `.github/workflows/ci-cd.yml`
+- [Lint config] `.eslintrc.json`
+- [Config files] `vite.config.js`, `package.json`, `Dockerfile`, `.dockerignore`, `.eslintrc.json`
+- [Related source files] `LanguageDetector.js`, `api.js`, `server.js`, `app.js`, `ChatInput.js`, `ChatUI.js`, `LanguageContext.js`, `i18n.js`, `authenticateJWT` middleware
+- [Cache] `Redis v7.0`
+- [Translation APIs] `DeepL API v2`, `Google Translate API v3`
+- [Ports] `3000`, `4000`, `5000`, `5432`, `443`, `80`, `6379`
+- [Ports] `3000`, `4000`, `5000`, `5001`, `5432`, `443`, `80`, `6379`
+- [Later backend versions] `Express 4.18`, `TypeScript v5.0`
+- [Release tag] `v0.3.0`
+- [Clinical data files] `clinical_dialogues.json`, `train_data.jsonl`, `val_data.jsonl`
+- [Backend framework] `Express 4.18`
+- [JWT lib] `jsonwebtoken 8.5.1`
+- [Testing] `Jest v29.5`
+- [Mailer] `Nodemailer v6.9.1`
+- [Ports] `3000`, `4000`, `5000`, `5001`, `5432`, `6379`, `6000`, `7000`, `80`, `443`
+- [Endpoints] `/login`, `/logout`, `/refresh-token`, `/authenticate`, `/admin-only`, `/user/roles`, `/password-reset`, `/password-reset/:token`, `/api/gpt-4-clinical`, `/api/user/:userId/clinical-mode`
+- [Framework] `Express 4.18`
+- [JWT library] `jsonwebtoken 8.5.1`
+- [TypeScript] `v5.0`
+- [Endpoints] `/api/chat`, `/api/memory`, `/api/language-detect`, `/api/gpt-4-clinical`, `/login`, `/logout`, `/refresh-token`, `/password-reset`, `/password-reset/:token`, `/webhook`
+- [testing] `Jest 29.5`
+- [Mailer] `Nodemailer 6.9.1`
+- [Logging] `Winston 3.8`
+- [OpenAI] `GPT-4 API v2024-02`
+- [WebSocket orchestration] `Kubernetes v1.27`
+- [Clinical release tag] `v0.3.0`
+- [language/runtime] `Python 3.10`
+- [Web framework] `Flask 2.3.2`
+- [Cache] `Redis 7.0`
+- [Testing] `pytest 7.3.1`
+- [Indicators] `TA-Lib 0.4.24`
+- [ML] `TensorFlow 2.11`
+- [Docker base] `python:3.10-slim`
+- [Market data API] `Alpha Vantage API v2.1`
+- [Brokerage APIs] `https://api.alpaca.markets/oauth/token`, `https://api.alpaca.markets/v2/positions`, `https://paper-api.alpaca.markets/v2/orders`
+- [Flask route] `/api/prices`
+- [Ports] `5000`, `8080`, `8501`
+- [Web framework later mention] `Flask 2.3.3`
+- [Market data API] `https://www.alphavantage.co/query`
+- [Compose] `Docker Compose v2.12.0`
+- [Later pandas version in backtesting thread] `pandas 1.5.3`
+- [Backtesting service port] `5001`
+- [Paper trading API Flask version] `2.3.4`
+- [Async tasks] `Celery 5.3.0`
+- [Redis broker/cache] `Redis 7.0`
+- [Queue alternative] `RabbitMQ 3.9.13`
+- [Docs] `Sphinx 5.3.0`
+- [Perf numeric stack] `NumPy 1.24.3`
+- [Vault] `HashiCorp Vault 1.13`
+- [Webhook latency goals] `under 100ms`, `under 80ms`
+- [Order placement endpoint] `https://paper-api.alpaca.markets/v2/orders`
+- [Charts] `Chart.js 4.3.0`
+- [UI testing] `Cypress 12.8.0`
+- [Recent API endpoints] `/api/trade-data`, `/api/alerts`, `/api/trades`
+- [Live trading API endpoint] `https://api.alpaca.markets/v2/orders`
+- [Auth URL example] `https://app.alpaca.markets/oauth2/auth`
+- [Token URL example] `https://api.alpaca.markets/oauth2/token`
+- [WebSocket attempt] `wss://api.alpaca.markets/v2/orders`
+- [WebSocket example] `wss://stream.data.alpaca.markets/v2/iex`
+- [Language] `TypeScript 4.9.5`
+- [State management] `Redux Toolkit 1.9.5`
+- [Error tracking] `Sentry 7.27.0`
+- [monitoring] `Prometheus 2.44`
+- [monitoring] `Grafana 9.5`
+- [Messaging / task queue] `Celery 5.3.1`
+- [Reverse proxy] `Nginx 1.24.0`
+- [Certificates] `Let's Encrypt 1.24.0`
+- [Diagnostics] `Wireshark 4.0`
+- [Runtime config] `AWS Lambda 3.9 runtime` was mentioned by user, but sample config also showed `nodejs14.x`
+- [DevOps] `AWS SAM CLI 1.62.0`
+- [CI/CD] `GitHub Actions 2.294.0`
+- [Kafka] `3.4.0`
+- [Elasticsearch] `8.5.1`
+- [Kafka Manager] `3.0.0`
+- [AWS MSK brokers] `3 broker nodes`
+- [Replication factor] `3`
+- [REST API endpoint] `/api/tradelogs`
+- [Elasticsearch Watcher file] `watch.json`
+- [Watcher schedule interval] `1m`
+- [Watcher threshold] `5%`
+- [Dead-letter topic] `my_dead_letter_topic`
+- [Main topic] `my_topic`
+- [Alert topic] `my_alert_topic`
+- [Dead-letter monitor group] `dead_letter_monitor_group`
+- [KMS key ARN example] `arn:aws:kms:region:account-id:key/key-id`
+- [Kafka producer config examples] `batch_size`, `linger_ms`, `compression_type`
+- [Kafka consumer config examples] `fetch.min.bytes`, `fetch.max.wait.ms`, `poll_timeout_ms`
+- [JVM heap opts example] `-Xms2g -Xmx2g`
+- [Watcher file] `watch.json`
+- [Watcher interval] `1m`
+- [dl_framework] `PyTorch 1.13`, `PyTorch 1.13.1`
+- [transformers] `Hugging Face Transformers v4.29`, `4.29.2`
+- [api_framework] `FastAPI v0.95`
+- [database] `PostgreSQL 14.3`
+- [testing] `pytest 7.2.0`
+- [vision_utils] `torchvision 0.14.1`
+- [linting] `pylint 2.15.4`
+- [containerization] `Docker 20.10`
+- [instance_type] `g4dn.xlarge`
+- [model] `stabilityai/stable-diffusion-2-1-base`
+- [model] `t5-base`
+- [model] `distilgpt2`
+- [model_user_string] `distilgpt2-v2`
+- [vision_backbone] `ViT-B/16`
+- [caption_model_size] `GPT-2 small (124M params)`
+- [api_port] `8000`
+- [dataset] `COCO 2017`
+- [dataset_size] `123,287 images`
+- [captions_per_image] `5 captions each`
+- [tokenizer_vocab] `BPE vocab size 30,000`
+- [optimizer] `AdamW`
+- [learning_rate] `3e-5`
+- [learning_rate_initial_tuning] `5e-5`
+- [batch_size] `32`
+- [batch_size_reduced] `16`
+- [amp_opt_level] `O1`
+- [latency_target] `under 250ms per image`
+- [gpu_target] `NVIDIA RTX 3090`
+- [api_latency_observed] `320ms on an RTX 3090`
+- [docker_base_image] `python:3.10-slim`
+- [docker_base_image_alt] `python:3.10-alpine`
+- [docker_cuda_base_image] `pytorch/pytorch:1.13-cuda11.6-cudnn8-runtime`
+- [http_client] `Axios 1.4.0`
+- [dl_framework] `PyTorch 1.13.1`
+- [transformers] `Hugging Face Transformers 4.29.2`
+- [vision_model] `stabilityai/stable-diffusion-2-1-base`
+- [caption_model] `t5-base`
+- [caption_model] `distilgpt2`
+- [db] `PostgreSQL 14.3`
+- [cache] `Redis 7.0.11`
+- [compose] `Docker Compose v2.15`
+- [orchestration] `Kubernetes v1.26`
+- [gpu_base_image] `nvidia/cuda:11.7-base-ubuntu20.04`
+- [alt_gpu_base_image] `nvidia/cuda:11.7-cudnn8-runtime-ubuntu20.04`
+- [docker_cuda_base_image_discussed] `pytorch/pytorch:1.13-cuda11.6-cudnn8-runtime`
+- [frontend_port] `3000`
+- [redis_port] `6379`
+- [db_port] `5432`
+- [endpoint] `POST /caption`
+- [endpoint] `GET /captions/{image_id}`
+- [monitoring] `Grafana 9.4`
+- [realtime] `Socket.IO v4.7.1`
+- [frontend auth] `Auth0 React SDK v2.0.0`
+- [packaging] `Helm 3.9`
+- [formatter] `black 22.3.0`
+- [gpu base image] `nvidia/cuda:11.7-base-ubuntu20.04`
+- [load testing] `Locust 2.15`
+- [prometheus target] `api:8000`
+- [health endpoint example] `/healthcheck`
+- [oauth callback example] `http://localhost:3000/callback`
+- [websocket server example] `0.0.0.0:5000`
+- [training] `PyTorch Lightning v2.0.1`
+- [training] `accumulate_grad_batches=4`
+- [hardware] `RTX 3090`
+- [hardware] `24GB VRAM`
+- [frontend inference] `onnxruntime-web v1.14`
+- [bundling] `Webpack 5.75`
+- [testing] `React Testing Library v14.0.0`
+- [component workshop] `Storybook v7.0`
+- [analytics] `Google Analytics 4`
+- [serverless runtime] `AWS Lambda Python 3.10 runtime`
+- [serverless deploy] `AWS SAM`
+- [aws api] `API Gateway`
+- [storage/cache] `DynamoDB + Redis`
+- [events] `SNS/SQS`
+- [cdn] `CloudFront`
+- [contract testing] `Pact v4.3.0`
+- [serverless runtime examples] `python3.9`
+- [frontend docs] `Swagger UI version 4.0.0`
+- [backend API framework] `FastAPI 0.95`
+- [observability] `Elasticsearch 8.7`
+- [GPU hardware] `RTX 3090`, `single RTX 3090`
+- [training/inference model] `gpt2-large`
+- [translation models] `Helsinki-NLP/opus-mt-tr-en`, `Helsinki-NLP/opus-mt-en-tr`
+- [beam search] `beam width of 10`, `maximum length of 50`
+- [CUDA launch examples] `block size of 256`, `grid size of 100`
+- [ETL schedule] `every 6 hours`
+- [Lambda concurrency examples] `2 pre-warmed instances`, `5 instances`
+- [API Gateway quota example] `5000 requests per day per user`
+- [API Gateway quota updated example] `6000 requests/day per user`
+- [FastAPI docs helper] `get_swagger_ui_html`
+- [FastAPI endpoint] `/items/`
+- [FastAPI docs endpoint] `/docs`
+- [OpenAPI URL] `/openapi.json`
+- [Transformers model] `t5-base`
+- [Transformers model] `distilbert-base-uncased`
+- [Circuit breaker example] `threshold=3`, `timeout=5`
+- [Testing tools] `pytest`, `coverage.py`
+- [Frontend/desktop UI] `React`, `tkinter`
+- [frontend framework] `React 18.2`
+- [socket server] `Flask-SocketIO 5.3.2`
+- [rendering latency] `50ms per frame`
+- [UI update rate] `20 FPS`
+- [backend resolution] `640x480`
+- [frontend canvas resolution] `1280x720`
+- [video control slider] `0.1` to `0.9`
+- [socket timeout] `ping_timeout=60`
+- [socket interval] `ping_interval=30`
+- [redis host example in compose] `redis`
+- [backend framework] `Flask 2.3.2`
+- [monitoring thread exact user version] `Grafana 9.4`
+- [socket keepalive] `ping_timeout=60`, `ping_interval=30`
+- [frontend controls] confidence slider `0.1` to `0.9`
+- [ports] `5000`, `5001`, `3000`, `6379`, `6000`
+- [AWS infra] `3 t3.medium instances behind an AWS ALB on port 80/443`
+- [latest AWS architecture] `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled`
 
 ### Causal Decisions
-- Because the buffer between `April 20` and `May 30` looked tight → chose to move transformer training to `June 10`.
-- Because moving transformer training later would compress deployment → chose to move deployment to `August 10`.
-- Because user wanted detailed dependency clarity → agreed to always provide exact version numbers.
-- Because COCO captioning requires caption annotations rather than detection annotations → recommended `CocoCaptions` instead of `CocoDetection`.
-- Because user was hitting CUDA OOM → repeatedly explored smaller batch sizes (`32` → `16`), mixed precision, gradient accumulation, cache clearing, and profiling.
-- Because user later required debugging fidelity → agreed to include error messages verbatim when discussing debugging issues.
-- Because user later required performance guidance fidelity → agreed to always include cache configuration details when discussing performance optimizations.
-- Because user was hitting or debugging CUDA OOM → repeatedly explored smaller batch sizes (`32` → `16`, later also `8`, `4`), mixed precision, gradient accumulation, cache clearing, and profiling.
-- Because API latency `320ms` exceeded the target `under 250ms per image` → explored Redis caching of diffusion features (outcome: user reported `210ms`).
-- Because batch size mismatch error `ValueError: Expected input batch_size (16) to match target batch_size (32)` occurred → aligned DataLoader `batch_size` in feature extractor and transformer modules to `16`.
-- Because user prefers responsiveness without sacrificing accuracy → favored asynchronous API calls and caching strategies.
-- Because user wants modular extensibility → repeatedly moved toward separate classes/services for sampling strategies and microservices.
-- Because user prefers robust security with OAuth2 and JWT despite added complexity → future auth guidance should favor stronger token validation.
-- Because user explicitly asked for deployment detail precision → future deployment guidance should include exact image tags such as `my-image:1.2.3`.
-- Because API latency `320ms` exceeded `under 250ms per image` → explored Redis caching of diffusion features, resulting in `210ms`.
-- Because batch size mismatch `ValueError: Expected input batch_size (16) to match target batch_size (32)` occurred → aligned DataLoader batch sizes to `16`.
-- Because user wants responsiveness without sacrificing accuracy → prefer asynchronous API calls plus caching.
-- Because user explicitly asked for deployment precision → include exact image tags such as `my-image:1.2.3`.
-- Because user explicitly asked for production-update guidance style → always mention deployment strategies when discussing production updates.
-- Because user explicitly asked for backend deployment guidance style → always mention serverless scaling strategies when discussing backend deployment.
-- Because frontend caption rendering was improved from `450ms` to `180ms` using `ONNX Runtime Web v1.14` mixed precision → future frontend performance guidance should connect optimizations back to measurable UI metrics.
-- Because user explicitly wants multi-language support broadened despite complexity → future multi-language answers should specify language options explicitly.
-- Because user locked `PyTorch 1.13.1` and `Transformers v4.29` for production stability → future production integration guidance should avoid suggesting incompatible upgrades unless explicitly requested.
-- Because user wanted detailed dependency clarity → always provide exact version numbers.
-- Because user asked to always include final evaluation metrics when discussing model performance → future performance answers should include BLEU-4, METEOR, CIDEr, and other explicitly requested final metrics.
+- Because OpenCV DNN does not natively load PyTorch `.pt` YOLOv5 weights reliably → ONNX loading was suggested for OpenCV usage.
+- Because user wants easier maintenance and scaling → modular separation of detection and API layers was chosen repeatedly.
+- Because user has hardware constraints and wants predictable deployment → CPU-only deployment was preferred.
+- Because intermittent API 500 errors were traced to parsing → logging and exception handling were expanded.
+- Because counting logic caused overhead and `KeyError: 17` → simpler dictionary/defaultdict logic was adopted.
+- Because memory usage stayed high but stable → periodic clearing/resetting of object counts was considered
+- Because JSON serialization was identified as a bottleneck → `orjson` was introduced.
+- Because SORT is lightweight and suits real-time constraints → user prefers SORT for now instead of more complex trackers.
+- Because SORT has ID-switch limitations during occlusion → user plans a future DeepSORT upgrade.
+- Because frontend rendering had re-render overhead → React performance suggestions focused on `React.memo`, refs, batching, Redux selectors, and requestAnimationFrame.
+- Because WebSocket connections were resetting → keep-alive ping configuration with `ping_timeout=60` and `ping_interval=30` was discussed.
+- Because high-resolution frame processing triggered `MemoryError: Unable to allocate 1.2GB array` → frames were downscaled to `480p`.
+- Because the user explicitly wants screenshot examples for frontend UI questions → future UI discussions should include a screenshot example workflow.
+- Because the user had never implemented tracking or Kalman filters before → explanations should stay concrete and beginner-friendly.
+- Because WebRTC was considered too complex → user put WebRTC on hold.
+- Because the user wants secure AWS guidance → IAM policy details should always be included in AWS security configuration responses.
+- Because the user wants deployment guidance to be actionable → security checklist should always be included in deployment best-practice responses.
+- Because the user wants code quality guidance to be standardized → code review checklist should always be included in code quality practice responses.
+- Because `503 Service Unavailable` errors occurred on ECS → CPU reservation increased from `512` to `1024`.
+- Because intermittent WebSocket disconnects are occurring behind AWS ALB in ECS microservices deployment → sticky sessions on the ALB became an important focus.
+- Because OpenCV DNN does not reliably load YOLOv5 `.pt` → ONNX was chosen for OpenCV usage.
+- Because hardware is constrained → CPU-only deployment remains preferred.
+- Because JSON serialization was a bottleneck → `orjson` was introduced.
+- Because SORT is lightweight and fits real-time constraints → SORT is preferred now; DeepSORT is deferred.
+- Because WebRTC was too complex → it was put on hold.
+- Because WebSocket connections were resetting → keep-alive settings and ALB stickiness/timeout troubleshooting became important.
+- Because `503 Service Unavailable` occurred on ECS → CPU reservation increased from `512` to `1024`.
+- Because production launch planning became a repeated user need → user added `Always include a deployment timeline when I ask about production launch schedules`.
+- Because the user is latency-sensitive and counting is already enabled under `180ms` → the best next step for counting was minimizing per-frame overhead rather than redesigning the system
+- Because user explicitly asked for modular design → keep detection, counting, tracking, and API concerns separated into distinct classes/modules.
+- Because frontend bundle size and re-render cost were concerns → tree shaking, code splitting, `React.memo`, and Redux/render optimization were explored
+- Because user fixed high-res memory failure by downscaling to `480p` → next logical optimization was dtype and copy reduction in the frame-processing pipeline
+- Because intermittent API `500` errors were traced to parsing → logging and exception handling were expanded.
+- Because the user wanted better Python integration and error handling flexibility → APScheduler v3.9.1 was preferred over raw cron jobs.
+- Because Facebook API testing needed more time → sprint end moved from March 15, 2024 to March 18, 2024.
+- Because Instagram prototype work needed more time → deadline moved from April 1, 2024 to April 5, 2024.
+- Because scheduled post retrieval was slow at 400ms → a composite index on `(post_time, status)` was added, reducing it to 120ms.
+- Because image processing was slow at 800ms → Redis caching for resized images was added, reducing it to 200ms.
+- Because the user wants debugging help to be precise → exact error message text must always be included.
+- Because the user wants version-specific integration guidance → exact API version numbers must always be included.
+- Because the user wants API failure debugging precision → exact error codes must always be included.
+- Because the user wants stack discussions to be precise → exact library versions must always be included.
+- Because the user prefers comprehensive automated testing → future work should lean toward pytest / unittest examples, mocks, and regression coverage.
+- Because the earlier unresolved sync job was using tuple rows like dicts and Redis bytes directly → the next correct implementation must normalize row types and Redis values before comparison.
+- Because many earlier examples mixed incorrect auth or async behavior → future answers should favor accurate, production-realistic patterns over speculative examples.
+- Because GDPR became a major focus → future continuation should emphasize deletion / anonymization workflow, audit logging, consent lifecycle, transactional safety, and related-table cleanup.
+- Because the user repeatedly asked whether testing / code review / coverage should be automated → CI-first guidance is likely to be preferred.
+- Because the user explicitly asked for official Twitter API v2.3.1 metrics documentation and Python usage examples → that should remain the highest-priority unresolved API-specific continuation point.
+- Because `DeepL API v2` was described as having `15% lower latency than Google Translate API v3` → DeepL was favored.
+- Because `franc v6.1.0` was easier to integrate into an existing Node.js backend → user switched from `langdetect v1.0.1` to `franc v6.1.0`.
+- Because the user requires exactness in technical help → future responses should preserve exact API versions, library versions, error codes, error message text, metrics, and dates.
+- Because the user explicitly asked for detailed API response time metrics → future performance profiling answers must include concrete timing metrics.
+- Because tokens expire after `1 hour` and the user does not want forced re-authentication → next continuation should implement access-token + refresh-token flow.
+- Because `franc v6.1.0` was easier to integrate into the Node.js backend → it was favored over `langdetect v1.0.1`.
+- Because the user requires exact technical precision → future responses must preserve exact versions, metrics, dates, error codes, and error text.
+- Because tokens expire after `1 hour` and user does not want forced re-authentication → next JWT continuation should implement refresh-token issuance, storage, rotation, expiry, and revocation.
+- Because user repeatedly asked for production-ready guidance → recommendations should include health checks, monitoring, retries, rate limiting, logging, Docker, TLS, CI/CD, and testing.
+- Because the user added `Always provide fallback strategies when I ask about error handling in API services.` → future auth / API error-handling responses must include fallback behavior.
+- Because the user added `Always include cache hit rate statistics when I ask about caching strategies.` → future Redis/caching answers must include hit-rate metrics.
+- Because the user introduced `clinicalMode` and a separate `gpt-4-clinical` endpoint → routing should be profile-driven and include `503 Service Unavailable` fallback to base GPT-4.
+- Because the user adopted `TypeScript v5.0` for backend services → future backend code review should emphasize exact typing and production safety.
+- Because tokens expire after `1 hour` / later auth examples discussed `2h` access tokens and `7 days` refresh tokens → refresh-token flow became a major unresolved design area.
+- Because later assistant guidance drifted into inaccurate OpenAI `FineTune` / old completions examples → future continuation should correct API guidance before extending clinical fine-tuning work.
+- Because the user explicitly asked to include security protocols for API integration, future API integration responses should include transport/auth security details, not just functional examples.
+- Because `franc v6.1.0` was easier to integrate in Node.js → it was favored over `langdetect v1.0.1`.
+- Because `DeepL API v2` was described as `15% lower latency than Google Translate API v3` → DeepL was favored.
+- Because tokens expire and user does not want forced re-authentication → refresh-token flow became a major unresolved thread.
+- Because the user cares about precise debugging → future responses must preserve exact error text, codes, versions, dates, and metrics.
+- Because later assistant answers included insecure / inaccurate patterns → future continuation must correct them before extending implementation.
+- Because the user explicitly requested token expiry durations in auth discussions → future auth responses must always include exact expiry durations.
+- Because the user prefers modular design → future implementation should keep auth, chat, memory, language detection, encryption, analytics, and realtime layers separated.
+- Because `franc v6.1.0` was easier to integrate into Node.js → it was favored over `langdetect v1.0.1`.
+- Because tokens expire and the user does not want forced re-authentication → refresh-token flow became a major unresolved thread.
+- Because `clinicalMode` required profile-driven routing → backend routing and fallback to base GPT-4 on `503 Service Unavailable` became key.
+- Because WebSocket stability issues existed behind microservice infrastructure → reconnect logic, Redis pub/sub, and deployment topology became a major thread.
+- Because many earlier assistant examples were insecure or inaccurate → future continuation must correct them before extending implementation.
+- Because user prefers modular design → future implementation should keep auth, chat, memory, language detection, encryption, and realtime layers separated.
+- Because the user explicitly asked for user satisfaction metrics in UI/UX discussions → future UX guidance must include satisfaction metrics, not just technical latency.
+- Because Alpha Vantage enforces `5 calls per minute` → a `12 seconds` delay, retry logic, and caching became necessary.
+- Because the API sometimes returns a payload without `"Time Series (1min)"` → code needs explicit payload validation before indexing into JSON.
+- Because query time dropped from `1.2 seconds` to `0.3 seconds` after indexing → indexing on `symbol` and `timestamp` is confirmed beneficial, but further tuning should focus on composite indexes, fewer selected columns, and query plans.
+- Because memory dropped from `180MB` to `140MB` after closing cursors → DB resource management is a confirmed optimization area.
+- Because API response time dropped from `400ms` to `220ms` after HTTP session reuse → `requests.Session()` should be preserved in the final fetcher implementation.
+- Because user is planning Sprint 2 on `March 16–29` → implementation sequencing and deadline-oriented planning matter alongside code quality.
+- Because user is now asking for more efficient and future-proof backtesting → next work should likely improve `backtest.py` architecture so multiple strategies can share indicator calculations, signal generation, and evaluation paths efficiently.
+- Because backtesting runtime was too slow at `12 minutes` → vectorized Pandas operations were adopted (outcome: `4 minutes`)
+- Because peak memory was too high at `3GB` → chunked streaming was used (outcome: `1.2GB`)
+- Because paper trade execution latency was `350ms` → HTTP session reuse was introduced (outcome: `120ms`)
+- Because user wants backtesting decoupled from live trading → separate backtesting service on `port 5001` and `paper_trades` persistence became key design choices
+- Because user wants robust paper trading / compliance behavior → timestamped trade logging, risk halts, and richer integration tests became recurring priorities
+- Because user uses Redis as broker/cache → Redis-specific Celery broker URL and TTL caching strategies became preferred over AMQP for current paper trading module threads
+- Because webhook latency matters (`under 80ms` / `under 100ms`) → fast acknowledgment plus async offloading is the likely preferred implementation path
+- Because user repeatedly hit Alpaca/OAuth errors (`APIError: invalid api version`, `APIError: invalid endpoint`, `HTTP 401 Unauthorized`) → future continuation should verify official Alpaca API/auth docs before adding more implementation
+- Because dashboard load time improved from `3.5s` to `1.2s` after lazy loading, the next frontend optimizations should likely focus on re-render reduction and data-fetch strategy rather than bundle-loading first.
+- Because live trading API latency improved from `400ms` to `180ms` using persistent HTTP sessions, the next backend optimizations should likely focus on pooling, retries, parsing overhead, and request configuration rather than recreating transport logic.
+- Because the conversation contains assistant-generated Alpaca OAuth/WebSocket examples that may be inaccurate, official documentation validation should happen before any further Alpaca implementation work.
+- Because the `twilio` package was installed in the global Python environment instead of the virtual environment → the import failed with `ModuleNotFoundError: No module named 'twilio'`.
+- Because alert escalation failures still existed in `2%` of E2E cases → staging, logging, and deterministic failure reproduction became important follow-up areas.
+- Because Lambda cold starts and execution time were concerns → provisioned concurrency, initialization optimization, and memory tuning became recurring topics.
+- Because the user improved WebSocket cleanup and reduced memory by `30MB` → further performance work shifted toward broader bottleneck analysis rather than just connection cleanup.
+- Because the conversation drifted across many subsystems → the next agent should first re-ground on the user’s preferred next thread instead of assuming one active implementation path.
+- Because the user achieved `99.99%` event delivery but was still concerned about failure cases → the discussion shifted from pure performance to durability, retries, DLQ, and circuit breaker patterns.
+- Because the user hit `KafkaConsumerTimeoutException` even after increasing timeout from `100ms` to `500ms` → the discussion expanded into network latency diagnostics, CloudWatch metrics, and AWS MSK monitoring.
+- Because the user wants production trade logging and monitoring by `July 10, 2024` → roadmap planning and buffer-time planning became part of the conversation.
+- Because the user attempted to use unsupported properties like `alert`, `dead_letter_topic`, and `encryption.key` → the next agent should validate official Kafka / AWS MSK docs before extending those implementations.
+- Because the latest request was about scaling the Kafka + Elasticsearch architecture horizontally → the next continuation should likely focus on scalable system design, partitioning, consumer-group strategy, bulk indexing, and backpressure handling.
+- Because the user achieved `99.99%` delivery but still worried about failures → focus shifted from raw performance to durability, retries, DLQ, and circuit breakers.
+- Because `KafkaConsumerTimeoutException` persisted after timeout increase from `100ms` to `500ms` → discussion expanded into network latency diagnostics and AWS MSK monitoring.
+- Because production trade logging and monitoring is due by `July 10, 2024` → roadmap / sprint planning became part of the thread.
+- Because unsupported properties like `alert`, `dead_letter_topic`, and `encryption.key` were used in examples → future implementation advice must be validated against official Kafka / MSK docs.
+- Because the last substantive technical request was horizontal scalability → likely next step is partitioning, consumer-group strategy, sink scaling, bulk indexing, and backpressure handling.
+- Because the user explicitly instructed `Always provide detailed version numbers when I ask about software dependencies.` → future dependency answers must include exact versions.
+- Because the user observed epoch time improvement from `45m` to `28m` after switching from `GPT-2 small` to `DistilGPT-2 v2.0` → user is strongly optimizing for smaller/faster language models.
+- Because reducing batch size to `16` and enabling mixed precision cut memory usage by `40%` but did not fully solve CUDA OOM → the next continuation should focus on deeper training-loop correctness and memory profiling, not just further generic AMP advice.
+- Because the user wants modular, testable, scalable architecture → future implementation should keep preprocessing, feature extraction, caption generation, API serving, and persistence separate.
+- Because the user’s API response time is `320ms on an RTX 3090`, above target `250ms` → future performance work should focus on profiling and bottleneck reduction across preprocessing + inference + serialization.
+- Because the user explicitly instructed `Always include error messages verbatim when I ask about debugging issues.` → future debugging answers must preserve exact error text.
+- Because the user explicitly instructed `Always include cache configuration details when I ask about performance optimizations.` → future optimization answers must include TTL / eviction / cache topology details.
+- Because many earlier snippets used invalid Hugging Face classes and bad diffusion APIs → the next agent should correct model/class usage before extending the codebase.
+- Because the user’s latency target is `under 250ms per image` and current uncached API latency was `320ms on an RTX 3090` → profiling and cache-assisted inference remain high priority.
+- Because Redis caching already improved one path to `210ms` → cache configuration/tuning is a likely next optimization path.
+- Because the user asked for modular, extensible design repeatedly → keep preprocessing, feature extraction, caption generation, API, and sampling strategies separated.
+- Because the user wants robust security with OAuth2/JWT → authentication guidance should prioritize secure token validation, refresh-token design, and RBAC even if implementation complexity increases.
+- Because the user is seeing Redis timeouts even after increasing pool size to `20` → future Redis troubleshooting should consider timeout settings, server load, network latency, and health monitoring, not just pool size.
+- Because prior assistant guidance across many topics was sometimes inaccurate → future continuation should revalidate implementation details against official docs before extending code.
+- Because the latest request was CI/CD pipeline integration → next practical step should be pipeline design tied to existing code/repo structure rather than continuing unrelated earlier branches.
+- Because the user prefers practical, implementation-oriented help → future responses should use concrete corrected code, not abstract theory.
+- Because the user wants exact debugging detail → preserve error strings verbatim.
+- Because many earlier assistant examples were inaccurate → revalidate Lightning, auth, Redis, AWS, and model API usage before extending.
+- Because the newest unresolved request is Lightning gradient accumulation → next continuation should start there unless the user redirects.
+- Because the user is now asking about backend deployment in serverless contexts → future backend deployment answers must include **serverless scaling strategies**.
+- Because the user asked about serverless migration after several Lambda/API Gateway questions → the next response should focus on migration pitfalls, not return to older ML or React threads unless redirected.
+- Because many previous examples were generic or inaccurate → validate AWS, ONNX, Storybook, and gRPC details before extending implementation.
+- Because the user prefers practical help → concrete migration steps, architecture patterns, and exact AWS configuration examples will be better than high-level theory.
+- Because the user repeatedly wants practical implementation help → future replies should use concrete Python/JS examples, not abstract explanations.
+- Because many prior examples were inaccurate → future continuation should validate AWS, GraphQL, DynamoDB, CUDA, and auth details before extending code.
+- Because the final user request is a Slack webhook integration → next response should focus on webhook implementation, secure secret handling, retries, logging, and alert deduplication/escalation.
+- Because the user explicitly wants security measures when discussing API/auth/security topics → webhook/Slack implementation should mention secret storage, HTTPS, request signing/verification if relevant, and least-privilege deployment practices.
+- Because the user wants deployment strategies in production updates → if the webhook answer touches deployment, include rollout strategy and monitoring.
+- Because the user wants exact versions and exact errors → preserve `torch 1.13.1`, `Transformers v4.29`, and exact error strings.
+- Because the user explicitly added `Always include final evaluation metrics when I ask about model performance.` → future model-performance answers must include exact final metrics, not just qualitative advice.
+- Because the conversation drifted across many unrelated topics → the next agent should re-ground on the user’s desired branch before extending older implementation details.
+- Because the latest request was automatic metric formatting in code → the next response should start with a corrected evaluation helper for `BLEU-4`, `METEOR`, and `CIDEr`.
+- Because the user fixed `MemoryError: Unable to allocate 1.2GB array` by downscaling to `480p` → the next optimization focus shifted from resolution to dtype and image-processing efficiency.
+- Because frontend bundle size dropped from `1.2MB` to `650KB` → the next frontend optimization focus shifted toward runtime rendering behavior rather than code splitting alone.
+- Because frontend memory stabilized at `100MB` during a `1-hour` streaming session → further frontend discussion moved toward avoiding re-renders and MediaStream cleanup.
+- Because the user explicitly asked to start with data types → the next response should begin with practical `np.uint8` / `np.float32` guidance.
+- Because `MemoryError: Unable to allocate 1.2GB array` occurred during high-resolution frame processing → frames were downscaled to `480p` / `640x480`.
+- Because frontend rendering and bundle size were bottlenecks → optimization focused on `React.memo`, batching, Redux/render optimization, and reducing bundle size from `1.2MB` to `650KB`.
+- Because WebSocket connections were resetting → keepalive tuning with `ping_timeout=60` and `ping_interval=30` was discussed.
+- Because the current production architecture now uses separate ECS services behind an ALB with service discovery → the next continuation should focus on **ALB target group stickiness configuration**, **WebSocket routing implications**, and **service-to-service communication guidance**, not local dtype optimization.
+- Because the user wants practical, implementation-oriented help → future answers should stay concrete and implementation-focused.
+- Because the current production architecture uses separate ECS services behind an ALB with service discovery → next continuation should focus on **ALB target group stickiness**, **WebSocket routing implications**, and **service-to-service communication guidance**, not local dtype optimization.
 
 ### User Preferences & Constraints
-- “Always provide detailed version numbers when I ask about software dependencies.”
-- User wants a modular pipeline with separate diffusion-based feature extractor and transformer caption generator components.
-- User wants the system to be testable and scalable.
-- User is targeting `under 250ms per image` on an `NVIDIA RTX 3090 GPU`.
-- User is using `Python 3.10`, `PyTorch 1.13`, `Hugging Face Transformers v4.29`, `FastAPI v0.95`, `PostgreSQL 14.3`, `pytest 7.2.0`, `pylint 2.15.4`, `torchvision 0.14.1`, `Docker 20.10`, `React 18.2`.
-- [FACT] latest unresolved request was specifically about using `Trainer` with a custom `Dataset` class for fine-tuning a DistilGPT-2 model in Transformers `4.29`; no final answer was provided because the user switched to asking for a summary | session:current | turn:latest
-- [DECISION] user accepted the revised schedule exactly as: `April 20`, `June 10`, `August 10` because it “should give us enough buffer time to avoid feeling rushed”
-- [FACT] user repeatedly framed the model as “diffusion-based feature extractor and transformer caption generator” and wants continuation work aligned to that architecture, even though many previous code examples drifted into unrelated models or invalid APIs | session:current | turn:multiple
-- [TEMPORAL] the dependency-version preference (“Always provide detailed version numbers...”) happened after the deadline changes and should continue to govern all future technical answers | order:after event 15 before latest implementation questions
-- “Always include error messages verbatim when I ask about debugging issues.”
-- “Always include cache configuration details when I ask about performance optimizations.”
-- User prefers asynchronous API calls and caching to improve responsiveness without sacrificing accuracy.
-- [FACT] latest unresolved request is no longer the old DistilGPT-2 `Trainer` question; the new latest unresolved request is an analysis of using **AWS EKS** for container orchestration, specifically weighing **cost vs management overhead**, with example code using `boto3.client("eks")` and `eks.list_clusters()` | session:current | turn:latest
-- [UPDATE] `improved_latency_with_redis: 210ms (was: 320ms)` — user explicitly reported this improvement after caching diffusion features in Redis | supersedes:measured_latency_only
-- [UPDATE] `redis_ttl_updated_discussed: 7200 (was: 3600)` — user later discussed extending TTL to `7200 seconds` and asked that cache configuration details always be included in performance discussions | supersedes:redis_ttl_default_discussed
-- [UPDATE] `uvicorn_workers_updated: 4 (was: 2)` — user explicitly said increasing workers from `2` to `4` helped with `ConnectionResetError: [Errno 104] Connection reset by peer` | supersedes:implicit_worker_examples
-- [FACT] user explicitly reported a later batch size preference: `batch size of 12 seems to be the sweet spot for balancing memory constraints and throughput during training` | session:current | turn:batch_size_12
-- [FACT] user explicitly reported validation metrics `BLEU-4 score of 32.5`, `METEOR score of 27.1`, `CIDEr score of 98.3` after `10 epochs` on `COCO val2017` | session:current | turn:metrics
-- [DECISION] because the user wants responsiveness without sacrificing accuracy → they prefer asynchronous API calls plus caching, and future architecture/performance guidance should align with that preference | supersedes:generic_perf_guidance
-- [TEMPORAL] the newer preference “Always include error messages verbatim when I ask about debugging issues.” happened after the earlier dependency-version preference and after multiple debugging discussions; it should govern all future debugging help | order:after dependency preference
-- [TEMPORAL] the newer preference “Always include cache configuration details when I ask about performance optimizations.” happened after extensive Redis/caching discussions and after the user discussed extending TTL to `7200 seconds`; it should govern all future performance help | order:after Redis tuning discussion
-- `Always specify container image versions when I ask about deployment details.`
-- `I prefer robust security with OAuth2 and JWT despite added complexity to protect user data and API usage.`
-- [UPDATE] `latest_active_request: Slack webhook for critical system alerts and errors` (was: `common pitfalls when migrating to serverless`) | supersedes:latest_active_request
-- [FACT] `auth0_react_sdk_version: v2.0.0` was introduced later for React authentication / authorization examples | session:current | turn:Auth0 React
-- [FACT] `prometheus_version: 2.44` and `grafana_version: 9.4` were introduced later in monitoring/dashboard setup questions | session:current | turn:Prometheus Grafana
-- [FACT] `socketio_version: v4.7.1` was introduced later for real-time caption feedback updates | session:current | turn:Socket.IO
-- [FACT] `black_version: 22.3.0` was introduced later for pre-commit formatting enforcement | session:current | turn:black pre-commit
-- [FACT] `helm_version: 3.9` was introduced later for templating environment-specific Kubernetes manifests | session:current | turn:Helm
-- [FACT] `api_throughput_reported: 150 requests per second` under Locust `2.15` load testing is newer than the older `100 concurrent users` example and should be retained separately | session:current | turn:Locust profiling
-- [FACT] `redis_connection_timeout_error: TimeoutError: Redis connection timed out after 5s` and `redis_connection_pool_size_tried: 20` were introduced later in Redis troubleshooting | session:current | turn:Redis timeout
-- [FACT] `scoring_py_coverage_reported: 95%` and `sonarqube_critical_code_smells_reported: 12` were introduced later in testing / static analysis discussion | session:current | turn:QA SonarQube
-- [FACT] `polars_memory_footprint_reduction_reported: 25%` was introduced later when discussing switching from pandas to polars | session:current | turn:Polars
-- [FACT] `gpt2_medium_params: 355M` was introduced later when discussing GPT-2 medium training optimization | session:current | turn:GPT-2 medium
-- [FACT] `deployment_image_version_example: my-image:1.2.3` and new user preference `Always specify container image versions when I ask about deployment details.` were introduced later in Kubernetes deployment discussion | session:current | turn:deployment version
-- [FACT] `caption_feedback_cider_improvement_reported: 3.2-point improvement` from concatenating diffusion features with ResNet50 embeddings was introduced later | session:current | turn:CIDEr feature engineering
-- “Always specify container image versions when I ask about deployment details.”
-- “Always mention deployment strategies when I ask about production updates.”
-- “I prefer robust security with OAuth2 and JWT despite added complexity to protect user data and API usage.”
-- “Please respond only in English.”
-- User repeatedly frames the architecture as diffusion-based feature extractor + transformer caption generator.
-- [FACT] user explicitly instructed `Please respond only in English.` | session:current | turn:latest
-- [FACT] user explicitly instructed `Always mention deployment strategies when I ask about production updates.` | session:current | turn:latest
-- [FACT] `webpack_version: 5.75` was introduced later in the React bundle size optimization question | session:current | turn:Webpack
-- [FACT] `websocket_latency_target: under 100ms` and `websocket_test_url: ws://localhost:8080` were introduced later in the Jest/WebSocket test question | session:current | turn:WebSocket latency
-- [FACT] `docker_image_size_target: 650MB (was: 1.2GB)` was introduced later in the Docker multi-stage build optimization question | session:current | turn:Docker multi-stage
-- [FACT] `pytorch_lightning_upgrade_target: v2.0.1` was introduced later in Lightning upgrade / AMP questions | session:current | turn:Lightning upgrade
-- [FACT] `sentry_version: 21.9` and `sentry_unique_exceptions_identified: 15` were introduced later in Sentry prioritization discussion | session:current | turn:Sentry
-- [UPDATE] `api_gateway_timeout_updated: 60s (was: 30s)` was introduced later in API timeout troubleshooting | supersedes:previous_timeout_context
-- [FACT] `error_none_decode: AttributeError: 'NoneType' object has no attribute 'decode'` was introduced later in Redis cache deserialization debugging | session:current | turn:Redis decode
-- [FACT] `error_swipeable_views_indexof: TypeError: Cannot read properties of undefined (reading 'indexOf')` was introduced later in React swipe gestures debugging | session:current | turn:Swipeable views
-- [FACT] `error_module_not_found_pytorch_lightning: ModuleNotFoundError: No module named 'pytorch_lightning'` was introduced later in Lightning upgrade troubleshooting | session:current | turn:Lightning import
-- [FACT] `error_cuda_device_side_assert: RuntimeError: CUDA error: device-side assert triggered` was reintroduced later specifically for token index validation debugging | session:current | turn:token validation
-- [FACT] `error_504_gateway_timeout: 504 Gateway Timeout` was introduced later in API performance troubleshooting | session:current | turn:API timeout
-- [FACT] `stable_diffusion_generation_model_id_example: CompVis/stable-diffusion-v1-4` was introduced later in diffusion image generation example | session:current | turn:diffusion generation
-- [FACT] `hmac_secret_key_example: b"my_secret_key"` and `webhook_payload_example: b"Hello, World!"` were introduced later in HMAC SHA256 webhook signature discussion | session:current | turn:HMAC
-- [TEMPORAL] the explicit deployment-strategy preference happened after extensive Kubernetes blue-green discussion and should govern future production update answers | order:after blue-green deployment questions
-- [TEMPORAL] the English-only preference happened after the deployment-strategy preference and should govern all future responses | order:after deployment-strategy preference
-- “Always mention serverless scaling strategies when I ask about backend deployment.”
-- User prefers serverless for cost efficiency and automatic scaling despite initial cold start challenges.
-- User wants frontend/UI discussions to include frontend performance metrics.
-- [FACT] user explicitly stated a serverless preference: `I prefer using serverless for cost efficiency and automatic scaling despite the initial cold start challenges.` | session:current | turn:serverless_preference
-- [FACT] user explicitly instructed `Always mention serverless scaling strategies when I ask about backend deployment.` | session:current | turn:latest_serverless_preference
-- [FACT] `frontend_caption_render_time_improved: 180ms (was: 450ms)` from `ONNX Runtime Web v1.14` on mid-range devices was introduced later and is not fully captured in older PK sections | session:current | turn:onnxruntime_web
-- [FACT] `storybook_version: v7.0` was introduced later for modularized React frontend work | session:current | turn:storybook_setup
-- [FACT] `react_testing_library_version: v14.0.0` was introduced later in Jest/RTL questions | session:current | turn:rtl_tests
-- [EVENT] after the PyTorch Lightning topic, the conversation shifted heavily into serverless migration, Lambda/API Gateway, SAM, SNS/SQS, DynamoDB, Storybook, ONNX Runtime Web, and responsive frontend questions before the final unresolved serverless migration pitfall question | order:after event 38
-- [TEMPORAL] the serverless-scaling preference happened after multiple Lambda/API Gateway/SnapStart/provisioned concurrency discussions and should govern all future backend deployment answers | order:after extensive serverless discussion
-- “Always specify language options when I ask about multi-language support.”
-- User prefers multi-language support to broaden the user base despite added model complexity and maintenance.
-- [FACT] user explicitly stated `I've locked the PyTorch version to 1.13.1 and Transformers to v4.29 for production stability` in the webhook discussion | session:current | turn:latest_webhook_request
-- [FACT] later user-reported evaluation metrics `BLEU-4 score of 38.7`, `METEOR score of 31.4`, `CIDEr score of 112.5` were introduced in a COCO evaluation question and were not captured in older summaries | session:current | turn:bleu4_eval
-- [FACT] user reported beam-search latency improvement `280ms (was: 450ms)` on `RTX 3090` during custom CUDA kernel optimization discussion | session:current | turn:beam_search_cuda
-- [FACT] user reported Lambda cold start latency reduced to `150ms` with provisioned concurrency using `2 pre-warmed instances` | session:current | turn:lambda_cold_start_cost
-- [FACT] user introduced `Elasticsearch 8.7` and `Swagger UI version 4.0.0` in later observability/docs questions | session:current | turn:elk_swagger
-- [FACT] user later explicitly said current sprint is `Sprint 9` with tasks dated `2024-07-01` to `2024-07-25` | session:current | turn:sprint9_gantt
-- [EVENT] after the earlier serverless migration discussions, the conversation expanded into translation service caching/Fargate, custom CUDA kernels, webhook notifications, Swagger docs, DynamoDB GSIs, Redshift ETL, and Slack alerting before this summary | order:after event 43
-- [DECISION] because the user locked `PyTorch 1.13.1` and `Transformers v4.29` for production stability → future implementation guidance for production integrations should avoid suggesting incompatible upgrades unless explicitly requested
+- `Always use bold font for class names when I ask about detected object labels`
+- `Always include a summary table when I ask about performance metrics`
+- `Always provide code snippets in Python when I ask about implementation details`
+- `I prefer a modular design that separates the detection and API layers`
+- `I prefer using the YOLOv5s model because it's lightweight and suitable for real-time performance on CPU`
+- `CPU-only deployment due to hardware constraints, despite slower inference times`
+- [FACT] Most recent user request was specifically about improving a runtime-toggleable object counting overlay implementation with total frame latency at `180ms` and existing class:
+- [FACT] User explicitly said they have **never implemented object counting or used dictionaries for class IDs before**, which matters for explanation level | session:current | turn:recent
+- [DECISION] Because the user is latency-sensitive and counting is already enabled under `180ms`, the next continuation should likely optimize for minimal per-frame overhead rather than redesign from scratch | supersedes:generic_object_counter_advice
+- [TEMPORAL] The user’s last standing implementation-focused preferences were stated after most architectural discussion: `Always provide code snippets in Python when I ask about implementation details` came after repeated code-review/architecture turns and should govern future implementation responses | order:late
+- `Always display object ID color codes when I ask about tracking visualization`
+- `Always provide a screenshot example when I ask about frontend UI features`
+- [UPDATE] latest_active_request: optimize frame processing after fixing `MemoryError: Unable to allocate 1.2GB array` by downscaling to `480p`; user specifically wants deeper guidance on switching to `np.float32` or `np.uint8` where appropriate | supersedes:older_active_threads
+- [FACT] user explicitly said they have **never actually integrated any tracking algorithm or used Kalman filters in my previous projects** | session:recent_tracking | turn:tracking_visualization
+- [FACT] user explicitly said they have **never actually used a GPU or attempted any form of model acceleration before** while discussing GPU memory monitoring and CPU/GPU trade-offs | session:tensorrt | turn:gpu_tradeoff
+- [DECISION] because WebRTC was considered too complex → user put WebRTC on hold despite interest in low-latency video streaming | session:frontend_streaming | turn:webrtc
+- [TEMPORAL] after extensive frontend/React/WebSocket/Redux discussion, the conversation returned to backend production-readiness and memory optimization, ending on NumPy dtype/image-processing optimization rather than UI work | order:latest
+- `Always include a security checklist when I ask about deployment best practices`
+- `Always include IAM policy details when I ask about AWS security configuration`
+- `Always include a code review checklist when I ask about code quality practices`
+- `Most recent user request was specifically about improving a runtime-toggleable object counting overlay implementation with total frame latency at 180ms`
+- `User explicitly said they have never implemented object counting or used dictionaries for class IDs before`
+- `User explicitly said they have never actually integrated any tracking algorithm or used Kalman filters in my previous projects`
+- `User explicitly said they have never actually used a GPU or attempted any form of model acceleration before`
+- `User prefers OAuth2 due to its flexibility and industry adoption, despite the added complexity`
+- `User started writing tests before feature implementation for the new alert webhook system using Test-Driven Development`
 ---
-- “Always include final evaluation metrics when I ask about model performance.”
-- [UPDATE] `evaluation_bleu4_latest_reported: 39.2 (was: 38.7)` — later user said final evaluation BLEU-4 was slightly improved to `39.2` after last-minute hyperparameter tuning | supersedes:evaluation_bleu4_later_reported
-- [FACT] user added a new persistent preference: `Always include final evaluation metrics when I ask about model performance.` | session:current | turn:req-7b5a9231
-- [EVENT] after the Slack webhook topic, the conversation temporarily drifted into many generic advisory prompts (accessibility, NVDA, PyTorch OOM, generic Transformers generation, FastAPI exception handling, Tkinter/React gallery UX), but these did not establish confirmed repo modifications | order:after event 65
-- [FACT] user later asked how to automatically append final evaluation metrics `BLEU-4`, `METEOR`, and `CIDEr` to model performance queries in code using `t5-base` examples | session:current | turn:req-e6d1efd2
+- [UPDATE] latest_active_request changed from `optimize frame processing after fixing MemoryError: Unable to allocate 1.2GB array by downscaling to 480p` to `configure sticky sessions on an AWS ALB for ECS microservices deployment with detection, tracking, and API gateway services using service discovery, to improve WebSocket/API communication and reduce intermittent WebSocket disconnects` | supersedes:latest_active_request
+- [FACT] user reported `100% positive feedback` from final UAT with `5 paramedic volunteers` in the AWS deployment/stability thread | session:latest | turn:10,11
+- [FACT] user locked backend dependencies with pip-tools and froze `requirements.txt` on `July 15, 2024` | session:latest | turn:10,12
+- [FACT] user’s production deployment architecture includes `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled` | session:microservices_aws | turn:latest_architecture
+- [FACT] user’s ECS production cluster consists of `3 t3.medium instances behind an AWS ALB on port 80/443` | session:aws_ops | turn:ecs_cluster
+- [FACT] `Always include a code review checklist when I ask about code quality practices` was added as a persistent user preference | session:code_quality | turn:checklist_preference
+- [TEMPORAL] after long AWS deployment / monitoring / security discussions, the conversation most recently focused on ECS microservices communication and ALB sticky sessions for WebSocket stability | order:latest
+- `Always include a deployment timeline when I ask about production launch schedules`
+- [UPDATE] `aws_api_response_time_additional: 110ms under 100 concurrent users` | supersedes:none
+- [UPDATE] `container_startup_time_new: 10s (was: 25s)` | supersedes:none
+- [UPDATE] added persistent preference: `Always include a deployment timeline when I ask about production launch schedules` | supersedes:none
+- [FACT] `maintenance_window_date: August 1, 2024` | session:maintenance | turn:post_launch
+- [FACT] `maintenance_window_time: 12:00:00` | session:maintenance | turn:post_launch
+- [FACT] `app_version_release: 1.0.0` | session:release | turn:performance
+- [FACT] `cypress_version: 12.17` | session:testing | turn:e2e
+- [FACT] `deployment_timeline_start_date: 2024-07-20` | session:launch_planning | turn:timeline
+- [FACT] `deployment_timeline_end_date: 2024-07-25` | session:launch_planning | turn:timeline
+- [FACT] `cloudtrail_event_time_example: 2024-07-21T14:30:00Z` | session:cloudtrail | turn:parser
+- [TEMPORAL] after the ALB sticky-session/WebSocket troubleshooting thread, the conversation branched into deployment operations topics including CodeDeploy, CloudTrail, maintenance automation, OAuth2 revocation, Docker startup optimization, Redis caching, architecture docs, Cypress E2E, graceful shutdown, Grafana Slack alerts, latency plotting, and deployment timeline planning | order:after_34
+- [FACT] The very latest user-facing implementation topic before the summary request was a runtime object counting overlay toggle example using:
+  - `self.counts = {}`
+  - `self.enabled = True`
+  - `toggle()`
+  - `update()` guarded by `if self.enabled`
+  - user asked specifically how to make it `more robust and efficient for my app, considering the total frame latency is a critical factor` | session:current | turn:latest_implementation
+- [FACT] User asked `What did we do so far?` immediately before asking for this continuation prompt, indicating the next agent should resume from a recap rather than introduce a new subsystem | session:current | turn:final
+- [TEMPORAL] After the long AWS/ops thread, the conversation returned to local application architecture topics in this order: object counting basics → toggle overlay → tracker stub → confidence parse → ZeroMQ/API separation → JSON serialization → Docker compose → SSD MobileNet v2 → ZeroMQ timeout handling → TensorRT feature-flag planning → modular detection/API refactor → logging/API parsing issues → object counting optimization again | order:latest_local_sequence
+- [DECISION] Because the user asked for implementation help and explicitly prefers modular design, the next continuation should likely propose a small standalone `ObjectCounter` module plus minimal integration points in `main.py`, not a monolithic rewrite | supersedes:generic_toggle_advice
+- [FACT] The last unanswered user request before the summary was specifically: “Sure, let's dive deeper into using efficient data types and optimizing image processing operations. I think those could make a big difference in my current setup. How about we start with ensuring I'm using the right data types? Could you give me a quick rundown on how to switch to `np.float32` or `np.uint8` where appropriate?” | session:latest | turn:last_before_summary
+- [TEMPORAL] After the frontend/React/WebSocket/Redux/UI optimization thread, the conversation returned to backend production-readiness and memory optimization, then narrowed further from general frame-processing optimization to dtype-specific guidance (`np.float32` / `np.uint8`) immediately before the user asked for a recap | order:latest_end
+- [DECISION] Because the user explicitly asked to “start with ensuring I'm using the right data types” after fixing the `1.2GB` allocation issue, the next continuation should likely begin with a practical dtype map for the pipeline (`np.uint8` for captured/display frames, `np.float32` for normalized model input/intermediate math) rather than broader performance theory | supersedes:generic_frame_optimization_advice
+- [FACT] The last direct unanswered user question before the summary request was: `Can you provide an example of how to configure sticky sessions on an ALB using the AWS CLI or SDKs?` in the context of `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled` and concern about `intermittent WebSocket disconnects` behind AWS ALB | order:latest
+- [TEMPORAL] The conversation’s latest endpoint was not dtype optimization anymore; it had advanced to AWS ECS microservices + ALB sticky sessions before the user asked for a recap/continuation prompt | order:latest
+- [DECISION] Because the user’s current production architecture uses `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled` behind an ALB, the next continuation should focus on **ALB target group stickiness configuration**, **WebSocket routing implications**, and **service-to-service communication guidance**, not local frame dtype optimization | supersedes:generic_frame_optimization_advice
+- `Always include exact API version numbers when I ask about integration details.`
+- `Always provide exact error message text when I ask about debugging issues.`
+- `I prefer using APScheduler over raw cron jobs for better Python integration and error handling flexibility`
+- `Can you provide some guidance on how to get started with that as well?` for Twitter API meant the user had never registered a Twitter Developer account or created a Twitter app at that point.
+- User often asks for Python examples and concrete implementation guidance.
+- [FACT] The last user message before asking for summary was specifically about fixing a `sync_data()` reconciliation job using `psycopg2`, `redis`, and `schedule` to sync `scheduled_posts` between PostgreSQL and Redis every 5 minutes | session:current | turn:latest
+- [FACT] In that latest sync job snippet, `cursor.fetchall()` was used but the code then accessed rows as `post['id']`, which is a likely bug because default `psycopg2` rows are tuples, not dicts | session:current | turn:latest
+- [FACT] In that latest sync job snippet, `redis_client.smembers('scheduled_posts')` returns Redis set members that will typically be bytes, so direct comparison to PostgreSQL integer IDs needs normalization/decoding | session:current | turn:latest
+- [DECISION] Because the latest unresolved code is the PostgreSQL ↔ Redis reconciliation job, the next continuation should focus on row-shape handling, Redis bytes/int normalization, bidirectional sync policy, logging, and robust connection cleanup rather than broader platform planning | supersedes:older_scheduler_advice
+- [FACT] User explicitly requested a “complete code example” for the PostgreSQL/Redis synchronization job | session:current | turn:latest
+- `Always provide exact error codes when I ask about API failures.`
+- `Always include exact library versions when I ask about technology stacks.`
+- `I prefer comprehensive automated testing to catch regressions early and maintain code quality.`
+- User wanted beginner-friendly help for spaCy / hashtag generation because they had never developed hashtag generation tools using spaCy or any NLP library before.
+- [FACT] The most recent direct user request before the summary was specifically about **GDPR compliance for user data access and deletion requests**, with audit logging already added and a request for an example Python implementation for compliant deletion handling | session:current | turn:latest
+- [DECISION] Because the newest open topic is GDPR deletion/access-request handling, the next continuation should focus on compliant deletion/anonymization workflow, audit logging, user-consent records, transactional safety, and related-table cleanup rather than returning to older scheduler or API topics | supersedes:older_sync_job_focus
+- [FACT] User explicitly said `I prefer comprehensive automated testing to catch regressions early and maintain code quality.` and asked for pytest examples for Instagram automation code | session:current | turn:testing_preference
+- [FACT] User explicitly requested help with exact versions including `black v22.3.0` and `isort v5.10.1` for code style enforcement, beyond the earlier persistent `black_version: 23.1.0` in old knowledge | session:current | turn:style_tools
+- [FACT] User discussed `Twitter API v2.3.1` and `Tweepy v4.12.1` repeatedly in later Twitter engagement/rate-limit questions, which are newer than the older persistent `tweepy_version: 4.10.1` baseline | session:current | turn:later_twitter_threads
+- [EVENT] After the earlier PostgreSQL ↔ Redis sync focus, the conversation expanded substantially into Docker, CI/CD, GDPR, HIPAA, RabbitMQ resilience, Redis invalidation, webhook verification, Sentry middleware, Rich CLI UX, aiologger integration, and HAProxy tuning before the recap request | order:after_sync_topic
+- `Always provide exact test coverage percentages when I ask about testing quality.`
+- `Always provide exact uptime percentages when I ask about deployment stability.`
+- User prefers OAuth 2.0 PKCE for secure token exchange in public clients.
+- User is focused on security hardening and performance tuning before final production rollout.
+- [FACT] Latest direct unresolved user request after all prior topics was specifically: **find the official Twitter API docs for the Twitter API v2.3.1 new metrics endpoints and provide a Python example of how to use them** | session:current | turn:latest
+- [EVENT] After the GDPR deletion / consent-revocation thread, the conversation continued through caching, Swagger/OpenAPI, API Gateway `502`, EXIF caption generation, Instagram token-expiry fallback, drag-and-drop UI, batch media uploads, HAProxy backend tuning, Docker Compose wiring, release management, CI setup, asyncio error handling, Facebook Insights effort estimation, `aiohttp v3.8.3`, OAuth 2.0 PKCE examples, jq/Nginx SSL, encryption key rotation, webhook DLQ, and Facebook Insights integration tests before the Twitter API docs request | order:after_82
+- [UPDATE] `requests_version_updated: 2.28.2 (was: 2.28.1)` | supersedes:requests_version
+- [UPDATE] `facebook_cpu_time_after_json_optimization: 15% (was: 25%)` | supersedes:none
+- [UPDATE] `api_gateway_target_after_load_test: 1500 requests per minute (earlier discussion included 1000 requests per minute)` | supersedes:api_gateway_throttling_old_lambda_example
+- [UPDATE] `token_rotation_interval_instagram_keys_new: 90 days (was: earlier encryption rotation discussion at 45 days in another context)` | supersedes:token_rotation_interval_encryption_keys
+- [DECISION] Because the user explicitly asked for official Twitter API v2.3.1 metrics documentation and Python usage examples, the next continuation should start with exact docs/endpoints/examples for Twitter metrics rather than returning to GDPR or scheduler topics | supersedes:gdpr_next_focus
+- `Always provide exact software version numbers when I ask about upgrades.`
+- [UPDATE] `release_v1_1_0_target` later conflicted with `release_v1_1_0_postponed: July 15, 2024` and should be treated as a timeline update, not two independent active targets | supersedes:release_version_1_1_0_target
+- [FACT] `production_rollout_date: July 18, 2024` with `post_rollout_uptime: 99.95% uptime in the first 48 hours` was introduced after the earlier persistent knowledge and is important for deployment continuity | session:later_ops | turn:production_rollout
+- [FACT] `documentation_last_updated: July 19, 2024` for Confluence docs and `final_sprint_review_date: July 19, 2024` were added later and matter for maintenance-phase context | session:docs_agile | turn:later
+- [FACT] `release_tag_facebook_integration: v1.0.0 on July 17, 2024` was introduced in a later dependency/version-control thread | session:facebook_versioning | turn:later
+- [FACT] user stated `instagram_stability_validation: 1000+ posts over 7 days, with no failures reported` in the Instagram E2E testing thread | session:instagram_e2e | turn:later
+- [FACT] user stated `facebook_success_rate_target: above 99.8%` in the Kibana monitoring thread | session:kibana | turn:later
+- [FACT] user stated `engagement_records_daily_volume: 12 million engagement records daily` in the ETL/performance thread | session:etl | turn:later
+- [FACT] user stated `database_size_example: 10 GB` and `backup_schedule: daily backup at 2:00 AM UTC` in the PostgreSQL backup thread | session:postgres_backup | turn:later
+- [FACT] user stated `pagerduty_response_time_target: under 5 minutes` in the PagerDuty alerting thread | session:pagerduty | turn:later
+- [FACT] user stated `user_stated_twitter_latency: 150ms` in a later Twitter latency optimization question, which differs from the older `twitter_average_post_latency_reported: 800ms` and should be preserved as a separate metric rather than overwritten | session:twitter_latency | turn:later
+- [EVENT] After the earlier Twitter docs / GDPR focus, the conversation continued through Redis incident analysis, API Gateway logging, WebSockets vs SSE, PKCE storage, upgrades, rollout / uptime, Instagram E2E, security hardening, Twitter latency measurement, IP whitelisting, SNS/Lambda, PagerDuty, docs review, PostgreSQL indexing, HAProxy SSL reload, locked dependencies, GDPR deletion logic review, TDD / CI automation, code review automation, hashtag generation, unified API error handling, image pipeline optimization, maintenance practices, Kibana monitoring, export optimization, Instagram exception handling, Facebook integration testing, scheduler memory optimization, React accessibility, PostgreSQL query tuning, backups, X-Ray tracing, ETL scaling, and coverage report setup | order:after_90
+- [DECISION] Because the user’s final request was a handoff / continuation prompt, the next agent should not assume the active topic changed away from the prior unresolved work; instead, start by confirming whether to continue with **Twitter API v2.3.1 metrics docs/examples**, **GDPR compliance**, **testing/coverage automation**, or another recent ops/performance thread.
+- `Always provide detailed API response time metrics when I ask about performance profiling.`
+- [FACT] Latest direct unresolved request is specifically about adding a refresh token flow to JWT auth for a secured language detection API where tokens currently expire after `1 hour` | session:current | turn:latest
+- [DECISION] Because the user wants users to continue using the API after JWT expiry without re-authenticating, the next continuation should focus on refresh-token issuance, storage, rotation, expiry, revocation, and refresh endpoint design | supersedes:older_translation_or_gdpr_focus
+- [FACT] `jwt_access_token_expiration_example: 1 hour` was introduced in the latest JWT snippet and is relevant for continuation | session:current | turn:latest
+- [EVENT] After DeepL API integration planning and intermittent `500 Internal Server Error` troubleshooting in the `franc` service, the conversation shifted to JWT-secured language detection API design with token expiration handling | order:latest
+- [FACT] User asked “What did we do so far?” immediately before requesting this continuation prompt in the current chatbot/microservices/JWT conversation | session:current | turn:final
+- [FACT] The conversation later introduced a concrete contextual memory milestone of `April 10, 2024` that should remain available for planning continuity | session:later_memory_store | turn:feature_impl
+- [FACT] A concrete sprint review date was introduced: `April 1, 2024` for translation and language detection modules | session:later_presentation | turn:sprint_review
+- [FACT] The user later reported/used a translation-service `85%` Redis cache hit rate and `180ms` average latency in several optimization prompts | session:later_translation_perf | turn:perf_review
+- [FACT] The webhook implementation was described as reducing polling by `60%`, which matters for future webhook/monitoring discussion | session:webhook_perf | turn:measurement
+- [FACT] The user explicitly requested presentation help for an `April 1, 2024` sprint review and wanted slides with architecture diagrams and data-flow flowcharts for language detection and translation services | session:presentation | turn:latest_substantive_before_recap
+- [DECISION] Because the user asked for a handoff summary after broad topic drift, the next agent should begin by re-grounding on the user’s preferred active thread instead of assuming a single unresolved issue. The strongest current candidates are JWT refresh-token flow, contextual memory store API/schema, GPT-4 API integration on port `5000`, webhook integration/measurement, or sprint review presentation prep | supersedes:single-thread assumptions
+- `Always provide fallback strategies when I ask about error handling in API services.`
+- `Always include cache hit rate statistics when I ask about caching strategies.`
+- [FACT] The last direct user request before this summary was specifically about optimizing latency of the chatbot backend API integration for the `gpt-4-clinical` endpoint in `Node.js 18` and `Express 4.18` | session:current | turn:latest
+- [FACT] User introduced `TypeScript v5.0` for backend services and tied it to both fine-tuning/back-end implementation discussions and release/version-control discussions | session:later_backend | turn:typescript
+- [FACT] User referenced `v0.3.0` as the release tagged after memory store integration and testing | session:release_review | turn:versioning
+- [FACT] User reported a fine-tuning dataset size of `10,000 anonymized clinical psychology dialogues` | session:clinical_finetune | turn:dataset
+- [FACT] User reported `12 epochs` with validation loss reduction from `0.45 to 0.12` in the clinical fine-tuning thread | session:clinical_finetune | turn:training_metrics
+- [FACT] User reported inference latency averaging `280ms`, which is `30ms slower than the base GPT-4 model` | session:clinical_finetune | turn:latency
+- [FACT] User saw exact fine-tuning/data-format errors: `Validation loss not decreasing`, `Invalid dataset format`, and `Invalid fine-tune dataset format` | session:clinical_finetune | turn:debugging
+- [FACT] User introduced a separate clinical inference endpoint at `http://localhost:5001/api/gpt-4-clinical` and later reported `500` errors calling it with `requests.post` | session:clinical_endpoint | turn:integration
+- [FACT] User later discussed `503 Service Unavailable` when routing clinical queries and explicitly implemented fallback to the base GPT-4 model | session:clinical_routing | turn:fallback
+- [DECISION] Because the later assistant drifted into inaccurate OpenAI `FineTune` and old completions examples, the next agent should correct the API guidance before continuing any fine-tuning implementation thread | supersedes:outdated_openai_example_patterns
+- [DECISION] Because the user’s latest implementation request was backend latency reduction for `gpt-4-clinical`, the next agent should likely start by re-grounding and asking whether to continue with `clinicalMode` routing / endpoint optimization, JWT refresh-token flow, contextual memory store API/schema, or sprint review prep | supersedes:single_assumed_active_thread
+- `Always include security protocol versions when I ask about authentication methods.`
+- `User prefers OAuth 2.0 PKCE for secure token exchange in public clients.`
+- [FACT] In the later auth thread, the user introduced an authentication microservice specifically on `port 6000`, separate from the chatbot backend, using RESTful communication between services.
+- [FACT] The user asked for handling `TokenExpiredError: jwt expired` in a JWT-based authentication microservice with login, logout, and token refresh endpoints.
+- [FACT] The user showed a concrete JWT auth implementation using `2 hours` token expiry and `7 days` refresh token lifetime, then asked for a security/efficiency review.
+- [FACT] The user reported token verification was taking around `100ms` and wanted to reduce it to `under 50ms`.
+- [FACT] The user asked whether Redis must be configured separately and whether Redis must be installed on every server for the auth microservice deployment.
+- [FACT] The user asked for fallback handling of `503 Service Unavailable` when the authentication microservice is down.
+- [FACT] The user introduced concrete RBAC roles `admin`, `moderator`, `user` and asked how to secure admin-only endpoints in `Node.js` / `Express.js`.
+- [FACT] The user asked whether the frontend must be updated to reflect user roles dynamically.
+- [FACT] The user reported Authentication API performance of `180ms` under `100 concurrent users` using `Node.js`, `Express.js`, and `PostgreSQL`, and asked how to optimize and interpret profiling results.
+- [FACT] The user introduced password reset flow work using `Node.js`, `Express.js`, and `Nodemailer`, then specifically asked how to implement email verification and whether the frontend must handle token verification and token expiration separately.
+- [FACT] The user introduced `Nodemailer v6.9.1` explicitly in the password reset / email verification thread.
+- [FACT] The user asked for Jest `v29.5` tests for `auth.module.js` / login error handling edge cases.
+- [DECISION] Because the latest conversation included a substantial authentication/security/performance branch not fully represented in earlier chatbot-only summaries, the next agent should explicitly offer to continue with one of these auth-focused threads: `refresh-token flow`, `Authentication API profiling interpretation`, `password reset + email verification hardening`, or `RBAC hardening`, alongside the older `clinicalMode` and `memory store` options.
+- [DECISION] Because the user asked for security protocol versions when discussing authentication methods, the next auth-related answer should explicitly include protocol/version details such as `TLS 1.2 or later` / `TLS 1.3`, plus exact JWT algorithm details (`RS256`, `ES256`) if relevant.
+- `Always include token expiry durations when I ask about authentication token management.`
+- [FACT] The most recent direct user request was a recap / continuation prompt, not a new implementation thread.
+- [FACT] The latest conversation branch included many WebSocket-specific topics not fully reflected in older chatbot/auth summaries: reconnect logic, `WebSocket is already in CLOSING or CLOSED state`, typing indicator, delivery status, memory optimization, Redis pub/sub, and deployment of a separate WebSocket microservice on `port 7000`.
+- [FACT] The latest conversation branch also included encryption-specific topics not fully reflected in older summaries: AES-256 payload encryption, Diffie-Hellman key exchange, E2EE planning by `May 30, 2024`, PostgreSQL encrypted storage, and secure key sharing / key-loss handling.
+- [FACT] The user explicitly mentioned `React Query v4.29` and a `20 messages per session` context window in the chat UI caching / consistency thread.
+- [FACT] The user explicitly mentioned Kubernetes `v1.27` on AWS EKS for the WebSocket microservice deployment and Redis pub/sub latency of `50ms`.
+- [DECISION] Because the latest recap request came after broad topic drift, the next agent should first re-ground with the user and offer focused continuation paths: auth refresh-token hardening, password reset + email verification, RBAC hardening, clinical endpoint optimization, or WebSocket reconnect reliability.
+- [FACT] The very latest conversation block before the handoff request added a new CI/CD + AWS ECS troubleshooting thread with exact GitHub Actions / ECS issues not fully represented above:
+  - `docker: Error response from daemon: failed to create endpoint enthusiastic_morse on network bridge: failed to add endpoint enthusiastic_morse to network bridge: Bind for 0.0.0.0:8000 failed: port is already allocated.` | session:current | turn:docker_cuda
+  - `Docker build failed: no space left on device`
+  - runner disk increased to `50GB`
+  - task definition family existence / revision management
+  - cleanup of old ECS task definitions
+  - caching build artifacts in a separate directory
+  - restoring cached artifacts in the next build
+  - Alpine container runtime issues after reducing image size from `180MB` to `90MB`
+- [FACT] The user added a new persistent frontend-security preference late in the conversation:
+- `Always show encryption status indicators when I ask about frontend security features.`
+- [FACT] The user explicitly asked for help implementing a React `Secure` / `Not Secure` encryption status indicator in `React 18.2`.
+- [FACT] The user explicitly asked for a Node.js + Express webhook example for notifying the encryption microservice on new session creation for key generation.
+- [FACT] The user explicitly asked for centralized logging help using `Winston v3.8` in the encryption microservice.
+- [FACT] The user explicitly asked for stress-test interpretation aimed at `99.9% uptime` for the encryption microservice.
+- [FACT] The user explicitly asked for Docker multi-stage optimization of the encryption microservice image after reducing it to `85MB`.
+- [FACT] The user explicitly asked for secure review of AES-256-GCM code using `crypto` in Node.js 18, including Dockerfile best practices for the encryption microservice.
+- [FACT] The user explicitly asked for semantic versioning automation using `semver` and changelog generation from commit history in Node.js for versions ranging from `v0.3.0` to `v0.5.1`.
+- [FACT] The user explicitly asked for rollback-strategy scripting using Docker in Node.js for the CI/CD pipeline.
+- [FACT] The user explicitly asked for a Gantt-chart / board-style planning example in Trello or Asana to meet the `June 10, 2024` CI/CD deadline.
+- [FACT] The user explicitly asked about using `Node.js crypto module v20.3` for AES-GCM examples.
+- [FACT] The user explicitly asked whether testing lazy loading in different browsers is necessary after fixing React Suspense issues.
+- [FACT] The user explicitly asked about React Suspense error `Cannot read property 'then' of undefined`.
+- [FACT] The user explicitly asked about automated integration tests running on every pull request with a `95%` code coverage threshold and asked how to optimize slow tests.
+- [DECISION] Because the final request is a handoff prompt after broad topic drift, the next agent should first offer focused continuation paths rather than assume a single active thread. The strongest current candidates are:
+  - `JWT refresh-token hardening`
+  - `clinicalMode / gpt-4-clinical optimization`
+  - `WebSocket reconnect reliability`
+  - `encryption microservice hardening`
+  - `CI/CD + ECS deployment`
+  - `password reset / email verification`
+- [DECISION] Because the user explicitly added `Always show encryption status indicators when I ask about frontend security features.`, all future frontend security UX responses should include visible `Secure` / `Not Secure` indicator guidance.
+- [FACT] A new late-stage topic was added that is not strongly represented in older PK: a `Python` analytics dashboard using `pandas` and `matplotlib` over `chatbot_usage` data to monitor `usage` and `error_rate`, with deployment planned by `July 2024`.
+- [FACT] Later conversation included explicit React loading-skeleton / perceived wait-time measurement and component load-time measurement threads, beyond earlier generic frontend optimization summaries.
+- [FACT] Later conversation included gRPC internal microservice communication latency troubleshooting and specific Node.js gRPC keep-alive configuration questions.
+- [FACT] Later conversation included Redis cache-layer implementation questions for the chatbot API service using the `redis` package in Node.js and TTL-based cache design for reducing DB load.
+- [FACT] Later conversation included Node.js heap-dump analysis / memory-leak debugging for the chatbot API service and questions about additional tools for analyzing heap snapshots.
+- [FACT] Later conversation included ECS/Fargate high-availability scaling to `4 replicas`, ALB/service-discovery/load-balancing setup, and auto-scaling alarm/notification questions.
+- [FACT] Later conversation included health check endpoint performance/scaling questions with the explicit target of `200 OK` within `100ms`.
+- [FACT] Later conversation included correlation-ID generation failure handling and default-value strategy discussions for centralized logging.
+- [DECISION] Because the very last substantive technical topic before the recap was the analytics dashboard planned for `July 2024`, the next agent should offer that as a continuation option alongside auth / clinical / encryption / CI/CD rather than assuming only earlier threads matter.
+- `Always include user satisfaction metrics when I ask about UI/UX design improvements.`
+- [FACT] Later conversation added explicit UI/UX measurement guidance: multi-language switching user testing reached `90% satisfaction rate`, and future UX work should preserve that metric when discussing improvements.
+- [FACT] Later conversation added a project retrospective scheduling thread with exact date `June 30, 2024`.
+- [FACT] Later conversation added release-tagging discussion for `v1.0.0` as the production-ready chatbot release.
+- [FACT] Later conversation added chatbot latency optimization target change from current `280ms` toward `200ms`.
+- [FACT] Later conversation added admin-panel-specific architecture / session-management / Redis caching / CI/CD questions, which are adjacent to but distinct from the chatbot platform threads.
+- [FACT] Later conversation added speculative `GPT-5` planning questions; these should be treated as non-binding future-interest discussion, not an implementation commitment.
+- [DECISION] Because the final user message was a request for a continuation prompt after heavy topic drift, the next agent should start by re-grounding and offering explicit branches rather than assuming a single latest unresolved issue.
+- `Always provide detailed error messages when I ask about debugging techniques.`
+- User prefers practical, implementation-oriented help over abstract explanations.
+- User is focused on meeting deadline-driven milestones and sprint goals.
+- User wants robust handling of API rate limits and temporary failures.
+- User wants caching to reduce API-call frequency.
+- User wants better test coverage for `fetcher.py`.
+- [FACT] The last explicit technical topic before the recap was **Docker image-size optimization for the fetcher service** using `python:3.10-slim`, current image size `120MB`, exposing `port 8080` | session:current | turn:latest_before_recap
+- [FACT] User explicitly asked: `How can I modify this Dockerfile to reduce the image size while still including all the necessary dependencies?` for the fetcher service Dockerfile | session:current | turn:latest_before_recap
+- [FACT] User’s ML-service Docker optimization thread separately used `port 8501` and also asked for smaller images with `python:3.10-slim` | session:current | turn:docker_ml_thread
+- [DECISION] Because the final user request was a recap/handoff immediately after the fetcher Dockerfile optimization question, the next agent should likely offer to continue with one of these nearby unresolved paths first: `fetcher Dockerfile optimization`, `final fetcher.py retry/caching implementation`, `pytest coverage for fetcher.py`, `PostgreSQL trades schema/query tuning`, or `Sprint 2 planning execution` | supersedes:generic_multi-topic_regrounding
+- Always include model performance metrics when discussing machine learning model training.
+- Always include API endpoint URLs when discussing API integration details.
+- Always include cache hit rate statistics when discussing caching strategies.
+- Always include token expiry durations when discussing authentication token management.
+- [FACT] Latest direct user request before this summary was specifically: review and improve a `BacktestModule` implementation with `sma_crossover_strategy()` and `complex_strategy()` using `Python 3.10` and `pandas`, with intent to support more complex strategies later | session:current | turn:latest
+- [FACT] User explicitly showed a `complex_strategy()` combining:
+  - `short_sma = self.data['Close'].rolling(window=20).mean()`
+  - `long_sma = self.data['Close'].rolling(window=50).mean()`
+  - `rsi = self.data['Close'].pct_change().rolling(window=14).apply(lambda x: x.ewm(com=13-1, adjust=False).std())`
+- [FACT] User explicitly asked for an example of implementing a more complex strategy using `Python and pandas`, beyond a simple SMA crossover, in a class-based `BacktestModule` | session:current | turn:latest
+- [EVENT] The final topic sequence in this session was:
+- [DECISION] Because the latest substantive work shifted from fetcher/Docker back to backtesting architecture, the next continuation should likely start with refactoring `backtest.py` / `BacktestModule` for reusable indicator computation, signal composition, and scalable strategy execution rather than assuming fetcher/Docker is still the nearest active thread | supersedes:generic_fetcher_first_regrounding
+- `Always include API endpoint URLs when discussing API integration details.`
+- `Always include cache hit rate statistics when discussing caching strategies.`
+- `Always include token expiry durations when discussing authentication token management.`
+- `User prefers practical, implementation-oriented help over abstract explanations.`
+- `User is focused on meeting deadline-driven milestones and sprint goals.`
+- [UPDATE] `flask_version_paper_trading_api: 2.3.4` | supersedes:flask_version_webhook_later
+- [UPDATE] `backtest_runtime_new: 4 minutes (was: 12 minutes)` | supersedes:none
+- [UPDATE] `peak_memory_usage_new_backtesting_framework: 1.2GB (was: 3GB)` | supersedes:none
+- [UPDATE] `paper_trade_execution_latency_new: 120ms (was: 350ms)` | supersedes:none
+- [UPDATE] `historical_data_points_backtest_april14: 60,000 historical data points as of April 14, 2024 (was: 50,000 historical data points in earlier backtesting thread)` | supersedes:historical_data_points_backtest_later
+- [UPDATE] `flask_request_timeout_new_discussion: 60s (was: 30s)` | supersedes:none
+- [FACT] `milestone_3_deadline: April 15, 2024` | session:current | turn:milestone_review
+- [FACT] `sprint_paper_trading_risk_start: April 13, 2024` | session:current | turn:sprint_planning
+- [FACT] `sprint_paper_trading_risk_end: April 26, 2024` | session:current | turn:sprint_planning
+- [FACT] `celery_version_paper_trading: 5.3.0` | session:current | turn:celery_webhook
+- [FACT] `sphinx_version_backtesting_docs: 5.3.0` | session:current | turn:sphinx_docs
+- [FACT] `numpy_version_backtesting_perf_thread: 1.24.3` | session:current | turn:cprofile_numpy
+- [FACT] `docker_backtesting_image_size_ecs: 130MB` | session:current | turn:ecs_docker
+- [FACT] `webhook_latency_target_under_80ms: under 80ms` | session:current | turn:webhook_latency
+- [FACT] `integration_test_pass_rate_current_pipeline: 97%` | session:current | turn:integration_tests
+- [FACT] `integration_test_pass_rate_target_pipeline: 100%` | session:current | turn:integration_tests
+- [FACT] `integration_test_success_rate_target_pipeline: 95%` | session:current | turn:integration_tests
+- [FACT] `vault_version: 1.13` | session:current | turn:vault_rotation
+- [FACT] `vault_key_rotation_interval: 7 days` | session:current | turn:vault_rotation
+- [FACT] `trade_status_cache_ttl: 10 seconds` | session:current | turn:redis_trade_status_cache
+- [FACT] `trade_data_cache_ttl_local_dict: 10 seconds` | session:current | turn:local_ttl_cache
+- [FACT] `backtest_result_cache_ttl: 1 hour` | session:current | turn:redis_backtest_cache
+- [FACT] `backtest_repeated_computation_reduction: 70%` | session:current | turn:redis_backtest_cache
+- [FACT] `risk_per_trade_max: 2% capital risk per trade` | session:current | turn:risk_management
+- [FACT] `stop_loss_percentage: 1.5% below the entry price` | session:current | turn:risk_management
+- [FACT] `max_drawdown_limit_daily: 10% per day` | session:current | turn:max_drawdown_halt
+- [FACT] `trailing_stop_loss_distance: 1% trailing distance` | session:current | turn:trailing_stop
+- [DECISION] Because the latest recent thread ended on trade-data / trade-status caching questions, the next continuation can plausibly start with cache invalidation strategy for Redis TTL `10 seconds` and in-memory TTL cache correctness if the user wants to resume the nearest unresolved implementation thread | supersedes:none
+- [DECISION] Because the conversation now contains many assistant-generated examples that may be inaccurate for Flask timeouts and Alpaca OAuth/versioning, the next agent should validate official framework/API behavior before extending those implementations | supersedes:none
+- [DECISION] Because the user repeatedly tied paper trading to logging, alerting, and compliance, the next useful implementation step is likely an integrated `paper_trade.py` design with `RiskManager`, `TradeLogger`, Redis cache, and mock-based `pytest 7.3.1` coverage | supersedes:none
+- `Always include security protocols when I ask about API integration.`
+- [UPDATE] `dashboard_load_time_new: 1.2s (was: 3.5s)` | supersedes:none
+- [UPDATE] `live_trading_api_response_time_new: 180ms (was: 400ms)` | supersedes:none
+- [FACT] `chartjs_version_dashboard_thread: 4.3.0` | session:7 | turn:1
+- [FACT] `cypress_version_dashboard_thread: 12.8.0` | session:7 | turn:2
+- [FACT] `rate_limit_new_requirement: 250 requests per 15 minutes` | session:7 | turn:31
+- [FACT] `alpaca_api_version_user_recent: v2.0` | session:7 | turn:3
+- [FACT] `alpaca_auth_url_example_recent: https://app.alpaca.markets/oauth2/auth` | session:7 | turn:3
+- [FACT] `alpaca_token_url_example_recent: https://api.alpaca.markets/oauth2/token` | session:7 | turn:3
+- [FACT] `alpaca_websocket_attempt_user: wss://api.alpaca.markets/v2/orders` | session:7 | turn:5
+- [FACT] `alpaca_websocket_example_assistant: wss://stream.data.alpaca.markets/v2/iex` | session:7 | turn:5
+- [FACT] `oauth_authorization_code_lifespan_example_recent: 10 minutes` | session:7 | turn:3-4
+- [FACT] `exponential_backoff_initial_delay_example_recent: 1 second` | session:7 | turn:4
+- [FACT] latest direct technical thread before the recap was persistent-session optimization of `LiveTradingAPI` after improving latency from `400ms` to `180ms` | session:7 | turn:latest_before_recap
+- [DECISION] Because the latest concrete backend thread was `LiveTradingAPI` session reuse and latency optimization, the next agent can reasonably resume there first unless the user prefers returning to dashboard/Alpaca auth/WebSocket work | supersedes:none
+- [DECISION] Because multiple recent Alpaca auth/WebSocket snippets may be inaccurate, the next agent should validate official Alpaca docs before extending OAuth or WebSocket implementations | supersedes:none
+- `Always include frontend framework versions when I ask about implementation details.`
+- [UPDATE] `dashboard_load_time_may26: 0.9 seconds (was: 1.2s in earlier dashboard thread)` | supersedes:dashboard_load_time_new
+- [FACT] `frontend_test_coverage_new: 90% (was: 70%)` was explicitly stated in this conversation and should persist for future frontend testing discussions.
+- [FACT] `memory_reduction_websocket_fix: 30MB` was explicitly stated after fixing unclosed WebSocket connections.
+- [FACT] `alert_escalation_e2e_success_rate: 98%`
+- [FACT] `alert_escalation_failure_rate_remaining: 2%`
+- [FACT] `lambda_memory_new: 512MB (was: 1024MB)` with execution time still `under 200ms`
+- [FACT] `alert_processing_latency_current: 500ms`
+- [FACT] `alert_processing_latency_target: 150ms`
+- [FACT] `notification_retry_max_per_alert: 5 retries`
+- [FACT] `redis_cache_ttl_recent: 12 hours`
+- [FACT] `localstorage_alert_expiry: 5-minute expiry`
+- [FACT] `production_deployment_monitoring_deadline: June 21, 2024`
+- [FACT] `production_deployment_monitoring_estimate: 16 hours`
+- [FACT] `milestone_6_deadline: May 30, 2024`
+- [FACT] `milestone_7_deadline_variant: June 10, 2024`
+- [DECISION] Because this conversation introduced many likely inaccurate or loosely specified assistant examples across Twilio/Auth0/AWS, the next agent should validate official vendor docs before extending any of those integrations.
+- `Always include cloud infrastructure details when I ask about deployment architecture.`
+- [FACT] Latest direct unresolved user request before the recap was specifically about optimizing a **real-time trade logging system using Kafka and Elasticsearch** so it can handle **high volumes of trade data** and **scale horizontally as needed**, with a shown `KafkaConsumer('my_topic', bootstrap_servers=['localhost:9092'], auto_offset_reset='earliest', enable_auto_commit=True)` | session:current | turn:latest
+- [DECISION] Because the final substantive technical thread ended on **scalability of the Kafka + Elasticsearch trade logging system**, the next continuation should likely start with **horizontal scaling architecture** (partitioning, consumer groups, sink scaling, Elasticsearch bulk ingestion, decoupling, backpressure) rather than older Kafka Manager or DLQ-only threads | supersedes:generic_monitoring_first_regrounding
+- [FACT] User explicitly attempted unsupported Kafka config/property usage multiple times in this thread:
+  - producer-side `alert`
+  - topic-side `dead_letter_topic`
+  - topic-side `encryption.key`
+- [TEMPORAL] Within this Kafka / Elasticsearch session, the topic order was: producer optimization → durability → HA → Elasticsearch troubleshooting → circuit breaker → monitoring/alerts → Kafka Manager/MSK → JVM heap → schema/Watcher → consumer tuning → MSK encryption confusion → sprint planning → DLQ alerting → webhook analytics → AWS MSK throughput tuning → pipeline robustness → Elasticsearch sink connector → horizontal scalability | order:220-258
+- [DECISION] Because several assistant answers likely conflated **Kafka config**, **Kafka Connect config**, **MSK cluster config**, and **topic config**, the next agent should verify official docs before giving implementation advice on DLQ, encryption-at-rest, Kafka Manager, and sink connector details | supersedes:generic_validate_docs
+- [FACT] The latest direct unresolved user request before the recap was specifically about optimizing a **real-time trade logging system using Kafka and Elasticsearch** so it can handle **high volumes of trade data** and **scale horizontally as needed**, with a shown `KafkaConsumer('my_topic', bootstrap_servers=['localhost:9092'], auto_offset_reset='earliest', enable_auto_commit=True)` | session:current | turn:latest
+- [DECISION] Because several earlier assistant answers likely conflated **Kafka config**, **Kafka Connect config**, **MSK cluster config**, and **topic config**, the next agent should verify official docs before giving implementation advice on DLQ, encryption-at-rest, Kafka Manager, and sink connector details | supersedes:generic_validate_docs
+- `Always provide detailed version numbers when I ask about software dependencies.`
+- [FACT] New domain/thread introduced here is a custom image-captioning system centered on `Python 3.10`, `PyTorch 1.13`, `Transformers v4.29`, `FastAPI v0.95`, `PostgreSQL 14.3`, `Docker 20.10`, `torchvision 0.14.1`, and `pylint 2.15.4` | session:current | turn:all
+- [FACT] User’s current image-captioning milestone schedule was updated to:
+  - `initial feature extraction: April 20`
+  - `transformer training: June 10 (was: May 30)`
+  - `deployment: August 10 (was: July 10)` | session:current | turn:timeline
+- [FACT] User’s current latency target in this thread is `under 250ms per image` on `NVIDIA RTX 3090`, with observed API latency `320ms on an RTX 3090` | session:current | turn:perf
+- [FACT] User’s current dataset setup in this thread is `COCO 2017` with `123,287 images` and `5 captions each` and `BPE vocab size 30,000` | session:current | turn:dataset
+- [FACT] User’s current cloud target in this thread is `AWS EC2 g4dn.xlarge` with `S3 bucket for dataset storage (50GB)` | session:current | turn:aws
+- [FACT] User reported switching from `GPT-2 small` to `DistilGPT-2 v2.0` reduced epoch time from `45m` to `28m` | session:current | turn:model_perf
+- [FACT] User reported reducing batch size from `32` to `16` and enabling mixed precision with NVIDIA Apex AMP cut memory usage by `40%` | session:current | turn:oom
+- [FACT] User repeatedly asked about `Stable Diffusion v2.1` feature extraction, specifically wanting `768-dim embeddings` from `stabilityai/stable-diffusion-2-1-base` | session:current | turn:diffusion
+- [FACT] User’s current API work in this thread is centered on FastAPI `POST /caption` / `POST /caption/` with base64 image input or uploaded image input and JSON caption response on `port 8000` | session:current | turn:api
+- [FACT] User’s current Docker issue in this thread is image size `1.2GB` for a `Python 3.10`, `PyTorch 1.13`, `FastAPI` image with dependencies pinned in `requirements.txt` | session:current | turn:docker
+- [FACT] User’s current PostgreSQL schema in this thread includes:
+  - `images(id SERIAL PRIMARY KEY, url VARCHAR(255) NOT NULL, features JSONB NOT NULL)`
+  - `captions(id SERIAL PRIMARY KEY, image_id INTEGER NOT NULL REFERENCES images(id), text TEXT NOT NULL, score FLOAT NOT NULL)` | session:current | turn:db
+- [DECISION] Because the user’s final request is a handoff summary after an image-captioning-specific thread, the next agent should re-ground on one of these active branches:
+  - correct diffusion-to-transformer bridge
+  - fix CUDA OOM training loop
+  - proper `Trainer` fine-tuning for DistilGPT-2 / causal LM
+  - production-ready FastAPI `/caption` endpoint
+  - Docker image-size reduction
+- [UPDATE] `project_transformer_training_deadline_new: June 10 (was: May 30)` | supersedes:project_transformer_training_deadline_old
+- [UPDATE] `project_deployment_deadline_new: August 10 (was: July 10)` | supersedes:project_deployment_deadline_old
+- [UPDATE] `batch_size_captioning_reduced: 16 (was: 32)` | supersedes:batch_size_captioning_initial
+- [DECISION] Because many examples in this thread used likely invalid Hugging Face class names (`DistilGPT2ForCausalLM`, `DistilGPT2Tokenizer`, `DistilGPT2ForSequenceClassification`) and likely invalid diffusion-pipeline method calls (`pipe.preprocess_image`, `pipe.get_embeddings`), the next agent should correct API/class usage before extending any implementation.
+- `Always include error messages verbatim when I ask about debugging issues.`
+- `Always include cache configuration details when I ask about performance optimizations.`
+- User prefers practical implementation help and concrete code examples.
+- User wants modular, testable, extensible architecture.
+- [FACT] The very latest unresolved user request before the recap was not model training; it was **AWS EKS cost vs management overhead evaluation** for container orchestration using `boto3` / `eks.list_clusters()` context | session:current | turn:latest
+- [FACT] The user explicitly asked for a **detailed analysis of the costs and benefits** of using **AWS EKS** | session:current | turn:latest
+- [FACT] New exact versions introduced in the latest image-captioning continuation that were not fully reflected in prior PK:
+  - `Axios 1.4.0`
+  - `Redis 7.0.11`
+  - `tokenizers v0.13.3`
+  - `Cypress 12.8`
+  - `Docker Compose v2.15`
+  - `Kubernetes v1.26`
+  - `NVIDIA CUDA 11.7` | session:current | turn:all
+- [FACT] A newer latency data point was introduced: Redis caching brought caption API latency down to `210ms` | session:current | turn:redis_perf
+- [FACT] A newer optimization target was introduced: reduce average latency from `210ms` to `140ms on an RTX 3090 GPU` | session:current | turn:latency_optimization
+- [FACT] A new error string was introduced for AMP inference:
+  - `RuntimeError: expected scalar type Half but found Float` | session:current | turn:amp_debug
+- [FACT] A new Docker daemon error string was introduced exactly:
+- [FACT] The user added `confidence_score FLOAT NOT NULL` to the `captions` table for ranking generated captions | session:current | turn:db_schema_update
+- [FACT] The user asked specifically about PostgreSQL `GIN` + `pg_trgm` indexing on `captions.text` and how to verify index usage with `EXPLAIN` | session:current | turn:db_indexing
+- [EVENT] The later image-captioning thread order after the initial recap moved through:
+- [DECISION] Because the final unresolved user topic is AWS EKS evaluation, the next agent should start with **EKS pros/cons, control plane cost, worker-node cost, ops burden, scaling, networking, observability, and when EKS is worth it for this image-captioning microservices architecture**, while preserving the user’s version/detail preferences | supersedes:image_captioning_generic_next_steps
+- `Always specify container image versions when I ask about deployment details.`
+- `User prefers robust security with OAuth2 and JWT despite added complexity.`
+- `User wants modular, testable, extensible architecture.`
+- [UPDATE] `latest_active_request: configure sticky sessions on an AWS ALB for ECS microservices deployment with detection, tracking, and API gateway services using service discovery, to improve WebSocket/API communication and reduce intermittent WebSocket disconnects` (was: `optimize frame processing after fixing MemoryError: Unable to allocate 1.2GB array by downscaling to 480p`) | supersedes:latest_active_request
+- [FACT] The latest direct user code before recap was:
+- [FACT] `grafana_version_recent_user_thread: 9.4` is different from older PK `grafana_version_recent: 9.5` and should be preserved as a separate exact thread value | session:current | turn:monitoring
+- [FACT] API Gateway throttling in this thread was explicitly `1000 requests per minute`, not `1000 requests per second` | session:current | turn:api_gateway
+- [EVENT] The final order immediately before recap was: Prometheus/Grafana → Auth0 PKCE → caption feedback DB → CUDA Docker → Redis timeout → Redis health check → cuDNN benchmark → webhook robustness → Socket.IO realtime captions → FastAPI OAuth2/JWT → pandas→polars → transformer fine-tuning → image preprocessing integration → CI/CD pipeline request → recap request | order:latest
+- [DECISION] Because the conversation ended on a CI/CD implementation request, the next agent should begin with pipeline design/integration unless the user explicitly redirects to another earlier thread | supersedes:older_branch_priority
+- `Always include security measures when I ask about API authentication.`
+- `Always mention deployment strategies when I ask about production updates.`
+- [FACT] The latest user code used `self.manual_backward(loss)` together with `trainer = pl.Trainer(accumulate_grad_batches=4)`, which implies a likely mismatch between manual and automatic optimization modes | session:current | turn:latest
+- [FACT] The latest user code manually called `self.optimizer.step()` and `self.optimizer.zero_grad()` inside `training_step`, but no valid `configure_optimizers` or optimizer assignment was shown | session:current | turn:latest
+- [FACT] The latest user code referenced `pl.transforms.Transformer()`, which is likely not a valid PyTorch Lightning API surface and should be revalidated before continuing | session:current | turn:latest
+- [DECISION] Because the newest unresolved request is specifically about Lightning gradient accumulation correctness, the next agent should begin with a corrected Lightning v2.0.1 training example using `accumulate_grad_batches=4`, explain why the current code is wrong, and only resume earlier CI/CD/Auth/Redis branches if the user redirects | supersedes:older_branch_priority
+- `Always include frontend performance metrics when I ask about UI improvements.`
+- `Always mention serverless scaling strategies when I ask about backend deployment.`
+- [FACT] `onnxruntime_web_version: v1.14` | session:current | turn:onnxruntime
+- [FACT] `frontend_caption_render_time_new: 180ms (was: 450ms)` | session:current | turn:onnxruntime
+- [FACT] exact error `Error: Fallback function not defined.` | session:current | turn:circuit_breaker
+- [FACT] `webpack_version_discussed: 5.75` | session:current | turn:webpack
+- [FACT] exact error `TypeError: Cannot read property 'map' of undefined` | session:current | turn:react_debug
+- [FACT] `react_testing_library_version: v14.0.0` | session:current | turn:testing
+- [FACT] `storybook_version: v7.0` | session:current | turn:storybook
+- [FACT] `ga_product: Google Analytics 4` | session:current | turn:ga4
+- [FACT] `human_evaluation_participants: 20` | session:current | turn:rouge_human_eval
+- [FACT] `human_evaluation_average_score: 4.2` | session:current | turn:rouge_human_eval
+- [FACT] `lambda_cold_start_target_example: 300ms` | session:current | turn:lambda_cold_start
+- [FACT] `api_gateway_timeout_updated_example: 60s (was: 30s)` | session:current | turn:api_gateway_timeout
+- [FACT] `lambda_prewarmed_instances_example: 5` | session:current | turn:provisioned_concurrency
+- [FACT] latest unresolved serverless question followed immediately after a migration walkthrough, so the next agent should continue with **pitfalls + mitigation + scaling strategies**, not restart from first-principles Lambda setup | order:323-324
+- [DECISION] Because the user explicitly asked about migrating from traditional server-based architecture to serverless and then asked about pitfalls, the next response should likely be structured as: benefits → pitfalls → mitigations → serverless scaling strategies → smooth-transition checklist | supersedes:generic_serverless_guidance
+- `Always specify language options when I ask about multi-language support.`
+- [FACT] User explicitly referenced locked production versions in the latest request: `PyTorch 1.13.1` and `Transformers v4.29` | session:current | turn:398
+- [FACT] `Pact v4.3.0` | session:current | turn:331
+- [FACT] `lambda_memory_new_additional: 2048MB (was: 1024MB)` | session:current | turn:328
+- [FACT] `swagger_ui_version: 4.0.0` | session:current | turn:380
+- [FACT] `elasticsearch_version_elk_thread: 8.7` | session:current | turn:369
+- [FACT] `bleu4_score_reported: 38.7` | session:current | turn:367
+- [FACT] `meteor_score_reported: 31.4` | session:current | turn:367
+- [FACT] `cider_score_reported: 112.5` | session:current | turn:367
+- [FACT] `uptime_monitoring_result_additional: 99.9% uptime over 72-hour production monitoring` | session:current | turn:368
+- [FACT] `beam_search_latency_new: 280ms (was: 450ms)` | session:current | turn:351
+- [FACT] `cloudwatch_alarm_error_rate_threshold_new_example: 0.5%` | session:current | turn:397
+- [FACT] `etl_schedule_interval: every 6 hours` | session:current | turn:391
+- [FACT] exact error `UnhandledPromiseRejectionWarning` | session:current | turn:327/370
+- [FACT] exact error `CUDA kernel launch failed: invalid configuration argument` | session:current | turn:360/365
+- [EVENT] The latest final sequence before the summary request was: CloudWatch error-rate alarm simulation → Slack webhook implementation request → user asked `What did we do so far?` → user requested this continuation prompt | order:397-400
+- [DECISION] Because the user’s newest actual request is Slack webhook implementation for critical alerts, the next answer should begin there, not with serverless migration pitfalls or older CUDA/React branches | supersedes:generic_serverless_guidance
+- `Always include final evaluation metrics when I ask about model performance.`
+- User often wants concrete code examples.
+- [UPDATE] `bleu4_score_recent: 39.2 (was: bleu4_score_reported: 38.7 in an earlier thread)` | supersedes:bleu4_score_reported
+- [UPDATE] latest active thread is now `automatic metric reporting for model performance queries` (was: `Slack webhook notifications for critical system alerts and errors`) | supersedes:latest_active_request
+- [FACT] exact recent CUDA OOM error text was `RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 11.00 GiB total capacity; 9.50 GiB already allocated; 128.0 MiB free; 10.00 GiB reserved; 256 MiB reserved for pinned memory).` | session:current | turn:404
+- [FACT] user explicitly reported `over 1,200 registered users in the first week` for the public beta gallery app | session:current | turn:425
+- [FACT] user explicitly requested automatic appending of `BLEU-4`, `METEOR`, and `CIDEr` to model-performance queries using `t5-base` example code | session:current | turn:431
+- [DECISION] Because the latest direct user request is code for automatic metric appending, the next agent should continue there first rather than resuming older webhook/serverless topics.
+- `I prefer the lightweight SORT tracker for now due to its simplicity and real-time constraints`
+- User stated they had never implemented object counting or class-ID dictionaries before.
+- User stated they had never integrated a tracking algorithm or used Kalman filters before.
+- User stated they had never actually used a GPU or attempted model acceleration before.
+- Because the latest unresolved request is dtype/image-processing optimization, future continuation should be concrete and beginner-friendly.
+- [FACT] The latest local frontend/CV branch added explicit React UI component names `VideoStream` and `ControlPanel`, which are not clearly indexed in older PK as the current active frontend artifacts | session:frontend_cv | turn:latest
+- [FACT] The user’s final unresolved request in this branch was specifically to start with `np.float32` / `np.uint8` usage after fixing `MemoryError: Unable to allocate 1.2GB array`, which is more specific than the broader older PK entry about frame-processing optimization | session:latest | turn:468
+- [EVENT] The conversation sequence in this branch moved from frontend React/WebSocket/UI optimization back to backend memory optimization, ending on dtype-specific guidance rather than remaining on UI work | order:464-468
+- [DECISION] Because the user explicitly said “Sure, let's dive deeper into using efficient data types...” after the `480p` fix, the next agent should begin with a pipeline-level dtype map (`np.uint8` for capture/display/compressed frames; `np.float32` for normalized model input and math) and only then move to in-place ops / allocation reduction | supersedes:generic_image_processing_advice
+- `Always include exact software version numbers when I ask about upgrades.`
+- `Always include model performance metrics when discussing machine learning model training.`
+- `User wants robust security with OAuth2 and JWT despite added complexity.`
+- `User is focused on security hardening and performance tuning before final production rollout.`
+- `User wants robust handling of API rate limits and temporary failures.`
+- `User wants caching to reduce API-call frequency.`
+- `User wants better test coverage for fetcher.py.`
+- user had never implemented object counting or used dictionaries for class IDs before
+- user had never integrated a tracking algorithm or used Kalman filters before
+- user had never used a GPU or attempted model acceleration before
+- [FACT] user’s latest production architecture was explicitly `separate ECS services for detection, tracking, and API gateway, all with service discovery enabled` | session:latest | turn:10,13
+- [FACT] user’s ECS production cluster was explicitly `3 t3.medium instances behind an AWS ALB on port 80/443` | session:latest | turn:10,1 and 10,13
+- [EVENT] after earlier local frontend/CV/memory-optimization work, the conversation advanced into AWS ECS deployment operations and ended on ALB sticky sessions / WebSocket stability before the final recap request | order:after_470
+- [DECISION] Because the user’s latest unresolved question was specifically about sticky sessions on ALB for ECS microservices communication, the next continuation should focus on **ALB target group stickiness**, **WebSocket implications**, **service-to-service communication**, and likely **AWS CLI/Boto3 examples**, rather than returning to local dtype optimization | supersedes:generic_frame_optimization_advice
+- [FACT] In the recent AWS branch, after sticky-session discussion the user also asked about broader troubleshooting for intermittent WebSocket disconnects, including what specific signs to look for in logs.
+- [FACT] The user also discussed gzip reducing frontend asset size by `40%` on an Nginx reverse proxy in the AWS/ops continuation.
+- [FACT] The user later branched into CodeDeploy deployment-group update logic, CloudTrail parsing, maintenance-window scripting, OAuth2 token revocation, Docker startup optimization, Redis query caching, architecture documentation, Cypress `12.17` E2E planning, graceful shutdown, Grafana-to-Slack alerts, latency plotting, and deployment timeline planning, but none of those became the final active thread.
+- [DECISION] Despite those later AWS/ops side branches, the latest unresolved request before this recap remained the **ALB sticky sessions / ECS microservices / WebSocket reliability** topic, so continuation should resume there unless the user redirects.

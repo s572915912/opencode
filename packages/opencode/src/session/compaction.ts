@@ -15,7 +15,7 @@ import { Plugin } from "@/plugin"
 import { Config } from "@/config/config"
 import { ProviderTransform } from "@/provider/transform"
 import path from "path"
-import { mkdir } from "fs/promises"
+import { mkdir, appendFile, writeFile } from "fs/promises"
 
 export namespace SessionCompaction {
   const log = Log.create({ service: "session.compaction" })
@@ -40,6 +40,14 @@ export namespace SessionCompaction {
 
   function skPath(): string {
     return path.join(Instance.worktree, ".opencode", "knowledge.jsonl")
+  }
+
+  function eventsPath(): string {
+    return path.join(Instance.worktree, ".opencode", "events.jsonl")
+  }
+
+  function contradictionsPath(): string {
+    return path.join(Instance.worktree, ".opencode", "contradictions.jsonl")
   }
 
   async function readPK(): Promise<string | null> {
@@ -314,31 +322,7 @@ export namespace SessionCompaction {
     return themes.sort((a, b) => b.items.length - a.items.length)
   }
 
-  function relevantThemes(themes: Theme[], msgs: MessageV2.WithParts[], limit = 5): Theme[] {
-    // extract keywords from recent message batch
-    const batch = msgs
-      .filter(m => m.info.role === "user")
-      .slice(-20) // last 20 user messages
-      .flatMap(m => m.parts
-        .filter((p): p is MessageV2.TextPart => p.type === "text")
-        .flatMap(p => keywords(p.text))
-      )
-    const vocab = new Set(batch)
-    // score each theme by keyword overlap
-    const scored = themes.map(t => ({
-      theme: t,
-      score: t.words.filter(w => vocab.has(w)).length,
-    }))
-    return scored
-      .sort((a, b) => b.score - a.score)
-      .slice(0, limit)
-      .filter(s => s.score > 0)
-      .map(s => s.theme)
-  }
 
-  function formatThemeIndex(themes: Theme[]): string {
-    return themes.map(t => `- **${t.title}** (${t.items.length} items)`).join("\n")
-  }
 
   async function writeThemes(items: SKItem[]): Promise<void> {
     if (items.length === 0) return
@@ -359,16 +343,7 @@ export namespace SessionCompaction {
     log.info("wrote themes", { themes: themes.length, items: items.length })
   }
 
-  const VALUE_RE = /\d+(\.\d+)?\s*(ms|mb|gb|kb|fps|hz|px|days?|hours?|min|sec|bytes?|%)/i
-  const DATE_RE = /\b(january|february|march|april|may|june|july|august|september|october|november|december|\d{4}-\d{2}|\d{1,2}\/\d{1,2})\b/i
-  const VERSION_RE = /\b\d+\.\d+(\.\d+)?\b/
 
-  function filterSK(items: SKItem[]): SKItem[] {
-    // With gap-analysis extraction (Prediction-Correction), all items
-    // are inherently high-value — they represent information MISSING
-    // from PK. No type-based filtering needed.
-    return items
-  }
 
   function formatExpanded(themes: Theme[]): string {
     return themes.map(t => {
@@ -425,6 +400,62 @@ export namespace SessionCompaction {
     }
   }
 
+  // --- V16: Append-only event ledger (immutable, never rewritten) ---
+
+  async function extractEventsFromPK(pk: string): Promise<void> {
+    const re = /###\s*(?:Chronological\s+)?Event\s+Log[^\n]*\n([\s\S]*?)(?=\n###|\n##|$)/i
+    const m = pk.match(re)
+    if (!m) return
+    const events: Array<{seq: number; event: string; ts?: string}> = []
+    for (const line of m[1].split("\n")) {
+      const em = line.match(/^\s*(?:-\s*)?(\d+)[.)]\s*(?:\[([^\]]+)\]\s*)?(.+)/)
+      if (em) events.push({ seq: parseInt(em[1]), ts: em[2] || undefined, event: em[3].trim() })
+    }
+    if (events.length === 0) return
+    const file = Bun.file(eventsPath())
+    const existing = new Set<string>()
+    const prev = (await file.exists()) ? await file.text() : ""
+    for (const line of prev.split("\n").filter(l => l.trim())) {
+      try { existing.add(JSON.parse(line).event) } catch {}
+    }
+    const fresh = events.filter(e => !existing.has(e.event)).map(e => JSON.stringify(e))
+    if (fresh.length > 0) {
+      await Bun.write(eventsPath(), prev + fresh.join("\n") + "\n")
+      log.info("appended events", { added: fresh.length, total: existing.size + fresh.length })
+    }
+  }
+
+  // --- V16: Append-only contradiction pairs (immutable) ---
+
+  async function extractContradictionsFromPK(pk: string): Promise<void> {
+    const re = /###\s*Contradiction[^\n]*\n([\s\S]*?)(?=\n###|\n##|$)/i
+    const m = pk.match(re)
+    if (!m) return
+    const pairs: Array<{topic: string; said: string; then: string}> = []
+    for (const line of m[1].split("\n")) {
+      // Match: "X" → "Y" or stated X → Y patterns
+      const cm = line.match(/["\u201c]([^"\u201d]+)["\u201d].*(?:\u2192|->|changed to|corrected to|clarified to).*["\u201c]([^"\u201d]+)["\u201d]/i)
+      if (cm) {
+        pairs.push({ topic: cm[1].split(/\s+/).slice(0, 3).join("_").toLowerCase(), said: cm[1].trim(), then: cm[2].trim() })
+        continue
+      }
+      const cm2 = line.match(/(?:said|stated|mentioned)\s+(.+?)\s*(?:\u2192|->|vs|versus)\s*(.+?)(?:\s*\(|$)/i)
+      if (cm2) pairs.push({ topic: cm2[1].split(/\s+/).slice(0, 3).join("_").toLowerCase(), said: cm2[1].trim(), then: cm2[2].trim() })
+    }
+    if (pairs.length === 0) return
+    const file = Bun.file(contradictionsPath())
+    const existing = new Set<string>()
+    const prev = (await file.exists()) ? await file.text() : ""
+    for (const line of prev.split("\n").filter(l => l.trim())) {
+      try { const c = JSON.parse(line); existing.add(c.said + "|" + c.then) } catch {}
+    }
+    const fresh = pairs.filter(p => !existing.has(p.said + "|" + p.then)).map(p => JSON.stringify(p))
+    if (fresh.length > 0) {
+      await Bun.write(contradictionsPath(), prev + fresh.join("\n") + "\n")
+      log.info("appended contradictions", { added: fresh.length, total: existing.size + fresh.length })
+    }
+  }
+
   function extractPK(msgs: MessageV2.WithParts[]): string | null {
     for (let i = msgs.length - 1; i >= 0; i--) {
       const msg = msgs[i]
@@ -462,6 +493,26 @@ export namespace SessionCompaction {
   export const PRUNE_PROTECT = 40_000
 
   const PRUNE_PROTECTED_TOOLS = ["skill"]
+
+  // V17: Archive tool output to .opencode/archive/ before pruning
+  async function archivePart(part: MessageV2.ToolPart) {
+    try {
+      const dir = path.join(Instance.worktree, ".opencode", "archive")
+      await mkdir(dir, { recursive: true })
+      const entry = {
+        id: part.id,
+        tool: part.tool,
+        ts: part.state.status === "completed" ? part.state.time.start : Date.now(),
+        input: JSON.stringify(part.state.status === "completed" ? part.state.input : {}).slice(0, 300),
+        output: part.state.status === "completed" ? part.state.output : "",
+      }
+      await writeFile(path.join(dir, `${part.id}.json`), JSON.stringify(entry))
+      const idx = { id: part.id, tool: part.tool, ts: entry.ts, chars: entry.output?.length ?? 0 }
+      await appendFile(path.join(dir, "index.jsonl"), JSON.stringify(idx) + "\n")
+    } catch (e) {
+      log.info("archive failed", { id: part.id, error: e })
+    }
+  }
 
   // goes backwards through parts until there are 40_000 tokens worth of tool
   // calls. then erases output of previous tool calls. idea is to throw away old
@@ -501,11 +552,12 @@ export namespace SessionCompaction {
     if (pruned > PRUNE_MINIMUM) {
       for (const part of toPrune) {
         if (part.state.status === "completed") {
+          await archivePart(part)
           part.state.time.compacted = Date.now()
           await Session.updatePart(part)
         }
       }
-      log.info("pruned", { count: toPrune.length })
+      log.info("pruned", { count: toPrune.length, archived: true })
     }
   }
 
@@ -517,6 +569,8 @@ export namespace SessionCompaction {
     auto: boolean
     overflow?: boolean
   }) {
+    // V17: prune before LLM compaction so LLM processes smaller context
+    await prune({ sessionID: input.sessionID })
     const userMessage = input.messages.findLast((m) => m.info.id === input.parentID)!.info as MessageV2.User
 
     let messages = input.messages
@@ -670,8 +724,11 @@ For EVERY piece of information that changed or was contradicted:
 ### Causal Decisions
 - Because [cause] → chose [action] (outcome: [result if known])
 
-### User Preferences & Constraints
+### User Preferences & Constraints (CRITICAL — easy to lose during compression)
 - [verbatim preference or constraint stated by user]
+- Extract ALL of: coding style preferences, tool preferences, framework choices, workflow preferences
+- Extract stated constraints: "must use X", "prefer Y over Z", "always do X before Y"
+- If user expressed a STRONG opinion, mark it: [STRONG] "exact quote"
 
 RULES:
 1. NEVER remove existing persistent knowledge items unless explicitly superseded
@@ -759,6 +816,12 @@ If existing SK items are provided below, PRESERVE existing items and ADD only NE
         // Write theme files for read-path retrieval
         const allSK = await readSK()
         await writeThemes(allSK)
+        // V16: Append to immutable stores (events + contradictions)
+        const freshPK = await readPK()
+        if (freshPK) {
+          await extractEventsFromPK(freshPK)
+          await extractContradictionsFromPK(freshPK)
+        }
       }
     }
 
